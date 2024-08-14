@@ -1,0 +1,132 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "col_morbilidad",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "cargo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "edad",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "col_morbilidad",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "cedula",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "edad",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "col_morbilidad",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "intensidadDolor",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "edad",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "col_morbilidad",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "partesMolestiaArray",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "cargo",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "cedula",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "intensidadDolor",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "edad",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "col_morbilidad",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "partesMolestiaArray",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "edad",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "accidentes",
+      "fieldPath": "cedula",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "arrayConfig": "CONTAINS",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "ausencias",
+      "fieldPath": "cedula",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "arrayConfig": "CONTAINS",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
+}

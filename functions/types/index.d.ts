@@ -1,0 +1,3 @@
+interface args {
+  name: string;
+}
