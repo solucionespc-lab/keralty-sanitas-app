@@ -74,29 +74,29 @@
   --color-add-orange-7: #fd7e14;
   --color-add-orange-8: #e8590c;
 
-  /* Gama de colores para el tema principal, cada número en forma ascendente indica el grado de luminisidad del color */
-  --brand-1: #e8fedf;
-  --brand-2: #d2fdbc;
-  --brand-3: #b0fc7a;
-  --brand-4: #8de555;
-  --brand-5: #72c244;
-  --brand-6: #4b812a;
-  --brand-7: #457522;
-  --brand-8: #355e19;
-  --brand-9: #21400e;
-  --brand-10: #132806;
+  /* Gama de colores para el tema primario, cada número en forma ascendente indica el grado de luminisidad del color */
+  --brand-1: 	hsl(190, 100%, 91%);
+  --brand-2: hsl(194, 100%, 84%);
+  --brand-3: hsl(195, 100%, 73%);
+  --brand-4: 	hsl(194, 100%, 46%);
+  --brand-5: 	hsl(198, 100%, 38%);
+  --brand-6: 	hsl(203, 80%, 35%);
+  --brand-7: 	hsl(200, 93%, 23%);
+  --brand-8: 	hsl(202, 91%, 17%);
+  --brand-9: 	hsl(203, 91%, 13%);
+  --brand-10: hsl(199, 76%, 8%);
 
   /* Gama de colores para el tema secundario, cada número en forma ascendente indica el grado de luminisidad del color */
-  --brand-1-secondary: #eaeefe;
-  --brand-2-secondary: #cad3fc;
-  --brand-3-secondary: #acbcfa;
-  --brand-4-secondary: #98adf9;
-  --brand-5-secondary: #2465d7;
-  --brand-6-secondary: #1b58c0;
-  --brand-7-secondary: #10469d;
-  --brand-8-secondary: #0a3478;
-  --brand-9-secondary: #062a63;
-  --brand-10-secondary: #041e4b;
+  --brand-1-secondary: hsl(98, 97%, 92%);
+  --brand-2-secondary: hsl(96, 96%, 79%);
+  --brand-3-secondary: 	hsl(91, 94%, 70%);
+  --brand-4-secondary: hsl(91, 77%, 60%);
+  --brand-5-secondary: 	hsl(91, 58%, 53%);
+  --brand-6-secondary: hsl(91, 53%, 40%);
+  --brand-7-secondary: 	hsl(91, 55%, 30%);
+  --brand-8-secondary: hsl(91, 59%, 22%);
+  --brand-9-secondary: hsl(91, 62%, 16%);
+  --brand-10-secondary: hsl(91, 70%, 10%);
 
   --gaps-1: 0.25em;
   --gaps-2: 0.5em;

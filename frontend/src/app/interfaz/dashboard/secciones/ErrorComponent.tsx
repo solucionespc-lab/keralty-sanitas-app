@@ -4,7 +4,7 @@ import useErrorNotification from 'hooks/ErrorNotification';
 
 import styles from '../estilos/EstErrores.module.css';
 
-const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
+const ErrorFallback = ({ error }: FallbackProps) => {
   useErrorNotification({ error });
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
         <button
           type='button'
           className={styles.errorButton}
-          onClick={() => resetErrorBoundary}
+          onClick={() => window.location.reload()}
         >
           Restaurar el servicio
         </button>
