@@ -1,0 +1,16 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+alt+a",
+    "command": "editor.action.sortLinesAscending"
+  },
+  {
+    "key": "ctrl+alt+d",
+    "command": "editor.action.sortLinesDescending"
+  },
+  {
+    "key": "ctrl+alt+h",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Development environment"
+  }
+]

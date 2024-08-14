@@ -1,0 +1,191 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "frontend",
+      "problemMatcher": [],
+      "label": "Running Frontend",
+      "icon": {
+        "color": "terminal.ansiRed",
+        "id": "device-desktop"
+      },
+      "presentation": {
+        "group": "Frontend"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "dev",
+      "path": "backend",
+      "label": "Running Server",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "database"
+      },
+      "presentation": {
+        "group": "Backend"
+      }
+    },
+    {
+      "type": "npm",
+      "label": "TS Compiler",
+      "script": "watch",
+      "path": "backend",
+      "problemMatcher": {
+        "base": "$tsc-watch",
+        "applyTo": "allDocuments"
+      },
+      "isBackground": true,
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "combine"
+      },
+      "presentation": {
+        "group": "Backend"
+      }
+    },
+    {
+      "type": "npm",
+      "label": "TS Compiler gcp apis",
+      "script": "watch",
+      "path": "gcp-apis",
+      "problemMatcher": {
+        "base": "$tsc-watch",
+        "applyTo": "allDocuments"
+      },
+      "isBackground": true,
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "combine"
+      },
+      "presentation": {
+        "group": "services"
+      }
+    },
+    {
+      "type": "npm",
+      "label": "TS Compiler gcp triggers",
+      "script": "watch",
+      "path": "gcp-triggers",
+      "problemMatcher": {
+        "base": "$tsc-watch",
+        "applyTo": "allDocuments"
+      },
+      "isBackground": true,
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "combine"
+      },
+      "presentation": {
+        "group": "services"
+      }
+    },
+    {
+      "type": "npm",
+      "label": "TS Compiler gcp pubsubs",
+      "script": "watch",
+      "path": "gcp-pubsubs",
+      "problemMatcher": {
+        "base": "$tsc-watch",
+        "applyTo": "allDocuments"
+      },
+      "isBackground": true,
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "combine"
+      },
+      "presentation": {
+        "group": "services"
+      }
+    },
+    {
+      "type": "npm",
+      "label": "TS Compiler export",
+      "script": "watch",
+      "path": "servicio-exportables",
+      "problemMatcher": {
+        "base": "$tsc-watch",
+        "applyTo": "allDocuments"
+      },
+      "isBackground": true,
+      "icon": {
+        "color": "terminal.ansiCyan",
+        "id": "combine"
+      },
+      "presentation": {
+        "group": "services"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "Running Backend",
+      "group": "build",
+      "dependsOn": ["TS Compiler", "Running Server"],
+      "dependsOrder": "sequence",
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "server"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "revealProblems": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "Backcend"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "Development environment",
+      "group": "build",
+      "dependsOn": ["Running Backend", "Running Frontend"],
+      "dependsOrder": "parallel",
+      "icon": {
+        "color": "terminal.ansiRed",
+        "id": "server"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "revealProblems": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "Dev"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "TS All Compilers",
+      "group": "build",
+      "dependsOn": [
+        "TS Compiler gcp apis",
+        "TS Compiler gcp triggers",
+        "TS Compiler gcp pubsubs",
+        "TS Compiler export"
+      ],
+      "dependsOrder": "parallel",
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "combine"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "revealProblems": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "Dev"
+      }
+    }
+  ]
+}
