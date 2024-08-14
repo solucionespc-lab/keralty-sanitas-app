@@ -1,0 +1,10 @@
+{
+  "buckets": [
+    {
+      "id": "pc-dev-db.appspot.com"
+    },
+    {
+      "id": "internal-bucket-biod"
+    }
+  ]
+}

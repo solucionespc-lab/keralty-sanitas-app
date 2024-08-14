@@ -1,0 +1,31 @@
+{
+  "kind": "identitytoolkit#DownloadAccountResponse",
+  "users": [
+    {
+      "localId": "zSDgturVQY0mnjUGwLUkcSrXWj64",
+      "createdAt": "1663626810268",
+      "lastLoginAt": "1722973846506",
+      "displayName": "Developer",
+      "photoUrl": "https://gravatar.com/avatar/6bb1ab9a49c4af1f94c901f145ad4b80?s=400&d=robohash&r=x",
+      "passwordHash": "fakeHash:salt=fakeSaltTfq66259z4LKxcRyR9uS:password=123456789",
+      "salt": "fakeSaltTfq66259z4LKxcRyR9uS",
+      "passwordUpdatedAt": 1722973796222,
+      "customAttributes": "{\n  \"tipo\": \"Nacional\",\n  \"regional\": [\"Nacional\"],\n  \"centro\": [],\n  \"grupo\": \"soporte\",\n  \"rol\": \"soporte-app\",\n  \"organizacion\": \"Soluciones PC\",\n  \"permisos\": \"\",\n\"firma\" : \"yr5fS3jQTA94\"\n}",
+      "providerUserInfo": [
+        {
+          "providerId": "password",
+          "email": "correo@pcsoluciones.com.co",
+          "federatedId": "correo@pcsoluciones.com.co",
+          "rawId": "correo@pcsoluciones.com.co",
+          "displayName": "Developer",
+          "photoUrl": "https://gravatar.com/avatar/6bb1ab9a49c4af1f94c901f145ad4b80?s=400&d=robohash&r=x"
+        }
+      ],
+      "validSince": "1722973796",
+      "email": "correo@pcsoluciones.com.co",
+      "emailVerified": true,
+      "disabled": false,
+      "lastRefreshAt": "2024-08-06T22:42:54.780Z"
+    }
+  ]
+}

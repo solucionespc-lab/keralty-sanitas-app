@@ -1,0 +1,25 @@
+# Compiled JavaScript files
+lib/**/*.js
+lib/**/*.js.map
+lib/**/*.json
+
+# TypeScript v1 declaration files
+typings/
+
+# Node.js dependency directory
+node_modules/
+lib/
+
+# env variables
+.env.prod
+.env.default
+.env.local
+.env
+.env.development
+.env.dev
+
+# Logs files
+**/*.log
+
+#Infisical enviroments keys
+.infisical.json

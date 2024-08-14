@@ -1,0 +1,24 @@
+# Node.js dependency directory
+node_modules/
+
+# Backup and cache folder
+backup
+lib
+.cache
+
+# env variables
+.env.prod
+.env.default
+.env.local
+.env.dev
+
+# firebase exports folders
+firebase-export-*
+
+#Ignore lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+#Ignore infisical configuration
+.infisical.json

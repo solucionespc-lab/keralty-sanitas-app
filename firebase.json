@@ -1,0 +1,173 @@
+{
+  "functions": [
+    {
+      "source": "backend",
+      "codebase": "backend",
+      "ignore": [
+        "node_modules",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "firebase-export-*",
+        "*.log",
+        "**/.*",
+        "tsconfig.dev.json",
+        "tsconfig.json",
+        "backup"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    },
+    {
+      "source": "activators",
+      "codebase": "activators",
+      "ignore": [
+        "node_modules",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "firebase-export-*",
+        "*.log",
+        "**/.*",
+        "tsconfig.dev.json",
+        "tsconfig.json",
+        "backup"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    },
+    {
+      "source": "servicios",
+      "codebase": "servicios",
+      "ignore": [
+        "node_modules",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "firebase-export-*",
+        "*.log",
+        "**/.*",
+        "tsconfig.dev.json",
+        "tsconfig.json",
+        "backup"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    },
+    {
+      "source": "eventos",
+      "codebase": "eventos",
+      "ignore": [
+        "node_modules",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "firebase-export-*",
+        "*.log",
+        "**/.*",
+        "tsconfig.dev.json",
+        "tsconfig.json",
+        "backup"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    },
+    {
+      "source": "servicio-exportables",
+      "codebase": "servicio-exportables",
+      "ignore": [
+        "node_modules",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "firebase-export-*",
+        "*.log",
+        "**/.*",
+        "tsconfig.dev.json",
+        "tsconfig.json",
+        "backup"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ],
+  "hosting": {
+    "public": "./frontend/dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|eot|otf|ttf|ttc|woff|woff2|font.css|ico)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=604800"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, stale-while-revalidate=3000, max-age=7200, s-maxage=3600"
+          }
+        ]
+      }
+    ]
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "functions": {
+      "port": 5001
+    },
+    "firestore": {
+      "port": 8080
+    },
+    "database": {
+      "port": 9000
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "pubsub": {
+      "port": 8085
+    },
+    "storage": {
+      "port": 9199
+    },
+    "eventarc": {
+      "port": 9299
+    },
+    "ui": {
+      "enabled": true,
+      "port": 8006
+    },
+    "singleProjectMode": true
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "remoteconfig": {
+    "template": "remoteconfig.template.json"
+  }
+}

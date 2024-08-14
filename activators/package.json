@@ -1,0 +1,44 @@
+{
+  "version": "1.0.0",
+  "name": "activators",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "npm run cred:dev && firebase emulators:start --only functions,auth,firestore,database --import=./backup",
+    "staging": "npm run cred:staging && firebase deploy --only functions:endpoint-api",
+    "production": "npm run cred:prod && firebase deploy --only functions:endpoint-api",
+    "logs": "firebase functions:log",
+    "cred:dev": "infisical export --env=dev --path=/biod/backend > .env",
+    "cred:staging": "infisical export --env=staging --path=/biod/backend > .env",
+    "cred:prod": "infisical export --env=prod --path=/biod/backend > .env",
+    "security:keys": "infisical scan --verbose",
+    "security:code": "snyk monitor"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^4.9.0",
+    "handlebars": "^4.7.8",
+    "nodemailer": "^6.9.13",
+    "stats-lite": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "dotenv": "^16.4.5",
+    "@types/nodemailer": "^6.4.14",
+    "@types/stats-lite": "^2.2.2",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint": "8.56.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "firebase-functions-test": "^3.2.0",
+    "typescript": "4.9.5"
+  },
+  "private": true
+}

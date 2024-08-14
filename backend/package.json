@@ -1,0 +1,58 @@
+{
+  "version": "1.1.0",
+  "name": "backend",
+  "scripts": {
+    "dev": "npm run cred:dev && firebase emulators:start --import=./backup",
+    "staging": "npm run cred:staging && firebase deploy --only functions:backend:endpoint-api",
+    "production": "npm run cred:prod && firebase deploy --only functions:backend:endpoint.api",
+    "extensions:keys": "infisical export --env=dev --path=/biod/infraestructure/emails > .env.local",
+    "cred:dev": "infisical export --env=dev --path=/biod/backend > .env",
+    "cred:staging": "infisical export --env=staging --path=/biod/backend > .env",
+    "cred:prod": "infisical export --env=prod --path=/biod/backend > .env",
+    "backup": "firebase emulators:export backup --force",
+    "security:keys": "infisical scan --verbose",
+    "security:code": "snyk monitor",
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint --ext .js,.ts .",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@apollo/server": "^4.7.4",
+    "@escape.tech/graphql-armor": "^1.8.2",
+    "@google-cloud/functions-framework": "^3.3.0",
+    "@graphql-tools/schema": "^10.0.3",
+    "algoliasearch": "^4.23.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^4.9.0",
+    "graphql": "^16.8.1",
+    "graphql-middleware": "^6.1.35",
+    "graphql-shield": "^7.6.5",
+    "graphql-tag": "^2.12.6",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/graphql": "^14.5.0",
+    "@types/lodash": "^4.17.0",
+    "@types/module-alias": "^2.0.4",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "dotenv": "^16.4.5",
+    "eslint": "8.56.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "firebase-functions-test": "^3.2.0",
+    "typescript": "4.9.5"
+  },
+  "private": true
+}

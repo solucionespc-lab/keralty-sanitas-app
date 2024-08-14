@@ -1,0 +1,13 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null && request.auth.token.grupo == 'cliente' && request.auth.token.organizacion == 'nombre_empresa';
+    }
+
+    match /{pdf}/{pdfId} {
+      allow read: if signedIn();
+      allow write: if signedIn() && request.resource.size < 5 * 1024 * 1024;
+    }
+  }
+}
