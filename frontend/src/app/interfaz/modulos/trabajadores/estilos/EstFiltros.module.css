@@ -1,0 +1,17 @@
+.contenedor_filtros {
+  display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--gaps-2);
+	padding: var(--space-fluid-3);
+	border-radius: var(--radius-3);
+	border: 1px solid var(--surface-second);
+	width: -webkit-fill-available;
+}
+
+.legenda {
+	font-size: calc(var(--label) * 1.1);
+	color: var(--color-primary-text);
+	font-weight: bold;
+}

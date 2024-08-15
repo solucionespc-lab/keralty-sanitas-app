@@ -1,0 +1,38 @@
+.contenedor_ocupacional {
+  display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: var(--gaps-3);
+	border-radius: var(--radius-3);
+	border: 1px solid var(--surface-second);
+	width: -webkit-fill-available;
+
+	@media (min-width: 320px) and (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.legenda {
+	font-size: var(--label);
+	font-weight: bold;
+	color: var(--color-primary-text);
+  margin: 0 var(--gaps-2);
+}
+
+.seccion_historia {
+	grid-column: 1/-1;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: var(--gaps-3);
+	padding: var(--space-fluid-3);
+	border-radius: var(--radius-3);
+}
+
+.subtitulo_seccion {
+	display: flex;
+	justify-content: space-between;
+	grid-column: 1/-1;
+	font-size: var(--subtitle);
+	color: var(--brand-primary);
+	width: 100%;
+}
+

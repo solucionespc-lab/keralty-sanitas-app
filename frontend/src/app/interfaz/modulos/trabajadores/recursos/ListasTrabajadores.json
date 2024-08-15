@@ -1,0 +1,827 @@
+{
+  "listasTrabajadores": [
+    {
+      "nivel_educativo": "BACHILLER",
+      "profesion": "ADMINISTRACIÓN DE EMPRESAS ",
+      "cargo": "ALMACENISTA",
+      "gerencia": "CADENA DE ABASTECIMIENTO",
+      "proceso": "AGUAS Y GESTION AMBIENTAL",
+      "turno": "ADMINISTRATIVO",
+      "tipo_contrato": "6 MESES PASANTIA",
+      "estado_civil": "CASADO"
+    },
+    {
+      "nivel_educativo": "BASICA PRIMARIA",
+      "profesion": "ADMINISTRACIÓN EN GESTIÓN DE OBRAS CIVILES Y CONSTRUCCIONES",
+      "cargo": "ANALISTA AMBIENTAL",
+      "gerencia": "CONTRATISTA",
+      "proceso": "ALMACEN",
+      "turno": "DIURNO ",
+      "tipo_contrato": "APRENDIZAJE",
+      "estado_civil": "SOLTERO"
+    },
+    {
+      "nivel_educativo": "CADENA DE ABASTECIMIENTO",
+      "profesion": "ASISTENTE ADMINISTRATIVO",
+      "cargo": "ANALISTA COMPRAS",
+      "gerencia": "CULTURA ORGANIZACIONAL ",
+      "proceso": "BOTTOM UP",
+      "turno": "DIURNO Y NOTURNO",
+      "tipo_contrato": "OBRA Y LABOR",
+      "estado_civil": "UNIÓN LIBRE"
+    },
+    {
+      "nivel_educativo": "CULTURA ORGANIZACIONAL ",
+      "profesion": "AUXILIAR DE MUESTRAS",
+      "cargo": "ANALISTA CONTABILIDAD",
+      "gerencia": "CULTURA Y COMUNICACIÓN",
+      "proceso": "CALIDAD",
+      "turno": "NOTURNO",
+      "tipo_contrato": "TERMINO FIJO"
+    },
+    {
+      "nivel_educativo": "ESPECIALIZACIÓN",
+      "profesion": "CIENTIFICO DE DATOS",
+      "cargo": "ANALISTA CONTABLE",
+      "gerencia": "FINANCIERO",
+      "proceso": "COMPRAS",
+      "tipo_contrato": "TERMINO INDEFINIDO"
+    },
+    {
+      "nivel_educativo": "FINANCIERO",
+      "profesion": "COMERCIO INTERNACIONAL ",
+      "cargo": "ANALISTA DE  TECNOLOGIAS DE LA INFORMACION",
+      "gerencia": "GERENCIA GENERAL",
+      "proceso": "COMPRAS Y ALMACEN"
+    },
+    {
+      "nivel_educativo": "GERENTE GENERAL",
+      "profesion": "COMUNICADORA SOCIAL PERIODISTA",
+      "cargo": "ANALISTA DE BASCULA",
+      "gerencia": "IMPLEMENTACION EN NUEVOS NEGOCIOS",
+      "proceso": "CONTABILIDAD"
+    },
+    {
+      "nivel_educativo": "IMPLEMENTACION EN NUEVOS NEGOCIOS",
+      "profesion": "CONTABLE ",
+      "cargo": "ANALISTA DE BOTTON UP",
+      "gerencia": "IMPLEMENTACIÓN NUEVOS NEGOCIOS ",
+      "proceso": "CONTRATISTA"
+    },
+    {
+      "nivel_educativo": "MAESTRIA ",
+      "profesion": "CONTADOR PUBLICO",
+      "cargo": "ANALISTA DE COMPRAS",
+      "gerencia": "MANTENIMIENTO Y SERVICIOS INDUSTRIALES",
+      "proceso": "CULTURA ORGANIZACIONAL"
+    },
+    {
+      "nivel_educativo": "MAESTRIA EN CURSO ",
+      "profesion": "CONTADOR PUBLICO ",
+      "cargo": "ANALISTA DE COMUNICACIÓN INTERNA ",
+      "gerencia": "MERCADEO",
+      "proceso": "CULTURA Y COMUNICACIÓN"
+    },
+    {
+      "nivel_educativo": "MANTENIMIENTO",
+      "profesion": "CONTADORA",
+      "cargo": "ANALISTA DE CONTABILIDAD",
+      "gerencia": "NUEVOS NEGOCIOS",
+      "proceso": "FINANCIERO"
+    },
+    {
+      "nivel_educativo": "MERCADEO",
+      "profesion": "ELECTRICISTA ",
+      "cargo": "ANALISTA DE CULTURA ORGANIZACIONAL",
+      "gerencia": "PRODUCCIÓN ",
+      "proceso": "GERENCIA GENERAL"
+    },
+    {
+      "nivel_educativo": "NOVENO",
+      "profesion": "ELECTROMECÁNICO MAQUINARÍA INDUSTRIAL",
+      "cargo": "ANALISTA DE DESARROLLO INTEGRAL",
+      "gerencia": "PRODUCCION SOSTENIBLE",
+      "proceso": "GERENTE GENERAL"
+    },
+    {
+      "nivel_educativo": "NUEVOS NEGOCIOS",
+      "profesion": "EN MANTENIMIENTO",
+      "cargo": "ANALISTA DE DESARROLLO INTEGRAL Y COMUNICACIÓN",
+      "gerencia": "SEGURIDAD",
+      "proceso": "GESTIÓN DE T.I"
+    },
+    {
+      "nivel_educativo": "POSGRADO",
+      "profesion": "FINANZAS Y RELACIONES INTERNACIONALES",
+      "cargo": "ANALISTA DE GESTION HUMANA",
+      "gerencia": "ZONA FRANCA",
+      "proceso": "GESTION Y DESARROLLO DE PROVEEDORES"
+    },
+    {
+      "nivel_educativo": "PRODUCCION SOSTENIBLE",
+      "profesion": "GESTION DE DOCUMENTOS CONTABLES ",
+      "cargo": "ANALISTA DE INMERSIÓN",
+      "proceso": "HS"
+    },
+    {
+      "nivel_educativo": "PROFESIONAL",
+      "profesion": "ING AMBIENTAL ",
+      "cargo": "ANALISTA DE INVESTIGACIÓN DE MERCADOS",
+      "proceso": "IMPLEMENTACIÓN NUEVOS NEGOCIOS "
+    },
+    {
+      "nivel_educativo": "PROFESIONAL EN FORMACIÓN ",
+      "profesion": "ING QUIMICA",
+      "cargo": "ANALISTA DE LABORATORIO",
+      "proceso": "INSPECCIÓN Y ENSAYO"
+    },
+    {
+      "nivel_educativo": "SEGURIDAD",
+      "profesion": "INGENIERA AMBIENTAL Y SANITARIA",
+      "cargo": "ANALISTA DE MANTENIMIENTO PREDICTIVO",
+      "proceso": "INVESTIGACIÓN Y DESARROLLO"
+    },
+    {
+      "nivel_educativo": "TECNICO",
+      "profesion": "INGENIERÍA QUIMICA",
+      "cargo": "ANALISTA DE PLANEACIÓN FINANCIERA",
+      "proceso": "LOGISTICA"
+    },
+    {
+      "nivel_educativo": "TECNICO PROFESIONAL",
+      "profesion": "INGENIERO AMBIENTAL",
+      "cargo": "ANALISTA DE RELACIONES LABORALES",
+      "proceso": "MANTENIMIENTO"
+    },
+    {
+      "nivel_educativo": "TECNOLOGO",
+      "profesion": "INGENIERO CIVIL ",
+      "cargo": "ANALISTA DE TESORERIA",
+      "proceso": "MEJORA Y PROYECTOS"
+    },
+    {
+      "nivel_educativo": "UNIVERSITARIO",
+      "profesion": "INGENIERO INDUSTRIAL",
+      "cargo": "ANALISTA DE VIGILANCIA E INTELIGENCIA DE NEGOCIOS",
+      "proceso": "MERCADEO"
+    },
+    {
+      "nivel_educativo": "ZONA FRANCA",
+      "profesion": "INGENIERO MECANICO",
+      "cargo": "ANALISTA HS",
+      "proceso": "NUEVOS NEGOCIOS"
+    },
+    {
+      "profesion": "INGENIERO QUIMICO",
+      "cargo": "ANALISTA HSE",
+      "proceso": "PLANEACION FINANCIERA"
+    },
+    {
+      "profesion": "INSTALACIONES DE REDES",
+      "cargo": "ANALISTA JUNIOR DE LABORATORIO",
+      "proceso": "PRODUCCIÓN"
+    },
+    {
+      "profesion": "MAMTENIMIENTO ELECTRONICO INDUSTRIAL ",
+      "cargo": "ANALISTA JUNIOR LABORATORIO",
+      "proceso": "PROYECTOS E INGENIERIA"
+    },
+    {
+      "profesion": "MECANICO",
+      "cargo": "ANALISTA LOGISTICO DE ABASTECIMIENTO DE ACEITES",
+      "proceso": "SEGURIDAD"
+    },
+    {
+      "profesion": "MECANOICA INDUSTRIAL ",
+      "cargo": "ANALISTA LOGISTICO DE DESPACHOS",
+      "proceso": "SERVICIOS INDUSTRIALES"
+    },
+    {
+      "profesion": "MECATRONICA",
+      "cargo": "ANALISTA MODULO MANUFACTURA ",
+      "proceso": "SERVICIOS INDUSTRIALES Y AMBIENTAL"
+    },
+    {
+      "profesion": "MERCADEO Y PUBLICIDAD",
+      "cargo": "ANALISTA RELACIONES LABORALES",
+      "proceso": "SISTEMA INTEGRADO DE GESTION"
+    },
+    {
+      "profesion": "NA",
+      "cargo": "ANALISTA SISTEMA INTEGRADO DE GESTION",
+      "proceso": "TESORERIA"
+    },
+    {
+      "profesion": "NEGOCIACION INTERNACIONAL ",
+      "cargo": "ANALISTA SISTEMA INTEGRADO DE GESTIÓN",
+      "proceso": "ZONA FRANCA"
+    },
+    {
+      "profesion": "NEGOCIO INTERNACIONALES ",
+      "cargo": "ANALISTA SOPORTE DE OPERACIÓN ACTUAL"
+    },
+    {
+      "profesion": "PSICOLOGÍA ",
+      "cargo": "ANALISTA TECNOLOGIA DE LA INFORMACION"
+    },
+    {
+      "profesion": "QUIMICA",
+      "cargo": "ANALISTA ZONA FRANCA"
+    },
+    {
+      "profesion": "QUIMICA INDUSTRIAL",
+      "cargo": "ASISTENTE DE DESARROLLO INTEGRAL"
+    },
+    {
+      "profesion": "QUIMICO",
+      "cargo": "ASISTENTE DE DESARROLLO INTEGRAL Y COMUNICACIÓN"
+    },
+    {
+      "profesion": "QUIMICO INDUSTRIAL",
+      "cargo": "ASISTENTE DE INVESTIGACIÓN Y DESARROLLO"
+    },
+    {
+      "profesion": "TECNICA ASISTENTE ADMON.",
+      "cargo": "ASISTENTE DE LOGISTICA "
+    },
+    {
+      "profesion": "TECNICO ASISTENTE ADMINISTRATIVA",
+      "cargo": "ASISTENTE DE MERCADEO"
+    },
+    {
+      "profesion": "TECNICO ELECTRICISTA",
+      "cargo": "ASISTENTE HS"
+    },
+    {
+      "cargo": "ASISTENTE LOGISTICA  2"
+    },
+    {
+      "cargo": "ASISTENTE VENTAS DE GLICERINA"
+    },
+    {
+      "cargo": "AUXILIAR ADMINISTRATIVA"
+    },
+    {
+      "cargo": "AUXILIAR ALMACEN"
+    },
+    {
+      "cargo": "AUXILIAR AMBIENTAL"
+    },
+    {
+      "cargo": "AUXILIAR COMPRAS"
+    },
+    {
+      "cargo": "AUXILIAR CONTABLE "
+    },
+    {
+      "cargo": "AUXILIAR DE COMPRAS"
+    },
+    {
+      "cargo": "AUXILIAR DE CONTABILIDAD"
+    },
+    {
+      "cargo": "AUXILIAR DE DESARROLLO INTEGRAL Y COMUNICACIÓN"
+    },
+    {
+      "cargo": "AUXILIAR DE GESTION DOCUMENTAL"
+    },
+    {
+      "cargo": "AUXILIAR DE INSPECCION DE MUESTREO Y TANQUES"
+    },
+    {
+      "cargo": "AUXILIAR DE INSPECTOR"
+    },
+    {
+      "cargo": "AUXILIAR DE INSTRUMENTACION "
+    },
+    {
+      "cargo": "AUXILIAR DE INVESTIGACION Y DESARROLLO"
+    },
+    {
+      "cargo": "AUXILIAR DE LABORATORIO"
+    },
+    {
+      "cargo": "AUXILIAR DE LOGISTICA"
+    },
+    {
+      "cargo": "AUXILIAR DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "AUXILIAR DE MENSAJERIA"
+    },
+    {
+      "cargo": "AUXILIAR DE MUESTREO"
+    },
+    {
+      "cargo": "AUXILIAR DE OPERACIONES LOGISTICAS"
+    },
+    {
+      "cargo": "AUXILIAR DE PRODUCCIÓN"
+    },
+    {
+      "cargo": "AUXILIAR DE SERVICIOS GENERALES"
+    },
+    {
+      "cargo": "AUXILIAR DE SERVICIOS INDUSTRIALES"
+    },
+    {
+      "cargo": "AUXILIAR DE SOLDADURA"
+    },
+    {
+      "cargo": "AUXILIAR MONTAJE"
+    },
+    {
+      "cargo": "AUXILIAR SISTEMA INTEGRADO DE GESTIÓN"
+    },
+    {
+      "cargo": "AYUDANTE CALDERA"
+    },
+    {
+      "cargo": "AYUDANTE DE CALDERA"
+    },
+    {
+      "cargo": "AYUDANTE DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "AYUDANTE PLANTA REFINERIA"
+    },
+    {
+      "cargo": "AYUDANTE PLANTA TRATAMIENTO DE AGUAS "
+    },
+    {
+      "cargo": "BYM"
+    },
+    {
+      "cargo": "COORDINADOR BOTTOM UP"
+    },
+    {
+      "cargo": "COORDINADOR DE CAMBIO CLIMATICO"
+    },
+    {
+      "cargo": "COORDINADOR DE COMPRAS"
+    },
+    {
+      "cargo": "COORDINADOR DE COMPRAS Y ALMACEN"
+    },
+    {
+      "cargo": "COORDINADOR DE COMUNICACIÓN INTERNA "
+    },
+    {
+      "cargo": "COORDINADOR DE CONTABILIDAD Y COSTOS "
+    },
+    {
+      "cargo": "COORDINADOR DE GESTION DE APLICACIONES"
+    },
+    {
+      "cargo": "COORDINADOR DE GESTION DE APLICACIONES Y DATOS"
+    },
+    {
+      "cargo": "COORDINADOR DE INGENIERIA"
+    },
+    {
+      "cargo": "COORDINADOR DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "COORDINADOR DE MEJORA"
+    },
+    {
+      "cargo": "COORDINADOR DE NUEVOS NEGOCIOS "
+    },
+    {
+      "cargo": "COORDINADOR DE PLANEACION Y CONTROL DE LA PRODUCCION"
+    },
+    {
+      "cargo": "COORDINADOR DE PROVEEDURIA Y LOGISTICA EN COMERCIO EXTERIOR"
+    },
+    {
+      "cargo": "COORDINADOR DE SERVICIO DE PATIOS"
+    },
+    {
+      "cargo": "COORDINADOR DE SERVICIO DE PATIOS "
+    },
+    {
+      "cargo": "COORDINADOR DE VENTAS"
+    },
+    {
+      "cargo": "COORDINADOR DEL SISTEMA INTEGRADO DE GESTION"
+    },
+    {
+      "cargo": "COORDINADOR ELECTRICO DE INGENIERIA"
+    },
+    {
+      "cargo": "COORDINADOR MECANICO DE INGENIERIA"
+    },
+    {
+      "cargo": "COORDINADOR VENTAS"
+    },
+    {
+      "cargo": "DIBUJANTE PROYECTISTA"
+    },
+    {
+      "cargo": "DIRECCIÓN BOTTON UP"
+    },
+    {
+      "cargo": "DIRECCION DE DESARROLLO INTEGRAL Y COMUNICACIÓN"
+    },
+    {
+      "cargo": "DIRECCIÓN DE GESTION Y DESARROLLO DE PROVEEDORES"
+    },
+    {
+      "cargo": "DIRECCIÓN DE NUEVOS NEGOCIOS"
+    },
+    {
+      "cargo": "DIRECCION DE PLANEACION FINANCIERA"
+    },
+    {
+      "cargo": "DIRECCIÓN DE PROYECTOS E INGENIERIA "
+    },
+    {
+      "cargo": "DIRECCION LOGISTICA"
+    },
+    {
+      "cargo": "DIRECCION SISTEMA INTEGRAL DE GESTION"
+    },
+    {
+      "cargo": "DIRECTOR BOTTOM UP"
+    },
+    {
+      "cargo": "DIRECTOR CONTABLE "
+    },
+    {
+      "cargo": "DIRECTOR DE AGUAS Y GESTION AMBIENTAL "
+    },
+    {
+      "cargo": "DIRECTOR DE COMPRAS Y ALMACEN"
+    },
+    {
+      "cargo": "DIRECTOR DE CONFIABILIDAD"
+    },
+    {
+      "cargo": "DIRECTOR DE CONTABILIDAD"
+    },
+    {
+      "cargo": "DIRECTOR DE CULTURA ORGANIZACIONAL"
+    },
+    {
+      "cargo": "DIRECTOR DE GESTION T.I"
+    },
+    {
+      "cargo": "DIRECTOR DE GESTION Y DESARROLLO DE PROVEEDORES"
+    },
+    {
+      "cargo": "DIRECTOR DE INSPECCION Y ENSAYO "
+    },
+    {
+      "cargo": "DIRECTOR DE INVESTIGACIÓN Y DESARROLLO"
+    },
+    {
+      "cargo": "DIRECTOR DE LOGISTICA"
+    },
+    {
+      "cargo": "DIRECTOR DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "DIRECTOR DE MERCADEO"
+    },
+    {
+      "cargo": "DIRECTOR DE NUEVOS NEGOCIOS"
+    },
+    {
+      "cargo": "DIRECTOR DE PLANEACION FINANCIERA"
+    },
+    {
+      "cargo": "DIRECTOR DE PRODUCCIÓN"
+    },
+    {
+      "cargo": "DIRECTOR DE SEGURIDAD INDUSTRIAL"
+    },
+    {
+      "cargo": "DIRECTOR DE SERVICIO TECNICO  "
+    },
+    {
+      "cargo": "DIRECTOR DE TESORERIA "
+    },
+    {
+      "cargo": "DIRECTOR DE VENTAS"
+    },
+    {
+      "cargo": "DIRECTOR DEL SISTEMA DE INNOVACIÓN"
+    },
+    {
+      "cargo": "DIRECTOR GESTION T.I"
+    },
+    {
+      "cargo": "DIRECTOR HS"
+    },
+    {
+      "cargo": "DIRECTOR NUEVOS NEGOCIOS"
+    },
+    {
+      "cargo": "DIRECTOR SISTEMA INTEGRAL DE GESTION"
+    },
+    {
+      "cargo": "EJECUTIVO DE VENTAS"
+    },
+    {
+      "cargo": "FERREINGENIERIA"
+    },
+    {
+      "cargo": "FJ BECERRA"
+    },
+    {
+      "cargo": "GERENTE CADENA DE ABASTECIMIENTO"
+    },
+    {
+      "cargo": "GERENTE DE CULTURA ORGANIZACIONAL"
+    },
+    {
+      "cargo": "GERENTE DE IMPLEMENTACION "
+    },
+    {
+      "cargo": "GERENTE DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "GERENTE DE PRODUCCION SOSTENIBLE"
+    },
+    {
+      "cargo": "GERENTE DE PRODUCCIÓN SOSTENIBLE"
+    },
+    {
+      "cargo": "GERENTE FINANCIERO"
+    },
+    {
+      "cargo": "GERENTE GENERAL"
+    },
+    {
+      "cargo": "GERENTE GESTION DE NUEVOS NEGOCIOS "
+    },
+    {
+      "cargo": "GERENTE IMPLEMENTACIÓN NUEVOS NEGOCIOS "
+    },
+    {
+      "cargo": "GERENTE MERCADEO"
+    },
+    {
+      "cargo": "GERENTE MERCADEO Y VENTAS "
+    },
+    {
+      "cargo": "GERENTE NUEVOS NEGOCIOS"
+    },
+    {
+      "cargo": "GERENTE PARA LA EVALUACION DEL ESCALAMIENTO DEL PROYECTO DE BIOJET"
+    },
+    {
+      "cargo": "GESTOR AMBIENTAL"
+    },
+    {
+      "cargo": "GESTOR DE ACTIVOS"
+    },
+    {
+      "cargo": "GESTOR DOCUMENTAL "
+    },
+    {
+      "cargo": "ICM"
+    },
+    {
+      "cargo": "INGENIERO AMBIENTAL"
+    },
+    {
+      "cargo": "INGENIERO DE DESARROLLO "
+    },
+    {
+      "cargo": "INGENIERO DE DISEÑO"
+    },
+    {
+      "cargo": "INGENIERO DE GESTION DE ACTIVOS"
+    },
+    {
+      "cargo": "INGENIERO DE INNOVACION"
+    },
+    {
+      "cargo": "INGENIERO DE INVESTIGACIÓN Y DESARROLLO"
+    },
+    {
+      "cargo": "INGENIERO DE PROCESO"
+    },
+    {
+      "cargo": "INGENIERO DE PROCESOS"
+    },
+    {
+      "cargo": "INGENIERO DE PRODUCCION"
+    },
+    {
+      "cargo": "INGENIERO DE PROYECTOS"
+    },
+    {
+      "cargo": "INGENIERO SOPORTE  POSTVENTA  NACIONAL"
+    },
+    {
+      "cargo": "INSPECTOR DE  TANQUES Y MUESTREO "
+    },
+    {
+      "cargo": "INSPECTOR DE MUESTREO Y TANQUES"
+    },
+    {
+      "cargo": "INSPECTOR DE SERVICIO TECNICO"
+    },
+    {
+      "cargo": "INSPECTOR DE SOPORTE TECNICO"
+    },
+    {
+      "cargo": "INSTRUMENTISTA"
+    },
+    {
+      "cargo": "INTERVENTOR"
+    },
+    {
+      "cargo": "INVESTIGADOR"
+    },
+    {
+      "cargo": "INVESTIGADOR "
+    },
+    {
+      "cargo": "INVESTIGADOR ALIADOS ESTRATEGICOS"
+    },
+    {
+      "cargo": "INVESTIGADOR JUNIOR"
+    },
+    {
+      "cargo": "INVESTIGADOR QUIMICO"
+    },
+    {
+      "cargo": "JMS INGENIERIA S.A.S"
+    },
+    {
+      "cargo": "MECANICO JUNIOR"
+    },
+    {
+      "cargo": "MECANICO PREDICTIVO"
+    },
+    {
+      "cargo": "METROLOGO"
+    },
+    {
+      "cargo": "OPERARIO BASCULA"
+    },
+    {
+      "cargo": "OPERARIO BIODIESEL 3 "
+    },
+    {
+      "cargo": "OPERARIO CALDERA"
+    },
+    {
+      "cargo": "OPERARIO DE EMPAQUE DE GLICERINA"
+    },
+    {
+      "cargo": "OPERARIO DE PRODUCCIÓN "
+    },
+    {
+      "cargo": "OPERARIO DE SALA DE CONTROL"
+    },
+    {
+      "cargo": "OPERARIO DE SERVICIO DE PATIOS"
+    },
+    {
+      "cargo": "OPERARIO EMPAQUE GLICERINA "
+    },
+    {
+      "cargo": "OPERARIO FITONUTRIENTES"
+    },
+    {
+      "cargo": "OPERARIO MONTACARGAS"
+    },
+    {
+      "cargo": "OPERARIO PLANTA DE  BIODIESEL 1"
+    },
+    {
+      "cargo": "OPERARIO PLANTA DE BIODIESEL 3 "
+    },
+    {
+      "cargo": "OPERARIO PLANTA REFINERIA"
+    },
+    {
+      "cargo": "OPERARIO REFINERIA"
+    },
+    {
+      "cargo": "OPERARIO SALA DE CONTROL"
+    },
+    {
+      "cargo": "OPERARIO TRATAMIENTO DE AGUAS"
+    },
+    {
+      "cargo": "OPERARIO TRATAMIENTO DE AGUAS 1"
+    },
+    {
+      "cargo": "OPERARIO TRATAMIENTO DE AGUAS 2"
+    },
+    {
+      "cargo": "PASANTE ALMACEN"
+    },
+    {
+      "cargo": "PASANTE ALMACEN "
+    },
+    {
+      "cargo": "PASANTE AMBIENTAL"
+    },
+    {
+      "cargo": "PASANTE COMPRAS"
+    },
+    {
+      "cargo": "PASANTE CULTURA"
+    },
+    {
+      "cargo": "PASANTE FINANCIERA"
+    },
+    {
+      "cargo": "PASANTE HS"
+    },
+    {
+      "cargo": "PASANTE INGENIERIA"
+    },
+    {
+      "cargo": "PASANTE INSPECCION Y ENSAYO"
+    },
+    {
+      "cargo": "PASANTE LOGISTICA"
+    },
+    {
+      "cargo": "PASANTE NUEVOS NEGOCIOS"
+    },
+    {
+      "cargo": "PASANTE PLANEACIÓN FINANCIERA"
+    },
+    {
+      "cargo": "PASANTE PROYECTOS "
+    },
+    {
+      "cargo": "PLANEADOR DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "PLANEADOR DE MANTENIMIENTO "
+    },
+    {
+      "cargo": "PROGRAMADOR DE MANTENIMIENTO "
+    },
+    {
+      "cargo": "PROGRAMADOR DE PROYECTOS"
+    },
+    {
+      "cargo": "RR"
+    },
+    {
+      "cargo": "RUTA"
+    },
+    {
+      "cargo": "RYM"
+    },
+    {
+      "cargo": "SAREIND SAS"
+    },
+    {
+      "cargo": "SEVICOL"
+    },
+    {
+      "cargo": "SOLDADOR"
+    },
+    {
+      "cargo": "SUPERNUMERARIA ADMINSITRATIVA"
+    },
+    {
+      "cargo": "SUPERNUMERARIO DE AGUAS"
+    },
+    {
+      "cargo": "SUPERNUMERARIO DE PRODUCCIÓN "
+    },
+    {
+      "cargo": "SUPERNUMERARIO PRODUCCIÓN"
+    },
+    {
+      "cargo": "SUPERNUMERARIO SALA DE CONTROL "
+    },
+    {
+      "cargo": "TECNICO ELECTRICISTA"
+    },
+    {
+      "cargo": "TECNICO ELECTRISISTA EN MANTENIMIENTO"
+    },
+    {
+      "cargo": "TECNICO INSTRUMENTISTA EN MANTENIMIENTO"
+    },
+    {
+      "cargo": "TECNICO MECANICO"
+    },
+    {
+      "cargo": "TECNICO MECANICO "
+    },
+    {
+      "cargo": "TECNICO MECANICO EN MANTENIMIENTO"
+    },
+    {
+      "cargo": "TECNICO SOLDADOR DE MANTENIMIENTO"
+    },
+    {
+      "cargo": "TECNIELETRICA"
+    },
+    null
+  ]
+}

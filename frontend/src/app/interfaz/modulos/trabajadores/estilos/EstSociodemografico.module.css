@@ -1,0 +1,22 @@
+.contenedor_sociodemografico {
+  display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: var(--gaps-3);
+	padding: var(--space-fluid-3);
+	border-radius: var(--radius-3);
+	border: 1px solid var(--surface-third);
+	width: -webkit-fill-available;
+	justify-content: center;
+}
+
+.legenda {
+	font-size: var(--label);
+	font-weight: bold;
+	color: var(--color-primary-text);
+}
+
+.fecha_interpretacion {
+	small {
+		color: var(--color-primary-text);
+	}
+}
