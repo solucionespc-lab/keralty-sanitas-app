@@ -1,0 +1,64 @@
+<html lang='es'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width; initial-scale=1.0' />
+    <style>
+      * { margin: 0; --paragraph-size: 17px; --text-color: #24292F; font-family:
+      Arial; } section { display: block; font-weight: 100;} section { padding:
+      0px 10px;line-height: 1.5; } section > p { font-size:
+      var(--paragraph-size); color: var(--text-color); text-align: justify; }
+      section>img.firma { padding-right: 10%; width: 40%; border-bottom: 2px
+      solid var(--text-color); } footer { display: flex; align-items:
+      flex-start; justify-content: space-evenly; position: absolute; bottom: 0;
+      width: 100%; height: 54px; opacity: 0.7; }@media print { /* indicamos el
+      salto de pagina */ .break-page { display: block; page-break-before:
+      always; } }
+    </style>
+  </head>
+  <body>
+    <img
+      style='width: 150px;'
+      src='http://127.0.0.1:9199/v0/b/internal-bucket-biod/o/logo.webp?alt=media&token=6d08abd9-c9a8-4b78-b0a0-596e4166904c'
+      alt='Colsanitas ARL'
+    />
+    <section>
+      <p>BOGOTÁ D.C., 15 de agosto de 2024</p>
+      <br />
+      <br />
+      <p>Señores:
+        <br />{{nombreEmpresa}}
+      </p>
+      <br />
+      <p>Respetado(a).</p>
+      <br />
+      <p>Colsanitas ARL certifica que la
+        {{nombreEmpresa}}, identificada con NIT 900703147-6, afiliada a la ARL
+        bajo el riesgo (I, II, o el que corresponda), en el período 01/01/2024
+        al 15/08/2024, tuvo un resultado en la autoevaluación de estándares
+        mínimos, conforme a la resolución 0312 de 2019, de
+        <strong>{{interpretacion}}</strong>
+        con un puntaje de
+        <strong>{{calificacion}}%</strong>
+        (adjunto encontrará el detalle del resultado, por ciclo y por estándar).</p>
+      <br />
+      <p>
+        De acuerdo con el resultado obtenido, se sugiere continuar con la
+        implementación del Sistema de Gestión de Seguridad y Salud en el
+        Trabajo, generando el plan de trabajo para las acciones de mejora
+        requeridas conforme a los requisitos que no se cumplen.
+      </p>
+      <br />
+      <br />
+      <p>Agradecemos su compromiso y gestión como empresa de nuestra
+        Organización.</p>
+    </section>
+    <br />
+    <br />
+    <footer class='footer'>
+      <p>
+        Dada a los 15 días del mes de agosto del año 2024.
+      </p>
+      <p>Colsanitas ARL</p>
+    </footer>
+  </body>
+</html>

@@ -1,10 +1,9 @@
 import { getLocalDate } from '../funciones/Funciones';
 
 export const POLITICA_ACCESO = `12-31-${new Date().getFullYear() + 2}`;
-export const EMAIL_REF = 'col_correo_evaluaciones';
+export const EMAIL_REF = 'col_correos';
 export const CONFIG_EMPRESA = '/empresa';
 export const RUTA_CERT_STORAGE = `certificados/${getLocalDate().year}`;
-export const RUTA_RES_STORAGE = `resumenes/${getLocalDate().year}`;
 
 export const dataFake = {
   data: {

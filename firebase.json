@@ -98,7 +98,11 @@
   ],
   "hosting": {
     "public": "./frontend/dist",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
@@ -169,5 +173,8 @@
   },
   "remoteconfig": {
     "template": "remoteconfig.template.json"
+  },
+  "extensions": {
+    "firestore-send-email": "firebase/firestore-send-email@0.1.34"
   }
 }

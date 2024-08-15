@@ -1,6 +1,6 @@
 export interface IBodyData {
   idBaseDeDatos: string;
-  nombreContratista: string;
+  nombreEmpresa: string;
   year: number;
   calificacion: number;
 }

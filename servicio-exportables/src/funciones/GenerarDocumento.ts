@@ -6,7 +6,7 @@ import { getStorage } from 'firebase-admin/storage';
 import { getTemplate } from './GetTemplateFile';
 import { FORMATO_PDF, OPCIONES_NAVEGADOR } from '../constantes/Generales';
 import { POLITICA_ACCESO } from '../constantes/ConstAplicacion';
-import { IBodyData } from '../types/EvaluacionDesempenoType';
+import { IBodyData } from '../types/CertificadosTypes';
 import helpersFile from './GetHelper.hbs';
 
 export const generarDocumento = async (

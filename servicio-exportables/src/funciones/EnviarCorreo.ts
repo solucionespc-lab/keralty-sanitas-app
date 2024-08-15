@@ -4,17 +4,13 @@ import { logger } from 'firebase-functions/v2';
 
 import { CONFIG_EMPRESA, EMAIL_REF } from '../constantes/ConstAplicacion';
 import { getTemplate } from './GetTemplateFile';
-import { IBodyData } from '../types/EvaluacionDesempenoType';
+import { IBodyData } from '../types/CertificadosTypes';
 
-export const enviarCorreo = async (
-  datosPDF: IBodyData,
-  urlCert: string,
-  urlResumen: string
-) => {
+export const enviarCorreo = async (datosPDF: IBodyData, urlCert: string) => {
   const configCorreos = await admin.database().ref(CONFIG_EMPRESA).get();
   const config = configCorreos.val();
 
-  const html = await getTemplate('CertificadoCorreo.hbs');
+  const html = await getTemplate('Certificado.hbs');
   const template = Handlebars.compile(html.toString());
   const correo = template(datosPDF);
 
@@ -26,13 +22,9 @@ export const enviarCorreo = async (
     .add({
       to: 'nicolai.martin@pcsoluciones.com.co',
       message: {
-        subject: 'Certificados evaluación de proveedores',
+        subject: 'Certificados autoevaluación',
         html: correo,
         attachments: [
-          {
-            filename: 'Certificado.pdf',
-            path: urlResumen,
-          },
           {
             filename: 'Resumen.pdf',
             path: urlCert,
