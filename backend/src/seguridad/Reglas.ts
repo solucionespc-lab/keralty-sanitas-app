@@ -1,12 +1,15 @@
 import { deny } from 'graphql-shield';
 import { merge } from 'lodash';
 
-// Aquí se agregan las reglas que vienen de la carpeta módulos
 import { configQueriesRules } from '../modulos/configuraciones/seguridad/Politicas';
 import {
-  ejemploMutationPolicy,
-  ejemploQueryPolicy,
-} from '../modulos/ejemplo/seguridad/Politicas';
+  empresaMutationPolicy,
+  empresaQueryPolicy,
+} from '../modulos/empresas/seguridad/Politicas';
+import {
+  trabajadoresMutations,
+  trabajadoresQueries,
+} from '../modulos/trabajadores/seguridad/Reglas';
 
 // Regla para negar todos los permisos solicitados por la API
 const denegado = {
@@ -14,8 +17,13 @@ const denegado = {
 };
 
 const reglas = {
-  Query: merge(ejemploQueryPolicy, configQueriesRules, denegado),
-  Mutation: merge(ejemploMutationPolicy, denegado),
+  Query: merge(
+    configQueriesRules,
+    empresaQueryPolicy,
+    trabajadoresQueries,
+    denegado
+  ),
+  Mutation: merge(empresaMutationPolicy, trabajadoresMutations, denegado),
 };
 
 export default reglas;

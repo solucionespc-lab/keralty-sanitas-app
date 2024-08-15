@@ -1,12 +1,19 @@
 import { merge } from 'lodash';
 
 import ConfigSchema from '../modulos/configuraciones/Schema';
-import { EjmeploSchema } from '../modulos/ejemplo/Schema';
+import EmpresaSchema from '../modulos/empresas/Schema';
+import TrabajadoresSchema from '../modulos/trabajadores/Schema';
+
+import TrabajadoresResolver from '../modulos/trabajadores/Resolver';
 
 import configuracionesResolvers from '../modulos/configuraciones/Resolvers';
-import ejemploResolvers from '../modulos/ejemplo/Resolvers';
+import empresaResolvers from '../modulos/empresas/Resolvers';
 
 import root from './Root';
 
-export const schemas = [root, EjmeploSchema, ConfigSchema];
-export const resolvers = merge(ejemploResolvers, configuracionesResolvers);
+export const schemas = [root, ConfigSchema, EmpresaSchema, TrabajadoresSchema];
+export const resolvers = merge(
+  configuracionesResolvers,
+  empresaResolvers,
+  TrabajadoresResolver
+);

@@ -29,7 +29,7 @@ const access: IamType = {
     },
   },
   modulos: {
-    0: 'ejemplo',
+    0: 'empresa',
   },
   acciones: {
     aplicacion: [

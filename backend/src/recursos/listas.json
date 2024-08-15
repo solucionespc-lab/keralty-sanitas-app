@@ -1,0 +1,44 @@
+{
+  "lstMeses": [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+  ],
+  "lstTrimestres": [
+    "Primer trimestre",
+    "Segundo trimestre",
+    "Tercer trimestre",
+    "Cuarto trimestre"
+  ],
+  "lstCuatrimestres": [
+    "Primer cuatrimestre",
+    "Segundo cuatrimestre",
+    "Tercer cuatrimestre"
+  ],
+  "lstSemestres": ["Primer semestre", "Segundo semestre"],
+  "lstDias": [
+    "Domingo",
+    "Lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sábado"
+  ],
+
+  "cantidadTrabajadores": [
+    { "value": "Menor que 50", "code": "menor50" },
+    { "value": "50 a 99", "code": "50a99" },
+    { "value": "100 a 499", "code": "100a499" },
+    { "value": "500 en adelante", "code": "mayor500" }
+  ]
+}
