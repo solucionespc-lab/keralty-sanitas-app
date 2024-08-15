@@ -4,7 +4,7 @@
     "paths": {
       "assets/*": ["assets/*"],
       "comunes/*": ["app/comunes/*"],
-      "contextos/*": ["app/contextos/*"],
+      "store/*": ["app/store/*"],
       "hooks/*": ["app/hooks/*"],
       "autenticacion/*": ["app/autenticacion/*"],
       "configuraciones/*": ["configuraciones/*"],

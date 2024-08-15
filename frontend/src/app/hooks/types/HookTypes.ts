@@ -76,11 +76,6 @@ interface Temas {
   periodoVigencia: string;
   tipo: string;
 }
-
-interface ResponsablesPlan {
-  codigo: string;
-  nombre: string;
-}
 interface ListadoDane {
   ciudad: string;
   codigo: string;
@@ -134,6 +129,5 @@ export interface Listas {
 }
 
 export interface ListadosType {
-  responsables: Record<string, ResponsablesPlan>;
   listas: Listas;
 }

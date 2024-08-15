@@ -11,7 +11,6 @@ const useListados = (): ListadosType => {
 
   return {
     listas: JSON.parse(getConfiguraciones?.listas),
-    responsables: JSON.parse(getConfiguraciones.responsablesPlan),
   };
 };
 
