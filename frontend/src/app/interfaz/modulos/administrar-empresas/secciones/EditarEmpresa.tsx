@@ -21,7 +21,7 @@ const EditarEmpresa = ({ id }: { id: string }) => {
   );
   const { data, error } = useSuspenseQuery<QueryEmpType>(GET_EMPRESA, {
     variables: {
-      id,
+      idEmpresa: 'AOP4iSa7FgYV1ThlUEMw',
     },
   });
 

@@ -1,6 +1,7 @@
 import { useState, useTransition } from 'react';
 import usePermisos from 'hooks/Permisos';
 import ModalFiltro from 'comunes/funcionales/modalFiltros/ModalFiltro';
+import FormModal from 'comunes/funcionales/forms/Form';
 import Condicional from 'comunes/funcionales/Condicional';
 import { Button } from 'comunes/controles/Buttons';
 import { Tabla } from '@pc-component-ui-test-v2/tabla';
@@ -11,7 +12,7 @@ import EditarEmpresa from './secciones/EditarEmpresa';
 import CrearEmpresa from './secciones/CrearEmpresa';
 import { EnvioCorreosIcon, VerRegistro } from './recursos/Iconografia';
 
-import { GET_EMPRESA } from './peticiones/Queries';
+import { GET_EMPRESAS } from './peticiones/Queries';
 import styles from './estilos/Generales.module.css';
 
 import type { QueryEmpresas } from './types/EmpresaTypes';
@@ -30,7 +31,7 @@ const Empresas = () => {
   });
 
   const { data, error, refetch } = useSuspenseQuery<QueryEmpresas>(
-    GET_EMPRESA,
+    GET_EMPRESAS,
     {
       variables: {
         filtros: { ...filtros },
@@ -127,11 +128,44 @@ const Empresas = () => {
       />
 
       <Condicional condicion={estados.crearEmpresa}>
-        <CrearEmpresa />
+        <FormModal
+          tittle='Registrar empresa'
+          close={() => setEstados({ ...estados, crearEmpresa: false })}
+          buttons={[
+            <Button
+              key='button-1'
+              name='Registrar'
+              type='button'
+              sizeBtn='normal'
+              typeBtn='primary'
+              icon='new'
+              permiso='escribir'
+              permisos={accesos.empresas}
+            />,
+          ]}
+        >
+          <CrearEmpresa />
+        </FormModal>
       </Condicional>
 
       <Condicional condicion={estados.editarRegistro}>
-        <EditarEmpresa id={estados.idEmpresa} />
+        <FormModal
+          tittle='Editar empresa'
+          close={() => setEstados({ ...estados, editarRegistro: false })}
+          buttons={[
+            <Button
+              key='button-1'
+              name='Actualizar'
+              type='button'
+              sizeBtn='normal'
+              typeBtn='primary'
+              icon='new'
+              permisos={accesos.empresas}
+            />,
+          ]}
+        >
+          <EditarEmpresa id={estados.idEmpresa} />
+        </FormModal>
       </Condicional>
 
       <Condicional condicion={estados.filtrar}>
