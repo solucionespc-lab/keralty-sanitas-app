@@ -4,9 +4,9 @@
   "version": "1.6.0",
   "scripts": {
     "lint": "eslint --fix --ext  .js,.ts .",
-    "dev": "infisical run --env=dev --path=/biod/frontend -- vite",
-    "staging": "infisical run --env=prod --path=/biod/frontend -- npm run build && firebase hosting:channel:deploy staging-biod",
-    "production": "infisical run --env=prod --path=/biod/frontend -- npm run build && firebase deploy --only hosting",
+    "dev": "infisical run --env=dev --path=/keralty/frontend -- vite",
+    "staging": "infisical run --env=prod --path=/keralty/frontend -- npm run build && firebase hosting:channel:deploy staging-keralty",
+    "production": "infisical run --env=prod --path=/keralty/frontend -- npm run build && firebase deploy --only hosting",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "security:keys": "infisical scan --verbose",

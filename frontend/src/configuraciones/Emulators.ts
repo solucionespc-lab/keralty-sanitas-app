@@ -11,27 +11,12 @@ export const runEmulators = ({ auth }: { auth: Auth }) => {
   const functions = getFunctions(getApp());
   const storage = getStorage();
 
-  connectAuthEmulator(auth, import.meta.env.VITE_AUTH_PORT, {
+  connectAuthEmulator(auth, 'http://localhost:9099', {
     disableWarnings: true,
   });
 
-  connectFunctionsEmulator(
-    functions,
-    'localhost',
-    import.meta.env.VITE_FUNCTIONS_PORT
-  );
-
-  connectDatabaseEmulator(db, 'localhost', import.meta.env.VITE_DATABASE_PORT);
-
-  connectFirestoreEmulator(
-    fire,
-    'localhost',
-    import.meta.env.VITE_FIRESTORE_PORT
-  );
-
-  connectStorageEmulator(
-    storage,
-    'localhost',
-    import.meta.env.VITE_STORAGE_PORT
-  );
+  connectFunctionsEmulator(functions, 'localhost', 5001);
+  connectDatabaseEmulator(db, 'localhost', 9000);
+  connectFirestoreEmulator(fire, 'localhost', 8004);
+  connectStorageEmulator(storage, 'localhost', 9199);
 };

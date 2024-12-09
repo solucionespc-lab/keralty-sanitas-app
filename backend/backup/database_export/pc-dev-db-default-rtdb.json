@@ -1,1 +1,10 @@
-{"empresa":{"color":"#80a900","logo":"https://pcsoluciones.com.co/resources/images/logoPC.png","nombreCompleto":"Soluciones en epidemiología y salud ocupacional PC","nombreCorto":"Soluciones PC","urlEmpresa":"https://pcsoluciones.com.co"}}
+{
+  "empresa": {
+    "color": "hsl(91, 77%, 60%)",
+    "logo": "https://global.discourse-cdn.com/flex016/uploads/almasalud/original/1X/98a1523eadf6f3c4d296dbfde6c2b34d7c9eeec3.png",
+    "nombreCompleto": "Keralty Sanitas ARL",
+    "nombreCorto": "Keralty ARL",
+    "urlEmpresa": "https://www.colsanitasseguros.com/informacion-general-arl"
+  },
+  "listas": {}
+}

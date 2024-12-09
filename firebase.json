@@ -20,8 +20,8 @@
       ]
     },
     {
-      "source": "activators",
-      "codebase": "activators",
+      "source": "gcp_exportables_pdf",
+      "codebase": "gcp_exportables_pdf",
       "ignore": [
         "node_modules",
         "firebase-debug.log",
@@ -30,65 +30,7 @@
         "*.log",
         "**/.*",
         "tsconfig.dev.json",
-        "tsconfig.json",
-        "backup"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint",
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
-    },
-    {
-      "source": "servicios",
-      "codebase": "servicios",
-      "ignore": [
-        "node_modules",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "firebase-export-*",
-        "*.log",
-        "**/.*",
-        "tsconfig.dev.json",
-        "tsconfig.json",
-        "backup"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint",
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
-    },
-    {
-      "source": "eventos",
-      "codebase": "eventos",
-      "ignore": [
-        "node_modules",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "firebase-export-*",
-        "*.log",
-        "**/.*",
-        "tsconfig.dev.json",
-        "tsconfig.json",
-        "backup"
-      ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run lint",
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
-    },
-    {
-      "source": "servicio-exportables",
-      "codebase": "servicio-exportables",
-      "ignore": [
-        "node_modules",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "firebase-export-*",
-        "*.log",
-        "**/.*",
-        "tsconfig.dev.json",
-        "tsconfig.json",
-        "backup"
+        "tsconfig.json"
       ],
       "predeploy": [
         "npm --prefix \"$RESOURCE_DIR\" run lint",
@@ -98,11 +40,7 @@
   ],
   "hosting": {
     "public": "./frontend/dist",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
         "source": "**",
@@ -173,8 +111,5 @@
   },
   "remoteconfig": {
     "template": "remoteconfig.template.json"
-  },
-  "extensions": {
-    "firestore-send-email": "firebase/firestore-send-email@0.1.34"
   }
 }
