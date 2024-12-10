@@ -111,5 +111,8 @@
   },
   "remoteconfig": {
     "template": "remoteconfig.template.json"
+  },
+  "extensions": {
+    "correo-bienvenida": "firebase/firestore-send-email@0.1.34"
   }
 }
