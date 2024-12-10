@@ -1,0 +1,143 @@
+@keyframes fadein{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    background-color: var(--background-modals);
+  }
+}
+
+.contenedor_auditorias {
+  position: relative;
+  width: minmax(300px, 150ch);
+  margin: 0 auto;
+}
+
+.buscar_contratistas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--layer-2);
+
+  &[open] {
+    animation: fadein 0.2s ease-in forwards;
+  }
+}
+
+.secciones {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: var(--gaps-2);
+  border-radius: var(--radius-2);
+
+  & input{
+    display: none;
+  }
+}
+
+.seccion {
+  color: var(--color-primary-text);
+  padding: 0.3em 1em;
+  border-radius: var(--radius-2);
+  border: 1px solid var(--surface-third);
+  min-width: 24px;
+  text-align: center;
+  background-color: var(--surface-first);
+  user-select: none;
+
+  &:hover {
+    color: #000;
+    background-color: var(--brand-secondary);
+  }
+
+  &:has(input:checked) {
+    color: #fff;
+    background-color: var(--brand-primary);
+  }
+}
+
+.contenedor_volver {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gaps-2);
+  background-color: var(--base);
+  margin-bottom: 0.5em;
+  width: 100%;
+  z-index: var(--layer-3);
+}
+
+.boton_volver {
+  cursor: pointer;
+  stroke: var(--color-primary-text);
+
+  &:hover {
+    stroke: var(--brand-primary);
+  }
+}
+
+.info_nombres {
+  font-size: var(--paragraph);
+  color: var(--color-primary-text);
+}
+
+.calificacion {
+  display: flex;
+  align-items: center;
+  gap: var(--gaps-3);
+  padding: 0.5em;
+  border-radius: var(--radius-2);
+
+  & h4 {
+    color: var(--color-primary-text);
+    font-size: var(--paragraph);
+  }
+
+  & span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--messages);
+    border-radius: var(--radius-2);
+    padding: 0.3em;
+  }
+
+  & div {
+    display: flex;
+    gap: var(--gaps-1);
+  }
+}
+
+.puntaje {
+  text-align: center;
+  border-radius: var(--radius-2);
+  padding: 0.3em;
+}
+
+.sin_calculo {
+  background-color: #000;
+  color: #fff;
+}
+
+.aceptable {
+  background-color: var(--color-add-green-1);
+  color: var(--color-add-green-7);
+}
+
+.moderable {
+  background-color: var(--color-add-orange-1);
+  color: var(--color-add-orange-7);
+}
+
+.critico {
+  background-color: var(--color-add-red-1);
+  color: var(--color-add-red-7);
+}

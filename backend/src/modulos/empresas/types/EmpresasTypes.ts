@@ -11,14 +11,20 @@ export interface EmpresaType {
   nit: string;
   nombre: string;
   activo: boolean;
+  tipoEmpresa: string;
+  riesgo: string;
+  tamano: string;
   responsables: ResponsableType[];
 }
 
-export interface FiltrosType {
-  filtros: {
-    nit: string;
-    nombre: string;
-  };
+export interface FiltroType {
+  idEmpresa: string;
+  riesgo: string;
+  tamano: string;
+}
+
+export interface FiltrosArgs {
+  filtros: FiltroType;
 }
 
 export interface EmpresaInput {

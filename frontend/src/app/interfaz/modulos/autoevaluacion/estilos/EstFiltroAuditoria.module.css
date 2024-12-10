@@ -1,0 +1,25 @@
+.contenedor_filtro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gaps-3);
+  padding: var(--gaps-3);
+}
+
+.contenedor_info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-3);
+  padding: var(--gaps-3);
+  background: var(--surface-third);
+  border-radius: var(--radius-3);
+}
+
+.contenedor_flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: 'flex-start'; 
+  gap: '1em'; 
+  margin-top: '2em';
+}

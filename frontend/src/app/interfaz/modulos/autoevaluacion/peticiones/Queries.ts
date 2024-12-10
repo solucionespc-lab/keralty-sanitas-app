@@ -1,35 +1,70 @@
 import { gql } from '@apollo/client';
 
-export const GET_EMPRESAS = gql`
-  query GetEmpresas($filtros: FiltrosInput) {
-    getEmpresas(filtros: $filtros) {
-      nit
-      nombre
-      activo
-      responsables {
+export const GET_EVALUACIONES = gql`
+  query GetEvaluaciones($filtros: FiltrosEvaluacionesInput) {
+    getEvaluaciones(filtros: $filtros) {
+      id
+      idEmpresa
+      fechaCreacion
+      puntajeTotal
+      clasificacion
+      cuestionario {
+        codigo
+        respuesta
+        planes
+        soportes {
+          nombre
+          url
+        }
+      }
+      firma {
         nombre
-        cargo
-        telefono
-        correo
-        usuarioActivo
+        url
+      }
+      empresa {
+        riesgo
+        tamano
+        tipoEmpresa
       }
     }
   }
 `;
 
-export const GET_EMPRESA = gql`
+export const GET_EVALUACION = gql`
+  query GetEvaluacion($filtros: FiltrosEvaluacionesInput) {
+    getEvaluacion(filtros: $filtros) {
+      id
+      idEmpresa
+      fechaCreacion
+      puntajeTotal
+      clasificacion
+      cuestionario {
+        codigo
+        respuesta
+        planes
+        soportes {
+          nombre
+          url
+        }
+      }
+      firma {
+        nombre
+        url
+      }
+      annio
+    }
+  }
+`;
+
+export const GET_EMPRESA_AUTOEVALUACION = gql`
   query GetEmpresa($idEmpresa: String!) {
-    getEmpresa(id: $idEmpresa) {
+    getEmpresa(idEmpresa: $idEmpresa) {
       nit
       nombre
+      tipoEmpresa
+      riesgo
+      tamano
       activo
-      responsables {
-        nombre
-        cargo
-        telefono
-        correo
-        usuarioActivo
-      }
     }
   }
 `;

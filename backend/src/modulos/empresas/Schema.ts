@@ -1,6 +1,18 @@
 import { gql } from 'graphql-tag';
 
 const EmpresaSchema = gql`
+  enum TipoEmpresaEnum {
+    empresa
+    agropecuaria
+  }
+
+  # Este enum es equivalente al número de trabajadores de la empresa ej: pequena menos de 10 trabajadores
+  enum TamanoEnum {
+    pequena
+    mediana
+    grande
+  }
+
   type Responsables {
     nombre: String
     cargo: String
@@ -9,9 +21,12 @@ const EmpresaSchema = gql`
     usuarioActivo: Boolean
   }
 
-  type Empresa {
+  type EmpresaType {
     nit: String
     nombre: String
+    tipoEmpresa: TipoEmpresaEnum
+    riesgo: String
+    tamano: TamanoEnum
     activo: Boolean
     responsables: [Responsables]
   }
@@ -27,18 +42,22 @@ const EmpresaSchema = gql`
   input EmpresaInput {
     nit: String
     nombre: String
+    tipoEmpresa: TipoEmpresaEnum
+    riesgo: String
+    tamano: TamanoEnum
     activo: Boolean
     responsables: [ResponsablesInput]
   }
 
   input FiltrosInput {
-    nombre: String
-    nit: String
+    idEmpresa: String
+    riesgo: String
+    tamano: String
   }
 
   extend type Query {
-    getEmpresas(filtros: FiltrosInput): [Empresa]
-    getEmpresa(idEmpresa: String!): Empresa
+    getEmpresas(filtros: FiltrosInput): [EmpresaType]
+    getEmpresa(idEmpresa: String!): EmpresaType
   }
 
   extend type Mutation {

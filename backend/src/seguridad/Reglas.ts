@@ -10,6 +10,14 @@ import {
   trabajadoresMutations,
   trabajadoresQueries,
 } from '../modulos/trabajadores/seguridad/Reglas';
+import {
+  evaluacionesMutationPolicy,
+  evaluacionesQueryPolicy,
+} from '../modulos/autoevaluacion/seguridad/Politicas';
+import {
+  backOfficeMutationsRules,
+  backOfficeQueriesRules,
+} from '../backoffice/seguridad/Politicas';
 
 // Regla para negar todos los permisos solicitados por la API
 const denegado = {
@@ -21,9 +29,17 @@ const reglas = {
     configQueriesRules,
     empresaQueryPolicy,
     trabajadoresQueries,
+    evaluacionesQueryPolicy,
+    backOfficeQueriesRules,
     denegado
   ),
-  Mutation: merge(empresaMutationPolicy, trabajadoresMutations, denegado),
+  Mutation: merge(
+    empresaMutationPolicy,
+    trabajadoresMutations,
+    evaluacionesMutationPolicy,
+    backOfficeMutationsRules,
+    denegado
+  ),
 };
 
 export default reglas;

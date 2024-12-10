@@ -1,0 +1,36 @@
+{
+  "listas": {
+    "puntajeEvaluar": {
+      "0": {
+        "codigo": "P01",
+        "puntaje": "0.0000000000",
+        "tipo": "No aplicable"
+      },
+      "1": {
+        "codigo": "P02",
+        "puntaje": "1.0000000000",
+        "tipo": "No cumple"
+      },
+      "2": {
+        "codigo": "P03",
+        "puntaje": "2.0000000000",
+        "tipo": "Cumple mínimamente"
+      },
+      "3": {
+        "codigo": "P04",
+        "puntaje": "3.0000000000",
+        "tipo": "Cumple parcialmente"
+      },
+      "4": {
+        "codigo": "P05",
+        "puntaje": "4.0000000000",
+        "tipo": "Cumple plenamente"
+      },
+      "5": {
+        "codigo": "P06",
+        "puntaje": "5.0000000000",
+        "tipo": "Supera las expectativas"
+      }
+    }
+  }
+}

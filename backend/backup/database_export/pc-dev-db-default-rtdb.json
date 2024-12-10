@@ -6,5 +6,34 @@
     "nombreCorto": "Keralty ARL",
     "urlEmpresa": "https://www.colsanitasseguros.com/informacion-general-arl"
   },
-  "listas": {}
+  "listas": {
+    "evaluaciones": [
+      {
+        "codigo": "1",
+        "tamano": "pequena",
+        "riesgo": "I",
+        "tipoEmpresa": ["empresa", "agropecuaria"],
+        "contenido": [
+          {
+            "ciclo": "Planear",
+            "estandar": "Recursos",
+            "item": "Asignación de persona que diseña el Sistema de Gestión de SST",
+            "criterio": "Asignar una persona que cumpla con el siguiente perfil: El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de menos de diez (10) trabajadores en clase de riesgo I, II, III puede ser realizado por un técnico en Seguridad y Salud en el Trabajo (SST) o en alguna de sus áreas, con licencia vigente en Seguridad y Salud en el Trabajo, que acredite mínimo un (1) año de experiencia certificada por las empresas o entidades en las que laboró en el desarrollo de  actividades de Seguridad y Salud en el Trabajo y que acredite la aprobación del curso de capacitación virtual de cincuenta (50) horas.Esta actividad también podrá ser desarrollada por tecnólogos, profesionales y profesionales con posgrado en SST, que cuenten con licencia vigente en Seguridad y Salud en el Trabajo y el referido curso de capacitación virtual de cincuenta (50) horas.",
+            "modo": "Solicitar documento soporte de la asignación y constatar la hoja de vida con soportes, de la persona asignada.",
+            "ponderacion": 0.5,
+            "orden": 1
+          },
+          {
+            "ciclo": "Planear",
+            "estandar": "Recursos",
+            "item": "Asignación de persona que diseña el Sistema de Gestión de SST",
+            "criterio": "Asignar una persona que cumpla con el siguiente perfil: El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de menos de diez (10) trabajadores en clase de riesgo I, II, III puede ser realizado por un técnico en Seguridad y Salud en el Trabajo (SST) o en alguna de sus áreas, con licencia vigente en Seguridad y Salud en el Trabajo, que acredite mínimo un (1) año de experiencia certificada por las empresas o entidades en las que laboró en el desarrollo de  actividades de Seguridad y Salud en el Trabajo y que acredite la aprobación del curso de capacitación virtual de cincuenta (50) horas.Esta actividad también podrá ser desarrollada por tecnólogos, profesionales y profesionales con posgrado en SST, que cuenten con licencia vigente en Seguridad y Salud en el Trabajo y el referido curso de capacitación virtual de cincuenta (50) horas.",
+            "modo": "Solicitar documento soporte de la asignación y constatar la hoja de vida con soportes, de la persona asignada.",
+            "ponderacion": 0.5,
+            "orden": 1
+          }
+        ]
+      }
+    ]
+  }
 }

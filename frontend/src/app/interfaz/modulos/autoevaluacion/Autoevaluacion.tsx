@@ -1,45 +1,43 @@
-import { toast } from 'sonner';
 import { useState, useTransition } from 'react';
 import usePermisos from 'hooks/Permisos';
-import ModalFiltro from 'comunes/funcionales/modalFiltros/ModalFiltro';
-import FormModal from 'comunes/funcionales/forms/Form';
 import Condicional from 'comunes/funcionales/Condicional';
 import { Button } from 'comunes/controles/Buttons';
-import correrMicroservicio from 'cloud_functions/CorrerInforme';
 import { Tabla } from '@pc-component-ui-test-v2/tabla';
 import { useSuspenseQuery } from '@apollo/client';
 
-import { useFiltrosEmpStore } from './store/StoreAutoevaluacion';
-import EditarEmpresa from './secciones/EditarEmpresa';
-import CrearEmpresa from './secciones/CrearEmpresa';
-import { EnvioCorreosIcon, VerRegistro } from './recursos/Iconografia';
+import { useFiltrosStore } from './store/FiltrosAutoStore';
+import FiltrosAuditoria from './secciones/filtros/FiltrosAuditoria';
+import CrearAutoevaluacion from './secciones/CrearAutoevaluacion';
+import { EditIconTable } from './recursos/Iconografia';
+import { validarDatosTabla } from './funciones/Funciones';
 
-import { GET_EMPRESAS } from './peticiones/Queries';
-import styles from './estilos/Generales.module.css';
+import { GET_EVALUACIONES } from './peticiones/Queries';
+import styles from './estilos/EstGenAuditoria.module.css';
 
-import type { pdfDatosType, QueryEmpresas } from './types/EmpresaTypes';
+import type { Query } from './types/AutoevaluacionTypes';
 
-const Empresas = () => {
+const Autoevaluacion = () => {
   const { accesos } = usePermisos();
-  const filtros = useFiltrosEmpStore((state) => state);
-  const [isPendind, startTransition] = useTransition();
+  const permisos = accesos.evaluaciones;
+  const { annio, idEmpresa, idEvaluacion } = useFiltrosStore((state) => state);
   const [estados, setEstados] = useState({
-    filtrar: false,
-    editarRegistro: false,
-    crearEmpresa: false,
+    crear: false,
+    editar: false,
     idEmpresa: '',
-    nombreEmpresa: '',
-    Nit: '',
+    filtrar: false,
+  });
+  const [isPendind, startTransition] = useTransition();
+
+  const { data, error, refetch } = useSuspenseQuery<Query>(GET_EVALUACIONES, {
+    variables: {
+      filtros: { idEmpresa, annio, idEvaluacion },
+    },
   });
 
-  const { data, error, refetch } = useSuspenseQuery<QueryEmpresas>(
-    GET_EMPRESAS,
-    {
-      variables: {
-        filtros: { ...filtros },
-      },
-    }
-  );
+  const tituloFiltros = {
+    empresa: idEmpresa,
+    año: annio,
+  };
 
   const refrescar = () => {
     refetch();
@@ -47,161 +45,121 @@ const Empresas = () => {
 
   return (
     <>
-      <h1 className='titulo_modulos'>Autoevalución</h1>
-      <div className={styles.contenedor_botones}>
-        <Button
-          icon='new'
-          name='Crear autoevaluación'
-          sizeBtn='small'
-          type='button'
-          typeBtn='primary'
-          permiso='escribir'
-          permisos={accesos.empresas}
-          onClick={() => setEstados({ ...estados, crearEmpresa: true })}
-        />
-        <Button
-          icon='filter'
-          name='Filtros'
-          sizeBtn='normal'
-          type='button'
-          typeBtn='filter'
-          permiso='escribir'
-          permisos={accesos.empresas}
-          onClick={() => setEstados({ ...estados, filtrar: true })}
-        />
-        <Button
-          icon='update'
-          name='Actualizar'
-          sizeBtn='small'
-          type='button'
-          typeBtn='update'
-          permisos={accesos.empresas}
-          onClick={() => startTransition(() => refrescar())}
-        />
+      <h1 className='titulo_modulos'>Autoevaluación</h1>
+      <div className={styles.botones_contenedor}>
+        <div className={styles.acciones_principales}>
+          <Button
+            icon='new'
+            name='Diligenciar autoevaluación'
+            sizeBtn='small'
+            type='button'
+            typeBtn='primary'
+            permiso='escribir'
+            permisos={accesos.autoevaluacion}
+            onClick={() => setEstados({ ...estados, crear: true })}
+          />
+        </div>
+
+        <div className={styles.acciones_principales}>
+          <Button
+            icon='update'
+            name='Actualizar'
+            sizeBtn='small'
+            type='button'
+            typeBtn='update'
+            permisos={permisos}
+            onClick={() => startTransition(() => refrescar())}
+            loading={isPendind}
+          />
+          <Button
+            icon='filter'
+            name='Filtros'
+            sizeBtn='small'
+            type='button'
+            typeBtn='filter'
+            permisos={permisos}
+            onClick={() => setEstados({ ...estados, filtrar: true })}
+          />
+        </div>
       </div>
 
       <Tabla
-        id='tabla_contratistas'
-        tableData={data.getEmpresas}
+        id='tabla_evaluaciones'
+        tableData={validarDatosTabla(data)}
         configurations={{
           tableColumns: [
             {
-              label: 'NIT',
-              key: 'nit',
-              styleConfig: { textAlign: 'center', color: 'var(--brand-1)' },
-              rowStyleConfig: { textAlign: 'center' },
-            },
-            {
-              label: 'Nombre',
-              key: 'nombre',
-              styleConfig: { textAlign: 'start', color: 'var(--brand-1)' },
+              label: 'Nombre empresa',
+              key: 'riesgo',
+              visible: true,
+              styleConfig: { textAlign: 'start', color: 'var(--gray-1)' },
               rowStyleConfig: { textAlign: 'start' },
             },
             {
-              label: 'Estado de la evaluación',
-              key: 'activo',
-              styleConfig: { textAlign: 'center', color: 'var(--brand-1)' },
+              label: 'Fecha realización',
+              key: 'riesgo',
+              visible: true,
+              styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
+              rowStyleConfig: { textAlign: 'center' },
+            },
+            {
+              label: 'Puntaje total',
+              key: 'riesgo',
+              visible: true,
+              styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
+              rowStyleConfig: { textAlign: 'center' },
+            },
+            {
+              label: 'Clasificación',
+              key: 'riesgo',
+              visible: true,
+              styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
               rowStyleConfig: { textAlign: 'center' },
             },
           ],
+          filters: tituloFiltros,
         }}
         controls={[
           {
-            tooltip: 'Ver información',
-            icon: VerRegistro(),
-            event: ({ data: e }) => {
-              setEstados({
-                ...estados,
-                editarRegistro: true,
-                idEmpresa: e?.id ?? '',
-              });
-            },
+            tooltip: 'Ver',
+            icon: <EditIconTable />,
             id: 'id',
+            event: (e) => console.log(e),
           },
           {
-            tooltip: 'Enviar autoevaluación',
-            icon: EnvioCorreosIcon(),
-            event: () => {
-              toast.promise(
-                correrMicroservicio<pdfDatosType>('generarPdf', {
-                  nombreEmpresa:
-                    'Soluciones en epidemiología y salud ocupacional pc',
-                  year: 2024,
-                  calificacion: 95,
-                  interpretacion: 'ACEPTABLE',
-                }),
-                {
-                  loading: 'Generando certificado',
-                  success: (data) => data,
-                  error: (data) => data,
-                }
-              );
-            },
+            tooltip: 'Descargar certificado',
+            icon: <EditIconTable />,
             id: 'id',
+            event: (e) => console.log(e),
           },
         ]}
         error={error}
         loading={isPendind}
       />
 
-      <Condicional condicion={estados.crearEmpresa}>
-        <FormModal
-          tittle='Registrar empresa'
-          close={() => setEstados({ ...estados, crearEmpresa: false })}
-          buttons={[
-            <Button
-              key='button-1'
-              name='Registrar'
-              type='button'
-              sizeBtn='normal'
-              typeBtn='primary'
-              icon='new'
-              permiso='escribir'
-              permisos={accesos.empresas}
-            />,
-          ]}
-        >
-          <CrearEmpresa />
-        </FormModal>
+      <Condicional condicion={estados.crear}>
+        <CrearAutoevaluacion
+          cerrar={() => setEstados({ ...estados, crear: false })}
+        />
       </Condicional>
 
-      <Condicional condicion={estados.editarRegistro}>
-        <FormModal
-          tittle='Editar empresa'
-          close={() => setEstados({ ...estados, editarRegistro: false })}
-          buttons={[
-            <Button
-              key='button-1'
-              name='Actualizar'
-              type='button'
-              sizeBtn='normal'
-              typeBtn='primary'
-              icon='new'
-              permisos={accesos.empresas}
-            />,
-          ]}
-        >
-          <EditarEmpresa id={estados.idEmpresa} />
-        </FormModal>
+      <Condicional condicion={estados.editar}>
+        <h1>Editar Auditoria</h1>
+        {/* <EditarAuditoria
+          permisos={permisos}
+          idAuditoria={estados.idAuditoria}
+          idContratista={estados.idContratista}
+          cerrar={() => setEstados({ ...estados, editar: false })}
+        /> */}
       </Condicional>
 
       <Condicional condicion={estados.filtrar}>
-        <ModalFiltro
-          functions={{
-            close: () => setEstados({ ...estados, filtrar: false }),
-            apply: () => {
-              console.log('filtro aplicado');
-            },
-            delete: () => {
-              console.log('Borrar filtro');
-            },
-          }}
-        >
-          <p>hola</p>
-        </ModalFiltro>
+        <FiltrosAuditoria
+          close={() => setEstados({ ...estados, filtrar: false })}
+        />
       </Condicional>
     </>
   );
 };
 
-export default Empresas;
+export default Autoevaluacion;

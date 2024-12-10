@@ -17,8 +17,13 @@ import { GraphQLResolveInfo } from 'graphql';
 
 export interface IContext {
   token: Partial<DecodedIdToken>;
-  context: string
+  context: string;
 }
+
+export type FiltrosQuery = Record<
+  string,
+  [string, FirebaseFirestore.WhereFilterOp, string | number | boolean]
+>;
 
 export type ResolverArgs<A, R> = (
   parent: unknown,

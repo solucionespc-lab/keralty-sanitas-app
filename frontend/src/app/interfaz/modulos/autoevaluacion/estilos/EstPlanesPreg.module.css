@@ -1,0 +1,57 @@
+.contenedor_planes_preg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-2);
+  background-color: var(--surface-second);
+  padding: var(--gaps-3);
+  border-radius: var(--radius-2);
+  margin-top: 1em;
+}
+
+.seccion_informativa {
+  display: flex;
+  justify-content: space-between;
+}
+
+.informativa_titulo {
+  color: var(--color-primary-text);
+}
+
+.tag {
+  display: flex;
+  height: fit-content;
+}
+
+.tag_estado {
+  border-top-left-radius: var(--radius-round);
+  border-bottom-left-radius: var(--radius-round);
+  padding: var(--gaps-1) var(--gaps-2);
+  margin-right: 0.2em;
+  background-color: #000;
+  color: #fff;
+}
+
+.tag_descripcion {
+  border-top-right-radius: var(--radius-round);
+  border-bottom-right-radius: var(--radius-round);
+  background-color: var(--surface-first);
+  padding: var(--gaps-1) var(--gaps-2);
+  color: var(--color-primary-text);
+}
+
+.contenedor_fechas {
+  display: flex;
+  gap: var(--gaps-2);
+}
+
+.contenedor_aplazamientos {
+  margin-top: 1em;
+}
+
+.contenedor_fechas_aplazamiento {
+  display: flex;
+  gap: var(--gaps-2);
+  padding: 0.5em;
+  background-color: var(--surface-third);
+  border-radius: var(--radius-2);
+}

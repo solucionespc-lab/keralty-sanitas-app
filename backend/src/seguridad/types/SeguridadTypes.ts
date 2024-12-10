@@ -32,7 +32,6 @@ export interface IamType {
   grupos: {
     propietario: AttributesRole;
     cliente: AttributesRole;
-    proveedor: AttributesRole;
     soporte: AttributesRole;
   };
   modulos: {
