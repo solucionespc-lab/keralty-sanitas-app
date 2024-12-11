@@ -1,3 +1,3 @@
 export const SERVICIO = {
-  generarPdf: 'pdf-biod',
+  generarPdf: 'pdf-keralty',
 };
