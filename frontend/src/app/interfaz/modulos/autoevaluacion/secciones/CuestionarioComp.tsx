@@ -1,14 +1,14 @@
 import { useShallow } from 'zustand/react/shallow';
 import { useUserStore } from 'store/PrincipalStore';
-import Cargando from 'comunes/informativos/Cargando';
-import { useQuery } from '@apollo/client';
+import { useEffect } from 'react';
+import { useSuspenseQuery } from '@apollo/client';
 
-import Cuestionario from './componentes/Cuestionario';
 import { QueryEmpresa } from '../types/AutoevaluacionTypes';
 import {
   guardarDatosEmpresa,
   useAutoevaluacion,
 } from '../store/AutoevaluacionStore';
+import Cuestionario from './componentes/Cuestionario';
 
 import { GET_EMPRESA_AUTOEVALUACION } from '../peticiones/Queries';
 import stCuestionario from '../estilos/EstCuestionario.module.css';
@@ -16,23 +16,20 @@ import styles from '../estilos/EstAutoevaluaciones.module.css';
 
 const CuestionarioComp = () => {
   const { usuario } = useUserStore();
+  const { data } = useSuspenseQuery<QueryEmpresa>(GET_EMPRESA_AUTOEVALUACION, {
+    variables: {
+      idEmpresa: usuario?.claims.idEmpresa ?? '',
+    },
+  });
   const { empresa } = useAutoevaluacion(
     useShallow(({ empresa }) => ({
       empresa,
     }))
   );
-  const { loading } = useQuery<QueryEmpresa>(GET_EMPRESA_AUTOEVALUACION, {
-    variables: {
-      idEmpresa: usuario?.claims.idEmpresa ?? '',
-    },
-    onCompleted: ({ getEmpresa }) => {
-      guardarDatosEmpresa(getEmpresa, usuario?.claims.idEmpresa ?? '');
-    },
-    onError: (err) => console.log(err),
-  });
 
-  if (loading)
-    return <Cargando mensaje='Consultando información de la empresa' />;
+  useEffect(() => {
+    guardarDatosEmpresa(data.getEmpresa, usuario?.claims.idEmpresa ?? '');
+  }, [data]);
 
   return (
     <section className={stCuestionario.cuestionario}>

@@ -33,3 +33,19 @@ export const guardarDatosEmpresa = (
 ) => {
   useAutoevaluacion.setState({ empresa, idEmpresa });
 };
+
+export const guardarRespuesta = (
+  codigo: string,
+  campo: string,
+  valor: string | boolean | number
+) => {
+  useCuestionario.setState(({ cuestionario }) => ({
+    cuestionario: {
+      ...cuestionario,
+      [codigo]: {
+        ...cuestionario[codigo],
+        [campo]: valor,
+      },
+    },
+  }));
+};

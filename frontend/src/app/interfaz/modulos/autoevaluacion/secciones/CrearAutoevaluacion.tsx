@@ -1,6 +1,7 @@
 import { toast } from 'sonner';
-import { useCallback } from 'react';
+import { Suspense } from 'react';
 import usePermisos from 'hooks/Permisos';
+import Cargando from 'comunes/informativos/Cargando';
 import FormModal from 'comunes/funcionales/forms/Form';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation } from '@apollo/client';
@@ -18,7 +19,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
   const { accesos } = usePermisos();
   const [saveEvaluacion, { loading }] = useMutation(SAVE_EVALUACION);
 
-  const guardarEvaluacion = useCallback(() => {
+  const guardarEvaluacion = () => {
     saveEvaluacion({
       variables: { evaluacion: {} },
       onError: () =>
@@ -29,7 +30,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
       },
       refetchQueries: ['GetEvaluaciones'],
     });
-  }, []);
+  };
 
   return (
     <FormModal
@@ -50,8 +51,8 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
           type='submit'
           id='registrar'
           typeBtn='primary'
-          permisos={accesos.evaluaciones}
-          permiso='crear'
+          permisos={accesos.autoevaluacion}
+          permiso='escribir'
           loading={loading}
         />,
       ]}
@@ -60,7 +61,13 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
         <div className={styles.contenedor_volver}>
           <ResultadoAuditorias />
         </div>
-        <CuestionarioComp />
+        <Suspense
+          fallback={
+            <Cargando mensaje='Consultando información de la empresa' />
+          }
+        >
+          <CuestionarioComp />
+        </Suspense>
       </main>
     </FormModal>
   );

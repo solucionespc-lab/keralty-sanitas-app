@@ -4,8 +4,6 @@ import useListados from 'hooks/Listados';
 
 import Pregunta from './Pregunta';
 
-import styles from '../../estilos/EstCuestionario.module.css';
-
 const Cuestionario = () => {
   const { listas } = useListados();
   const { empresa } = useAutoevaluacion(({ empresa }) => ({ empresa }));
@@ -22,11 +20,11 @@ const Cuestionario = () => {
   );
 
   return (
-    <main className={styles.contenedor_cuestionario}>
+    <>
       {preguntasPorPrograma.map((pregunta) => (
         <Pregunta key={pregunta.codigo} preguntas={pregunta.contenido} />
       ))}
-    </main>
+    </>
   );
 };
 

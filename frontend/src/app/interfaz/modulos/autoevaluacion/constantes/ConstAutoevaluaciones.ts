@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid';
+
 export const inicialPlan = {
   estado: 'E01',
   aprobacion: false,
@@ -16,17 +18,21 @@ export const inicialPlan = {
 };
 
 export const cuestionarioInicial = {
-  codigo: '',
-  ciclo: '',
-  estandar: '',
-  criterio: '',
-  modo: '',
-  ponderacion: 1,
-  respuesta: '',
-  planes: [],
-  soportes: {
-    nombre: '',
-    url: '',
+  cuestionario: {
+    [nanoid(8)]: {
+      codigo: '',
+      ciclo: '',
+      estandar: '',
+      criterio: '',
+      modo: '',
+      ponderacion: 1,
+      respuesta: '',
+      planes: [''],
+      soportes: {
+        nombre: '',
+        url: '',
+      },
+    },
   },
 };
 

@@ -2,7 +2,21 @@
   display: flex;
   flex-direction: column;
   gap: var(--gaps-3);
-  margin-top: 1em;
+}
+
+.seccion_cuestionario {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-3);
+
+  h4 {
+    color: var(--color-primary-text);
+  }
+
+  p {
+    margin-top: 0.5em;
+    color: var(--color-primary-text);
+  }
 }
 
 .preguntas {
@@ -18,6 +32,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--gaps-3);
   color: var(--color-primary-text);
   font-weight: bold;
   font-size: var(--subtitle);
@@ -50,12 +65,12 @@
   display: flex;
   gap: var(--gaps-2);
 
-  & input{
+  & input {
     display: none;
   }
 }
 
-.respuesta_si {
+.cumple {
   color: var(--color-primary-text);
   padding: var(--gaps-1);
   border-radius: var(--radius-2);
@@ -73,7 +88,7 @@
   }
 }
 
-.respuesta_no {
+.no_cumple {
   color: var(--color-primary-text);
   padding: var(--gaps-1);
   border-radius: var(--radius-2);
@@ -91,7 +106,7 @@
   }
 }
 
-.respuesta_na {
+.no_aplica {
   color: var(--color-primary-text);
   padding: var(--gaps-1);
   border-radius: var(--radius-2);
