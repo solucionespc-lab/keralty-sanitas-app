@@ -1,12 +1,12 @@
 interface GetLocalDateOuput {
-	fecha: string;
-	hora: string;
-	year: number;
-	mes: string;
-	day: number;
-	weekDay: string;
-	date: Date;
-	month: number;
+  fecha: string;
+  hora: string;
+  year: number;
+  mes: string;
+  day: number;
+  weekDay: string;
+  date: Date;
+  month: number;
 }
 
 /** Función para obtener informacion de fecha y parametro de JavaScript en formato local colombiano.
@@ -20,7 +20,9 @@ interface GetLocalDateOuput {
  * 	- weekDay: Nombre del día de la semana;
  * 	- date: Fecha actual en formato Date de JavaScript;
  */
-export type GetLocalDateFunc = (opciones?: Intl.DateTimeFormatOptions) => GetLocalDateOuput;
+export type GetLocalDateFunc = (
+  opciones?: Intl.DateTimeFormatOptions
+) => GetLocalDateOuput;
 /**
  * @param fecha Fecha en string, en el formato 'yyyy-mm-dd'
  * @returns Fecha en string, en el formato 'dd/mm/yyyy;
@@ -28,6 +30,12 @@ export type GetLocalDateFunc = (opciones?: Intl.DateTimeFormatOptions) => GetLoc
 export type FechaColombianaFunc = (fecha: string) => string;
 
 export interface Evidencias {
-	name: string;
-	url: string;
+  name: string;
+  url: string;
 }
+
+export const dbDataType = <T>() => ({
+  toFirestore: (data: T) => data,
+  fromFirestore: (snap: FirebaseFirestore.QueryDocumentSnapshot) =>
+    snap.data() as T,
+});

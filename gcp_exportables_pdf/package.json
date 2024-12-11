@@ -9,9 +9,9 @@
     "logs": "firebase functions:log",
     "build": "tsc",
     "watch": "tsc --watch",
-    "cred:dev": "infisical export --env=dev --path=/biod/infrastructure/exportables > .env",
-    "cred:staging": "infisical export --env=staging --path=/biod/infrastructure/exportables > .env",
-    "cred:prod": "infisical export --env=prod --path=/biod/infrastructure/exportables > .env",
+    "cred:dev": "infisical export --env=dev --path=/keralty/infrastructure/exportables > .env",
+    "cred:staging": "infisical export --env=staging --path=/keralty/infrastructure/exportables > .env",
+    "cred:prod": "infisical export --env=prod --path=/keralty/infrastructure/exportables > .env",
     "postinstall": "node node_modules/puppeteer/install.mjs"
   },
   "engines": {

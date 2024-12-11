@@ -5,12 +5,11 @@ import { getStorage } from 'firebase-admin/storage';
 
 import { getTemplate } from './GetTemplateFile';
 import { FORMATO_PDF, OPCIONES_NAVEGADOR } from '../constantes/Generales';
-import { POLITICA_ACCESO } from '../constantes/ConstAplicacion';
-import { IBodyData } from '../types/CertificadosTypes';
+import type { PDFDataType } from '../types/CertificadosTypes';
 import helpersFile from './GetHelper.hbs';
 
 export const generarDocumento = async (
-  datosPDF: IBodyData,
+  datosPDF: PDFDataType,
   templateName: string,
   urlRepositorio: string
 ) => {
@@ -21,6 +20,7 @@ export const generarDocumento = async (
   });
   const page = await browser.newPage();
   const bucket = getStorage().bucket();
+  let url: string[] = [];
 
   // Cargamos la plantilla HTML del Storage y la compilamos con Handlebars
   const html = await getTemplate(templateName);
@@ -42,19 +42,9 @@ export const generarDocumento = async (
       contentType: 'application/pdf',
     },
   });
-  let url: string[] = [];
 
-  if (process.env.FUNCTIONS_EMULATOR) {
-    url.push(file.publicUrl());
-  } else {
-    url = await file.getSignedUrl({
-      version: 'v4',
-      action: 'read',
-      expires: POLITICA_ACCESO,
-    });
-  }
+  url.push(file.publicUrl());
 
   logger.info(`PDF resumen generado para ${templateName}`);
-
   return url;
 };

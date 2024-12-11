@@ -1,40 +1,25 @@
 import { getLocalDate } from '../funciones/Funciones';
 
-export const POLITICA_ACCESO = `12-31-${new Date().getFullYear() + 2}`;
-export const EMAIL_REF = 'col_correos';
-export const CONFIG_EMPRESA = '/empresa';
-export const RUTA_CERT_STORAGE = `certificados/${getLocalDate().year}`;
+export const EMAIL_REF = 'col_correo_evaluaciones';
+export const EMAIL_USUARIO_REF = 'col_correo_usuarios';
 
-export const dataFake = {
-  data: {
-    idBaseDeDatos: '54siOOB3yIKHhadnEOkp',
-    nombreContratista: 'GONZALEZ CANTOR JOSE LUCINIO',
-    year: 2024,
-    calificacion: 4.5,
-    nombreProveedor: 'Estrategico IPS sas',
-    cedulaNit: '900981496',
-    tipodeCompra: 'Nacional',
-    descripcion: 'Servicio médicos',
-    clasificacion: 'Proveedor riesgo crítico',
-    fechaElaboracion: '26 de abril de 2023',
-    periodoEvaluar: '01/01/2022 a 31/12/2022',
-    tipoProveedor: 'Contratista (In House)',
-    observaciones:
-      'Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayoría sufrió alteraciones en alguna manera, ya sea porque se le agregó humor, o palabras aleatorias que no parecen ni un poco creíbles. Si vas a utilizar un pasaje de Lorem Ipsum, necesitás estar seguro de que no hay nada avergonzante escondido en el medio del texto. Todos los generadores de Lorem Ipsum que se encuentran en Internet tienden a repetir trozos predefinidos cuando sea necesario, haciendo a este el único generador verdadero (válido) en la Internet. Usa un diccionario de mas de 200 palabras provenientes del latín, combinadas con estructuras muy útiles de sentencias, para generar texto de Lorem Ipsum que parezca razonable. Este Lorem Ipsum generado siempre estará libre de repeticiones, humor agregado o palabras no características del lenguaje, etc.',
-    tipoBien: 'X',
-    tipoServicio: '',
-    primerFirmante: 'pepe perez',
-    primerCargo: 'Desarrollador',
-    primeraFirma: 'adwdawdawdawd',
-    segundoFirmante: 'dawad',
-    segundoCargo: 'adawda',
-    segundaFirma: 'adwawdwa',
-    tercerFirmante: 'vbcxvcbxcvb',
-    tercerCargo: 'cvbxcvbxcv',
-    terceraFirma: 'cvbcvbc',
-    ptsContra: [5, 5, 5, 5, 5, 5, 5, 5],
-    ptsComer: [5, 5, 5, 5, 5, 5, 5],
-    ptsSst: [1, 1, 1, 1, 1],
-    ptsAmb: [1, 1],
-  },
+export const RUTA_CERT_STORAGE = `certificados/${getLocalDate().year}`;
+export const RUTA_CERT_STORAGE_TEMP = `certificados/temporales/${getLocalDate().year}`;
+
+export const COL_EMPRESAS = 'col_empresas';
+export const COL_EVALUACIONES = 'col_evaluaciones';
+
+const marca =
+  process.env.APP_ENV !== 'development'
+    ? 'https://firebasestorage.googleapis.com/v0/b/internal-bucket-biod/o/Marca%20de%20agua.png?alt=media&token=73486225-8aa8-41ba-8473-a088bb57ba76'
+    : 'http://127.0.0.1:9199/v0/b/internal-bucket/o/marca%20de%20agua.png?alt=media&token=cd76c5d1-1e49-455a-af88-2146b31c47b6';
+
+const logo =
+  process.env.APP_ENV !== 'development'
+    ? 'https://firebasestorage.googleapis.com/v0/b/internal-bucket-biod/o/logo.webp?alt=media&token=a2d23927-3333-4beb-879c-db955b680596'
+    : 'http://127.0.0.1:9199/v0/b/internal-bucket/o/Logokeralty.png?alt=media&token=53029e97-db46-485a-9ac2-52e3ac070a5c';
+
+export const DATOS_DEFECTO = {
+  marcaUrl: marca,
+  logoUrl: logo,
 };
