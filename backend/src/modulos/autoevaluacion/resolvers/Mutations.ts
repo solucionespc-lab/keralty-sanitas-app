@@ -14,6 +14,7 @@ export const guardarEvaluacion: ResolverArgs<
   EvaluacionDocArgs,
   string
 > = async (_, { evaluacion }) => {
+  const { id, ...evaluacionRest } = evaluacion;
   const db = admin.firestore();
 
   const evaluacionRef = db
@@ -24,10 +25,10 @@ export const guardarEvaluacion: ResolverArgs<
     .withConverter(dbDataType<EvaluacionesType>());
 
   try {
-    await evaluacionRef.set(evaluacion, { merge: true });
+    await evaluacionRef.set(evaluacionRest, { merge: true });
 
     // TODO Implementar la validación y registro de los planes de acción asignados
-    return 'Se guardó correctamente la evaluación';
+    return `Se guardó correctamente la evaluación ${id}`;
   } catch (error) {
     logger.error(error);
     throw new Error('No se pudo consultar la evaluación solicitada');

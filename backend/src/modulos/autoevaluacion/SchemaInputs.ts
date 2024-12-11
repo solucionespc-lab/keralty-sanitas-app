@@ -23,7 +23,7 @@ const EvaluacionesSchemaInputs = gql`
     idEmpresa: String
     fechaCreacion: String
     puntajeTotal: Float
-    clasificacion: String
+    calificacion: String
     cuestionario: [PreguntaEvaluacionInput]
     firma: FirmaInput
     annio: Int

@@ -24,7 +24,7 @@ const EvaluacionesSchema = gql`
     empresa: EmpresaType
     fechaCreacion: String
     puntajeTotal: Float
-    clasificacion: String
+    calificacion: String
     cuestionario: [PreguntaEvaluacionType]
     firma: FirmaType
     annio: Int
