@@ -1,0 +1,19 @@
+{
+  "name": "plantillas/Certificado.hbs",
+  "bucket": "internal-bucket",
+  "metageneration": 1,
+  "generation": 1733957433274,
+  "contentType": "application/octet-stream",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "81fc119b-9dd6-4bb4-8617-06711b1fc162"
+  ],
+  "etag": "IDffq+ib6/ShWRddemv0cqwmHgU",
+  "customMetadata": {},
+  "timeCreated": "2024-12-11T22:50:33.274Z",
+  "updated": "2024-12-11T22:50:33.274Z",
+  "size": 2717,
+  "md5Hash": "7IFDAk3gK+9xLDHYzkm2dA==",
+  "crc32c": "3251942133"
+}
