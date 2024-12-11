@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/client';
 
 import CuestionarioComp from './CuestionarioComp';
 import ResultadoAuditorias from './componentes/ResAuditorias';
-// import { prepararDatos } from '../funciones/Funciones';
+import { prepararEvaluacion } from '../store/AutoevaluacionStore';
 
 import { SAVE_EVALUACION } from '../peticiones/Mutations';
 import styles from '../estilos/EstAutoevaluaciones.module.css';
@@ -21,7 +21,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
 
   const guardarEvaluacion = () => {
     saveEvaluacion({
-      variables: { evaluacion: {} },
+      variables: { evaluacion: prepararEvaluacion() },
       onError: () =>
         toast.error('Ocurrio un error al guardar la autoevaluación'),
       onCompleted: () => {

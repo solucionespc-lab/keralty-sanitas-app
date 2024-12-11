@@ -42,8 +42,11 @@ export interface EvaluacionesType {
   fechaCreacion: string;
   riesgo: string;
   tamano: string;
+  empresa: EmpresaType;
   cuestionario: PreguntaEvaluacionType[];
   firma: FirmaType;
+  puntajeTotal: number;
+  calificacion: string;
 }
 
 export interface EvaluacionDocArgs {

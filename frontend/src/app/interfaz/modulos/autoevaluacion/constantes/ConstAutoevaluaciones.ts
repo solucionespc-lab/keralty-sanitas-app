@@ -23,6 +23,7 @@ export const cuestionarioInicial = {
       codigo: '',
       ciclo: '',
       estandar: '',
+      item: '',
       criterio: '',
       modo: '',
       ponderacion: 1,
@@ -39,10 +40,10 @@ export const cuestionarioInicial = {
 export const datosBasicos = {
   id: '',
   idEmpresa: '',
-  fechaCreacion: new Date(),
+  fechaCreacion: new Date().toISOString(),
   annio: new Date().getFullYear(),
   puntajeTotal: 0,
-  clasificacion: '',
+  calificacion: '',
   firma: {
     nombre: '',
     url: '',
@@ -63,6 +64,12 @@ export const inicialFiltros = {
   annio: 2024,
   idEvaluacionAplicado: '',
   idEvaluacion: '',
+};
+
+export const tamanoEmpresa = {
+  pequena: 'Menos de diez (10) trabajadores',
+  mediana: 'Diez (10) a veinte (50) trabajadores',
+  grande: 'Más de veinte (50) trabajadores',
 };
 
 export const INDICE_ALGOLIA = 'col_empresas_keralty';

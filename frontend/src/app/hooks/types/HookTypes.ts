@@ -1,4 +1,4 @@
-interface ItemCuestionario {
+export interface ItemCuestionario {
   codigo: string;
   tamano: string;
   riesgo: string;

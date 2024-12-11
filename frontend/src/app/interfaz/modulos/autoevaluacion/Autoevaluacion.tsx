@@ -1,14 +1,16 @@
-import { useState, useTransition } from 'react';
+import { toast } from 'sonner';
+import { useCallback, useState, useTransition } from 'react';
 import usePermisos from 'hooks/Permisos';
 import Condicional from 'comunes/funcionales/Condicional';
 import { Button } from 'comunes/controles/Buttons';
+import correrMicroservicio from 'cloud_functions/CorrerInforme';
 import { Tabla } from '@pc-component-ui-test-v2/tabla';
 import { useSuspenseQuery } from '@apollo/client';
 
 import { useFiltrosStore } from './store/FiltrosAutoStore';
 import FiltrosAuditoria from './secciones/filtros/FiltrosAuditoria';
 import CrearAutoevaluacion from './secciones/CrearAutoevaluacion';
-import { EditIconTable } from './recursos/Iconografia';
+import { DescargarIcon, PDFDescargaIcon } from './recursos/Iconografia';
 import { validarDatosTabla } from './funciones/Funciones';
 
 import { GET_EVALUACIONES } from './peticiones/Queries';
@@ -23,7 +25,8 @@ const Autoevaluacion = () => {
   const [estados, setEstados] = useState({
     crear: false,
     editar: false,
-    idEmpresa: '',
+    certificado: false,
+    url: '',
     filtrar: false,
   });
   const [isPendind, startTransition] = useTransition();
@@ -43,6 +46,29 @@ const Autoevaluacion = () => {
     refetch();
   };
 
+  const generarDocumentos = useCallback(
+    (idEvaluacion: string, idEmpresa: string) => {
+      toast.promise(
+        correrMicroservicio<{ idEvaluacion: string; idEmpresa: string }>(
+          'generarPdf',
+          {
+            idEvaluacion,
+            idEmpresa,
+          }
+        ),
+        {
+          loading: 'Generando certificado',
+          success: (data) => {
+            setEstados({ ...estados, certificado: true, url: data });
+            return 'Certificado generado de clic en el botón - Descargar certificado';
+          },
+          error: (data) => data,
+        }
+      );
+    },
+    []
+  );
+
   return (
     <>
       <h1 className='titulo_modulos'>Autoevaluación</h1>
@@ -58,6 +84,18 @@ const Autoevaluacion = () => {
             permisos={accesos.autoevaluacion}
             onClick={() => setEstados({ ...estados, crear: true })}
           />
+          <Condicional condicion={estados.certificado}>
+            <a
+              className={styles.adjuntos}
+              href={estados.url}
+              target='_blank'
+              rel='noreferrer'
+              download
+            >
+              <DescargarIcon />
+              <span>Descargar certificado</span>
+            </a>
+          </Condicional>
         </div>
 
         <div className={styles.acciones_principales}>
@@ -77,7 +115,7 @@ const Autoevaluacion = () => {
             sizeBtn='small'
             type='button'
             typeBtn='filter'
-            permisos={permisos}
+            permisos={accesos.autoevaluacion}
             onClick={() => setEstados({ ...estados, filtrar: true })}
           />
         </div>
@@ -85,52 +123,47 @@ const Autoevaluacion = () => {
 
       <Tabla
         id='tabla_evaluaciones'
-        tableData={validarDatosTabla(data)}
+        tableData={validarDatosTabla(data.getEvaluaciones)}
         configurations={{
           tableColumns: [
             {
               label: 'Nombre empresa',
-              key: 'riesgo',
+              key: 'empresa',
               visible: true,
               styleConfig: { textAlign: 'start', color: 'var(--gray-1)' },
               rowStyleConfig: { textAlign: 'start' },
             },
             {
               label: 'Fecha realización',
-              key: 'riesgo',
+              key: 'fecha',
               visible: true,
               styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
               rowStyleConfig: { textAlign: 'center' },
             },
             {
               label: 'Puntaje total',
-              key: 'riesgo',
+              key: 'puntaje',
               visible: true,
               styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
               rowStyleConfig: { textAlign: 'center' },
             },
             {
               label: 'Clasificación',
-              key: 'riesgo',
+              key: 'calificacion',
               visible: true,
-              styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
-              rowStyleConfig: { textAlign: 'center' },
+              styleConfig: { textAlign: 'start', color: 'var(--gray-1)' },
+              rowStyleConfig: { textAlign: 'start' },
             },
           ],
           filters: tituloFiltros,
         }}
         controls={[
           {
-            tooltip: 'Ver',
-            icon: <EditIconTable />,
+            tooltip: 'Generar certificado',
+            icon: <PDFDescargaIcon />,
             id: 'id',
-            event: (e) => console.log(e),
-          },
-          {
-            tooltip: 'Descargar certificado',
-            icon: <EditIconTable />,
-            id: 'id',
-            event: (e) => console.log(e),
+            event: (e) =>
+              generarDocumentos(e?.data?.id ?? '', e.data?.idEmpresa ?? ''),
           },
         ]}
         error={error}
@@ -143,15 +176,15 @@ const Autoevaluacion = () => {
         />
       </Condicional>
 
-      <Condicional condicion={estados.editar}>
+      {/* <Condicional condicion={estados.editar}>
         <h1>Editar Auditoria</h1>
-        {/* <EditarAuditoria
+        <EditarAuditoria
           permisos={permisos}
           idAuditoria={estados.idAuditoria}
           idContratista={estados.idContratista}
           cerrar={() => setEstados({ ...estados, editar: false })}
-        /> */}
-      </Condicional>
+        />
+      </Condicional> */}
 
       <Condicional condicion={estados.filtrar}>
         <FiltrosAuditoria

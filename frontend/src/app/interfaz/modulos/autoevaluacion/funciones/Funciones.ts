@@ -1,8 +1,8 @@
 // import { auditoriaCompleta } from '../store/AutoevaluacionStore';
 
 import type {
+  EvaluacionesType,
   PreguntaEvaluacionType,
-  Query,
 } from '../types/AutoevaluacionTypes';
 
 /**
@@ -68,53 +68,34 @@ export const deshabilitarFecha = (fecha: string | undefined) => {
  * @param datosQuery Arreglo de datos provenientes de la Query realizada al servidor
  * @returns Devuelve un arreglo de objetos con los campos correspondientes a la respuesta del servidor
  */
-export const validarDatosTabla = (datosQuery: Query) => {
-  return datosQuery.getEvaluaciones?.map((dato) => ({
-    ...dato,
+export const validarDatosTabla = (datosQuery: EvaluacionesType[]) => {
+  return datosQuery?.map((dato) => ({
+    id: dato.id,
+    fecha: dato.fechaCreacion,
+    idEmpresa: dato.idEmpresa,
+    empresa: dato.empresa.nombre,
+    puntaje: dato.puntajeTotal,
+    calificacion: dato.calificacion,
   }));
 };
 
 export const resultadoAuditoria = (resultado: number): string => {
-  if (resultado < 3) {
+  if (resultado <= 53.5) {
     return 'Critico';
   }
 
-  if (resultado >= 3 && resultado <= 4.25) {
-    return 'Moderable';
+  if (resultado <= 69.5) {
+    return 'Moderablemente acepable';
   }
 
-  if (resultado > 4.25) {
+  if (resultado > 69.5) {
     return 'Aceptable';
   }
 
   return 'Sin_calculo';
 };
 
-// export const prepararDatos = () => {
-//   const { preguntas, planes, auditoria } = auditoriaCompleta();
-//   const { calificacion, ...rest } = auditoria;
-
-//   const preguntasDepuradas = Object.values(preguntas.preguntasAuditoria).map(
-//     (preg) => {
-//       return {
-//         ...preg,
-//       };
-//     }
-//   );
-
-//   return {
-//     ...rest,
-//     preguntasAuditoria: preguntasDepuradas,
-//     totalAuditoria: preguntas.totalAuditoria,
-
-//     tipoAuditoria: calificacion,
-//     tipo: auditoria.tipo,
-//     plan: { ...planes.planes },
-//   };
-// };
-
 export const clasificarPreguntas = (preguntas: PreguntaEvaluacionType[]) => {
-  console.log(preguntas);
   const planear = preguntas.filter((tema) => tema.ciclo === 'Planear');
   const hacer = preguntas.filter((tema) => tema.ciclo === 'Hacer');
   const verificar = preguntas.filter((tema) => tema.ciclo === 'Verificar');

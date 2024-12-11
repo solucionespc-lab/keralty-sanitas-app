@@ -1,8 +1,8 @@
-@keyframes fadein{
-  0%{
+@keyframes fadein {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     background-color: var(--background-modals);
   }
 }
@@ -36,7 +36,7 @@
   padding: var(--gaps-2);
   border-radius: var(--radius-2);
 
-  & input{
+  & input {
     display: none;
   }
 }
@@ -123,21 +123,25 @@
 }
 
 .sin_calculo {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--surface-first);
+  border: 1px solid var(--surface-third);
+  color: var(--color-primary-text);
 }
 
 .aceptable {
   background-color: var(--color-add-green-1);
-  color: var(--color-add-green-7);
+  border: 1px solid var(--color-add-green-8);
+  color: var(--color-add-green-8);
 }
 
 .moderable {
   background-color: var(--color-add-orange-1);
-  color: var(--color-add-orange-7);
+  border: 1px solid var(--color-add-orange-8);
+  color: var(--color-add-orange-8);
 }
 
 .critico {
   background-color: var(--color-add-red-1);
+  border: 1px solid var(--color-add-red-7);
   color: var(--color-add-red-7);
 }
