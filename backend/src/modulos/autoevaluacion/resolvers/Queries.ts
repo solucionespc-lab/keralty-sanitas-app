@@ -1,11 +1,8 @@
 import * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions';
 
-import { FiltrosQuery, ResolverArgs } from '../../../backend-def';
-import {
-  aplicarFiltros,
-  dbDataType,
-} from '../../../utilidades/FuncionesGenerales';
+import { ResolverArgs } from '../../../backend-def';
+import { dbDataType } from '../../../utilidades/FuncionesGenerales';
 import { EmpresaType } from '../../empresas/types/EmpresasTypes';
 import { REF_EMPRESAS, REF_EVALUACIONES } from '../constantes/ConstAuditorias';
 
@@ -13,7 +10,6 @@ import type {
   EvaluacionesType,
   EvaluacionParametro,
   EvaParametros,
-  FiltrosEvaluaciones,
 } from '../types/EvaluacionesTypes';
 
 export const traerEvaluacion: ResolverArgs<
@@ -44,26 +40,28 @@ export const traerEvaluaciones: ResolverArgs<
   EvaParametros,
   EvaluacionesType[]
 > = async (_, { filtros }) => {
-  const { idEmpresa, annio } = filtros;
+  // const { idEmpresa, annio } = filtros;
   const db = admin.firestore();
 
   const evaluacionesRef = db
     .collectionGroup(REF_EVALUACIONES)
     .withConverter(dbDataType<EvaluacionesType>());
 
-  const consultas: FiltrosQuery = {
-    idEmpresa: ['idEmpresa', '==', idEmpresa],
-    annio: ['annio', '==', annio],
-  };
+  console.log(filtros);
+
+  // const consultas: FiltrosQuery = {
+  //   idEmpresa: ['idEmpresa', '==', idEmpresa],
+  //   annio: ['annio', '==', annio],
+  // };
 
   try {
-    const evaConsulta = aplicarFiltros<EvaluacionesType, FiltrosEvaluaciones>(
-      evaluacionesRef,
-      filtros,
-      consultas
-    );
+    // const evaConsulta = aplicarFiltros<EvaluacionesType, FiltrosEvaluaciones>(
+    //   evaluacionesRef,
+    //   filtros,
+    //   consultas
+    // );
 
-    const evaluaciones = await evaConsulta.get();
+    const evaluaciones = await evaluacionesRef.get();
 
     return evaluaciones.docs.map((doc) => ({
       ...doc.data(),

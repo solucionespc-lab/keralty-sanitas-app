@@ -2,7 +2,7 @@ import React from 'react';
 import { ClaimsType } from 'configuraciones/types/SeguridadTypes';
 
 type PropsLazyComponents = {
-  planes: React.LazyExoticComponent<() => React.ReactElement>;
+  empresas: React.LazyExoticComponent<() => React.ReactElement>;
 };
 
 export type keyList = 'modulosPrincipal';

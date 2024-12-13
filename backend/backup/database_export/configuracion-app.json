@@ -1,1 +1,102 @@
-{"iam":{"acciones":{"aplicacion":["leer","escribir","aprobar","importar","exportar","exportarTodo","masivas","pendientes","duplicar"],"infraestructura":["crearTokens","crearUsuarios","llamar","configuracion"]},"grupos":{"cliente":{"firmas":["yr5fS3jQTA94","aEqj4MY56xyk","4N349Qxj6Cn4","4gj3CyJu9tb6"],"organizacion":"empresa","privilegios":"0:01234567:3","roles":["administrador","direccion","regional","sin regional"]},"propietario":{"firmas":["yr5fS3jQTA94","aEqj4MY56xyk","4N349Qxj6Cn4","4gj3CyJu9tb6"],"organizacion":"empresa","privilegios":"0:01234567:0123","roles":["superadministrador"]},"proveedor":{"firmas":["yr5fS3jQTA94","aEqj4MY56xyk","4N349Qxj6Cn4","4gj3CyJu9tb6"],"organizacion":"empresa-externo","privilegios":"","roles":["coordinacion","regional","sin regional"]},"soporte":{"firmas":["yr5fS3jQTA94","aEqj4MY56xyk","4N349Qxj6Cn4","4gj3CyJu9tb6"],"organizacion":"Soluciones PC","privilegios":"0:01234567:0123","roles":["soporte-app","soporte-cloud"]}},"modulos":[{"descripcion":"Descripción de las funcionalidades del módulo implementado","estaActivo":true,"imagen":"http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea","llaveModulo":"empresas","responsable":"","subGrupo":"Submodulo empresas","titulo":"Administración de empresas","url":"/empresa"},{"descripcion":"Descripción de las funcionalidades del módulo implementado","estaActivo":true,"imagen":"http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea","llaveModulo":"trabajadores","responsable":"","subGrupo":"Submodulo trabajadores","titulo":"Administrar trabajadores","url":"/trabajadores"},{"descripcion":"Descripción de las funcionalidades del módulo implementado","estaActivo":true,"imagen":"http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea","llaveModulo":"biomecanico","responsable":"","subGrupo":"Submodulo sve","titulo":"SVE biomecánico","url":"/biomecanico"},{"descripcion":"Descripción de las funcionalidades del módulo implementado","estaActivo":true,"imagen":"http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea","llaveModulo":"autoevaluacion","responsable":"","subGrupo":"Submodulo autoevaluacion","titulo":"Autoevaluacion","url":"/autoevaluacion"}],"version":"1.3.0"}}
+{
+  "iam": {
+    "acciones": {
+      "aplicacion": ["leer", "escribir", "aprobar", "importar", "exportar"],
+      "infraestructura": [
+        "crearTokens",
+        "crearUsuarios",
+        "llamar",
+        "configuracion"
+      ]
+    },
+    "grupos": {
+      "cliente": {
+        "firmas": [
+          "yr5fS3jQTA94",
+          "aEqj4MY56xyk",
+          "4N349Qxj6Cn4",
+          "4gj3CyJu9tb6"
+        ],
+        "organizacion": "empresa",
+        "privilegios": "0:01234567:3",
+        "roles": ["administrador", "direccion", "regional", "sin regional"]
+      },
+      "propietario": {
+        "firmas": [
+          "yr5fS3jQTA94",
+          "aEqj4MY56xyk",
+          "4N349Qxj6Cn4",
+          "4gj3CyJu9tb6"
+        ],
+        "organizacion": "empresa",
+        "privilegios": "0:01234567:0123",
+        "roles": ["superadministrador"]
+      },
+      "proveedor": {
+        "firmas": [
+          "yr5fS3jQTA94",
+          "aEqj4MY56xyk",
+          "4N349Qxj6Cn4",
+          "4gj3CyJu9tb6"
+        ],
+        "organizacion": "empresa-externo",
+        "privilegios": "",
+        "roles": ["coordinacion", "regional", "sin regional"]
+      },
+      "soporte": {
+        "firmas": [
+          "yr5fS3jQTA94",
+          "aEqj4MY56xyk",
+          "4N349Qxj6Cn4",
+          "4gj3CyJu9tb6"
+        ],
+        "organizacion": "Soluciones PC",
+        "privilegios": "0:01234567:0123",
+        "roles": ["soporte-app", "soporte-cloud"]
+      }
+    },
+    "modulos": [
+      {
+        "descripcion": "Descripción de las funcionalidades del módulo implementado",
+        "estaActivo": true,
+        "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
+        "llaveModulo": "empresas",
+        "responsable": "",
+        "subGrupo": "Submodulo empresas",
+        "titulo": "Administración de empresas",
+        "url": "/empresa"
+      },
+      {
+        "descripcion": "Descripción de las funcionalidades del módulo implementado",
+        "estaActivo": true,
+        "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
+        "llaveModulo": "trabajadores",
+        "responsable": "",
+        "subGrupo": "Submodulo trabajadores",
+        "titulo": "Administrar trabajadores",
+        "url": "/trabajadores"
+      },
+      {
+        "descripcion": "Descripción de las funcionalidades del módulo implementado",
+        "estaActivo": true,
+        "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
+        "llaveModulo": "biomecanico",
+        "responsable": "",
+        "subGrupo": "Submodulo sve",
+        "titulo": "SVE biomecánico",
+        "url": "/biomecanico"
+      },
+      {
+        "descripcion": "Descripción de las funcionalidades del módulo implementado",
+        "estaActivo": true,
+        "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
+        "llaveModulo": "autoevaluacion",
+        "responsable": "",
+        "subGrupo": "Submodulo autoevaluacion",
+        "titulo": "Autoevaluación del SG-SST",
+        "url": "/autoevaluacion"
+      }
+    ],
+    "version": "1.3.0"
+  }
+}

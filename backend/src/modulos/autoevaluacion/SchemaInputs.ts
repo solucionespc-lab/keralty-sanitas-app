@@ -27,6 +27,7 @@ const EvaluacionesSchemaInputs = gql`
     cuestionario: [PreguntaEvaluacionInput]
     firma: FirmaInput
     annio: Int
+    empresa: EmpresaInput
   }
 
   input FiltrosEvaluacionesInput {

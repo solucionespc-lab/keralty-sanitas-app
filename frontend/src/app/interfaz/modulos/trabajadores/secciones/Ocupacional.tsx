@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useShallow } from 'zustand/react/shallow';
 import { buscarCodigoDeLista } from 'utilidades/FuncionesApp';
 import usePermisos from 'hooks/Permisos';

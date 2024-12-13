@@ -5,9 +5,7 @@ import Denegado from 'comunes/informativos/Denegado';
 
 import { componentes } from './ModulosLazy';
 
-import type { ProtectedProps } from '../types/DashboardTypes';
-
-const RutaProtegida = ({ modulo }: ProtectedProps) => {
+const RutaProtegida = ({ modulo }: { modulo: keyof typeof componentes }) => {
   const { accesoModulos } = usePermisos();
   const tienePermiso = accesoModulos.includes(modulo);
   const Componente = componentes[modulo];

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { buscarCodigoDeLista } from 'utilidades/FuncionesApp';
 import { useState, useTransition } from 'react';
 import usePermisos from 'hooks/Permisos';

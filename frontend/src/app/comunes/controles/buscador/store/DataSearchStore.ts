@@ -9,6 +9,7 @@ const useDataSearchStore = create<DataSearchStore>((set) => ({
   nombreContratista: '',
   objectID: '',
   otroServicio: '',
+  servicio: '',
   setItem: (itemSelected) => set({ ...itemSelected }),
 }));
 

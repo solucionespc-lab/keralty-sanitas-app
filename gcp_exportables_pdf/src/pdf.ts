@@ -1,13 +1,6 @@
-import { logger } from 'firebase-functions/v2';
 import * as admin from 'firebase-admin';
+import { logger } from 'firebase-functions/v2';
 
-import { generarDocumento } from './funciones/GenerarDocumento';
-
-import type {
-  EmpresaType,
-  EvaluacionesType,
-  IBodyData,
-} from './types/CertificadosTypes';
 // import { enviarCorreo } from './funciones/EnviarCorreo';
 import {
   COL_EMPRESAS,
@@ -20,7 +13,14 @@ import {
   generarHash,
   getLocalDate,
 } from './funciones/Funciones';
+import { generarDocumento } from './funciones/GenerarDocumento';
 import { dbDataType } from './types/RecursosType';
+
+import type {
+  EmpresaType,
+  EvaluacionesType,
+  IBodyData,
+} from './types/CertificadosTypes';
 
 const generatePDF = async (datosPDF: IBodyData) => {
   const db = admin.firestore();

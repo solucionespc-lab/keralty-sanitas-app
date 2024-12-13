@@ -30,6 +30,22 @@ export const useCuestionario = create(
 );
 
 // Funciones del STORE
+
+export const guardarDatosBasicos = (campo: string, valor: string | number) => {
+  if (campo === 'tamano' || campo === 'riesgo') {
+    useAutoevaluacion.setState((state) => ({
+      ...state,
+      empresa: {
+        ...state.empresa,
+        [campo]: valor,
+      },
+    }));
+    return;
+  }
+
+  useAutoevaluacion.setState({ [campo]: valor });
+};
+
 export const guardarDatosEmpresa = (
   empresa: EmpresaType,
   idEmpresa: string
@@ -71,9 +87,10 @@ export const guardarCuestionario = (
   cuestionario: ItemCuestionario[],
   empresa: EmpresaType
 ) => {
+  console.log(cuestionario);
   const preguntasPorTipoEmpresa = cuestionario.filter(
     (tema) =>
-      tema.riesgo === empresa.riesgo &&
+      Object.values(tema.riesgo).includes(empresa.riesgo) &&
       tema.tamano === empresa.tamano &&
       Object.values(tema.tipoEmpresa).includes(empresa.tipoEmpresa)
   );
@@ -104,7 +121,7 @@ export const guardarCuestionario = (
 };
 
 export function prepararEvaluacion() {
-  const { empresa, ...rest } = useAutoevaluacion.getState();
+  const autoevaluacion = useAutoevaluacion.getState();
   const { cuestionario } = useCuestionario.getState();
 
   const cuestionarioFinal = Object.entries(cuestionario).map((pregunta) => {
@@ -116,5 +133,5 @@ export function prepararEvaluacion() {
     };
   });
 
-  return { ...rest, cuestionario: cuestionarioFinal };
+  return { ...autoevaluacion, cuestionario: cuestionarioFinal };
 }

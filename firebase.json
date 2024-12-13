@@ -23,12 +23,11 @@
       "source": "gcp_exportables_pdf",
       "codebase": "gcp_exportables_pdf",
       "ignore": [
+        "plantillas",
         "node_modules",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "firebase-export-*",
-        "*.log",
-        "**/.*",
+        "**/.env",
+        ".eslintrc.js",
+        ".gitignore",
         "tsconfig.dev.json",
         "tsconfig.json"
       ],

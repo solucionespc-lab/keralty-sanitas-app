@@ -25,6 +25,8 @@ const EditarEmpresa = ({ id }: { id: string }) => {
     },
   });
 
+  console.log(id);
+
   useEffect(() => {
     actualizarDatosEmpresa(data.getEmpresa);
   }, []);

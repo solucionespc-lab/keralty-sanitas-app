@@ -11,7 +11,7 @@ export const traerConfiguraciones: ResolverArgs<
   ConfiguracionesType
 > = async () => {
   const configDb = getDatabaseWithUrl(
-    'http://127.0.0.1:9000/?ns=configuracion-app'
+    process.env.REALTIME_DATABASE_URL_CONFIG ?? ''
   );
   const dbListasRef = admin.database().ref('/listas');
   const dbConfig = configDb.ref('/iam');

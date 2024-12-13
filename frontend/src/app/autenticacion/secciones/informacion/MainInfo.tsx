@@ -1,4 +1,4 @@
-import LOGO from 'assets/logo.webp';
+import LOGO from 'assets/Logokeralty.png';
 
 import { Company, DescCont, Informacion } from '../../estilos/EstilosInfo';
 

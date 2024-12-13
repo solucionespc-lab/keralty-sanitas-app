@@ -6,9 +6,9 @@ import FormModal from 'comunes/funcionales/forms/Form';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation } from '@apollo/client';
 
+import { prepararEvaluacion } from '../store/AutoevaluacionStore';
 import CuestionarioComp from './CuestionarioComp';
 import ResultadoAuditorias from './componentes/ResAuditorias';
-import { prepararEvaluacion } from '../store/AutoevaluacionStore';
 
 import { SAVE_EVALUACION } from '../peticiones/Mutations';
 import styles from '../estilos/EstAutoevaluaciones.module.css';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useShallow } from 'zustand/react/shallow';
 import { calcularEdad } from 'utilidades/FuncionesGenerales';
 import { buscarCodigoDeLista } from 'utilidades/FuncionesApp';

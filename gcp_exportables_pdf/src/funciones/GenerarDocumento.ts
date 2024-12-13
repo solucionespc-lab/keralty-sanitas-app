@@ -1,12 +1,13 @@
+import { getStorage } from 'firebase-admin/storage';
+import { logger } from 'firebase-functions/v2';
 import Handlebars from 'handlebars';
 import * as puppeteer from 'puppeteer';
-import { logger } from 'firebase-functions/v2';
-import { getStorage } from 'firebase-admin/storage';
 
+import helpersFile from './GetHelper.hbs';
 import { getTemplate } from './GetTemplateFile';
 import { FORMATO_PDF, OPCIONES_NAVEGADOR } from '../constantes/Generales';
+
 import type { PDFDataType } from '../types/CertificadosTypes';
-import helpersFile from './GetHelper.hbs';
 
 export const generarDocumento = async (
   datosPDF: PDFDataType,
@@ -20,7 +21,7 @@ export const generarDocumento = async (
   });
   const page = await browser.newPage();
   const bucket = getStorage().bucket();
-  let url: string[] = [];
+  const url: string[] = [];
 
   // Cargamos la plantilla HTML del Storage y la compilamos con Handlebars
   const html = await getTemplate(templateName);

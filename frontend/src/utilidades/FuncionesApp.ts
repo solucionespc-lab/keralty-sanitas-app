@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ListadosType } from 'hooks/types/HookTypes';
 
 export const adaptarListado = (listado: ListadoType) => {
@@ -9,7 +10,7 @@ export const adaptarListado = (listado: ListadoType) => {
 };
 
 export const filtrarLista = <
-  T extends Record<string, Record<keyof T[string], string>>
+  T extends Record<string, Record<keyof T[string], string>>,
 >(
   listado: T,
   variable: string,
@@ -31,7 +32,7 @@ export const filtrarLista = <
  * @returns
  */
 export const filtrarCodigoLista = <
-  T extends Record<string, Record<keyof T[string], string>>
+  T extends Record<string, Record<keyof T[string], string>>,
 >(
   listado: T,
   tipoVariable: keyof T[string]
@@ -52,6 +53,7 @@ export const extraerValoresDeListado = (
   campoABuscar: string
 ): (string | number)[] => {
   return Object.values(listado[nombreLista])?.map(
+    // @ts-ignore
     (item) => item?.[campoABuscar]
   );
 };
@@ -95,8 +97,10 @@ export const buscarCodigoDeLista = (
   campoADevolver: string
 ) => {
   const validar = Object.values(listado[nombreLista])?.find(
+    // @ts-ignore
     (campo) => campo?.[campoABuscar] === palabraABuscar
   );
 
+  // @ts-ignore
   return validar ? validar?.[campoADevolver] : '';
 };

@@ -1,12 +1,9 @@
-// import { auditoriaCompleta } from '../store/AutoevaluacionStore';
-
 import type {
   EvaluacionesType,
   PreguntaEvaluacionType,
 } from '../types/AutoevaluacionTypes';
 
 /**
- *
  * @param fechas Es un objeto con las fechas a comparar
  * @returns Devuelve la fecha más lejana del objeto de fechas diligenciadas
  */
@@ -80,19 +77,23 @@ export const validarDatosTabla = (datosQuery: EvaluacionesType[]) => {
 };
 
 export const resultadoAuditoria = (resultado: number): string => {
+  if (resultado === 0) {
+    return 'Sin cálculo';
+  }
+
   if (resultado <= 53.5) {
     return 'Critico';
   }
 
   if (resultado <= 69.5) {
-    return 'Moderablemente acepable';
+    return 'moderadamente acepable';
   }
 
   if (resultado > 69.5) {
     return 'Aceptable';
   }
 
-  return 'Sin_calculo';
+  return 'Sin cálculo';
 };
 
 export const clasificarPreguntas = (preguntas: PreguntaEvaluacionType[]) => {

@@ -1,10 +1,8 @@
 {
   "name": "functions",
-  "version": "1.1.4",
+  "version": "1.0.0",
   "scripts": {
-    "start": "npm run cred:dev && firebase serve",
-    "staging": "npm run cred:staging && firebase use dev && firebase deploy --only functions",
-    "deploy": "firebase use prod && npm run cred:prod && firebase deploy --only functions",
+    "production": "npm run cred:prod && firebase deploy --only functions:gcp_exportables_pdf:pdf-keralty",
     "lint": "eslint --ext .js,.ts .",
     "logs": "firebase functions:log",
     "build": "tsc",
@@ -12,7 +10,7 @@
     "cred:dev": "infisical export --env=dev --path=/keralty/infrastructure/exportables > .env",
     "cred:staging": "infisical export --env=staging --path=/keralty/infrastructure/exportables > .env",
     "cred:prod": "infisical export --env=prod --path=/keralty/infrastructure/exportables > .env",
-    "postinstall": "node node_modules/puppeteer/install.mjs"
+    "gcp-build": "node node_modules/puppeteer/install.mjs"
   },
   "engines": {
     "node": "20"
@@ -20,6 +18,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.4.2",
+    "dotenv": "^16.4.7",
     "express": "^4.19.2",
     "firebase-admin": "^12.0.0",
     "firebase-functions": "^5.0.1",
@@ -31,8 +30,7 @@
     "@types/node": "^20.14.12",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^9.7.0",
+    "eslint": "8.56.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",

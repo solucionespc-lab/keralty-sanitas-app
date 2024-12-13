@@ -53,7 +53,7 @@ export const datosBasicos = {
     nombre: '',
     riesgo: '',
     tamano: '',
-    tipoEmpresa: '',
+    tipoEmpresa: 'empresa',
   },
 };
 
@@ -67,9 +67,15 @@ export const inicialFiltros = {
 };
 
 export const tamanoEmpresa = {
-  pequena: 'Menos de diez (10) trabajadores',
-  mediana: 'Diez (10) a veinte (50) trabajadores',
-  grande: 'Más de veinte (50) trabajadores',
+  '10 o menos': 'pequena',
+  'Entre 11 y 50': 'mediana',
+  'Más de 50': 'grande',
+};
+
+export const tamanoEmpresa2 = {
+  pequena: '10 o menos',
+  mediana: 'Entre 11 y 50',
+  grande: 'Más de 50',
 };
 
 export const INDICE_ALGOLIA = 'col_empresas_keralty';

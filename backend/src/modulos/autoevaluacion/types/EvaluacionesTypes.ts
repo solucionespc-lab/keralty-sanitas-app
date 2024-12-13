@@ -1,3 +1,5 @@
+import { EmpresaType } from '../../empresas/types/EmpresasTypes';
+
 interface SoportesType {
   nombre: string;
   url: string;
@@ -34,6 +36,7 @@ export interface EvaluacionesType {
   tamano: string;
   cuestionario: PreguntaEvaluacionType[];
   firma: FirmaType;
+  empresa: EmpresaType;
 }
 
 export interface EvaluacionDocArgs {

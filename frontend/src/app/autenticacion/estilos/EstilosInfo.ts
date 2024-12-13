@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { screenSizes } from 'configuraciones/VariablesEstaticasGlobales';
-import Fondo from 'assets/fondo-login.webp';
+// import Fondo from 'assets/fondo-login.webp';
 
 export const Informacion = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-image: url(${Fondo});
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -23,6 +22,8 @@ export const DescCont = styled.div`
   align-items: center;
   justify-content: space-evenly;
   height: 100%;
+  border-right: 1px solid var(--surface-third);
+  background-color: var(--surface-second);
 `;
 
 export const Company = styled.img`

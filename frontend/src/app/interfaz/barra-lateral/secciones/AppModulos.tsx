@@ -24,7 +24,9 @@ const AppModulos = () => {
 
   const modulosConPermiso = getConfiguraciones.modulos.filter(
     (modulo: ModulosType) =>
-      accesoModulos.some((acceso) => modulo.llaveModulo === acceso)
+      accesoModulos.some(
+        (acceso) => modulo.llaveModulo === acceso && modulo.estaActivo
+      )
   );
 
   return (

@@ -1,9 +1,13 @@
+# Compiled JavaScript files
+lib/**/*.js
+lib/**/*.js.map
+lib/**/*.json
+
 # Node.js dependency directory
 node_modules/
 
 # Backup and cache folder
 backup
-lib
 .cache
 
 # env variables

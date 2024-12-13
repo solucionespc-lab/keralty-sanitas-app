@@ -138,8 +138,8 @@
 }
 
 .cuestionario_info_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: var(--gaps-2);
   border-radius: var(--radius-3);
   background-color: var(--surface-first);

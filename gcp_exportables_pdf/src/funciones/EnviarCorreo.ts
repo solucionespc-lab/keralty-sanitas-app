@@ -1,9 +1,9 @@
-import Handlebars from 'handlebars';
 import * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions/v2';
+import Handlebars from 'handlebars';
 
-import { EMAIL_REF } from '../constantes/ConstAplicacion';
 import { getTemplate } from './GetTemplateFile';
+import { EMAIL_REF } from '../constantes/ConstAplicacion';
 import { IBodyData } from '../types/CertificadosTypes';
 
 export const enviarCorreo = async (datosPDF: IBodyData, urlCert: string) => {

@@ -3,7 +3,7 @@ import * as admin from 'firebase-admin';
 import { https } from 'firebase-functions/v2';
 
 import generatePDF from './src/pdf';
-import { cuentaServicio, urlSevices } from './src/seguridad/Secrets';
+import { cuentaServicio } from './src/seguridad/Secrets';
 
 const app = express();
 
@@ -20,13 +20,13 @@ app.post('/', async (req: Request, res: Response) => {
   const url = await generatePDF(body);
 
   res.set('content-type', 'text/plain');
-  res.set('Access-Control-Allow-Origin', urlSevices());
+  res.set('Access-Control-Allow-Origin', '*');
   res.send({ data: url });
 });
 
 const pdf = {
   keralty: https.onRequest(
-    { cors: urlSevices(), memory: '2GiB', timeoutSeconds: 120 },
+    { cors: '*', memory: '2GiB', timeoutSeconds: 120 },
     app
   ),
 };

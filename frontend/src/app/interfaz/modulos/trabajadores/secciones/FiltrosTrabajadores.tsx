@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { buscarCodigoDeLista } from 'utilidades/FuncionesApp';
 import { useState } from 'react';
 import useListados from 'hooks/Listados';

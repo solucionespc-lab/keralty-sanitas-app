@@ -21,7 +21,7 @@ const BOUsuarioSchema = gql`
     organizacion: String
     permisos: String
     firma: String
-    cargo: String
+    idEmpresa: String
   }
 
   type Usuario {
@@ -41,7 +41,7 @@ const BOUsuarioSchema = gql`
     organizacion: String
     permisos: String
     firma: String
-    cargo: String
+    idEmpresa: String
   }
 
   extend type Query {

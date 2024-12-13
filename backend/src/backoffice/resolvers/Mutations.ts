@@ -1,15 +1,11 @@
 import * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions';
-import axios from 'axios';
 
 import { ResolverArgs } from '../../backend-def';
-import {
-  USUARIOS,
-  APP_BIOD_URL,
-  LOGO_BIOD,
-} from '../constantes/ConstGenerales';
-import type { UserInput } from '../types/UsuarioTypes';
+import { USUARIOS } from '../constantes/ConstGenerales';
 import { generarHash } from '../utilidades/FuncGenerales';
+
+import type { UserInput } from '../types/UsuarioTypes';
 
 export const guardarUsuario: ResolverArgs<UserInput, string> = async (
   _,
@@ -17,6 +13,8 @@ export const guardarUsuario: ResolverArgs<UserInput, string> = async (
 ) => {
   const usuarioRef = admin.firestore().collection(USUARIOS);
   const password = generarHash();
+
+  console.log(password);
 
   const { customClaims, ...user } = input;
 
@@ -36,16 +34,16 @@ export const guardarUsuario: ResolverArgs<UserInput, string> = async (
         { merge: true }
       );
 
-    await axios.post(process?.env?.BIENVENIDA_CORREO_URL ?? '', {
-      usuario: {
-        app: 'BIO D',
-        usuario: input.nombre,
-        correo: input.email,
-        contrasena: password,
-        enlace: APP_BIOD_URL,
-        logo: LOGO_BIOD,
-      },
-    });
+    // await axios.post(process?.env?.BIENVENIDA_CORREO_URL ?? '', {
+    //   usuario: {
+    //     app: 'BIO D',
+    //     usuario: input.nombre,
+    //     correo: input.email,
+    //     contrasena: password,
+    //     enlace: APP_BIOD_URL,
+    //     logo: LOGO_BIOD,
+    //   },
+    // });
 
     return 'Se creó correctamente el usuario';
   } catch (error) {

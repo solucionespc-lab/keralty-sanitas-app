@@ -5,7 +5,7 @@ const mensajeDefecto =
   'Se produjo un error inesperado, comuníquese con el administrador';
 
 export function validarEmail(correo: string): boolean {
-  const regex = /\w+([.|-]?)\w+@(pcsoluciones|biodsa|biod){1}(.com|\.co)+$/;
+  const regex = /\w+([.|-]?)\w+@(pcsoluciones|colsanitas){1}(.com|\.co)+$/;
 
   if (regex.test(correo)) {
     return true;

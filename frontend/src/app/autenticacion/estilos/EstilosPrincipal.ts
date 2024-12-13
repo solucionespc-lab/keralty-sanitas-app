@@ -16,7 +16,7 @@ export const TarjetaLogin = styled.div`
   flex-direction: column;
   border-radius: var(--radius-3);
   box-shadow: var(--shadow-5);
-  background-color: var(--surface-first);
+  background-color: var(--base);
   overflow: hidden;
   margin: var(--space-fluid-2);
 
@@ -63,7 +63,9 @@ export const Opcion = styled.div`
   font-size: var(--paragraph);
   padding: var(--space-fluid-3);
   border-radius: var(--radius-round);
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
   height: 100%;
 
   cursor: pointer;

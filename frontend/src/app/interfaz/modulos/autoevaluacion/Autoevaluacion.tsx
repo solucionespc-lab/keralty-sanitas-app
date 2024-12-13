@@ -20,7 +20,6 @@ import type { Query } from './types/AutoevaluacionTypes';
 
 const Autoevaluacion = () => {
   const { accesos } = usePermisos();
-  const permisos = accesos.evaluaciones;
   const { annio, idEmpresa, idEvaluacion } = useFiltrosStore((state) => state);
   const [estados, setEstados] = useState({
     crear: false,
@@ -71,7 +70,7 @@ const Autoevaluacion = () => {
 
   return (
     <>
-      <h1 className='titulo_modulos'>Autoevaluación</h1>
+      <h1 className='titulo_modulos'>Autoevaluación del SG-SST</h1>
       <div className={styles.botones_contenedor}>
         <div className={styles.acciones_principales}>
           <Button
@@ -101,15 +100,15 @@ const Autoevaluacion = () => {
         <div className={styles.acciones_principales}>
           <Button
             icon='update'
-            name='Actualizar'
+            name='Actualizar datos'
             sizeBtn='small'
             type='button'
             typeBtn='update'
-            permisos={permisos}
+            permisos={accesos.autoevaluacion}
             onClick={() => startTransition(() => refrescar())}
             loading={isPendind}
           />
-          <Button
+          {/* <Button
             icon='filter'
             name='Filtros'
             sizeBtn='small'
@@ -117,7 +116,7 @@ const Autoevaluacion = () => {
             typeBtn='filter'
             permisos={accesos.autoevaluacion}
             onClick={() => setEstados({ ...estados, filtrar: true })}
-          />
+          /> */}
         </div>
       </div>
 
