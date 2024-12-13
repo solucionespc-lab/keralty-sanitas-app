@@ -78,7 +78,7 @@ export const validarDatosTabla = (datosQuery: EvaluacionesType[]) => {
 
 export const resultadoAuditoria = (resultado: number): string => {
   if (resultado === 0) {
-    return 'Sin cálculo';
+    return 'Sin diligenciar';
   }
 
   if (resultado <= 53.5) {
@@ -93,7 +93,7 @@ export const resultadoAuditoria = (resultado: number): string => {
     return 'Aceptable';
   }
 
-  return 'Sin cálculo';
+  return 'Sin dilienciar';
 };
 
 export const clasificarPreguntas = (preguntas: PreguntaEvaluacionType[]) => {

@@ -45,6 +45,8 @@ const CuestionarioComp = () => {
     guardarCuestionario(Object.values(listas.evaluaciones), data.getEmpresa);
   }, [data]);
 
+  console.log(fechaCreacion);
+
   return (
     <section className={stCuestionario.cuestionario}>
       <div className={stCuestionario.cuestionario_info_container}>
@@ -64,7 +66,15 @@ const CuestionarioComp = () => {
           <SelectString
             value={annio.toString()}
             onChange={(e) => guardarDatosBasicos('annio', Number(e))}
-            optionsArray={['2023', '2024', '2025', '2026', '2027', '2028']}
+            optionsArray={[
+              '2022',
+              '2023',
+              '2024',
+              '2025',
+              '2026',
+              '2027',
+              '2028',
+            ]}
             label='Vigencia'
             name='viegencia'
           />
