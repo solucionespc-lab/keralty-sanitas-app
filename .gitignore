@@ -70,3 +70,7 @@ node_modules
 
 # Infisical config
 .infisical.json
+
+# Extension secrets
+extensions/**/*.env
+extensions/**/*.secret.local
