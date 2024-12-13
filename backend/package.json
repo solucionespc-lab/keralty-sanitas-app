@@ -33,6 +33,7 @@
     "express": "^4.19.2",
     "firebase-admin": "^12.1.0",
     "firebase-functions": "^4.9.0",
+    "googleapis": "^144.0.0",
     "graphql": "^16.8.1",
     "graphql-middleware": "^6.1.35",
     "graphql-shield": "^7.6.5",
