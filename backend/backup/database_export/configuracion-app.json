@@ -97,6 +97,38 @@
         "url": "/autoevaluacion"
       }
     ],
+    "sidebar_modulos": [
+      {
+        "llaveModulo": "empresas",
+        "titulo": "Administración de empresas",
+        "url": "/empresa",
+        "estaActivo": true
+      },
+      {
+        "llaveModulo": "trabajadores",
+        "titulo": "Administrar trabajadores",
+        "url": "/trabajadores",
+        "estaActivo": true
+      },
+      {
+        "llaveModulo": "biomecanico",
+        "titulo": "SVE biomecánico",
+        "url": "/biomecanico",
+        "estaActivo": false
+      },
+      {
+        "llaveModulo": "autoevaluacion",
+        "titulo": "Autoevaluación del SG-SST",
+        "url": "/autoevaluacion",
+        "estaActivo": true
+      },
+      {
+        "llaveModulo": "informes",
+        "titulo": "Informes de resultados de la autoevaluación del SG-SST",
+        "url": "/informes",
+        "estaActivo": true
+      }
+    ],
     "version": "1.3.0"
   }
 }
