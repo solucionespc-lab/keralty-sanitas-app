@@ -8,7 +8,6 @@ admin.initializeApp({
   storageBucket: process.env.BUCKET_DEFAULT,
   databaseURL: process.env.REALTIME_DATABASE_URL,
 });
-// TODO Implementar APPCheck para la seguridad de todas las apis creadas en los proyectos
 /*
   .runWith({
       enforceAppCheck: true, // Reject requests with missing or invalid App Check tokens.
