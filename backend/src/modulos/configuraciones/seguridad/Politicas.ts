@@ -1,9 +1,9 @@
-import { and } from 'graphql-shield';
+import { allow } from 'graphql-shield';
 
-import { politicas } from '../../../seguridad/Autorizaciones';
+// import { politicas } from '../../../seguridad/Autorizaciones';
 
 const configQueriesRules = {
-  getConfiguraciones: and(politicas.estaAutenticado),
+  getConfiguraciones: allow,
 };
 
 export { configQueriesRules };

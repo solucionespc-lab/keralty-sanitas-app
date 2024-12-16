@@ -17,9 +17,17 @@ const ConfigSchema = gql`
     llaveModulo: String
   }
 
+  type Sidebar_modulos {
+    titulo: String
+    url: String
+    llaveModulo: String
+    estaActivo: Boolean
+  }
+
   type Configuraciones {
     version: String
     acciones: Acciones
+    sidebar_modulos: [Sidebar_modulos]
     modulos: [Modulos]
     listas: String
   }

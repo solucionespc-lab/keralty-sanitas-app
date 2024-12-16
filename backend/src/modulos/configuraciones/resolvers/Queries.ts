@@ -26,30 +26,36 @@ export const traerConfiguraciones: ResolverArgs<
       version: configuraciones[0].val().version,
       acciones: configuraciones[0].val().acciones,
       modulos: Object.values(configuraciones[0].val().modulos),
+      sidebar_modulos: Object.values(configuraciones[0].val().sidebar_modulos),
       listas: JSON.stringify(configuraciones[1]),
     };
   } catch (err) {
     logger.error(err);
-  }
-
-  return {
-    version: '',
-    acciones: {
-      aplicacion: ['bloqueado'],
-      infraestructura: ['bloqueado'],
-    },
-    modulos: [
-      {
-        descripcion: 'bloqueado',
-        titulo: 'bloqueado',
-        url: '/',
-        subGrupo: 'bloqueado',
-        responsable: 'bloqueado',
-        imagen: 'bloqueado',
-        estaActivo: false,
-        llaveModulo: 'bloqueado',
+    return {
+      version: '',
+      acciones: {
+        aplicacion: ['bloqueado'],
+        infraestructura: ['bloqueado'],
       },
-    ],
-    listas: '{}',
-  };
+      sidedbar_modulos: [
+        {
+          titulo: 'bloqueado',
+          url: '/',
+        },
+      ],
+      modulos: [
+        {
+          descripcion: 'bloqueado',
+          titulo: 'bloqueado',
+          url: '/',
+          subGrupo: 'bloqueado',
+          responsable: 'bloqueado',
+          imagen: 'bloqueado',
+          estaActivo: true,
+          llaveModulo: 'bloqueado',
+        },
+      ],
+      listas: '{}',
+    };
+  }
 };
