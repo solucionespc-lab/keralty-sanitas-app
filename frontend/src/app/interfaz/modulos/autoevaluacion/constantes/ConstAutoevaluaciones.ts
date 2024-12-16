@@ -22,7 +22,7 @@ export const cuestionarioInicial = {
     [nanoid(8)]: {
       codigo: '',
       ciclo: '',
-      estandar: '',
+      estandar: 'recursos',
       item: '',
       criterio: '',
       modo: '',
@@ -37,11 +37,10 @@ export const cuestionarioInicial = {
   },
 };
 
-// TODO la fecha de creacion debe ser por defecto la fecha actual
 export const datosBasicos = {
   id: '',
   idEmpresa: '',
-  fechaCreacion: new Date().toDateString().split('T')[0],
+  fechaCreacion: new Date().toISOString().split('T')[0],
   annio: new Date().getFullYear(),
   puntajeTotal: 0,
   calificacion: '',

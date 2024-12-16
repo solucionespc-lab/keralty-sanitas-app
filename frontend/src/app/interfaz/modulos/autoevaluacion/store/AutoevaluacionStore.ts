@@ -87,13 +87,17 @@ export const guardarCuestionario = (
   cuestionario: ItemCuestionario[],
   empresa: EmpresaType
 ) => {
-  console.log(cuestionario);
-  const preguntasPorTipoEmpresa = cuestionario.filter(
-    (tema) =>
-      Object.values(tema.riesgo).includes(empresa.riesgo) &&
-      tema.tamano === empresa.tamano &&
-      Object.values(tema.tipoEmpresa).includes(empresa.tipoEmpresa)
-  );
+  const preguntasPorTipoEmpresa =
+    empresa.tamano === 'grande'
+      ? cuestionario.filter((tema) =>
+          Object.values(tema.tamano).includes('grande')
+        )
+      : cuestionario.filter(
+          (tema) =>
+            Object.values(tema.riesgo).includes(empresa.riesgo) &&
+            Object.values(tema.tamano).includes(empresa.tamano) &&
+            Object.values(tema.tipoEmpresa).includes(empresa.tipoEmpresa)
+        );
 
   const preguntas = Object.values(preguntasPorTipoEmpresa)
     .map((pregunta) => {

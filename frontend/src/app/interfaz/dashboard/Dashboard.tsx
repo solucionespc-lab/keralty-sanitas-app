@@ -1,6 +1,7 @@
 import { Toaster } from 'sonner';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
+import Informes from 'modulos/informes/Informes';
 import ModuloHuerfano from 'comunes/funcionales/ModuloHuerfano';
 import ModalToast from 'comunes/funcionales/ModalToast';
 import Barrasuperior from 'app/interfaz/barra-superior/Barra-superior';
@@ -39,6 +40,9 @@ const Dashboard = () => {
                 element={<RutaProtegida modulo={modulo.llaveModulo} />}
               />
             ))}
+            <Route path='/informes' element={<Informes />}>
+              <Route path='autoevaluacion' element={<Informes />} />
+            </Route>
             <Route path='*' element={<ModuloHuerfano />} />
           </Routes>
         </ContenedorApp>

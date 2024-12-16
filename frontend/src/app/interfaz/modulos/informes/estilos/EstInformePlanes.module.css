@@ -1,0 +1,43 @@
+.contenedor_planes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gaps-3);
+}
+
+.contenedor_plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-2);
+  padding: var(--gaps-3);
+  border: 1px solid var(--surface-third);
+  border-radius: var(--radius-2);
+  width: min(100%, 800px);
+  margin: 0.5em;
+}
+
+.contenedor_informacion {
+  display: flex;
+  gap: var(--gaps-3);
+}
+
+.etiqueta_primaria {
+  background-color: light-dark(
+    var(--color-add-green-8),
+    var(--color-add-green-1)
+  );
+  padding: 0.3rem 0.5em;
+  border-radius: var(--radius-2);
+  color: light-dark(var(--color-add-green-1), var(--color-add-green-8));
+}
+
+.etiqueta_secundaria {
+  background-color: light-dark(
+    var(--color-add-cyan-8),
+    var(--color-add-cyan-1)
+  );
+  padding: 0.3rem 0.5em;
+  border-radius: var(--radius-2);
+  color: light-dark(var(--color-add-cyan-1), var(--color-add-cyan-8));
+}

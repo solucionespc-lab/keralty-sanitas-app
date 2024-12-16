@@ -39,14 +39,14 @@
   --color-add-green-7: #40c057;
   --color-add-green-8: #185223;
 
-  --color-add-cyan-1: #c5f6fa;
+  --color-add-cyan-1: #d0f6fa;
   --color-add-cyan-2: #99e9f2;
   --color-add-cyan-3: #66d9e8;
   --color-add-cyan-4: #3bc9db;
   --color-add-cyan-5: #22b8cf;
   --color-add-cyan-6: #15aabf;
   --color-add-cyan-7: #1098ad;
-  --color-add-cyan-8: #0c8599;
+  --color-add-cyan-8: #073a42;
 
   --color-add-brown-1: #faf4eb;
   --color-add-brown-2: #ede0d1;
@@ -397,6 +397,7 @@ body {
   --system-success-color: var(--color-add-green-6);
   --system-disabled-color: var(--gray-6);
   --background-modals: hsla(0, 0%, 10%, 0.475);
+  color-scheme: light dark;
 
   --shadow-1: 0px 2px 5px -1px rgba(50, 50, 93, 0.25),
     0px 1px 3px -1px rgba(0, 0, 0, 0.3);
@@ -443,6 +444,7 @@ body {
     --system-success-color: var(--color-add-green-3);
     --system-disabled-color: var(--gray-9);
     --background-modals: #000000b6;
+    color-scheme: light dark;
 
     --shadow-1: 0px 2px 5px -1px rgba(50, 50, 93, 0.25),
       0px 1px 3px -1px rgba(0, 0, 0, 0.3);

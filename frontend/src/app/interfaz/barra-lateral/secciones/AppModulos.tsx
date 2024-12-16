@@ -22,25 +22,15 @@ const AppModulos = () => {
     query: MODULOS_ACCESO,
   });
 
-  const modulosConPermiso = getConfiguraciones.modulos.filter(
-    (modulo: ModulosType) =>
-      accesoModulos.some(
-        (acceso) => modulo.llaveModulo === acceso && modulo.estaActivo
-      )
+  const modulosConPermiso = getConfiguraciones.sidebar_modulos.filter(
+    (modulo: ModulosType) => accesoModulos.some(() => modulo.estaActivo)
   );
 
   return (
     <ModuleContainer open={verModulo}>
       <TitleModule>Módulos</TitleModule>
       {modulosConPermiso?.map((modulo: ModulosType) => (
-        <ModuleSection
-          open={verModulo}
-          to={modulo.url}
-          key={modulo.titulo}
-          onClick={() =>
-            localStorage.setItem('modulo', `${modulo.llaveModulo}`)
-          }
-        >
+        <ModuleSection open={verModulo} to={modulo.url} key={modulo.titulo}>
           <ModuleIcon>{iconografia.module.path}</ModuleIcon>
           <NameModule>{modulo.titulo}</NameModule>
         </ModuleSection>

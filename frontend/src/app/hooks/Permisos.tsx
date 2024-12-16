@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { MODULOS_ACCESO } from 'app/interfaz/dashboard/peticiones/Queries';
 import { useUserStore } from 'app/store/PrincipalStore';
+import { MODULOS_ACCESO } from 'app/interfaz/dashboard/peticiones/Queries';
 import { useApolloClient } from '@apollo/client';
 
 import type {

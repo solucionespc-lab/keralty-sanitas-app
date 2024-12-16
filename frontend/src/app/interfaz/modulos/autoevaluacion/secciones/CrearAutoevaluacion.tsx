@@ -28,7 +28,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
         toast.info('Se registró con éxito la autoevaluación');
         cerrar();
       },
-      refetchQueries: ['GetEvaluaciones'],
+      refetchQueries: ['GetEvaluaciones', 'GetEmpresa'],
     });
   };
 

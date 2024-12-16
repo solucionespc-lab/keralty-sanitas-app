@@ -1,0 +1,5 @@
+.contenedor_informe {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: var(--gaps-3);
+}

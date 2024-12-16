@@ -1,7 +1,6 @@
 import { useShallow } from 'zustand/react/shallow';
 import { useUserStore } from 'store/PrincipalStore';
 import { useEffect } from 'react';
-import useListados from 'hooks/Listados';
 import { SelectString } from 'comunes/controles/select';
 import Radio from 'comunes/controles/Radio';
 import Date from 'comunes/controles/Date';
@@ -9,7 +8,6 @@ import { useSuspenseQuery } from '@apollo/client';
 
 import { QueryEmpresa } from '../types/AutoevaluacionTypes';
 import {
-  guardarCuestionario,
   guardarDatosBasicos,
   guardarDatosEmpresa,
   useAutoevaluacion,
@@ -25,7 +23,6 @@ import stCuestionario from '../estilos/EstCuestionario.module.css';
 import styles from '../estilos/EstAutoevaluaciones.module.css';
 
 const CuestionarioComp = () => {
-  const { listas } = useListados();
   const { usuario } = useUserStore();
   const { data } = useSuspenseQuery<QueryEmpresa>(GET_EMPRESA_AUTOEVALUACION, {
     variables: {
@@ -42,10 +39,7 @@ const CuestionarioComp = () => {
 
   useEffect(() => {
     guardarDatosEmpresa(data.getEmpresa, usuario?.claims.idEmpresa ?? '');
-    guardarCuestionario(Object.values(listas.evaluaciones), data.getEmpresa);
-  }, [data]);
-
-  console.log(fechaCreacion);
+  }, []);
 
   return (
     <section className={stCuestionario.cuestionario}>

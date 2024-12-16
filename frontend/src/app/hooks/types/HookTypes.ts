@@ -17,6 +17,7 @@ export interface ItemCuestionario {
 
 export interface Listas {
   evaluaciones: Record<string, ItemCuestionario>;
+  estandares: Record<string, string>;
 }
 
 export interface ListadosType {

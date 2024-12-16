@@ -1,13 +1,21 @@
-.contenedor_cuestionario {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gaps-3);
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .seccion_cuestionario {
   display: flex;
   flex-direction: column;
   gap: var(--gaps-3);
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 
   h4 {
     color: var(--color-primary-text);
@@ -16,6 +24,7 @@
   p {
     margin-top: 0.5em;
     color: var(--color-primary-text);
+    text-wrap: balance;
   }
 }
 
@@ -25,7 +34,6 @@
   border: 1px solid var(--surface-third);
   border-radius: var(--radius-2);
   padding: var(--gaps-2) var(--gaps-3);
-  max-width: 90ch;
 }
 
 .summary {
@@ -37,6 +45,13 @@
   font-weight: bold;
   font-size: var(--subtitle);
   cursor: pointer;
+}
+
+.estandar {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-wrap: balance;
 }
 
 .titulo {
@@ -71,6 +86,9 @@
 }
 
 .cumple {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: var(--color-primary-text);
   padding: var(--gaps-1);
   border-radius: var(--radius-2);
@@ -80,15 +98,19 @@
   background-color: var(--surface-first);
   user-select: none;
   font-size: var(--paragraph);
+  min-width: 50px;
 
   &:has(input:checked) {
-    color: #3c3c3c;
+    color: var(--color-add-green-1);
     background-color: var(--color-add-green-7);
     border: 1px solid var(--color-add-green-7);
   }
 }
 
 .no_cumple {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: var(--color-primary-text);
   padding: var(--gaps-1);
   border-radius: var(--radius-2);
@@ -98,15 +120,19 @@
   background-color: var(--surface-first);
   user-select: none;
   font-size: var(--paragraph);
+  min-width: 50px;
 
   &:has(input:checked) {
-    color: #fff;
+    color: var(--color-add-red-1);
     background-color: var(--color-add-red-6);
     border: 1px solid var(--color-add-red-6);
   }
 }
 
 .no_aplica {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: var(--color-primary-text);
   padding: var(--gaps-1);
   border-radius: var(--radius-2);
@@ -116,6 +142,7 @@
   background-color: var(--surface-first);
   user-select: none;
   font-size: var(--paragraph);
+  min-width: 50px;
 
   &:has(input:checked) {
     color: #fff;
@@ -154,4 +181,18 @@
   color: var(--color-primary-text);
   font-size: var(--subtitle);
   font-weight: 500;
+}
+
+.contenedor_ciclo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-2);
+  padding: var(--gaps-2);
+  border: 1px solid var(--surface-third);
+  border-radius: var(--radius-2);
+}
+
+.ciclo_titulos {
+  background-color: #c4fbe9;
+  padding: 0 1rem;
 }

@@ -1,12 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const MODULOS_ACCESO = gql`
-  query getConfiguraciones {
+  query GetConfiguraciones {
     getConfiguraciones {
-      acciones {
-        aplicacion
-        infraestructura
-      }
       modulos {
         descripcion
         titulo
@@ -16,6 +12,17 @@ export const MODULOS_ACCESO = gql`
         imagen
         estaActivo
         llaveModulo
+      }
+      sidebar_modulos {
+        titulo
+        url
+        llaveModulo
+        estaActivo
+      }
+      version
+      acciones {
+        aplicacion
+        infraestructura
       }
       listas
     }

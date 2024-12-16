@@ -103,9 +103,9 @@ export const clasificarPreguntas = (preguntas: PreguntaEvaluacionType[]) => {
   const actuar = preguntas.filter((tema) => tema.ciclo === 'Actuar');
 
   return {
-    planear,
-    hacer,
-    verificar,
-    actuar,
+    planear: Object.groupBy(planear, ({ estandar }) => estandar),
+    hacer: Object.groupBy(hacer, ({ estandar }) => estandar),
+    verificar: Object.groupBy(verificar, ({ estandar }) => estandar),
+    actuar: Object.groupBy(actuar, ({ estandar }) => estandar),
   };
 };
