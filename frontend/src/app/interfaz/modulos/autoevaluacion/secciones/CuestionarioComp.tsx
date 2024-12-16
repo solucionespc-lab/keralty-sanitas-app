@@ -106,6 +106,12 @@ const CuestionarioComp = () => {
             }
           />
         </div>
+        <small className={styles.nota}>
+          Nota: Recuerde que el diligenciamiento de la autoevaluación del SG-SST
+          no admite guardar de forma parcial. De clic en el botón “Guardar”
+          únicamente cuando haya respondido todos los ítems que le aplican según
+          el tamaño y la clase de riesgo de la empresa.
+        </small>
       </div>
       <Cuestionario />
     </section>

@@ -93,7 +93,6 @@
   display: flex;
   align-items: center;
   gap: var(--gaps-3);
-  padding: 0.5em;
   border-radius: var(--radius-2);
 
   & h4 {
@@ -144,4 +143,9 @@
   background-color: var(--color-add-red-1);
   border: 1px solid var(--color-add-red-7);
   color: var(--color-add-red-7);
+}
+
+.nota {
+  margin: 0.5em 0;
+  color: var(--color-placeholder);
 }

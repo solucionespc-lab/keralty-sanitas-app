@@ -86,7 +86,7 @@ export const resultadoAuditoria = (resultado: number): string => {
   }
 
   if (resultado <= 69.5) {
-    return 'moderadamente acepable';
+    return 'moderadamente aceptable';
   }
 
   if (resultado > 69.5) {
@@ -108,4 +108,20 @@ export const clasificarPreguntas = (preguntas: PreguntaEvaluacionType[]) => {
     verificar: Object.groupBy(verificar, ({ estandar }) => estandar),
     actuar: Object.groupBy(actuar, ({ estandar }) => estandar),
   };
+};
+
+export const notasAuditoria = (resultado: string): string => {
+  if (resultado === 'Aceptable') {
+    return 'Mantener la calificación y evidencias a disposición del Ministerio del Trabajo e incluir en el plan anual de trabajo las mejoras que se establezcan de acuerdo con la evaluación.';
+  }
+
+  if (resultado === 'moderadamente aceptable') {
+    return 'Enviar a la Administradora de Riesgos Laborales Colsanitas, un reporte de avances en el término máximo de seis (6) meses después de realizada la autoevaluación de estándares mínimos.';
+  }
+
+  if (resultado === 'critico') {
+    return 'Enviar a la Administradora de Riesgos Laborales Colsanitas, un reporte de avances en el término máximo de tres (3) meses después de realizada la autoevaluación de estándares mínimos.';
+  }
+
+  return '';
 };
