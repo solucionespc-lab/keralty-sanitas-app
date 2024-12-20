@@ -51,7 +51,7 @@
       "type": "npm",
       "label": "TS Compiler gcp apis",
       "script": "watch",
-      "path": "gcp-apis",
+      "path": "gcp_apis",
       "problemMatcher": {
         "base": "$tsc-watch",
         "applyTo": "allDocuments"
@@ -69,7 +69,7 @@
       "type": "npm",
       "label": "TS Compiler gcp triggers",
       "script": "watch",
-      "path": "gcp-triggers",
+      "path": "gcp_triggers",
       "problemMatcher": {
         "base": "$tsc-watch",
         "applyTo": "allDocuments"
@@ -87,7 +87,7 @@
       "type": "npm",
       "label": "TS Compiler gcp pubsubs",
       "script": "watch",
-      "path": "gcp-pubsubs",
+      "path": "gcp_pubsubs",
       "problemMatcher": {
         "base": "$tsc-watch",
         "applyTo": "allDocuments"
@@ -142,6 +142,27 @@
     },
     {
       "type": "shell",
+      "label": "Running Services",
+      "group": "build",
+      "dependsOn": ["TS Compiler exportables", "TS Compiler gcp triggers"],
+      "dependsOrder": "parallel",
+      "icon": {
+        "color": "terminal.ansiMagenta",
+        "id": "server"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "revealProblems": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false,
+        "group": "Servicios"
+      }
+    },
+    {
+      "type": "shell",
       "label": "Development environment",
       "group": "build",
       "dependsOn": ["Running Backend", "Running Frontend", "Running Services"],
@@ -159,27 +180,6 @@
         "showReuseMessage": true,
         "clear": false,
         "group": "Dev"
-      }
-    },
-    {
-      "type": "shell",
-      "label": "Running Services",
-      "group": "build",
-      "dependsOn": ["TS Compiler exportables"],
-      "dependsOrder": "parallel",
-      "icon": {
-        "color": "terminal.ansiMagenta",
-        "id": "server"
-      },
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "revealProblems": "always",
-        "focus": true,
-        "panel": "dedicated",
-        "showReuseMessage": true,
-        "clear": false,
-        "group": "Servicios"
       }
     }
   ]
