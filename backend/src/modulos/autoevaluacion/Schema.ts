@@ -1,11 +1,6 @@
 import { gql } from 'graphql-tag';
 
 const EvaluacionesSchema = gql`
-  type FirmaType {
-    nombre: String
-    url: String
-  }
-
   type SoportesType {
     nombre: String
     url: String
@@ -14,8 +9,8 @@ const EvaluacionesSchema = gql`
   type PreguntaEvaluacionType {
     codigo: ID
     respuesta: String
-    planes: [String]
-    soportes: SoportesType
+    plan: String
+    soportes: [SoportesType]
   }
 
   type EvaluacionType {
@@ -26,18 +21,18 @@ const EvaluacionesSchema = gql`
     puntajeTotal: Float
     calificacion: String
     cuestionario: [PreguntaEvaluacionType]
-    firma: FirmaType
+    observaciones: String
     annio: Int
+  }
+
+  extend type Query {
+    getEvaluacion(filtros: FiltrosEvaluacionesInput): EvaluacionType
+    getEvaluaciones(filtros: FiltrosEvaluacionesInput): [EvaluacionType];
   }
 
   extend type Mutation {
     saveEvaluacion(evaluacion: EvaluacionInput): String
     updateEvaluacion(evaluacion: EvaluacionInput): String
-  }
-
-  extend type Query {
-    getEvaluacion(filtros: FiltrosEvaluacionesInput): EvaluacionType
-    getEvaluaciones(filtros: FiltrosEvaluacionesInput): [EvaluacionType]
   }
 `;
 

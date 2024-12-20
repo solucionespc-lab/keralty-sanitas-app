@@ -39,28 +39,14 @@ export const traerEvaluacion: ResolverArgs<
 export const traerEvaluaciones: ResolverArgs<
   EvaParametros,
   EvaluacionesType[]
-> = async (_, { filtros }) => {
-  // const { idEmpresa, annio } = filtros;
+> = async () => {
   const db = admin.firestore();
 
   const evaluacionesRef = db
     .collectionGroup(REF_EVALUACIONES)
     .withConverter(dbDataType<EvaluacionesType>());
 
-  console.log(filtros);
-
-  // const consultas: FiltrosQuery = {
-  //   idEmpresa: ['idEmpresa', '==', idEmpresa],
-  //   annio: ['annio', '==', annio],
-  // };
-
   try {
-    // const evaConsulta = aplicarFiltros<EvaluacionesType, FiltrosEvaluaciones>(
-    //   evaluacionesRef,
-    //   filtros,
-    //   consultas
-    // );
-
     const evaluaciones = await evaluacionesRef.get();
 
     return evaluaciones.docs.map((doc) => ({

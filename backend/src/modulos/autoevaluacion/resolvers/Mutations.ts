@@ -34,7 +34,6 @@ export const guardarEvaluacion: ResolverArgs<
     await evaluacionRef.set(evaluacionRest, { merge: true });
     await empresaRef.set(empresa, { merge: true });
 
-    // TODO Implementar la validación y registro de los planes de acción asignados
     return `Se guardó correctamente la evaluación ${id}`;
   } catch (error) {
     logger.error(error);

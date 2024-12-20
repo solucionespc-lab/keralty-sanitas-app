@@ -1,11 +1,6 @@
 import { gql } from 'graphql-tag';
 
 const EvaluacionesSchemaInputs = gql`
-  input FirmaInput {
-    nombre: String
-    url: String
-  }
-
   input SoportesInput {
     nombre: String
     url: String
@@ -14,8 +9,9 @@ const EvaluacionesSchemaInputs = gql`
   input PreguntaEvaluacionInput {
     codigo: ID
     respuesta: String
-    planes: [String]
-    soportes: SoportesInput
+    plan: String
+    soportes: [SoportesInput]
+    observaciones: String
   }
 
   input EvaluacionInput {
@@ -25,7 +21,7 @@ const EvaluacionesSchemaInputs = gql`
     puntajeTotal: Float
     calificacion: String
     cuestionario: [PreguntaEvaluacionInput]
-    firma: FirmaInput
+    observaciones: String
     annio: Int
     empresa: EmpresaInput
   }
