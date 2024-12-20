@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { guardarRespuesta } from '../../store/AutoevaluacionStore';
+import Observaciones from './Observaciones';
 
 import styles from '../../estilos/EstCuestionario.module.css';
 
@@ -11,6 +12,8 @@ const Pregunta = ({
 }: {
   pregunta: PreguntaEvaluacionType | undefined;
 }) => {
+  // const [evidencias] = useState(false);
+
   return (
     <section className={styles.seccion_cuestionario}>
       <details open key={nanoid()} className={styles.preguntas}>
@@ -55,6 +58,13 @@ const Pregunta = ({
           </div>
         </summary>
         <p>{pregunta?.modo ?? 'Sin información'}</p>
+        <Observaciones
+          idCiclo={`${pregunta?.ciclo}_${pregunta?.orden}`}
+          label='Observaciones'
+          value={pregunta?.observaciones}
+        />
+
+        <input style={{ marginTop: '1em' }} type='file' />
       </details>
     </section>
   );

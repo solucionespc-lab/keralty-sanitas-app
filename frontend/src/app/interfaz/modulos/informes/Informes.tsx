@@ -1,19 +1,19 @@
 import { useUserStore } from 'store/PrincipalStore';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import Condicional from 'comunes/funcionales/Condicional';
 import { useSuspenseQuery } from '@apollo/client';
 
 import { QueryEmpresa } from './types/InformesTypes';
 import { useEmpresa } from './store/StoreInformes';
+import { useFiltrosStore } from './store/FiltrosInformeStore';
 import InformePlanes from './secciones/InformePlanes';
 import InformeEstandar from './secciones/InformeEstandar';
 import InformeCiclo from './secciones/InformeCiclo';
-import { planes, SECCIONES } from './constantes/ConstGenerales';
+import { SECCIONES } from './constantes/ConstGenerales';
 
 import { GET_EMPRESA } from './peticiones/Queries';
 import styles from './estilos/Generales.module.css';
-import planesStyle from './estilos/EstInformePlanes.module.css';
 
 const Informes = () => {
   const [seleccionado, setSeleccionado] = useState('Informe');
@@ -26,6 +26,10 @@ const Informes = () => {
 
   useEffect(() => {
     useEmpresa.setState({ empresa: data.getEmpresa });
+    useFiltrosStore.setState({
+      idEmpresa: data.getEmpresa.nit,
+      annio: new Date().getFullYear(),
+    });
   }, []);
 
   return (
@@ -56,11 +60,9 @@ const Informes = () => {
       </Condicional>
 
       <Condicional condicion={seleccionado === 'Planes de acción'}>
-        {planes.map((plan, index) => (
-          <main key={index} className={planesStyle.contenedor_planes}>
-            <InformePlanes plan={plan} />
-          </main>
-        ))}
+        <Suspense fallback={<div>Cargando planes de acción</div>}>
+          <InformePlanes />
+        </Suspense>
       </Condicional>
     </>
   );

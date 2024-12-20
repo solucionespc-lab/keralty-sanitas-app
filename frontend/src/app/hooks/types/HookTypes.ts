@@ -12,6 +12,7 @@ export interface ItemCuestionario {
     modo: string;
     ponderacion: number;
     orden: number;
+    planAccion: string;
   }[];
 }
 

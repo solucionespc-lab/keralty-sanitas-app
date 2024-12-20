@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { DEV_MODE } from 'configuraciones/VariablesEstaticasGlobales';
 
 import { EmpresaType } from '../types/AutoevaluacionTypes';
-import { resultadoAuditoria } from '../funciones/Funciones';
+import { determinarPlan, resultadoAuditoria } from '../funciones/Funciones';
 import {
   cuestionarioInicial,
   datosBasicos,
@@ -30,7 +30,6 @@ export const useCuestionario = create(
 );
 
 // Funciones del STORE
-
 export const guardarDatosBasicos = (campo: string, valor: string | number) => {
   if (campo === 'tamano' || campo === 'riesgo') {
     useAutoevaluacion.setState((state) => ({
@@ -56,17 +55,24 @@ export const guardarDatosEmpresa = (
 export const guardarRespuesta = (
   codigo: string,
   campo: string,
-  valor: string | boolean | number
+  valor: string | number
 ) => {
-  useCuestionario.setState(({ cuestionario }) => ({
-    cuestionario: {
-      ...cuestionario,
-      [codigo]: {
-        ...cuestionario[codigo],
-        [campo]: valor,
+  useCuestionario.setState(({ cuestionario }) => {
+    const cuestionarioUnico = { ...cuestionario[codigo] };
+
+    console.log(cuestionarioUnico);
+
+    return {
+      cuestionario: {
+        ...cuestionario,
+        [codigo]: {
+          ...cuestionarioUnico,
+          [campo]: valor,
+          plan: determinarPlan(campo, valor, cuestionarioUnico.planAccion),
+        },
       },
-    },
-  }));
+    };
+  });
 
   const estado = useCuestionario.getState();
 
@@ -80,6 +86,22 @@ export const guardarRespuesta = (
   useAutoevaluacion.setState({
     puntajeTotal: 100 - total,
     calificacion: resultadoAuditoria(100 - total),
+  });
+};
+
+export const guardarObservaciones = (codigo: string, valor: string) => {
+  useCuestionario.setState(({ cuestionario }) => {
+    const cuestionarioUnico = { ...cuestionario[codigo] };
+
+    return {
+      cuestionario: {
+        ...cuestionario,
+        [codigo]: {
+          ...cuestionarioUnico,
+          observaciones: valor,
+        },
+      },
+    };
   });
 };
 
@@ -112,12 +134,10 @@ export const guardarCuestionario = (
     acum[id] = {
       ...pregunta,
       respuesta: '',
-      planes: [''],
-      soportes: {
-        nombre: '',
-        url: '',
-      },
+      plan: '',
+      soportes: [],
     };
+
     return acum;
   }, {});
 
@@ -132,8 +152,9 @@ export function prepararEvaluacion() {
     return {
       codigo: pregunta[0],
       respuesta: pregunta[1].respuesta,
-      planes: pregunta[1].planes,
+      plan: pregunta[1].plan,
       soportes: pregunta[1].soportes,
+      observaciones: pregunta[1].observaciones,
     };
   });
 

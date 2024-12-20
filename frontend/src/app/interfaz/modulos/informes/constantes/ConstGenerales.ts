@@ -159,44 +159,11 @@ export const opcionesGrafica2 = {
   ],
 };
 
-export const planes = [
-  {
-    ciclo: 'Planear',
-    criterios:
-      'Empresas de diez (10) o menos trabajadores clasificadas en riesgo I, II, III Asignar una persona que cumpla con el siguiente perfil:El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de menos de diez (10) trabajadores en clase de riesgo I, II, III puede ser realizado por un técnico en Seguridad y Salud en el Trabajo (SST) o en alguna de sus áreas, con licencia vigente en Seguridad y Salud en el Trabajo, que acredite mínimo un (1) año de experiencia certificada por las empresas o entidades en las que laboró en el desarrollo de actividades de Seguridad y Salud en el Trabajo y que acredite la aprobación del curso de capacitación virtual de cincuenta (50) horas.Esta actividad también podrá ser desarrollada por tecnólogos, profesionales y profesionales con posgrado en SST, que cuenten con licencia vigente en Seguridad y Salud en el Trabajo y el referido curso de capacitación virtual de cincuenta (50) horas.',
-    estandar: 'recursos',
-    item: 'Asignación de persona que diseña el Sistema de Gestión de SST',
-    modo: 'Solicitar documento soporte de la asignación y constatar la hoja de vida con soportes, de la persona asignada.',
-    orden: 1,
-    planAccion:
-      'Asignar una persona que cumpla con el siguiente perfil:El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de menos de diez (10) trabajadores en clase de riesgo I, II, III puede ser realizado por un técnico en Seguridad y Salud en el Trabajo (SST) o en alguna de sus áreas, con licencia vigente en Seguridad y Salud en el Trabajo, que acredite mínimo un (1) año de experiencia certificada por las empresas o entidades en las que laboró en el desarrollo de actividades de Seguridad y Salud en el Trabajo y que acredite la aprobación del curso de capacitación virtual de cincuenta (50) horas.Esta actividad también podrá ser desarrollada por tecnólogos, profesionales y profesionales con posgrado en SST, que cuenten con licencia vigente en Seguridad y Salud en el Trabajo y el referido curso de capacitación virtual de cincuenta (50) horas.',
-    ponderacion: 0.5,
-    respuesta: '',
-  },
-  {
-    ciclo: 'Hacer',
-    criterios:
-      'Empresas de diez (10) o menos trabajadores clasificadas en riesgo I, II, III Asignar una persona que cumpla con el siguiente perfil:El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de menos de diez (10) trabajadores en clase de riesgo I, II, III puede ser realizado por un técnico en Seguridad y Salud en el Trabajo (SST) o en alguna de sus áreas, con licencia vigente en Seguridad y Salud en el Trabajo, que acredite mínimo un (1) año de experiencia certificada por las empresas o entidades en las que laboró en el desarrollo de actividades de Seguridad y Salud en el Trabajo y que acredite la aprobación del curso de capacitación virtual de cincuenta (50) horas.Esta actividad también podrá ser desarrollada por tecnólogos, profesionales y profesionales con posgrado en SST, que cuenten con licencia vigente en Seguridad y Salud en el Trabajo y el referido curso de capacitación virtual de cincuenta (50) horas.',
-    estandar: 'recursos',
-    item: 'Asignación de persona que diseña el Sistema de Gestión de SST',
-    modo: 'Solicitar documento soporte de la asignación y constatar la hoja de vida con soportes, de la persona asignada.',
-    orden: 1,
-    planAccion:
-      'Conformar y garantizar el funcionamiento del Comité Paritario de Seguridad y Salud en el Trabajo – COPASST.',
-    ponderacion: 0.5,
-    respuesta: '',
-  },
-  {
-    ciclo: 'Hacer',
-    criterios:
-      'Empresas de diez (10) o menos trabajadores clasificadas en riesgo I, II, III Asignar una persona que cumpla con el siguiente perfil:El diseño del Sistema de Gestión de Seguridad y Salud en el Trabajo, para empresas de menos de diez (10) trabajadores en clase de riesgo I, II, III puede ser realizado por un técnico en Seguridad y Salud en el Trabajo (SST) o en alguna de sus áreas, con licencia vigente en Seguridad y Salud en el Trabajo, que acredite mínimo un (1) año de experiencia certificada por las empresas o entidades en las que laboró en el desarrollo de actividades de Seguridad y Salud en el Trabajo y que acredite la aprobación del curso de capacitación virtual de cincuenta (50) horas.Esta actividad también podrá ser desarrollada por tecnólogos, profesionales y profesionales con posgrado en SST, que cuenten con licencia vigente en Seguridad y Salud en el Trabajo y el referido curso de capacitación virtual de cincuenta (50) horas.',
-    estandar: 'integral',
-    item: 'Asignación de persona que diseña el Sistema de Gestión de SST',
-    modo: 'Solicitar documento soporte de la asignación y constatar la hoja de vida con soportes, de la persona asignada.',
-    orden: 1,
-    planAccion:
-      'Disponer de mecanismos eficaces para recibir y responder las comunicaciones internas y externas relativas a la Seguridad y Salud en el Trabajo, como por ejemplo auto reporte de condiciones de trabajo y de salud por parte de los trabajadores o contratistas.',
-    ponderacion: 0.5,
-    respuesta: '',
-  },
-];
+export const inicialFiltros = {
+  idEmpresa: '',
+  idEmpresaAplicado: '',
+  annioAplicado: 2024,
+  annio: 2024,
+  idEvaluacionAplicado: '',
+  idEvaluacion: '',
+};

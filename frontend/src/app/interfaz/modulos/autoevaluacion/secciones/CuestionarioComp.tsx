@@ -17,6 +17,7 @@ import {
   tamanoEmpresa2,
 } from '../constantes/ConstAutoevaluaciones';
 import Cuestionario from './componentes/Cuestionario';
+import { establecerAnnios } from '../funciones/Funciones';
 
 import { GET_EMPRESA_AUTOEVALUACION } from '../peticiones/Queries';
 import stCuestionario from '../estilos/EstCuestionario.module.css';
@@ -60,15 +61,7 @@ const CuestionarioComp = () => {
           <SelectString
             value={annio.toString()}
             onChange={(e) => guardarDatosBasicos('annio', Number(e))}
-            optionsArray={[
-              '2022',
-              '2023',
-              '2024',
-              '2025',
-              '2026',
-              '2027',
-              '2028',
-            ]}
+            optionsArray={establecerAnnios()}
             label='Vigencia'
             name='viegencia'
           />

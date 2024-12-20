@@ -21,3 +21,13 @@ export interface PlanType {
     respuesta: string;
   };
 }
+
+export interface PreguntaEvaluacionType {
+  plan: string;
+}
+
+interface EvaluacionesType {
+  cuestionario: PreguntaEvaluacionType[];
+}
+
+export type Query = { getEvaluaciones: EvaluacionesType[] };

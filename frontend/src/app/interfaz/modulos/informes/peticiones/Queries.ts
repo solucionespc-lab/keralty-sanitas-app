@@ -12,3 +12,13 @@ export const GET_EMPRESA = gql`
     }
   }
 `;
+
+export const GET_PLANES = gql`
+  query GetEvaluaciones($filtros: FiltrosEvaluacionesInput) {
+    getEvaluaciones(filtros: $filtros) {
+      cuestionario {
+        plan
+      }
+    }
+  }
+`;

@@ -125,3 +125,26 @@ export const notasAuditoria = (resultado: string): string => {
 
   return '';
 };
+
+export function determinarPlan(
+  campo: string,
+  respuesta: string | number,
+  plan: string
+) {
+  if (campo === 'respuesta' && respuesta === 'no_cumple') {
+    return plan;
+  }
+  return '';
+}
+
+export function establecerAnnios() {
+  const fechaInicial = 2022;
+  const fechaFinal = new Date().getFullYear() + 1;
+
+  // Creamos un array de con los annions
+  const annios = Array.from({ length: fechaFinal - fechaInicial }, (_, i) =>
+    (i + fechaInicial).toString()
+  );
+
+  return annios;
+}

@@ -4,6 +4,15 @@ export type MetaDataType = { name: string; url: string; type: string };
 type CallbackOnChange = (e: MetaDataType[]) => void;
 export type ObjEvidenciasType = { [campo: string]: MetaDataType[] };
 
+type AcceptFileType =
+  | 'audio/*'
+  | 'video/*'
+  | 'image/*'
+  | '.pdf'
+  | '.doc'
+  | '.docx'
+  | string;
+
 /**
  * @param evidencia Objeto o arreglo de objetos con los metadatos que almacenan la evidencia.
  * @param required Opcional, valida si es obligatorio al menos subir un archivo
@@ -19,7 +28,7 @@ export interface EvidenciasPropsType {
   evidencia: ObjEvidenciasType;
   required?: boolean;
   disabled?: boolean;
-  usuario: AuthClaimsType;
+  usuario: AuthClaimsType | undefined;
   permisos: string[];
   verTodo?: boolean;
   campo: string;
@@ -42,14 +51,7 @@ interface UpdaterChangeFuncProps {
   file?: File;
   status?: boolean;
 }
-type AcceptFileType =
-  | 'audio/*'
-  | 'video/*'
-  | 'image/*'
-  | '.pdf'
-  | '.doc'
-  | '.docx'
-  | string;
+
 export interface FileUploaderPropsType {
   accept?: AcceptFileType;
   permisos: string[];

@@ -3,11 +3,6 @@ interface SoportesType {
   url: string;
 }
 
-interface FirmaType {
-  nombre: string;
-  url: string;
-}
-
 export interface EmpresaType {
   nit: string;
   nombre: string;
@@ -27,7 +22,8 @@ export interface PreguntaEvaluacionType {
   orden?: number;
   respuesta?: string;
   planes?: string[];
-  soportes?: SoportesType;
+  soportes?: SoportesType[];
+  observaciones: string;
 }
 
 export interface FiltrosEvaluaciones {
@@ -44,7 +40,6 @@ export interface EvaluacionesType {
   tamano: string;
   empresa: EmpresaType;
   cuestionario: PreguntaEvaluacionType[];
-  firma: FirmaType;
   puntajeTotal: number;
   calificacion: string;
 }

@@ -1,9 +1,11 @@
-import { Button } from 'comunes/controles/Buttons';
 import { useState } from 'react';
-import Condicional from '../Condicional';
-import { DivEvidencia, InputOculto, Label } from './estilos/EstilosEvidencia';
-import CargarArchivos from './secciones/ModalEvidencias';
+import { Button } from 'comunes/controles/Buttons';
+
 import { EvidenciasPropsType } from './types/EvidenciasTypes';
+import CargarArchivos from './secciones/ModalEvidencias';
+import Condicional from '../Condicional';
+
+import { DivEvidencia, InputOculto, Label } from './estilos/EstilosEvidencia';
 
 const ControlEvidencia = ({
   evidencia,

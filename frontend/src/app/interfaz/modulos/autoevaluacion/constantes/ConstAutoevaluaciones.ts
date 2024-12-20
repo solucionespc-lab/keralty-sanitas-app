@@ -26,13 +26,12 @@ export const cuestionarioInicial = {
       item: '',
       criterio: '',
       modo: '',
+      observaciones: '',
       ponderacion: 1,
       respuesta: '',
-      planes: [''],
-      soportes: {
-        nombre: '',
-        url: '',
-      },
+      planAccion: '',
+      plan: '',
+      soportes: [],
     },
   },
 };
@@ -44,10 +43,6 @@ export const datosBasicos = {
   annio: new Date().getFullYear(),
   puntajeTotal: 0,
   calificacion: '',
-  firma: {
-    nombre: '',
-    url: '',
-  },
   empresa: {
     nit: '',
     nombre: '',

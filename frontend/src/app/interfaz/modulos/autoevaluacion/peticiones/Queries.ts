@@ -8,19 +8,6 @@ export const GET_EVALUACIONES = gql`
       fechaCreacion
       puntajeTotal
       calificacion
-      cuestionario {
-        codigo
-        respuesta
-        planes
-        soportes {
-          nombre
-          url
-        }
-      }
-      firma {
-        nombre
-        url
-      }
       empresa {
         nombre
         riesgo
@@ -42,15 +29,11 @@ export const GET_EVALUACION = gql`
       cuestionario {
         codigo
         respuesta
-        planes
+        plan
         soportes {
           nombre
           url
         }
-      }
-      firma {
-        nombre
-        url
       }
       annio
     }

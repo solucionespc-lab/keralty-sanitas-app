@@ -100,7 +100,7 @@ const Autoevaluacion = () => {
         <div className={styles.acciones_principales}>
           <Button
             icon='update'
-            name='Actualizar datos'
+            name='Actualizar tabla'
             sizeBtn='small'
             type='button'
             typeBtn='update'
@@ -108,15 +108,6 @@ const Autoevaluacion = () => {
             onClick={() => startTransition(() => refrescar())}
             loading={isPendind}
           />
-          {/* <Button
-            icon='filter'
-            name='Filtros'
-            sizeBtn='small'
-            type='button'
-            typeBtn='filter'
-            permisos={accesos.autoevaluacion}
-            onClick={() => setEstados({ ...estados, filtrar: true })}
-          /> */}
         </div>
       </div>
 
@@ -174,16 +165,6 @@ const Autoevaluacion = () => {
           cerrar={() => setEstados({ ...estados, crear: false })}
         />
       </Condicional>
-
-      {/* <Condicional condicion={estados.editar}>
-        <h1>Editar Auditoria</h1>
-        <EditarAuditoria
-          permisos={permisos}
-          idAuditoria={estados.idAuditoria}
-          idContratista={estados.idContratista}
-          cerrar={() => setEstados({ ...estados, editar: false })}
-        />
-      </Condicional> */}
 
       <Condicional condicion={estados.filtrar}>
         <FiltrosAuditoria
