@@ -8,12 +8,6 @@ admin.initializeApp({
   storageBucket: process.env.BUCKET_DEFAULT,
   databaseURL: process.env.REALTIME_DATABASE_URL,
 });
-/*
-  .runWith({
-      enforceAppCheck: true, // Reject requests with missing or invalid App Check tokens.
-      consumeAppCheckToken: true  // Consume the token after verification.
-  })
-*/
 
 const trigger = { ejemploTrigger };
 
