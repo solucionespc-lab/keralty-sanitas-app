@@ -12,12 +12,12 @@ import {
   guardarDatosEmpresa,
   useAutoevaluacion,
 } from '../store/AutoevaluacionStore';
+import { establecerAnnios } from '../funciones/Funciones';
 import {
   tamanoEmpresa,
   tamanoEmpresa2,
 } from '../constantes/ConstAutoevaluaciones';
 import Cuestionario from './componentes/Cuestionario';
-import { establecerAnnios } from '../funciones/Funciones';
 
 import { GET_EMPRESA_AUTOEVALUACION } from '../peticiones/Queries';
 import stCuestionario from '../estilos/EstCuestionario.module.css';
@@ -52,6 +52,7 @@ const CuestionarioComp = () => {
 
         <div style={{ display: 'flex', gap: '1em' }}>
           <Date
+            required
             label='Fecha de evaluación'
             value={fechaCreacion}
             onChange={(fecha) =>
@@ -99,12 +100,6 @@ const CuestionarioComp = () => {
             }
           />
         </div>
-        <small className={styles.nota}>
-          Nota: Recuerde que el diligenciamiento de la autoevaluación del SG-SST
-          no admite guardar de forma parcial. De clic en el botón “Guardar”
-          únicamente cuando haya respondido todos los ítems que le aplican según
-          el tamaño y la clase de riesgo de la empresa.
-        </small>
       </div>
       <Cuestionario />
     </section>

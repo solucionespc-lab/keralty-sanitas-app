@@ -1,32 +1,11 @@
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    background-color: var(--background-modals);
-  }
+.contenedor_flex {
+  display: flex;
+  gap: var(--gaps-2);
 }
 
-.contenedor_auditorias {
+.contenedor_evaluaciones {
   position: relative;
-  width: minmax(300px, 150ch);
-  margin: 0 auto;
-}
-
-.buscar_contratistas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: grid;
-  place-items: center;
-  border: none;
-  width: 100vw;
-  height: 100vh;
-  z-index: var(--layer-2);
-
-  &[open] {
-    animation: fadein 0.2s ease-in forwards;
-  }
+  width: min(100%, 900px);
 }
 
 .secciones {
@@ -148,4 +127,54 @@
 .nota {
   margin: 0.5em 0;
   color: var(--color-placeholder);
+}
+
+.seccion_advertencia {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.seccion_informativa {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-2);
+  background-color: var(--base);
+  border-radius: var(--radius-3);
+  border: 1px solid var(--surface-third);
+  padding: var(--gaps-3);
+  box-shadow: var(--shadow-3);
+  max-width: 450px;
+}
+
+.boton_confirmar {
+  font-size: var(--paragraph);
+  background-color: var(--brand-secondary);
+  color: black;
+  padding: var(--gaps-2);
+  border-radius: var(--radius-2);
+  border: none;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.boton_cancelar {
+  font-size: var(--paragraph);
+  background-color: var(--base);
+  color: black;
+  padding: var(--gaps-2);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--surface-third);
+
+  &:active {
+    transform: scale(0.9);
+  }
 }

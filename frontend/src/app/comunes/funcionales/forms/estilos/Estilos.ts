@@ -46,7 +46,7 @@ export const ChildrenContainer = styled.div`
   align-items: center;
   border-bottom-left-radius: var(--radius-2);
   border-bottom-right-radius: var(--radius-2);
-  padding: var(--gaps-2) var(--gaps-3);
+  padding: 0 var(--gaps-3);
   background-color: var(--base);
   overflow-y: auto;
   width: -webkit-fill-available;

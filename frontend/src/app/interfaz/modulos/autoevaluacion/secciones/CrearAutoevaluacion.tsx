@@ -1,7 +1,8 @@
 import { toast } from 'sonner';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import usePermisos from 'hooks/Permisos';
 import Cargando from 'comunes/informativos/Cargando';
+import Modal from 'comunes/funcionales/Modal';
 import FormModal from 'comunes/funcionales/forms/Form';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation } from '@apollo/client';
@@ -18,6 +19,7 @@ import type { CrearFormProps } from '../types/AutoevaluacionForms';
 const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
   const { accesos } = usePermisos();
   const [saveEvaluacion, { loading }] = useMutation(SAVE_EVALUACION);
+  const [estaIncompleto, setIncompleto] = useState(false);
 
   const guardarEvaluacion = () => {
     saveEvaluacion({
@@ -48,7 +50,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
           icon='new'
           name='Guardar'
           sizeBtn='normal'
-          type='submit'
+          type='button'
           id='registrar'
           typeBtn='primary'
           permisos={accesos.autoevaluacion}
@@ -57,7 +59,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
         />,
       ]}
     >
-      <main className={styles.contenedor_auditorias}>
+      <main className={styles.contenedor_evaluaciones}>
         <div className={styles.contenedor_volver}>
           <ResultadoAuditorias />
         </div>
@@ -68,6 +70,38 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
         >
           <CuestionarioComp />
         </Suspense>
+
+        <Modal>
+          <dialog className={styles.seccion_advertencia} open={estaIncompleto}>
+            <section className={styles.seccion_informativa}>
+              <p style={{ color: 'var(--color-primary-text)' }}>
+                Recuerde que el diligenciamiento de la autoevaluación del SG-SST
+                no admite guardar de forma parcial. De clic en el botón
+                “Guardar” únicamente cuando haya respondido todos los ítems que
+                le aplican según el tamaño y la clase de riesgo de la empresa.
+              </p>
+              <p style={{ color: 'var(--color-primary-text)' }}>
+                ¿Está seguro de guardar la autoevaluación, tiene requisitos sin
+                diligenciar y puede afectar la calificación?
+              </p>
+              <div
+                style={{ alignSelf: 'flex-end', marginTop: '1em' }}
+                className={styles.contenedor_flex}
+              >
+                <button
+                  type='button'
+                  className={styles.boton_cancelar}
+                  onClick={() => setIncompleto(false)}
+                >
+                  Cancelar
+                </button>
+                <button type='submit' className={styles.boton_confirmar}>
+                  Si, guardar
+                </button>
+              </div>
+            </section>
+          </dialog>
+        </Modal>
       </main>
     </FormModal>
   );

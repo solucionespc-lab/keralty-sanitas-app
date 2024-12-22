@@ -27,7 +27,7 @@ const EvaluacionesSchema = gql`
 
   extend type Query {
     getEvaluacion(filtros: FiltrosEvaluacionesInput): EvaluacionType
-    getEvaluaciones(filtros: FiltrosEvaluacionesInput): [EvaluacionType];
+    getEvaluaciones(filtros: FiltrosEvaluacionesInput): [EvaluacionType]
   }
 
   extend type Mutation {
