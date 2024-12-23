@@ -1,0 +1,6 @@
+packages:
+  - "frontend"
+  - "backend"
+  - "gcp_exportables_pdf"
+  - "gcp_servicios"
+  - "gcp_triggers"
