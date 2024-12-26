@@ -4,7 +4,6 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'configuraciones/Firebase';
 
 import LoginButton from '../LoginButton';
-import { validarErrores } from '../../funciones/Validaciones';
 
 import {
   Campos,
@@ -30,9 +29,7 @@ const CrearCuenta = () => {
 
     createUserWithEmailAndPassword(auth, correo, password)
       .then(() => toast.info('Se ha creado el acceso a la plataforma'))
-      .catch((err) => {
-        validarErrores(err.code);
-      });
+      .catch((err) => toast.error(err.code));
   };
 
   return (
