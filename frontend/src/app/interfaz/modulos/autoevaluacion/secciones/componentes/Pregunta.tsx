@@ -12,8 +12,6 @@ const Pregunta = ({
 }: {
   pregunta: PreguntaEvaluacionType | undefined;
 }) => {
-  // const [evidencias] = useState(false);
-
   return (
     <section className={styles.seccion_cuestionario}>
       <details open key={nanoid()} className={styles.preguntas}>
@@ -57,7 +55,9 @@ const Pregunta = ({
             </label>
           </div>
         </summary>
+
         <p>{pregunta?.modo ?? 'Sin información'}</p>
+
         <Observaciones
           idCiclo={`${pregunta?.ciclo}_${pregunta?.orden}`}
           label='Observaciones'

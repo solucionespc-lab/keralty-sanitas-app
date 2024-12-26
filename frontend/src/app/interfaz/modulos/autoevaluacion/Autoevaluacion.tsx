@@ -1,3 +1,4 @@
+import { useUserStore } from 'store/PrincipalStore';
 import { toast } from 'sonner';
 import { useCallback, useState, useTransition } from 'react';
 import usePermisos from 'hooks/Permisos';
@@ -19,8 +20,9 @@ import styles from './estilos/EstGenAuditoria.module.css';
 import type { Query } from './types/AutoevaluacionTypes';
 
 const Autoevaluacion = () => {
+  const { usuario } = useUserStore();
   const { accesos } = usePermisos();
-  const { annio, idEmpresa, idEvaluacion } = useFiltrosStore((state) => state);
+  const { annio, idEvaluacion } = useFiltrosStore((state) => state);
   const [estados, setEstados] = useState({
     crear: false,
     editar: false,
@@ -32,12 +34,16 @@ const Autoevaluacion = () => {
 
   const { data, error, refetch } = useSuspenseQuery<Query>(GET_EVALUACIONES, {
     variables: {
-      filtros: { idEmpresa, annio, idEvaluacion },
+      filtros: {
+        idEmpresa: usuario?.claims.idEmpresa ?? '',
+        annio,
+        idEvaluacion,
+      },
     },
   });
 
   const tituloFiltros = {
-    empresa: idEmpresa,
+    empresa: usuario?.claims.idEmpresa ?? '',
     año: annio,
   };
 

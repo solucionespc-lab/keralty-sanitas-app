@@ -29,7 +29,6 @@ export const GET_EVALUACION = gql`
       cuestionario {
         codigo
         respuesta
-        plan
         soportes {
           nombre
           url

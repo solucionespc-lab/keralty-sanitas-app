@@ -1,15 +1,5 @@
 export const SECCIONES = ['Informe', 'Planes de acción'];
 
-export const EMPRESA_INICIAL = {
-  empresa: {
-    nit: '',
-    nombre: '',
-    riesgo: '',
-    tamano: '',
-    tipoEmpresa: 'empresa',
-  },
-};
-
 export const optionesTabla1 = {
   legend: {
     data: ['% Obtenido', 'Moderadamente aceptable', 'Aceptable'],
@@ -162,8 +152,21 @@ export const opcionesGrafica2 = {
 export const inicialFiltros = {
   idEmpresa: '',
   idEmpresaAplicado: '',
-  annioAplicado: 2024,
-  annio: 2024,
-  idEvaluacionAplicado: '',
-  idEvaluacion: '',
+  fechaInicioAplicado: '',
+  fechaInicio: '',
+  fechaFinAplicado: '',
+  fechaFin: '',
+};
+
+export const INICIAL_PLANES = {
+  planesAccion: [
+    {
+      idPlan: '',
+      idEmpresa: '',
+      fechaCompromiso: '',
+      fechaEjecucion: '',
+      descripcion: '',
+      responsables: '',
+    },
+  ],
 };

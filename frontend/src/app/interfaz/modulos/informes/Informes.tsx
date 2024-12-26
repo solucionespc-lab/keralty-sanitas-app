@@ -1,36 +1,16 @@
-import { useUserStore } from 'store/PrincipalStore';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useState } from 'react';
 import { nanoid } from 'nanoid';
 import Condicional from 'comunes/funcionales/Condicional';
-import { useSuspenseQuery } from '@apollo/client';
 
-import { QueryEmpresa } from './types/InformesTypes';
-import { useEmpresa } from './store/StoreInformes';
-import { useFiltrosStore } from './store/FiltrosInformeStore';
 import InformePlanes from './secciones/InformePlanes';
 import InformeEstandar from './secciones/InformeEstandar';
 import InformeCiclo from './secciones/InformeCiclo';
 import { SECCIONES } from './constantes/ConstGenerales';
 
-import { GET_EMPRESA } from './peticiones/Queries';
 import styles from './estilos/Generales.module.css';
 
 const Informes = () => {
   const [seleccionado, setSeleccionado] = useState('Informe');
-  const { usuario } = useUserStore();
-  const { data } = useSuspenseQuery<QueryEmpresa>(GET_EMPRESA, {
-    variables: {
-      idEmpresa: usuario?.claims.idEmpresa ?? '',
-    },
-  });
-
-  useEffect(() => {
-    useEmpresa.setState({ empresa: data.getEmpresa });
-    useFiltrosStore.setState({
-      idEmpresa: data.getEmpresa.nit,
-      annio: new Date().getFullYear(),
-    });
-  }, []);
 
   return (
     <>

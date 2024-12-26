@@ -1,5 +1,6 @@
+import { useUserStore } from 'store/PrincipalStore';
 import { Toaster } from 'sonner';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import Informes from 'modulos/informes/Informes';
 import ModuloHuerfano from 'comunes/funcionales/ModuloHuerfano';
@@ -11,6 +12,7 @@ import { useSuspenseQuery } from '@apollo/client';
 import RutaProtegida from './secciones/RutaProtegida';
 import PanelPrincipal from './secciones/Main';
 import ErrorFallback from './secciones/ErrorComponent';
+import CrearEmpresa from './secciones/CrearEmpresa';
 
 import { MODULOS_ACCESO } from './peticiones/Queries';
 import { ContenedorApp } from './estilos/Estilos';
@@ -18,10 +20,21 @@ import { ContenedorApp } from './estilos/Estilos';
 import type { configType } from './types/DashboardTypes';
 
 const Dashboard = () => {
+  const { usuario } = useUserStore();
   const { data } = useSuspenseQuery<configType>(MODULOS_ACCESO);
+  const idEmpresa = usuario?.claims.idEmpresa ?? '';
+
+  if (idEmpresa === '') {
+    return (
+      <ContenedorApp>
+        <Barrasuperior />
+        <CrearEmpresa />
+      </ContenedorApp>
+    );
+  }
 
   return (
-    <Router>
+    <>
       <Barrasuperior />
       <BarraLateral />
       <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -50,7 +63,7 @@ const Dashboard = () => {
           <Toaster theme='system' visibleToasts={5} />
         </ModalToast>
       </ErrorBoundary>
-    </Router>
+    </>
   );
 };
 

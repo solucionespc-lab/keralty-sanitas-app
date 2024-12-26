@@ -8,26 +8,33 @@ export interface EmpresaType {
 
 export type QueryEmpresa = { getEmpresa: EmpresaType };
 
-export interface PlanType {
-  plan: {
-    ciclo: string;
-    criterios: string;
-    estandar: string;
-    item: string;
-    modo: string;
-    orden: number;
-    planAccion: string;
-    ponderacion: number;
-    respuesta: string;
+export interface PlanesType {
+  idPlan: string;
+  idEmpresa: string;
+  fechaCompromiso: string;
+  fechaEjecucion: string;
+  descripcion: string;
+  responsables: string;
+}
+
+export interface PlanesInputArgs {
+  planesAccionInput: {
+    idEmpresa: string;
+    idPlan: string;
+    fechaCompromiso: string;
+    fechaEjecucion: string;
   };
 }
 
-export interface PreguntaEvaluacionType {
-  plan: string;
+export interface FiltrosPlanes {
+  fechaInicio: string;
+  fechaFin: string;
 }
 
-interface EvaluacionesType {
-  cuestionario: PreguntaEvaluacionType[];
+export interface PlanesArgs {
+  filtros: FiltrosPlanes;
+  idEmpresa: string;
 }
 
-export type Query = { getEvaluaciones: EvaluacionesType[] };
+export type Query = { getPlanesAccion: PlanesType[] };
+export type MutationResponse = { savePlanesAccion: string };

@@ -2,8 +2,8 @@ import { toast } from 'sonner';
 import { Suspense, useState } from 'react';
 import usePermisos from 'hooks/Permisos';
 import Cargando from 'comunes/informativos/Cargando';
-import Modal from 'comunes/funcionales/Modal';
 import FormModal from 'comunes/funcionales/forms/Form';
+import Condicional from 'comunes/funcionales/Condicional';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation } from '@apollo/client';
 
@@ -20,7 +20,6 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
   const { accesos } = usePermisos();
   const [saveEvaluacion, { loading }] = useMutation(SAVE_EVALUACION);
   const [estaIncompleto, setIncompleto] = useState(false);
-
   const guardarEvaluacion = () => {
     saveEvaluacion({
       variables: { evaluacion: prepararEvaluacion() },
@@ -55,7 +54,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
           typeBtn='primary'
           permisos={accesos.autoevaluacion}
           permiso='escribir'
-          loading={loading}
+          onClick={() => setIncompleto(true)}
         />,
       ]}
     >
@@ -71,8 +70,8 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
           <CuestionarioComp />
         </Suspense>
 
-        <Modal>
-          <dialog className={styles.seccion_advertencia} open={estaIncompleto}>
+        <Condicional condicion={estaIncompleto}>
+          <dialog className={styles.seccion_advertencia}>
             <section className={styles.seccion_informativa}>
               <p style={{ color: 'var(--color-primary-text)' }}>
                 Recuerde que el diligenciamiento de la autoevaluación del SG-SST
@@ -95,13 +94,23 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
                 >
                   Cancelar
                 </button>
-                <button type='submit' className={styles.boton_confirmar}>
-                  Si, guardar
-                </button>
+                {loading ? (
+                  <button
+                    type='button'
+                    className={styles.boton_cancelar}
+                    disabled
+                  >
+                    Guardando...
+                  </button>
+                ) : (
+                  <button type='submit' className={styles.boton_confirmar}>
+                    Si, guardar
+                  </button>
+                )}
               </div>
             </section>
           </dialog>
-        </Modal>
+        </Condicional>
       </main>
     </FormModal>
   );

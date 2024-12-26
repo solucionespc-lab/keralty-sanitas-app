@@ -9,7 +9,7 @@ export const useFiltrosStore = create(
     () => ({
       ...inicialFiltros,
     }),
-    { enabled: DEV_MODE, name: 'Filtros' }
+    { enabled: DEV_MODE, name: 'Filtros informes' }
   )
 );
 
@@ -22,6 +22,7 @@ export const guardarFiltro = (
 export const enviarFiltros = () => {
   useFiltrosStore.setState((state) => ({
     idEmpresa: state.idEmpresa,
-    annio: state.annio,
+    fechaInicio: state.fechaInicio,
+    fechaFin: state.fechaFin,
   }));
 };

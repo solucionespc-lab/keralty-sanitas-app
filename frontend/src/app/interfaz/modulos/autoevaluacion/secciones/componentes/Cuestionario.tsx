@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import { useShallow } from 'zustand/react/shallow';
 import { useEffect } from 'react';
 import {
@@ -26,10 +28,10 @@ const Cuestionario = () => {
     }))
   );
 
-  const preguntasPorPrograma = Object.values(cuestionario);
-
-  const { planear, hacer, verificar, actuar } =
-    clasificarPreguntas(preguntasPorPrograma);
+  // TODO Separar la logica del guardado del listado para que no genere un render adicional y los controles pierdan el foco
+  const { planear, hacer, verificar, actuar } = clasificarPreguntas(
+    Object.values(cuestionario)
+  );
 
   useEffect(() => {
     guardarCuestionario(Object.values(listas.evaluaciones), empresa);
@@ -38,57 +40,69 @@ const Cuestionario = () => {
   return (
     <>
       <h1 className={styles.ciclo_titulos}>Planear</h1>
-      {Object.entries(planear).map((estandar, index) => (
-        <fieldset key={index} className={styles.contenedor_ciclo}>
+      {Object.entries(planear).map((estandar, indice) => (
+        <fieldset
+          key={`empresa-planear-info-${indice}`}
+          className={styles.contenedor_ciclo}
+        >
           <legend>
             <Titulo style={{ textAlign: 'left' }}>
               {listas.estandares[estandar[0]]}
             </Titulo>
           </legend>
-          {estandar[1]?.map((pregunta, index) => (
-            <Pregunta key={index} pregunta={pregunta} />
+          {estandar[1]?.map((pregunta) => (
+            <Pregunta key={pregunta.item} pregunta={pregunta} />
           ))}
         </fieldset>
       ))}
 
       <h1 className={styles.ciclo_titulos}>Hacer</h1>
-      {Object.entries(hacer).map((estandar, index) => (
-        <fieldset key={index} className={styles.contenedor_ciclo}>
+      {Object.entries(hacer).map((estandar, indice) => (
+        <fieldset
+          key={`empresa-hacer-info-${indice}`}
+          className={styles.contenedor_ciclo}
+        >
           <legend>
             <Titulo style={{ textAlign: 'left' }}>
               {listas.estandares[estandar[0]]}
             </Titulo>
           </legend>
-          {estandar[1]?.map((pregunta, index) => (
-            <Pregunta key={index} pregunta={pregunta} />
+          {estandar[1]?.map((pregunta) => (
+            <Pregunta key={pregunta.item} pregunta={pregunta} />
           ))}
         </fieldset>
       ))}
 
       <h1 className={styles.ciclo_titulos}>Verificar</h1>
-      {Object.entries(verificar).map((estandar, index) => (
-        <fieldset key={index} className={styles.contenedor_ciclo}>
+      {Object.entries(verificar).map((estandar, indice) => (
+        <fieldset
+          key={`empresa-verificar-info-${indice}`}
+          className={styles.contenedor_ciclo}
+        >
           <legend>
             <Titulo style={{ textAlign: 'left' }}>
               {listas.estandares[estandar[0]]}
             </Titulo>
           </legend>
-          {estandar[1]?.map((pregunta, index) => (
-            <Pregunta key={index} pregunta={pregunta} />
+          {estandar[1]?.map((pregunta) => (
+            <Pregunta key={pregunta.item} pregunta={pregunta} />
           ))}
         </fieldset>
       ))}
 
       <h1 className={styles.ciclo_titulos}>Actuar</h1>
-      {Object.entries(actuar).map((estandar, index) => (
-        <fieldset key={index} className={styles.contenedor_ciclo}>
+      {Object.entries(actuar).map((estandar, indice) => (
+        <fieldset
+          key={`empresa-actuar-info-${indice}`}
+          className={styles.contenedor_ciclo}
+        >
           <legend>
             <Titulo style={{ textAlign: 'left' }}>
               {listas.estandares[estandar[0]]}
             </Titulo>
           </legend>
-          {estandar[1]?.map((pregunta, index) => (
-            <Pregunta key={index} pregunta={pregunta} />
+          {estandar[1]?.map((pregunta) => (
+            <Pregunta key={pregunta.item} pregunta={pregunta} />
           ))}
         </fieldset>
       ))}

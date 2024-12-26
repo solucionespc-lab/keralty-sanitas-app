@@ -195,4 +195,5 @@
 .ciclo_titulos {
   background-color: #c4fbe9;
   padding: 0 1rem;
+  color: var(--color-add-green-8);
 }

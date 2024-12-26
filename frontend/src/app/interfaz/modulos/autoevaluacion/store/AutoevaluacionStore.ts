@@ -60,8 +60,6 @@ export const guardarRespuesta = (
   useCuestionario.setState(({ cuestionario }) => {
     const cuestionarioUnico = { ...cuestionario[codigo] };
 
-    console.log(cuestionarioUnico);
-
     return {
       cuestionario: {
         ...cuestionario,
@@ -147,16 +145,23 @@ export const guardarCuestionario = (
 export function prepararEvaluacion() {
   const autoevaluacion = useAutoevaluacion.getState();
   const { cuestionario } = useCuestionario.getState();
+  const planesAccion: string[] = [];
 
   const cuestionarioFinal = Object.entries(cuestionario).map((pregunta) => {
+    const { respuesta, plan, soportes, observaciones } = pregunta[1];
+    planesAccion.push(plan);
+
     return {
       codigo: pregunta[0],
-      respuesta: pregunta[1].respuesta,
-      plan: pregunta[1].plan,
-      soportes: pregunta[1].soportes,
-      observaciones: pregunta[1].observaciones,
+      respuesta,
+      soportes,
+      observaciones,
     };
   });
 
-  return { ...autoevaluacion, cuestionario: cuestionarioFinal };
+  return {
+    ...autoevaluacion,
+    planes: planesAccion,
+    cuestionario: cuestionarioFinal,
+  };
 }

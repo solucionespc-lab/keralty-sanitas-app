@@ -1,25 +1,16 @@
-import { useShallow } from 'zustand/react/shallow';
 import TablaNumerica from 'comunes/funcionales/tabla/TablaNumerica';
 import { Bar } from 'comunes/funcionales/charts';
 import { Titulo } from 'comunes/estilos/EstComunes';
 
-import { useEmpresa } from '../store/StoreInformes';
 import { optionesTabla1 } from '../constantes/ConstGenerales';
 
 import styles from '../estilos/EstSeccionesInforme.module.css';
 
 const InformeCiclo = () => {
-  const { empresa } = useEmpresa(
-    useShallow(({ empresa }) => ({
-      empresa,
-    }))
-  );
-
   return (
     <>
       <Titulo style={{ textAlign: 'left' }}>
-        {`Proporción de cumplimiento autoevaluación SG-SST según ciclo.
-          ${empresa.nombre}, 2024.`}
+        {`Proporción de cumplimiento autoevaluación SG-SST según ciclo, 2024.`}
       </Titulo>
       <main className={styles.contenedor_informe}>
         <Bar options={optionesTabla1} nameX='Ciclo' nameY='Cumplimiento' />

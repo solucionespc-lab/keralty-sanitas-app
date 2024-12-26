@@ -52,7 +52,7 @@ const CuestionarioComp = () => {
 
         <div style={{ display: 'flex', gap: '1em' }}>
           <Date
-            required
+            disabled
             label='Fecha de evaluación'
             value={fechaCreacion}
             onChange={(fecha) =>

@@ -139,6 +139,10 @@
   width: 100vw;
   height: 100vh;
   background-color: transparent;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .seccion_informativa {
@@ -169,7 +173,7 @@
 .boton_cancelar {
   font-size: var(--paragraph);
   background-color: var(--base);
-  color: black;
+  color: var(--color-primary-text);
   padding: var(--gaps-2);
   border-radius: var(--radius-2);
   border: 1px solid var(--surface-third);

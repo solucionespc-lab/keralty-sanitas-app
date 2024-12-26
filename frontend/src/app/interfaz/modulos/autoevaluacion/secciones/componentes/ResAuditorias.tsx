@@ -21,18 +21,26 @@ const ResultadoAuditorias = () => {
   const interpretacion = resultadoAuditoria(total);
 
   return (
-    <section>
-      <h4>Calificación</h4>
-      <div className={styles.calificacion}>
-        <p
-          className={`${styles.puntaje} ${styles.sin_calculo}`}
-        >{`${total}%`}</p>
-        <span className={styles[interpretacion.toLocaleLowerCase()]}>
-          {interpretacion === 'Critico' ? 'Crítico' : interpretacion}
-        </span>
-      </div>
-      <small>{notasAuditoria(interpretacion)}</small>
-    </section>
+    <main>
+      <section
+        style={{ alignItems: 'center', padding: '0.5em 0' }}
+        className={styles.contenedor_flex}
+      >
+        <h4>Calificación y estado - </h4>
+        <div className={styles.calificacion}>
+          <span className={styles[interpretacion.toLocaleLowerCase()]}>
+            {interpretacion === 'Critico' ? 'Crítico' : interpretacion}
+          </span>
+          <span
+            className={`${styles.puntaje} ${styles.sin_calculo}`}
+          >{`${total === 100 ? 'Completo' : 'Incompleto'}`}</span>
+        </div>
+      </section>
+
+      <small style={{ padding: '0.5em 0' }}>
+        {notasAuditoria(interpretacion)}
+      </small>
+    </main>
   );
 };
 
