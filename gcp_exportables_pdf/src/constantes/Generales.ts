@@ -16,18 +16,18 @@ export const BUCKET_TEMPLATES_NAME = process.env.BUCKET_TEMPLATES_NAME;
 export const LOGO = process.env.LOGO;
 
 export const LST_MESES = [
-  'Enero',
-  'Febrero',
-  'Marzo',
-  'Abril',
-  'Mayo',
-  'Junio',
-  'Julio',
-  'Agosto',
-  'Septiembre',
-  'Octubre',
-  'Noviembre',
-  'Diciembre',
+  'enero',
+  'febrero',
+  'marzo',
+  'abril',
+  'mayo',
+  'junio',
+  'julio',
+  'agosto',
+  'septiembre',
+  'octubre',
+  'noviembre',
+  'diciembre',
 ];
 
 export const LST_DIAS = [
