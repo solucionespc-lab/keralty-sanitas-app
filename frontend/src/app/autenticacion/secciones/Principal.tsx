@@ -10,6 +10,7 @@ import {
   TarjetaLogin,
   Volver,
 } from '../estilos/EstilosPrincipal';
+import styles from '../estilos/EstilosNuevo.module.css';
 
 import type { KeyFormat } from '../types/LoginTypes';
 
@@ -38,8 +39,13 @@ const Formulario = () => {
             {iconografia.flecha.path}
           </Volver>
         </Condicional>
-
         <Forms name={formato.opSeleccionada} />
+        <button
+          className={styles.boton_nuevo}
+          onClick={() => cambiarFormato('nuevo')}
+        >
+          Empresas nuevas
+        </button>
       </ContenedorFormulario>
     </TarjetaLogin>
   );

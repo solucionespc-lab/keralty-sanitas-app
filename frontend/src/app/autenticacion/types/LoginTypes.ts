@@ -2,6 +2,7 @@ import React from 'react';
 
 export interface FormatType {
   login: JSX.Element;
+  nuevo: JSX.Element;
 }
 
 export type KeyFormat = keyof FormatType;

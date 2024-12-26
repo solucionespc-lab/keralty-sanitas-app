@@ -1,0 +1,12 @@
+.boton_nuevo {
+  font-size: var(--paragraph);
+  background-color: var(--brand-secondary);
+  color: black;
+  padding: var(--gaps-2);
+  border-radius: 0 0 var(--radius-2) var(--radius-2);
+  border: none;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

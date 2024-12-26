@@ -5,6 +5,7 @@ import MainInfo from './informacion/MainInfo';
 
 const component = {
   login: <MainInfo />,
+  nuevo: <MainInfo />,
 };
 
 const Informativos = ({ name }: { name: string }) => {

@@ -26,15 +26,7 @@ const useAutenticacion = () => {
       if (user === null) {
         return;
       }
-
-      if (user?.emailVerified) {
-        autorizarIngreso(user);
-      } else {
-        Toast(
-          'Debes verificar la cuenta de correo para ingresar a la herramienta',
-          'advertencia'
-        );
-      }
+      autorizarIngreso(user);
     });
 
     return () => {

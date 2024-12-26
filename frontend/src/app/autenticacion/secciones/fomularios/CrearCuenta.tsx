@@ -1,5 +1,6 @@
+import { toast } from 'sonner';
 import { useRef, useTransition } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'configuraciones/Firebase';
 
 import LoginButton from '../LoginButton';
@@ -17,21 +18,21 @@ import {
 
 import type { formEventType } from '../../types/LoginTypes';
 
-const FormLogin = () => {
+const CrearCuenta = () => {
   const [autenticando, setAuth] = useTransition();
   const correoRef = useRef<HTMLInputElement>(null);
-  const contrasenaRef = useRef<HTMLInputElement>(null);
+  const passRef = useRef<HTMLInputElement>(null);
 
   const autenticar = (e: formEventType) => {
     e.preventDefault();
-    const correo = correoRef.current ?? { value: '' };
-    const contrasena = contrasenaRef.current ?? { value: '' };
+    const correo = correoRef.current?.value ?? '';
+    const password = passRef.current?.value ?? '';
 
-    signInWithEmailAndPassword(auth, correo.value, contrasena.value).catch(
-      (err) => {
+    createUserWithEmailAndPassword(auth, correo, password)
+      .then(() => toast.info('Se ha creado el acceso a la plataforma'))
+      .catch((err) => {
         validarErrores(err.code);
-      }
-    );
+      });
   };
 
   return (
@@ -45,9 +46,9 @@ const FormLogin = () => {
           {import.meta.env.VITE_WEBSITE_NAME}
         </TituloHerramienta>
         <Descripcion>
-          Diligencie las credenciales para ingresar en la herramienta, si no
-          recuerda la contraseña comuníquese a través del correo
-          soporte@pcsoluciones.com.co
+          Diligencie los campos para solicitar permiso de ingreso a la
+          herramienta, solo si no ha ingresado anteriormente, de lo contrario de
+          clic en regresar y coloque sus credenciales
         </Descripcion>
       </ContainerFlex>
 
@@ -63,20 +64,19 @@ const FormLogin = () => {
       </ContainerData>
 
       <ContainerData>
-        <LoginLabels htmlFor='pass-id'>Contraseña</LoginLabels>
+        <LoginLabels htmlFor='email'>Contraseña</LoginLabels>
         <Campos
-          id='pass-id'
+          id='password'
           type='password'
           placeholder='Escriba la contraseña'
-          ref={contrasenaRef}
+          ref={passRef}
           required
-          onKeyDown={(e) => e.key === 'enter' && autenticar}
         />
       </ContainerData>
 
-      <LoginButton name='Ingresar' loading={autenticando} />
+      <LoginButton name='Crear acceso' loading={autenticando} />
     </FormEstilo>
   );
 };
 
-export default FormLogin;
+export default CrearCuenta;
