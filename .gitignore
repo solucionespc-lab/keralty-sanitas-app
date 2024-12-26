@@ -74,3 +74,6 @@ node_modules
 # Extension secrets
 extensions/**/*.env
 extensions/**/*.secret.local
+
+#pnpm
+pnpm-lock.yaml
