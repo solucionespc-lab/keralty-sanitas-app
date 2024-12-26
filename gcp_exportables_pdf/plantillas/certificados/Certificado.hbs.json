@@ -2,6 +2,7 @@
   "nombre": "Soluciones PC",
   "marcaUrl": "http://127.0.0.1:9199/v0/b/internal-bucket/o/marca%20de%20agua.png?alt=media&token=cd76c5d1-1e49-455a-af88-2146b31c47b6",
   "logoUrl": "http://127.0.0.1:9199/v0/b/internal-bucket-biod/o/logo.png?alt=media&token=b9c135fb-442b-4485-93ab-d3b68d2f8987",
+  "firmaUrl": "http://127.0.0.1:9199/v0/b/internal-bucket/o/Firma%20AEB.png?alt=media&token=abe510d4-26b4-4a2f-991b-e0446152a139",
   "nit": "900703147",
   "diaAfiliacion": 30,
   "mesAfilicacion": 1,

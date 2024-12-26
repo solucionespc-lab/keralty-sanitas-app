@@ -1,7 +1,6 @@
 import * as puppeteer from 'puppeteer';
 
 export const FORMATO_PDF: puppeteer.PDFOptions = {
-  margin: { top: '6.35mm', right: '6.35mm', bottom: '6.35mm', left: '6.35mm' },
   printBackground: true,
   format: 'letter',
 };

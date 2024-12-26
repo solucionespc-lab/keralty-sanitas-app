@@ -19,7 +19,13 @@ const logo =
     ? 'https://firebasestorage.googleapis.com/v0/b/internal-bucket-keralty/o/Logokeralty.png?alt=media&token=b3729e72-4e11-497c-9db6-8c868cd90bdc'
     : 'http://127.0.0.1:9199/v0/b/internal-bucket/o/Logokeralty.png?alt=media&token=53029e97-db46-485a-9ac2-52e3ac070a5c';
 
+const firma =
+  process.env.APP_ENV !== 'development'
+    ? 'https://firebasestorage.googleapis.com/v0/b/internal-bucket-keralty/o/Firma%20AEB.png?alt=media&token=05e14668-ecf7-4783-a123-8808fd443bf1'
+    : 'http://127.0.0.1:9199/v0/b/internal-bucket/o/Firma%20AEB.png?alt=media&token=abe510d4-26b4-4a2f-991b-e0446152a139';
+
 export const DATOS_DEFECTO = {
   marcaUrl: marca,
   logoUrl: logo,
+  firmaUrl: firma,
 };
