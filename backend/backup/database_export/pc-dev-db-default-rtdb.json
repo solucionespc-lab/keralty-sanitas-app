@@ -463,7 +463,7 @@
             "estandar": "recursos",
             "item": "Conformación y funcionamientodel COPASST",
             "criterios": "Empresas de más de cincuenta (50) trabajadores riesgo I, II, III, IV ó V y las de cincuenta (50) o menos trabajadores riego IV ó V Conformar y garantizar el funcionamiento del Comité Paritario de Seguridad y Salud en el Trabajo – COPASST.",
-            "modo": "Solicitar los soportes de convocatoria, elección, conformación del Comité Paritario de Seguridad y Salud en el Trabajo y el acta de constitución.Constatar si es igual el número de representante del empleador y de los trabajadores y revisar si el acta de conformación se encuentra vigente.Solicitar las actas de reunión mensuales del último año del Comité Paritario y verificar el cumplimiento de sus funciones.",
+            "modo": "Solicitar los soportes de convocatoria, elección, conformación del Comité Paritario de Seguridad y Salud en el Trabajo y el acta de constitución. Constatar si es igual el número de representante del empleador y de los trabajadores y revisar si el acta de conformación se encuentra vigente.Solicitar las actas de reunión mensuales del último año del Comité Paritario y verificar el cumplimiento de sus funciones.",
             "ponderacion": 0.5,
             "planAccion": "Conformar y garantizar el funcionamiento del Comité Paritario de Seguridad y Salud en el Trabajo – COPASST.",
             "tipoEmpresa": ["empresa", "agropecuaria"],
@@ -1046,7 +1046,7 @@
           {
             "ciclo": "Hacer",
             "estandar": "amenazas",
-            "item": "Plan de prevención, preparación yrespuesta ante emergencias",
+            "item": "Plan de prevención, preparación y respuesta ante emergencias",
             "criterios": "Empresas de más de cincuenta (50) trabajadores riesgo I, II, III, IV ó V y las de cincuenta (50) o menos trabajadores riego IV ó V Elaborar un plan de prevención, preparación y respuesta ante emergencias que identifique las amenazas, evalúe y analice la vulnerabilidad.Como mínimo el plan debe incluir: planos de las instalaciones que identifican áreas y salidas de emergencia, así como la señalización, realización de simulacros como mínimo una (1) vez al año.El plan debe tener en cuenta todas las jornadas de trabajo en todos los centros de trabajo y debe ser divulgado.",
             "modo": "Solicitar el plan de prevención, preparación y respuesta ante emergencias y constatar evidencias de su divulgación.Verificar si existen los planos de las instalaciones que identifican áreas y salidas de emergencia y verificar si existe la debida señalización de la empresa.Verificar los soportes que evidencien la realización de los simulacros y análisis de los mismos y validar que las recomendaciones emitidas con base en dicho análisis hayan sido tenidas en cuenta en el mejoramiento del plan de emergencias.",
             "ponderacion": 5,
@@ -1070,7 +1070,7 @@
             "orden": 52
           },
           {
-            "ciclo": "Hacer",
+            "ciclo": "Verificar",
             "estandar": "amenazas",
             "item": "Definición de indicadores del Sistema de Gestión de Seguridad y Salud en el Trabajo",
             "criterios": "Empresas de más de cincuenta (50) trabajadores riesgo I, II, III, IV ó V y las de cincuenta (50) o menos trabajadores riego IV ó V Definir indicadores que permitan evaluar el Sistema de Gestión de SST de acuerdo con las condiciones de la empresa, teniendo en cuenta los indicadores mínimos señalados en el Capítulo IV de la presente Resolución. Tener disponibles los resultados de la evaluación del Sistema de Gestión de SST, de acuerdo con los indicadores mínimos de SST definidos en la presente Resolución.",
@@ -1083,7 +1083,7 @@
             "orden": 53
           },
           {
-            "ciclo": "Hacer",
+            "ciclo": "Verificar",
             "estandar": "amenazas",
             "item": "Auditoría anual",
             "criterios": "Empresas de más de cincuenta (50) trabajadores riesgo I, II, III, IV ó V y las de cincuenta (50) o menos trabajadores riego IV ó V Realizar una auditoría anual, la cual será planificada con la participación del Comité Paritario de Seguridad y Salud en el Trabajo.",
@@ -1096,7 +1096,7 @@
             "orden": 54
           },
           {
-            "ciclo": "Hacer",
+            "ciclo": "Verificar",
             "estandar": "amenazas",
             "item": "Revisión por la alta dirección. Alcance de la auditoría del Sistema de Gestión",
             "criterios": "Empresas de más de cincuenta (50) trabajadores riesgo I, II, III, IV ó V y las de cincuenta (50) o menos trabajadores riego IV ó V Revisar como mínimo una (1) vez al año, por parte de la alta dirección, el Sistema de Gestión de SST , resultados y el alcance de la auditoría de cumplimiento del Sistema de Gestión de Seguridad y Salud en el Trabajo, de acuerdo con los aspectos señalados en el artículo 2.2.4.6.30 del Decreto número 1072 de 2015.",
@@ -1109,7 +1109,7 @@
             "orden": 55
           },
           {
-            "ciclo": "Hacer",
+            "ciclo": "Verificar",
             "estandar": "amenazas",
             "item": "Planificación de la auditoría con el COPASST",
             "criterios": "Empresas de más de cincuenta (50) trabajadores riesgo I, II, III, IV ó V y las de cincuenta (50) o menos trabajadores riego IV ó V Revisar como mínimo una (1) vez al año, por parte de la alta dirección, el Sistema de Gestión de SST y comunicar los resultados al COPASST y al responsable del Sistema de Gestión de SST.",
