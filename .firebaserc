@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "pc-dev-db",
+    "dev": "pc-dev-db",
     "staging": "pc-dev-db",
     "prod": "keralty-sanitas"
   }
