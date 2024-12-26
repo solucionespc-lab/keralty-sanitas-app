@@ -4,5 +4,5 @@ import reglas from './Reglas';
 
 export default shield(reglas, {
   allowExternalErrors: true,
-  fallbackError: 'No se encuentra autorizado',
+  fallbackError: 'access/access-denied',
 });

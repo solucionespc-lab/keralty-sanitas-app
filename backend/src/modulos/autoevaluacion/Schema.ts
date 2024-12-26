@@ -9,7 +9,6 @@ const EvaluacionesSchema = gql`
   type PreguntaEvaluacionType {
     codigo: ID
     respuesta: String
-    plan: String
     soportes: [SoportesType]
   }
 

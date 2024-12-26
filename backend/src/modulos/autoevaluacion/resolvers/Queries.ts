@@ -1,8 +1,11 @@
 import * as admin from 'firebase-admin';
-import { logger } from 'firebase-functions';
 
 import { ResolverArgs } from '../../../backend-def';
-import { dbDataType } from '../../../utilidades/FuncionesGenerales';
+import {
+  dbDataType,
+  handleCustomError,
+  resolvePromiseAndErrors,
+} from '../../../utilidades/FuncionesGenerales';
 import { EmpresaType } from '../../empresas/types/EmpresasTypes';
 import { REF_EMPRESAS, REF_EVALUACIONES } from '../constantes/ConstAuditorias';
 
@@ -26,37 +29,37 @@ export const traerEvaluacion: ResolverArgs<
     .doc(idEvaluacion)
     .withConverter(dbDataType<EvaluacionesType>());
 
-  try {
-    const evaluacion = await evaluacionRef.get();
+  const [error, evaluacion] = await resolvePromiseAndErrors(
+    evaluacionRef.get()
+  );
 
-    return { ...evaluacion.data(), id: evaluacion.id };
-  } catch (error) {
-    logger.error(error);
-    throw new Error('No se pudo consultar la evaluación solicitada');
-  }
+  if (error) handleCustomError(error);
+
+  return { ...evaluacion?.data(), id: evaluacion?.id };
 };
 
 export const traerEvaluaciones: ResolverArgs<
   EvaParametros,
   EvaluacionesType[]
-> = async () => {
+> = async (_, { filtros }) => {
   const db = admin.firestore();
 
   const evaluacionesRef = db
-    .collectionGroup(REF_EVALUACIONES)
+    .collection(REF_EMPRESAS)
+    .doc(filtros.idEmpresa)
+    .collection(REF_EVALUACIONES)
     .withConverter(dbDataType<EvaluacionesType>());
 
-  try {
-    const evaluaciones = await evaluacionesRef.get();
+  const [error, evaluaciones] = await resolvePromiseAndErrors(
+    evaluacionesRef.get()
+  );
 
-    return evaluaciones.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-  } catch (error) {
-    logger.error(error);
-    throw new Error('No se pudieron consultar las evaluaciones solicitadas');
-  }
+  if (error) handleCustomError(error);
+
+  return evaluaciones?.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
 };
 
 export const traerDatosEmpresa = async (empresa: EvaluacionesType) => {
@@ -67,12 +70,9 @@ export const traerDatosEmpresa = async (empresa: EvaluacionesType) => {
     .doc(empresa?.idEmpresa)
     .withConverter(dbDataType<EmpresaType>());
 
-  try {
-    const empresa = await empresaRef.get();
+  const [error, empresaDoc] = await resolvePromiseAndErrors(empresaRef.get());
 
-    return { ...empresa.data(), id: empresa.id };
-  } catch (error) {
-    logger.error(error);
-    throw new Error('No se pudo consultar la empresa solicitada');
-  }
+  if (error) handleCustomError(error);
+
+  return { ...empresaDoc?.data(), id: empresaDoc?.id };
 };

@@ -9,7 +9,6 @@ const EvaluacionesSchemaInputs = gql`
   input PreguntaEvaluacionInput {
     codigo: ID
     respuesta: String
-    plan: String
     soportes: [SoportesInput]
     observaciones: String
   }
@@ -24,6 +23,7 @@ const EvaluacionesSchemaInputs = gql`
     observaciones: String
     annio: Int
     empresa: EmpresaInput
+    planes: [String]
   }
 
   input FiltrosEvaluacionesInput {

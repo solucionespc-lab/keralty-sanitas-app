@@ -1,3 +1,2 @@
-export const REF_EVALUACIONES = 'col_evaluaciones';
 export const REF_EMPRESAS = 'col_empresas';
 export const REF_PLANES = 'col_planes';

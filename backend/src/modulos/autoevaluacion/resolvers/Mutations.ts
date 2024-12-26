@@ -2,9 +2,14 @@ import * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions';
 
 import { ResolverArgs } from '../../../backend-def';
-import { dbDataType } from '../../../utilidades/FuncionesGenerales';
+import {
+  dbDataType,
+  handleCustomError,
+  resolvePromiseAndErrors,
+} from '../../../utilidades/FuncionesGenerales';
 import { EmpresaType } from '../../empresas/types/EmpresasTypes';
 import { REF_EMPRESAS, REF_EVALUACIONES } from '../constantes/ConstAuditorias';
+import { registrarPlanes } from '../utilidades/Funciones';
 
 import type {
   EvaluacionDocArgs,
@@ -15,7 +20,7 @@ export const guardarEvaluacion: ResolverArgs<
   EvaluacionDocArgs,
   string
 > = async (_, { evaluacion }) => {
-  const { id, empresa, ...evaluacionRest } = evaluacion;
+  const { id, empresa, planes, ...evaluacionRest } = evaluacion;
   const db = admin.firestore();
 
   const evaluacionRef = db
@@ -30,15 +35,22 @@ export const guardarEvaluacion: ResolverArgs<
     .doc(evaluacion.idEmpresa)
     .withConverter(dbDataType<EmpresaType>());
 
-  try {
-    await evaluacionRef.set(evaluacionRest, { merge: true });
-    await empresaRef.set(empresa, { merge: true });
+  const planesBatch = registrarPlanes(planes, evaluacionRest.idEmpresa);
 
-    return `Se guardó correctamente la evaluación ${id}`;
-  } catch (error) {
-    logger.error(error);
-    throw new Error('No se pudo consultar la evaluación solicitada');
-  }
+  const [error] = await resolvePromiseAndErrors(
+    empresaRef.set(empresa, { merge: true })
+  );
+
+  const [planError] = await resolvePromiseAndErrors(
+    Promise.all([
+      evaluacionRef.set(evaluacionRest, { merge: true }),
+      planesBatch.commit(),
+    ])
+  );
+
+  if (error || planError) handleCustomError(error ?? planError);
+
+  return `Se guardó correctamente la evaluación ${id}`;
 };
 
 export const actualizarEvaluacion: ResolverArgs<
@@ -57,7 +69,7 @@ export const actualizarEvaluacion: ResolverArgs<
   try {
     await evaluacionRef.set(evaluacion, { merge: true });
 
-    // TODO Implementar la validación y registro de los planes de acción asignados
+    // TODO Implementar la funcionalidad para guardar las evaluaciones de manera parcial incluido los planes de acción que hayan cambiado
     return 'Se guardó correctamente la evaluación';
   } catch (error) {
     logger.error(error);

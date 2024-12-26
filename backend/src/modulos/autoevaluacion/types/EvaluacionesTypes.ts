@@ -5,12 +5,7 @@ interface SoportesType {
   url: string;
 }
 
-interface FirmaType {
-  nombre: string;
-  url: string;
-}
-
-interface PreguntaEvaluacionType {
+export interface PreguntaEvaluacionType {
   codigo: string;
   ciclo: string;
   estandar: string;
@@ -18,7 +13,6 @@ interface PreguntaEvaluacionType {
   modo: string;
   ponderacion: number;
   respuesta: string;
-  planes: string[];
   soportes: SoportesType;
 }
 
@@ -35,7 +29,7 @@ export interface EvaluacionesType {
   riesgo: string;
   tamano: string;
   cuestionario: PreguntaEvaluacionType[];
-  firma: FirmaType;
+  planes: string[];
   empresa: EmpresaType;
 }
 

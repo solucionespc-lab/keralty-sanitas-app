@@ -1,23 +1,28 @@
 import { deny } from 'graphql-shield';
 import { merge } from 'lodash';
 
+import {
+  backOfficeMutationsRules,
+  backOfficeQueriesRules,
+} from '../backoffice/seguridad/Politicas';
+import {
+  evaluacionesMutationPolicy,
+  evaluacionesQueryPolicy,
+} from '../modulos/autoevaluacion/seguridad/Politicas';
 import { configQueriesRules } from '../modulos/configuraciones/seguridad/Politicas';
+import { cuentasMutationsRules } from '../modulos/cuentas/seguridad/Politicas';
 import {
   empresaMutationPolicy,
   empresaQueryPolicy,
 } from '../modulos/empresas/seguridad/Politicas';
 import {
+  PlanesAccionQueryPolicy,
+  PlanesAccionMutationPolicy,
+} from '../modulos/planes/seguridad/Politicas';
+import {
   trabajadoresMutations,
   trabajadoresQueries,
 } from '../modulos/trabajadores/seguridad/Reglas';
-import {
-  evaluacionesMutationPolicy,
-  evaluacionesQueryPolicy,
-} from '../modulos/autoevaluacion/seguridad/Politicas';
-import {
-  backOfficeMutationsRules,
-  backOfficeQueriesRules,
-} from '../backoffice/seguridad/Politicas';
 
 // Regla para negar todos los permisos solicitados por la API
 const denegado = {
@@ -30,6 +35,7 @@ const reglas = {
     empresaQueryPolicy,
     trabajadoresQueries,
     evaluacionesQueryPolicy,
+    PlanesAccionQueryPolicy,
     backOfficeQueriesRules,
     denegado
   ),
@@ -37,6 +43,8 @@ const reglas = {
     empresaMutationPolicy,
     trabajadoresMutations,
     evaluacionesMutationPolicy,
+    PlanesAccionMutationPolicy,
+    cuentasMutationsRules,
     backOfficeMutationsRules,
     denegado
   ),
