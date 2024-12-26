@@ -45,7 +45,7 @@ export const optionesTabla1 = {
           return value;
         },
       },
-      data: [92, 100, 75, 100],
+      data: [0, 0, 0, 0],
     },
     {
       name: 'Aceptable',
@@ -56,7 +56,7 @@ export const optionesTabla1 = {
           return value;
         },
       },
-      data: [85, 85, 85, 85],
+      data: [0, 0, 0, 0],
     },
     {
       name: 'Moderadamente aceptable',
@@ -67,7 +67,7 @@ export const optionesTabla1 = {
           return value;
         },
       },
-      data: [60, 60, 60, 60],
+      data: [0, 0, 0, 0],
     },
   ],
 };
@@ -122,7 +122,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [60, 53.3, 90, 76.6, 80, 50, 75],
+      data: [0, 0, 0, 0, 0, 0, 0],
     },
     {
       name: 'Moderablemente aceptable',
@@ -133,7 +133,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [85, 85, 85, 85, 85, 85, 85],
+      data: [0, 0, 0, 0, 0, 0, 0],
     },
     {
       name: 'Aceptable',
@@ -144,7 +144,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [60, 60, 60, 60, 60, 60, 60],
+      data: [0, 0, 0, 0, 0, 0, 0],
     },
   ],
 };
