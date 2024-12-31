@@ -1,7 +1,7 @@
 import * as admin from 'firebase-admin';
 
 import { cuentaServicio } from './src/seguridad/Secretos';
-import { ejemploTrigger } from './src/servicios/ejemplo';
+import { ejemploTrigger } from './src/servicios/ejemplo/resolvers/Ejemplo';
 
 admin.initializeApp({
   credential: cuentaServicio(),
@@ -9,6 +9,6 @@ admin.initializeApp({
   databaseURL: process.env.REALTIME_DATABASE_URL,
 });
 
-const trigger = { ejemploTrigger };
+const triggers = { ejemploTrigger };
 
-export { trigger };
+export { triggers };

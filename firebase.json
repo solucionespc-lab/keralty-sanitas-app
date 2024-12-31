@@ -35,6 +35,22 @@
         "npm --prefix \"$RESOURCE_DIR\" run lint",
         "npm --prefix \"$RESOURCE_DIR\" run build"
       ]
+    },
+    {
+      "source": "gcp_triggers",
+      "codebase": "gcp_triggers",
+      "ignore": [
+        "node_modules",
+        "**/.env",
+        ".eslintrc.js",
+        ".gitignore",
+        "tsconfig.dev.json",
+        "tsconfig.json"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
     }
   ],
   "hosting": {

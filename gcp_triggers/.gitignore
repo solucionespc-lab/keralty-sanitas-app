@@ -14,6 +14,8 @@ lib/
 backup
 firebase-export
 
+package-lock.json
+
 # env variables
 .env.prod
 .env.default
