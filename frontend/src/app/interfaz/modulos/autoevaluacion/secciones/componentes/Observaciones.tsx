@@ -5,7 +5,7 @@ import { useDebounce } from '@uidotdev/usehooks';
 
 const Observaciones = ({
   idCiclo,
-  value = '',
+  value,
   label,
   disabled = false,
 }: {

@@ -98,20 +98,6 @@ export const resultadoAuditoria = (resultado: number): string => {
   return 'Sin dilienciar';
 };
 
-export const clasificarPreguntas = (preguntas: PreguntaEvaluacionType[]) => {
-  const planear = preguntas.filter((tema) => tema.ciclo === 'Planear');
-  const hacer = preguntas.filter((tema) => tema.ciclo === 'Hacer');
-  const verificar = preguntas.filter((tema) => tema.ciclo === 'Verificar');
-  const actuar = preguntas.filter((tema) => tema.ciclo === 'Actuar');
-
-  return {
-    planear: Object.groupBy(planear, ({ estandar }) => estandar),
-    hacer: Object.groupBy(hacer, ({ estandar }) => estandar),
-    verificar: Object.groupBy(verificar, ({ estandar }) => estandar),
-    actuar: Object.groupBy(actuar, ({ estandar }) => estandar),
-  };
-};
-
 export const notasAuditoria = (resultado: string): string => {
   if (resultado === 'Aceptable') {
     return 'Mantener la calificación y evidencias a disposición del Ministerio del Trabajo e incluir en el plan anual de trabajo las mejoras que se establezcan de acuerdo con la evaluación.';
@@ -150,3 +136,14 @@ export function establecerAnnios() {
 
   return annios;
 }
+
+export const clasificarPreguntas = (
+  preguntas: PreguntaEvaluacionType[],
+  ciclo: string
+) => {
+  const cicloProporcionado = preguntas.filter((tema) => tema.ciclo === ciclo);
+
+  return {
+    [ciclo]: Object.groupBy(cicloProporcionado, ({ estandar }) => estandar),
+  };
+};

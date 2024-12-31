@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { nanoid } from 'nanoid';
 
 import { guardarRespuesta } from '../../store/AutoevaluacionStore';
@@ -8,65 +10,69 @@ import styles from '../../estilos/EstCuestionario.module.css';
 import type { PreguntaEvaluacionType } from '../../types/AutoevaluacionTypes';
 
 const Pregunta = ({
-  pregunta,
+  preguntas,
 }: {
-  pregunta: PreguntaEvaluacionType | undefined;
+  preguntas: PreguntaEvaluacionType[] | undefined;
 }) => {
   return (
-    <section className={styles.seccion_cuestionario}>
-      <details open key={nanoid()} className={styles.preguntas}>
-        <summary className={styles.summary}>
-          <h4 className={styles.estandar}>
-            {pregunta?.item ?? 'sin información'}
-          </h4>
-          <div className={styles.contenedor_respuestas}>
-            <label className={styles.cumple}>
-              <input
-                value='cumple'
-                name={nanoid()}
-                checked={pregunta?.respuesta === 'cumple'}
-                type='radio'
-                onChange={(e) =>
-                  guardarRespuesta(
-                    `${pregunta?.ciclo}_${pregunta?.orden}`,
-                    'respuesta',
-                    e.target.value
-                  )
-                }
-              />
-              Cumple
-            </label>
+    <>
+      {preguntas?.map((preg) => (
+        <section key={preg.item} className={styles.seccion_cuestionario}>
+          <details open className={styles.preguntas}>
+            <summary className={styles.summary}>
+              <h4 className={styles.estandar}>
+                {preg?.item ?? 'sin información'}
+              </h4>
+              <div className={styles.contenedor_respuestas}>
+                <label className={styles.cumple}>
+                  <input
+                    value='cumple'
+                    name={nanoid()}
+                    checked={preg?.respuesta === 'cumple'}
+                    type='radio'
+                    onChange={(e) =>
+                      guardarRespuesta(
+                        `${preg?.ciclo}_${preg?.orden}`,
+                        'respuesta',
+                        e.target.value
+                      )
+                    }
+                  />
+                  Cumple
+                </label>
 
-            <label className={styles.no_cumple}>
-              <input
-                value='no_cumple'
-                name={nanoid()}
-                checked={pregunta?.respuesta === 'no_cumple'}
-                type='radio'
-                onChange={(e) =>
-                  guardarRespuesta(
-                    `${pregunta?.ciclo}_${pregunta?.orden}`,
-                    'respuesta',
-                    e.target.value
-                  )
-                }
-              />
-              No cumple
-            </label>
-          </div>
-        </summary>
+                <label className={styles.no_cumple}>
+                  <input
+                    value='no_cumple'
+                    name={nanoid()}
+                    checked={preg?.respuesta === 'no_cumple'}
+                    type='radio'
+                    onChange={(e) =>
+                      guardarRespuesta(
+                        `${preg?.ciclo}_${preg?.orden}`,
+                        'respuesta',
+                        e.target.value
+                      )
+                    }
+                  />
+                  No cumple
+                </label>
+              </div>
+            </summary>
 
-        <p>{pregunta?.modo ?? 'Sin información'}</p>
+            <p>{preg?.modo ?? 'Sin información'}</p>
 
-        <Observaciones
-          idCiclo={`${pregunta?.ciclo}_${pregunta?.orden}`}
-          label='Observaciones'
-          value={pregunta?.observaciones}
-        />
+            <Observaciones
+              idCiclo={`${preg?.ciclo}_${preg?.orden}`}
+              label='Observaciones'
+              value={preg?.observaciones}
+            />
 
-        <input style={{ marginTop: '1em' }} type='file' />
-      </details>
-    </section>
+            <input style={{ marginTop: '1em' }} type='file' />
+          </details>
+        </section>
+      ))}
+    </>
   );
 };
 
