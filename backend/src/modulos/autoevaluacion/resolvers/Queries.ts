@@ -13,6 +13,8 @@ import type {
   EvaluacionesType,
   EvaluacionParametro,
   EvaParametros,
+  InformesArgs,
+  InformeType,
 } from '../types/EvaluacionesTypes';
 
 export const traerEvaluacion: ResolverArgs<
@@ -75,4 +77,27 @@ export const traerDatosEmpresa = async (empresa: EvaluacionesType) => {
   if (error) handleCustomError(error);
 
   return { ...empresaDoc?.data(), id: empresaDoc?.id };
+};
+
+export const traerInforme: ResolverArgs<InformesArgs, InformeType[]> = async (
+  _,
+  { annio, idEmpresa }
+) => {
+  const db = admin.firestore();
+  const informesRef = db
+    .collection('col_empresas')
+    .doc(idEmpresa)
+    .collection('col_resultados')
+    .withConverter(dbDataType<InformeType>());
+
+  console.log(annio);
+
+  const [error, informes] = await resolvePromiseAndErrors(informesRef.get());
+
+  if (error) handleCustomError(error);
+
+  return informes?.docs.map((doc) => ({
+    ...doc.data(),
+    idPregunta: doc.id,
+  }));
 };

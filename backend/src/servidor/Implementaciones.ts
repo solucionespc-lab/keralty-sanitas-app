@@ -10,6 +10,7 @@ import TrabajadoresSchema from '../modulos/trabajadores/Schema';
 import BackOfficeResolver from '../backoffice/Resolvers';
 import BOUsuarioSchema from '../backoffice/UsuarioSchema';
 import EvaluacionesResolvers from '../modulos/autoevaluacion/Resolver';
+import InformesAutoSchema from '../modulos/autoevaluacion/SchemaInformes';
 import EvaluacionesSchemaInputs from '../modulos/autoevaluacion/SchemaInputs';
 import PlanesAccionSchemaInputs from '../modulos/planes/SchemaInputs';
 import TrabajadoresResolver from '../modulos/trabajadores/Resolver';
@@ -31,6 +32,7 @@ export const schemas = [
   PlanesAccionSchema,
   PlanesAccionSchemaInputs,
   CuentaSchema,
+  InformesAutoSchema,
   BOUsuarioSchema,
 ];
 

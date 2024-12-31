@@ -5,6 +5,7 @@ import { allow } from 'graphql-shield';
 export const evaluacionesQueryPolicy = {
   getEvaluacion: allow,
   getEvaluaciones: allow,
+  getInformes: allow,
 };
 
 export const evaluacionesMutationPolicy = {

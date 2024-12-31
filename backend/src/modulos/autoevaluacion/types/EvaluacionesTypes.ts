@@ -48,3 +48,23 @@ export interface EvaluacionParametro {
     idEvaluacion: string;
   };
 }
+
+export interface InformesArgs {
+  annio: number;
+  idEmpresa: string;
+}
+
+interface ResultadoType {
+  idPregunta: string;
+  ponderacion: number;
+  estandar: string;
+}
+
+export interface InformeType {
+  amenazas: ResultadoType[];
+  salud: ResultadoType[];
+  peligros: ResultadoType[];
+  integral: ResultadoType[];
+  mejoramiento: ResultadoType[];
+  recursos: ResultadoType[];
+}

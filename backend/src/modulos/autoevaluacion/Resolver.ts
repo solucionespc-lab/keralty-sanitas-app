@@ -3,12 +3,14 @@ import {
   traerDatosEmpresa,
   traerEvaluacion,
   traerEvaluaciones,
+  traerInforme,
 } from './resolvers/Queries';
 
 const EvaluacionesResolvers = {
   Query: {
     getEvaluacion: traerEvaluacion,
     getEvaluaciones: traerEvaluaciones,
+    getInformes: traerInforme,
   },
   Mutation: {
     saveEvaluacion: guardarEvaluacion,
