@@ -95,6 +95,26 @@
         "subGrupo": "Submodulo autoevaluacion",
         "titulo": "Autoevaluación del SG-SST",
         "url": "/autoevaluacion"
+      },
+      {
+        "descripcion": "Descripción de las funcionalidades del módulo implementado",
+        "estaActivo": true,
+        "llaveModulo": "excelencia",
+        "titulo": "Excelencia organizacional",
+        "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
+        "responsable": "",
+        "subGrupo": "Submodulo autoevaluacion",
+        "url": "/excelencia"
+      },
+      {
+        "descripcion": "Descripción de las funcionalidades del módulo implementado",
+        "estaActivo": true,
+        "llaveModulo": "actas",
+        "titulo": "Gestión de actas de reunión",
+        "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
+        "responsable": "",
+        "subGrupo": "",
+        "url": "/actas"
       }
     ],
     "sidebar_modulos": [
@@ -123,9 +143,21 @@
         "estaActivo": true
       },
       {
+        "llaveModulo": "excelencia",
+        "titulo": "Excelencia organizacional",
+        "url": "/excelencia",
+        "estaActivo": true
+      },
+      {
         "llaveModulo": "informes",
         "titulo": "Informes de resultados de la autoevaluación del SG-SST",
         "url": "/informes",
+        "estaActivo": true
+      },
+      {
+        "llaveModulo": "actas",
+        "titulo": "Gestión de actas de reunión",
+        "url": "/actas",
         "estaActivo": true
       }
     ],

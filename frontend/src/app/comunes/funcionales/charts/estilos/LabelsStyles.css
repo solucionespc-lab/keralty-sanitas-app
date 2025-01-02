@@ -13,12 +13,14 @@
 
 .label-content {
   display: flex;
+  gap: var(--gaps-2);
   align-items: center;
-   background-color: transparent;
+  background-color: transparent;
 
-  & p, svg {
+  & p,
+  svg {
     color: var(--color-primary-text);
-     background-color: transparent;
+    background-color: transparent;
   }
 }
 

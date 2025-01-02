@@ -45,7 +45,7 @@ export const optionesTabla1 = {
           return value;
         },
       },
-      data: [0, 0, 0, 0],
+      data: [80, 85, 90, 90],
     },
     {
       name: 'Aceptable',
@@ -56,7 +56,7 @@ export const optionesTabla1 = {
           return value;
         },
       },
-      data: [0, 0, 0, 0],
+      data: [60, 60, 60, 60],
     },
     {
       name: 'Moderadamente aceptable',
@@ -67,7 +67,7 @@ export const optionesTabla1 = {
           return value;
         },
       },
-      data: [0, 0, 0, 0],
+      data: [80, 80, 80, 80],
     },
   ],
 };
@@ -122,7 +122,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [0, 0, 0, 0, 0, 0, 0],
+      data: [90, 85, 90, 80, 90, 90, 90],
     },
     {
       name: 'Moderablemente aceptable',
@@ -133,7 +133,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [0, 0, 0, 0, 0, 0, 0],
+      data: [60, 60, 60, 60, 60, 60, 60],
     },
     {
       name: 'Aceptable',
@@ -144,7 +144,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [0, 0, 0, 0, 0, 0, 0],
+      data: [80, 80, 80, 80, 80, 80, 80],
     },
   ],
 };
@@ -169,4 +169,13 @@ export const INICIAL_PLANES = {
       responsables: '',
     },
   ],
+};
+
+export const CICLOS = {
+  amenazas: [0],
+  salud: [0],
+  peligros: [0],
+  integral: [0],
+  mejoramiento: [0],
+  recursos: [0],
 };

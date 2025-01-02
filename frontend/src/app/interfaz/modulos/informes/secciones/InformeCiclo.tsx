@@ -2,11 +2,20 @@ import TablaNumerica from 'comunes/funcionales/tabla/TablaNumerica';
 import { Bar } from 'comunes/funcionales/charts';
 import { Titulo } from 'comunes/estilos/EstComunes';
 
+// import { transformarDatos } from '../utilidades/Funciones';
+// import { InformeType } from '../types/InformesTypes';
 import { optionesTabla1 } from '../constantes/ConstGenerales';
 
 import styles from '../estilos/EstSeccionesInforme.module.css';
 
 const InformeCiclo = () => {
+  // const hola = Object.values(datos[0])
+  //   .flat()
+  //   .filter((dato) => dato !== null);
+  // const ciclos = transformarDatos(hola);
+
+  // console.log(ciclos);
+
   return (
     <>
       <Titulo style={{ textAlign: 'left' }}>

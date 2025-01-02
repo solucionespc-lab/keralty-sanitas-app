@@ -16,6 +16,10 @@ export const traerConfiguraciones: ResolverArgs<
   const dbListasRef = admin.database().ref('/listas');
   const dbConfig = configDb.ref('/iam');
 
+  // TODO: Se debe implementar la configuracion para traer los datos de la empresa que se acaba de autenticar para que los datos siempre estén disponibles para toda la aplicación
+  // TODO: Implementar la funcionalidad para los administradores poder consultar cualquier empresa que necesiten
+  // TODO: Implementar adicionalmente para la configuración de cada empresa, aquellas que tenga la estructura de grupo organizacional, se podría consultar todas la empresa que pertenezcan a ese   código del grupo organizacional
+
   try {
     const configuraciones = await Promise.all([
       dbConfig.get(),

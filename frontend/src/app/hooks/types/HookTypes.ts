@@ -16,9 +16,23 @@ export interface ItemCuestionario {
   }[];
 }
 
+export interface ItemExcelencia {
+  codigo: string;
+  objetivo: string;
+  dimension: number;
+  contenido: {
+    codigoPregunta: string;
+    requisito: string;
+    respuesta: number;
+    observaciones: string;
+    tema: string;
+  }[];
+}
+
 export interface Listas {
   evaluaciones: Record<string, ItemCuestionario>;
   estandares: Record<string, string>;
+  excelencia: Record<string, ItemExcelencia>;
 }
 
 export interface ListadosType {

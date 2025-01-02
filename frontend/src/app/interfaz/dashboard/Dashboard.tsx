@@ -2,6 +2,7 @@ import { useUserStore } from 'store/PrincipalStore';
 import { Toaster } from 'sonner';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
+import { Suspense } from 'react';
 import Informes from 'modulos/informes/Informes';
 import ModuloHuerfano from 'comunes/funcionales/ModuloHuerfano';
 import ModalToast from 'comunes/funcionales/ModalToast';
@@ -53,9 +54,14 @@ const Dashboard = () => {
                 element={<RutaProtegida modulo={modulo.llaveModulo} />}
               />
             ))}
-            <Route path='/informes' element={<Informes />}>
-              <Route path='autoevaluacion' element={<Informes />} />
-            </Route>
+            <Route
+              path='/informes'
+              element={
+                <Suspense fallback={<div>Cargando informes</div>}>
+                  <Informes />
+                </Suspense>
+              }
+            />
             <Route path='*' element={<ModuloHuerfano />} />
           </Routes>
         </ContenedorApp>

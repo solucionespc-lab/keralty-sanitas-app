@@ -21,9 +21,9 @@
   --color-add-red-6: #b02525;
   --color-add-red-7: #5e1111;
 
-  --color-add-purple-1: #da77f2;
-  --color-add-purple-2: #da77f2;
-  --color-add-purple-3: #be4bdb;
+  --color-add-purple-1: #f1cffa;
+  --color-add-purple-2: #e5aaf4;
+  --color-add-purple-3: #c068d6;
   --color-add-purple-4: #ae3ec9;
   --color-add-purple-5: #9c36b5;
   --color-add-purple-6: #702682;
@@ -74,6 +74,15 @@
   --color-add-orange-6: #ff922b;
   --color-add-orange-7: #fd7e14;
   --color-add-orange-8: #863408;
+
+  --color-add-yellow-1: #fff6a9;
+  --color-add-yellow-2: #feec8f;
+  --color-add-yellow-3: #f7d756;
+  --color-add-yellow-4: #ddb530;
+  --color-add-yellow-5: #ba8900;
+  --color-add-yellow-6: #896000;
+  --color-add-yellow-7: #5f3d00;
+  --color-add-yellow-8: #3f2700;
 
   /* Gama de colores para el tema primario, cada número en forma ascendente indica el grado de luminisidad del color */
   --brand-1: hsl(190, 100%, 91%);

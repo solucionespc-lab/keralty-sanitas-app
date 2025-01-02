@@ -1,7 +1,8 @@
 import * as admin from 'firebase-admin';
 
-import { ResolverArgs } from '../../../backend-def';
+import { FiltrosQuery, ResolverArgs } from '../../../backend-def';
 import {
+  aplicarFiltros,
   dbDataType,
   handleCustomError,
   resolvePromiseAndErrors,
@@ -92,7 +93,17 @@ export const traerInforme: ResolverArgs<InformesArgs, InformeType[]> = async (
 
   console.log(annio);
 
-  const [error, informes] = await resolvePromiseAndErrors(informesRef.get());
+  const consultas: FiltrosQuery = {
+    idEmpresa: ['idEmpresa', '==', idEmpresa],
+    annio: ['annio', '>=', annio],
+  };
+
+  const informe = aplicarFiltros<
+    InformeType,
+    { annio: number; idEmpresa: string }
+  >(informesRef, { annio, idEmpresa }, consultas);
+
+  const [error, informes] = await resolvePromiseAndErrors(informe.get());
 
   if (error) handleCustomError(error);
 

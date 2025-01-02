@@ -6,6 +6,10 @@ import {
   backOfficeQueriesRules,
 } from '../backoffice/seguridad/Politicas';
 import {
+  actaMutationPolicy,
+  actaQueryPolicy,
+} from '../modulos/actas/seguridad/Politicas';
+import {
   evaluacionesMutationPolicy,
   evaluacionesQueryPolicy,
 } from '../modulos/autoevaluacion/seguridad/Politicas';
@@ -15,6 +19,10 @@ import {
   empresaMutationPolicy,
   empresaQueryPolicy,
 } from '../modulos/empresas/seguridad/Politicas';
+import {
+  excelenciaMutationPolicy,
+  excelenciaQueryPolicy,
+} from '../modulos/excelencia/seguridad/Politicas';
 import {
   PlanesAccionQueryPolicy,
   PlanesAccionMutationPolicy,
@@ -36,6 +44,8 @@ const reglas = {
     trabajadoresQueries,
     evaluacionesQueryPolicy,
     PlanesAccionQueryPolicy,
+    excelenciaQueryPolicy,
+    actaQueryPolicy,
     backOfficeQueriesRules,
     denegado
   ),
@@ -45,6 +55,8 @@ const reglas = {
     evaluacionesMutationPolicy,
     PlanesAccionMutationPolicy,
     cuentasMutationsRules,
+    excelenciaMutationPolicy,
+    actaMutationPolicy,
     backOfficeMutationsRules,
     denegado
   ),

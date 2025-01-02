@@ -28,7 +28,12 @@ const InformeEstandar = () => {
             { categoria: 'Verificación', datos: [2.5, 5, 50] },
             { categoria: 'Mejoramiento', datos: [7.5, 10, 75] },
           ]}
-          encabezados={['Ciclo', 'Resultado', 'Puntaje máximo', '% obtenido']}
+          encabezados={[
+            'Estandar',
+            'Resultado',
+            'Puntaje máximo',
+            '% obtenido',
+          ]}
         />
       </main>
     </>

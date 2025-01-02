@@ -36,5 +36,22 @@ export interface PlanesArgs {
   idEmpresa: string;
 }
 
+export interface ResultadoType {
+  idPregunta: string;
+  ponderacion: number;
+  estandar: string;
+}
+
+export interface InformeType {
+  amenazas: ResultadoType[];
+  salud: ResultadoType[];
+  peligros: ResultadoType[];
+  integral: ResultadoType[];
+  mejoramiento: ResultadoType[];
+  recursos: ResultadoType[];
+}
+
 export type Query = { getPlanesAccion: PlanesType[] };
+export type QueryInforme = { getInformes: InformeType[] };
+
 export type MutationResponse = { savePlanesAccion: string };

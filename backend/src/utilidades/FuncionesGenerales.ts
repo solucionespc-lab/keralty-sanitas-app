@@ -49,7 +49,6 @@ export const aplicarFiltros = <T, F extends object>(
 /**
  * Resuelve una promesa y devuelve un error personalizado o el original si no coincide.
  *
- * @template T - Tipo de valor resuelto de la promesa.
  * @param {Promise<T>} promise - La promesa a resolver.
  * @returns {Promise<[CustomErrorType | Error | undefined, T | undefined]>} Una tupla
  *   - Primer elemento es un error personalizado o el error original
@@ -83,9 +82,6 @@ export const handleCustomError = (error: Error | undefined) => {
       throw new Error(errorItem.message);
     }
   }
-
-  console.log(error);
   logger?.error(error);
-
   throw new Error(error?.message);
 };
