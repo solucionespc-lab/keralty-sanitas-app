@@ -1,4 +1,8 @@
-import { actualizarUsuario, guardarUsuario } from './resolvers/Mutations';
+import {
+  actualizarUsuario,
+  exportarEmpresasDesdeExcel,
+  guardarUsuario,
+} from './resolvers/Mutations';
 import { traerUsuario, traerUsuarios } from './resolvers/Queries';
 
 const BackOfficeResolver = {
@@ -9,6 +13,7 @@ const BackOfficeResolver = {
   Mutation: {
     saveUsuario: guardarUsuario,
     updateUsuario: actualizarUsuario,
+    volcarEmpresasDesdeExcel: exportarEmpresasDesdeExcel,
   },
 };
 

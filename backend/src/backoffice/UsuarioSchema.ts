@@ -53,6 +53,7 @@ const BOUsuarioSchema = gql`
     saveUsuario(input: UsuarioInput): String
     updateUsuario(input: UsuarioInput): String
     deletePlanesVacios: String
+    volcarEmpresasDesdeExcel: String
   }
 `;
 
