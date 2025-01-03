@@ -23,20 +23,35 @@ export const actualizarUsuario: ResolverArgs<inputType, string> = async (
   const empresaRef = admin.firestore().collection(COL_EMPRESAS);
 
   try {
-    const empresa = await empresaRef.add({
-      nombre: CuentaInput.nombreEmpresa,
-      nit: CuentaInput.nit,
-      tipoEmpresa: 'empresa',
-      riesgo: 'I',
-      tamano: 'pequena',
-      activo: true,
-      responsables: {
-        cargo: '',
-        correo: CuentaInput.correo,
-        nombre: CuentaInput.nombreUsuario,
-        telefono: '',
-        usuarioActivo: true,
-      },
+    //Primero verificamos con el nit, si la empresa existe, sino devolvemos error
+    const buscarEmpresa = await empresaRef
+      .where('nit', '==', CuentaInput.nit)
+      .where('activo', '==', true)
+      .get();
+
+    if (buscarEmpresa.empty) {
+      logger.error(
+        `La empresa con el nit ${CuentaInput.nit} no esta habilitada`
+      );
+      throw new Error('La empresa no existe');
+    }
+
+    // Si la empresa existe, agregamos el usuario al array de responsables
+    const idEmpresa = buscarEmpresa.docs[0].id;
+
+    const responsablesArray = buscarEmpresa.docs[0].data().responsables;
+
+    await empresaRef.doc(idEmpresa).update({
+      responsables: [
+        ...responsablesArray,
+        {
+          cargo: '',
+          correo: CuentaInput.correo,
+          nombre: CuentaInput.nombreUsuario,
+          telefono: '',
+          usuarioActivo: true,
+        },
+      ],
     });
 
     // Creamos el usuario según la empresa que creó
@@ -46,7 +61,7 @@ export const actualizarUsuario: ResolverArgs<inputType, string> = async (
     });
 
     const customClaims = {
-      idEmpresa: empresa.id,
+      idEmpresa: idEmpresa,
       firma: 'yr5fS3jQTA94',
       grupo: 'propietario',
       organizacion: 'Keralty',
@@ -67,7 +82,7 @@ export const actualizarUsuario: ResolverArgs<inputType, string> = async (
       },
       { merge: true }
     );
-
+    logger.info('Se actualizaron correctamente los datos de la empresa');
     return 'Se actualizaron correctamente los datos de la empresa';
   } catch (error) {
     logger.error(error);
