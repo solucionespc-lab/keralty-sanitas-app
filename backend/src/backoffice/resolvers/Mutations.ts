@@ -93,7 +93,7 @@ export const actualizarUsuario: ResolverArgs<UserInput, string> = async (
   }
 };
 
-export const exportarEmpresasDesdeExcel = async () => {
+export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
   try {
     logger.info('Volcando empresas desde Excel');
 
@@ -125,9 +125,8 @@ export const exportarEmpresasDesdeExcel = async () => {
       const fechaAfiliacion = empresa['FECHA AFILIACION ']
         ? excelSerialToJSDate(empresa['FECHA AFILIACION '])
         : null;
-      // const numeroAsegurados = empresa['No. Asegurados']
-      //   ? parseInt(String(empresa['No. Asegurados']).replace('.', ''), 10)
-      //   : null;
+
+      const asegurados = Number(empresa['No. Asegurados']);
       const numeroAsegurados = empresa['No. Asegurados'];
 
       // console.log(empresa);
@@ -147,7 +146,7 @@ export const exportarEmpresasDesdeExcel = async () => {
         nit,
         nombre: razonSocial,
         tipoEmpresa: 'empresa',
-        tamano: 'pequena',
+        tamano: calcularTamanoEmpresa(asegurados),
         riesgo: 'I',
         grupo: '',
         activo: true,
@@ -193,8 +192,11 @@ export const exportarEmpresasDesdeExcel = async () => {
       await batch.commit();
       logger.info('Batch final ejecutado con éxito.');
     }
+
+    return 'Empresas volcadas desde Excel con éxito';
   } catch (error) {
     logger.error('Error procesando el archivo Excel:', error);
+    return 'Error procesando el archivo Excel';
   }
 };
 
@@ -204,4 +206,14 @@ const excelSerialToJSDate = (serial: number): string => {
   const days = offset - (serial > 59 ? 1 : 0); // Ajusta por el bug del año bisiesto de 1900
   const jsDate = new Date(excelEpoch.getTime() + days * 24 * 60 * 60 * 1000);
   return jsDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+};
+
+const calcularTamanoEmpresa = (asegurados: number): string => {
+  if (asegurados <= 10) {
+    return 'pequena';
+  } else if (asegurados > 10 && asegurados <= 49) {
+    return 'mediana';
+  } else {
+    return 'grande';
+  }
 };
