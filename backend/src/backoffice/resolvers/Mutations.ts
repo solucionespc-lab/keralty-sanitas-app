@@ -1,17 +1,15 @@
 import * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions';
+import path from 'path';
+import * as xlsx from 'xlsx';
 
 import { ResolverArgs } from '../../backend-def';
+import { EMPRESA_REF } from '../../modulos/empresas/constantes/EmpresasConst';
 import { USUARIOS } from '../constantes/ConstGenerales';
+import { EmpresaExcelType, EmpresaType } from '../types/EmpresasType';
 import { generarHash } from '../utilidades/FuncGenerales';
 
 import type { UserInput } from '../types/UsuarioTypes';
-
-import fs from 'fs';
-import path from 'path';
-import * as xlsx from 'xlsx';
-import { EmpresaExcelType, EmpresaType } from '../types/EmpresasType';
-import { EMPRESA_REF } from '../../modulos/empresas/constantes/EmpresasConst';
 
 export const guardarUsuario: ResolverArgs<UserInput, string> = async (
   _,
@@ -99,7 +97,7 @@ export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
 
     const filePath = path.join(
       process.cwd(),
-      `src/recursos/Base empresas herramienta estándares con Trabajadores.xlsx`
+      'src/recursos/Base empresas herramienta estándares con Trabajadores.xlsx'
     );
 
     // Lee el archivo Excel
@@ -113,9 +111,21 @@ export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
     // Convierte la hoja a JSON
     const empresas: EmpresaExcelType[] = xlsx.utils.sheet_to_json(sheet);
 
+    // Obtiene todas las empresas actuales de Firestore
+    const empresasRef = admin.firestore().collection(EMPRESA_REF);
+    const empresasSnapshot = await empresasRef.get();
+    const empresasFirestore: Record<string, FirebaseFirestore.DocumentData> =
+      {};
+
+    empresasSnapshot.forEach((doc) => {
+      const data = doc.data();
+      if (data.nit) {
+        empresasFirestore[data.nit] = { id: doc.id, ...data };
+      }
+    });
+
     // Inicia un batch para operaciones en lotes
     let batch = admin.firestore().batch();
-    const empresasRef = admin.firestore().collection(EMPRESA_REF);
     const tamanoLote = 500;
     let contadorRegistros = 0;
 
@@ -129,8 +139,6 @@ export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
       const asegurados = Number(empresa['No. Asegurados']);
       const numeroAsegurados = empresa['No. Asegurados'];
 
-      // console.log(empresa);
-
       if (!nit || !razonSocial) {
         logger.warn(
           `La fila tiene datos incompletos: ${JSON.stringify(empresa)}`
@@ -138,9 +146,6 @@ export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
         console.log(empresa);
         continue;
       }
-
-      // Busca documentos con el NIT
-      const docSnapshot = await empresasRef.where('nit', '==', nit).get();
 
       const datosActualizados: EmpresaType = {
         nit,
@@ -154,10 +159,10 @@ export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
         ...(numeroAsegurados && { numeroAsegurados }),
       };
 
-      if (docSnapshot.size > 0) {
-        // Actualiza el documento existente
-        const docRef = docSnapshot.docs[0].ref;
-        const currentData = docSnapshot.docs[0].data();
+      if (empresasFirestore[nit]) {
+        // Actualiza la empresa existente
+        const docRef = empresasRef.doc(empresasFirestore[nit].id);
+        const currentData = empresasFirestore[nit];
 
         // Manejo del campo "responsables"
         if (
@@ -171,7 +176,7 @@ export const exportarEmpresasDesdeExcel = async (): Promise<string> => {
 
         batch.set(docRef, datosActualizados, { merge: true });
       } else {
-        // Crea un nuevo documento
+        // Crea una nueva empresa
         const docRef = empresasRef.doc(); // Genera un nuevo ID
         datosActualizados.responsables = [];
         batch.set(docRef, datosActualizados);
