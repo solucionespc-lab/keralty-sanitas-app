@@ -1,3 +1,5 @@
+import { EQUIVALENCIAS_CINTURONES } from '../constantes/ConstGenerales';
+
 import type { ExcelenciaType } from '../types/ExcelenciaTypes';
 
 /**
@@ -9,8 +11,11 @@ export const validarDatosTabla = (datosQuery: ExcelenciaType[]) => {
   return datosQuery?.map((dato) => ({
     id: dato.id,
     fecha: dato.fechaCreacion,
-    puntaje: dato.puntajeTotal,
-    calificacion: dato.calificacion,
+    puntaje: dato.puntajeTotal.toFixed(0),
+    calificacion:
+      EQUIVALENCIAS_CINTURONES[
+        dato.calificacion as keyof typeof EQUIVALENCIAS_CINTURONES
+      ],
   }));
 };
 

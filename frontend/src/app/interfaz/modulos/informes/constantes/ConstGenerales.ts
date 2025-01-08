@@ -1,4 +1,17 @@
-export const SECCIONES = ['Informe', 'Planes de acción'];
+export const SECCIONES = [
+  {
+    titulo: 'Informe autoevaluación',
+    id: 'informe',
+  },
+  {
+    titulo: 'Planes de acción - autoevaluación',
+    id: 'planes',
+  },
+  {
+    titulo: 'Informe de excelencia',
+    id: 'excelencia',
+  },
+];
 
 export const optionesTabla1 = {
   legend: {
@@ -145,6 +158,34 @@ export const opcionesGrafica2 = {
         },
       },
       data: [80, 80, 80, 80, 80, 80, 80],
+    },
+  ],
+};
+
+export const opcionesGraficaRadar = {
+  legend: {
+    data: ['Allocated Budget', 'Actual Spending'],
+  },
+  radar: {
+    // shape: 'circle',
+    indicator: [
+      { name: 'Liderazgo', max: 100 },
+      { name: 'Propósito', max: 100 },
+      { name: 'Objetivos', max: 100 },
+      { name: 'SST', max: 100 },
+      { name: 'Compromiso', max: 100 },
+    ],
+  },
+  series: [
+    {
+      name: 'Resultado',
+      type: 'radar',
+      data: [
+        {
+          value: [100, 100, 90, 100, 70],
+          name: 'Dimensiones',
+        },
+      ],
     },
   ],
 };

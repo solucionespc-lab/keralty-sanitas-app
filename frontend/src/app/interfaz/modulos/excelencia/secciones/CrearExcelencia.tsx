@@ -1,6 +1,5 @@
 import { toast } from 'sonner';
 import { Suspense, useState } from 'react';
-import usePermisos from 'hooks/Permisos';
 import Cargando from 'comunes/informativos/Cargando';
 import FormModal from 'comunes/funcionales/forms/Form';
 import Condicional from 'comunes/funcionales/Condicional';
@@ -17,18 +16,18 @@ import styles from '../estilos/EstAutoevaluaciones.module.css';
 import type { CrearFormProps } from '../types/ExcelenciaTypes';
 
 const CrearExcelencia = ({ cerrar }: CrearFormProps) => {
-  const { accesos } = usePermisos();
   const [saveEvaluacion, { loading }] = useMutation(SAVE_EVALUACION);
   const [estaIncompleto, setIncompleto] = useState(false);
+
   const guardarEvaluacion = () => {
     saveEvaluacion({
-      variables: { evaluacion: prepararEvaluacion() },
+      variables: { cuestionario: prepararEvaluacion() },
       onError: () => toast.error('Ocurrio un error al guardar el diagnóstico'),
       onCompleted: () => {
         toast.info('Se registró con éxito el diagnóstico');
         cerrar();
       },
-      refetchQueries: ['GetExcelencia', 'GetEmpresa'],
+      refetchQueries: ['GetExcelencia'],
     });
   };
 
@@ -51,7 +50,7 @@ const CrearExcelencia = ({ cerrar }: CrearFormProps) => {
           type='button'
           id='registrar'
           typeBtn='primary'
-          permisos={accesos.excelencia}
+          permisos={['escribir']}
           permiso='escribir'
           onClick={() => setIncompleto(true)}
         />,
@@ -76,11 +75,12 @@ const CrearExcelencia = ({ cerrar }: CrearFormProps) => {
                 Recuerde que el diligenciamiento del diagnóstico de excelencia
                 no admite guardar de forma parcial. De clic en el botón
                 “Guardar” únicamente cuando haya respondido todos los ítems que
-                le aplican según el tamaño y la clase de riesgo de la empresa.
+                le aplican.
               </p>
               <p style={{ color: 'var(--color-primary-text)' }}>
-                ¿Está seguro de guardar el diagnóstico, tiene requisitos sin
-                diligenciar y puede afectar la calificación?
+                En caso de tener requisitos sin diligenciar se afectará la
+                calificación, ¿está seguro de guardar el diagnóstico de
+                excelencia organizacional?
               </p>
               <div
                 style={{ alignSelf: 'flex-end', marginTop: '1em' }}

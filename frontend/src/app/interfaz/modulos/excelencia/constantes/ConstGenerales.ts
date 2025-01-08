@@ -28,8 +28,8 @@ export const datosBasicos = {
 };
 
 export const inicialFiltros = {
-  annioAplicado: 2024,
-  annio: 2024,
+  annioAplicado: new Date().getFullYear(),
+  annio: new Date().getFullYear(),
   fechaInicioAplicado: '',
   fechaInicio: '',
   fechaFinAplicado: '',
@@ -54,7 +54,7 @@ export const LST_RESPUESTAS = [
     puntaje: 40,
   },
   {
-    titulo: 'ni de acuerdo, ni en desacuerdo',
+    titulo: 'Ni de acuerdo, ni en desacuerdo',
     puntaje: 60,
   },
   {

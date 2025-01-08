@@ -24,7 +24,7 @@ const ResultadoAuditorias = () => {
         style={{ alignItems: 'center', padding: '0.5em 0' }}
         className={styles.contenedor_flex}
       >
-        <h4>Grado de cinturón - </h4>
+        <h4>Cinturón - </h4>
         <div className={`${styles.calificacion} ${styles[interpretacion]}`}>
           <span>
             {

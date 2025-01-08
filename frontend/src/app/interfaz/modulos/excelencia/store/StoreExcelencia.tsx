@@ -128,22 +128,20 @@ export const guardarCuestionario = (cuestionario: ItemExcelencia[]): void => {
 };
 
 export function prepararEvaluacion() {
-  // const autoevaluacion = useExcelencia.getState();
-  // const { cuestionario } = useCuestionario.getState();
-  // const planesAccion: string[] = [];
-  // const cuestionarioFinal = Object.entries(cuestionario).map((pregunta) => {
-  //   const { respuesta, plan, soportes, observaciones } = pregunta[1];
-  //   planesAccion.push(plan);
-  //   return {
-  //     codigo: pregunta[0],
-  //     respuesta,
-  //     soportes,
-  //     observaciones,
-  //   };
-  // });
-  // return {
-  //   ...autoevaluacion,
-  //   planes: planesAccion,
-  //   cuestionario: cuestionarioFinal,
-  // };
+  const { empresa, ...excelenciaRest } = useExcelencia.getState();
+  const { cuestionario } = useCuestionario.getState();
+
+  const transformarCuestionario = Object.entries(cuestionario).map(
+    (pregunta) => ({ ...pregunta[1] })
+  );
+
+  console.log({
+    ...excelenciaRest,
+    contenido: transformarCuestionario,
+  });
+
+  return {
+    ...excelenciaRest,
+    contenido: transformarCuestionario,
+  };
 }

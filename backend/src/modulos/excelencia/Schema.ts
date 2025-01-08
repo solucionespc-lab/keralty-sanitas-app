@@ -18,7 +18,7 @@ const ExcelenciaSchema = gql`
     contenido: [ContenidoType]
     fechaCreacion: String
     annio: Int
-    puntajeTotal: Int
+    puntajeTotal: Float
     calificacion: String
     evaluador: String
     area: String
@@ -42,7 +42,7 @@ const ExcelenciaSchema = gql`
     contenido: [ContenidoInput]
     fechaCreacion: String
     annio: Int
-    puntajeTotal: Int
+    puntajeTotal: Float
     calificacion: String
     evaluador: String
     area: String

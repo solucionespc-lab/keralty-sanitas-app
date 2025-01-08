@@ -79,7 +79,6 @@
 
 .contenedor_respuestas {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-evenly;
   gap: var(--gaps-2);
 
@@ -101,7 +100,7 @@
   background-color: var(--surface-first);
   user-select: none;
   font-size: var(--paragraph);
-  min-width: 215px;
+  min-width: 80px;
 }
 
 .cumple {
@@ -117,7 +116,7 @@
   background-color: var(--surface-first);
   user-select: none;
   font-size: var(--paragraph);
-  min-width: 215px;
+  min-width: 80px;
 
   &:has(input:checked) {
     color: var(--color-add-green-1);
@@ -139,7 +138,7 @@
   background-color: var(--surface-first);
   user-select: none;
   font-size: var(--paragraph);
-  min-width: 215px;
+  min-width: 80px;
 
   &:has(input:checked) {
     color: #fff;
