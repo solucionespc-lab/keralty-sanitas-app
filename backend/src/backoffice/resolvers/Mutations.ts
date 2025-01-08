@@ -1,9 +1,11 @@
+import algoliasearch from 'algoliasearch';
 import * as admin from 'firebase-admin';
 import { logger } from 'firebase-functions';
 import path from 'path';
 import * as xlsx from 'xlsx';
 
 import { ResolverArgs } from '../../backend-def';
+import { COL_EMPRESAS } from '../../modulos/cuentas/constantes/ConstGenerales';
 import { EMPRESA_REF } from '../../modulos/empresas/constantes/EmpresasConst';
 import { USUARIOS } from '../constantes/ConstGenerales';
 import { EmpresaExcelType, EmpresaType } from '../types/EmpresasType';
@@ -220,5 +222,52 @@ const calcularTamanoEmpresa = (asegurados: number): string => {
     return 'mediana';
   } else {
     return 'grande';
+  }
+};
+
+export const volcarEmpresasDesdeFirestoreAAlgolia = async () => {
+  // Inicializar Algolia
+  const ALGOLIA_APP_ID_PRUEBA = '26C8K9E3NL'; // Prod:6B400QQWIH Dev:26C8K9E3NL
+  const ALGOLIA_ADMIN_KEY_PRUEBA = 'ca5f06df05a6b00d50d910d69617a2b1'; // Prod:e7a83aadf3efbb76d2303433f243fada Dev:ca5f06df05a6b00d50d910d69617a2b1
+  const ALGOLIA_INDEX_NAME_PRUEBA = 'col_empresas_keralty'; // col_trabajadores_avvillas-sst
+  // Tamaño del lote
+  const BATCH_SIZE = 500;
+
+  try {
+    // Inicializar Algolia
+    const client = algoliasearch(
+      ALGOLIA_APP_ID_PRUEBA,
+      ALGOLIA_ADMIN_KEY_PRUEBA
+    );
+    const algoliaIndex = client.initIndex(ALGOLIA_INDEX_NAME_PRUEBA);
+
+    // Traemos las empresas de firestore
+    const empresas = await admin.firestore().collection(COL_EMPRESAS).get();
+    console.log(`Cantidad de empresas encontradas: ${empresas.size}`);
+
+    // Formatear informacion del trabajador para estructura algolia
+    const empresasFormateadas = empresas.docs.map((doc) => {
+      const datosEmpresa = doc.data();
+      return {
+        ...datosEmpresa,
+        objectID: doc.id,
+      };
+    });
+
+    console.log('Limpiando tabla de empresas en algolia...');
+    await algoliaIndex.clearObjects();
+
+    // Dividir registros en lotes
+    for (let i = 0; i < empresasFormateadas.length; i += BATCH_SIZE) {
+      const batch = empresasFormateadas.slice(i, i + BATCH_SIZE);
+      console.log(`Subiendo batch ${i / BATCH_SIZE + 1}...`);
+      // eslint-disable-next-line no-await-in-loop
+      await algoliaIndex.saveObjects(batch); // Enviar el lote a Algolia
+    }
+
+    return 'Datos cargados a Algolia';
+  } catch (error) {
+    console.log('Error cargando datos a Algolia', error);
+    throw error;
   }
 };

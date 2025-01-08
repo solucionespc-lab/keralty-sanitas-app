@@ -4,6 +4,7 @@ const backOfficeMutationsRules = {
   saveUsuario: allow,
   updateUsuario: allow,
   volcarEmpresasDesdeExcel: allow,
+  volcarEmpresasAAlgolia: allow,
 };
 
 const backOfficeQueriesRules = {
