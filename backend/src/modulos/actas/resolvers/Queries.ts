@@ -25,7 +25,6 @@ export const traerActas: ResolverArgs<FiltrosType, ActasType[]> = async (
   const consultas: FiltrosQuery = {
     fechaInicio: ['fechaCreacion', '>=', filtros.fechaInicio],
     fechaFin: ['fechaCreacion', '<=', filtros.fechaFin],
-    annio: ['annio', '==', filtros.annio],
     estado: ['estado', '==', filtros.estado],
   };
 

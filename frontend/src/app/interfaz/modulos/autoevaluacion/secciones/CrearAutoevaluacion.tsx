@@ -80,8 +80,8 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
                 le aplican según el tamaño y la clase de riesgo de la empresa.
               </p>
               <p style={{ color: 'var(--color-primary-text)' }}>
-                ¿Está seguro de guardar la autoevaluación, tiene requisitos sin
-                diligenciar y puede afectar la calificación?
+                En caso de tener requisitos sin diligenciar se afectará la
+                calificación, ¿está seguro de guardar la autoevaluación?
               </p>
               <div
                 style={{ alignSelf: 'flex-end', marginTop: '1em' }}

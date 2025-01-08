@@ -9,7 +9,7 @@ import { ACTAS_REF, EMPRESA_REF } from '../constantes/ConstGenerales';
 
 import type { ActasArg } from '../types/ActasTypes';
 
-export const saveExcelencia: ResolverArgs<ActasArg, string> = async (
+export const guadarActas: ResolverArgs<ActasArg, string> = async (
   _,
   { ActasInput }
 ) => {

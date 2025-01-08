@@ -1,0 +1,32 @@
+.contenedor_evaluaciones {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-3);
+  position: relative;
+  width: min(100%, 900px);
+  margin-block: 1em;
+}
+
+.fieldsets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gaps-2);
+  border: 1px solid var(--surface-third);
+  border-radius: var(--radius-2);
+  padding: var(--gaps-2);
+}
+
+.seccion_agrupada {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--surface-third);
+  border-radius: var(--radius-2);
+  padding: var(--gaps-2) var(--gaps-3);
+
+  & summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--gaps-2);
+  }
+}

@@ -87,15 +87,14 @@ const ActasSchema = gql`
     estado: String
   }
 
-  input FiltrosInput {
+  input FiltrosActasInput {
     fechaInicio: String
     fechaFin: String
-    annio: String
     estado: String
   }
 
   extend type Query {
-    getActas(idEmpresa: ID!, filtros: FiltrosInput): [ActasType]
+    getActas(idEmpresa: ID!, filtros: FiltrosActasInput): [ActasType]
     getActa(idEmpresa: ID!, idActa: ID!): ActasType
   }
 

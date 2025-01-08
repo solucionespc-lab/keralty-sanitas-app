@@ -1,10 +1,13 @@
+import { guadarActas } from './resolvers/Mutations';
+import { traerActa, traerActas } from './resolvers/Queries';
+
 const ActasResolver = {
   Query: {
-    getActas: () => console.log('getActas'),
-    getActa: () => console.log('getActas'),
+    getActas: traerActas,
+    getActa: traerActa,
   },
   Mutation: {
-    saveActa: () => console.log('saveActas'),
+    saveActa: guadarActas,
     updateActa: () => console.log('saveActas'),
   },
 };

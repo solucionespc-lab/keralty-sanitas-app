@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import * as admin from 'firebase-admin';
 import { https } from 'firebase-functions/v2';
 
+import generarPDFActa from './src/ActaPDF';
 import { correoBienvenida } from './src/funciones/CorreoBienvenida';
 import generatePDF from './src/pdf';
 import { cuentaServicio, urlSevices } from './src/seguridad/Secrets';
@@ -19,6 +20,16 @@ app.use(express.json());
 app.post('/', async (req: Request, res: Response) => {
   const body = req.body.data;
   const url = await generatePDF(body);
+
+  res.set('content-type', 'text/plain');
+  res.set('Access-Control-Allow-Origin', '*');
+  res.send({ data: url });
+});
+
+app.post('/acta', async (req: Request, res: Response) => {
+  const url = await generarPDFActa();
+
+  console.log(req);
 
   res.set('content-type', 'text/plain');
   res.set('Access-Control-Allow-Origin', '*');
