@@ -1189,12 +1189,12 @@
           },
           {
             "codigoPregunta": "dim1-preg2",
-            "requisito": "¿Considera usted que en su empresa hay lideres?",
+            "requisito": "¿Considera usted que en su empresa hay líderes?",
             "tema": "liderazgo"
           },
           {
             "codigoPregunta": "dim1-preg3",
-            "requisito": "¿Considera usted que los lideres vinculados a la empresa cuentan con las competencias que la organización ha identificado como propias de ella?",
+            "requisito": "¿Considera usted que los líderes vinculados a la empresa cuentan con las competencias que la organización ha identificado como propias de ella?",
             "tema": "liderazgo"
           },
           {
@@ -1221,7 +1221,7 @@
         "contenido": [
           {
             "codigoPregunta": "dim2-preg1",
-            "requisito": "Entendiendo por propósito la razón de ser de su existencia, y el aporte que la misma le entrega a los accionistas, a los trabajadores y a todas las partes interesadas ¿Considera usted que la  empresa tiene definido su  propósito?",
+            "requisito": "Entendiendo por propósito la razón de ser de su existencia, y el aporte que la misma le entrega a los accionistas, a los trabajadores y a todas las partes interesadas, ¿considera usted que la  empresa tiene definido su  propósito? ",
             "tema": "proposito"
           },
           {
@@ -1231,17 +1231,17 @@
           },
           {
             "codigoPregunta": "dim2-preg3",
-            "requisito": "Entendiendo por principios aquellas conductas que orientan la acción de un ser humano y que se sustentan en la ética y en valores, ¿Considera usted que la empresa se rige por principios?",
+            "requisito": "Entendiendo por principios aquellas conductas que orientan la acción de un ser humano y que se sustentan en la ética y en valores, ¿considera usted que la empresa se rige por principios?",
             "tema": "proposito"
           },
           {
             "codigoPregunta": "dim2-preg4",
-            "requisito": "Entendiendo por normas  cómo aquellas expresadas por la autoridad  ¿Considera usted que la empresa se rige por normas?",
+            "requisito": "Entendiendo por normas como aquellas expresadas por la autoridad, ¿considera usted que la empresa se rige por normas?",
             "tema": "proposito"
           },
           {
             "codigoPregunta": "dim2-preg5",
-            "requisito": "¿La Seguridad y la Salud es considerada un estilo de vida en la empresa?",
+            "requisito": "¿La seguridad y la salud son consideradas un estilo de vida en la empresa?",
             "tema": "proposito"
           }
         ]
@@ -1258,7 +1258,7 @@
           },
           {
             "codigoPregunta": "dim3-preg2",
-            "requisito": "¿Considera usted que los objetivos de Seguridad y Salud en el Trabajo están alineados a los objetivos organizacionales?",
+            "requisito": "¿Considera usted que los objetivos de Seguridad y Salud en el Trabajo están alineados con los objetivos organizacionales?",
             "tema": "objetivos"
           },
           {
@@ -1300,7 +1300,7 @@
           },
           {
             "codigoPregunta": "dim4-preg4",
-            "requisito": "¿Sabe usted si en la empresa se hace la planeación del Sistema de Gestión de Seguridad y Salud en el Trabajo con perspectiva a la innovación de los procesos y alineada con la estrategia organizacional?",
+            "requisito": "¿Sabe usted si en la empresa se hace la planeación del Sistema de Gestión de Seguridad y Salud en el Trabajo con perspectiva a la innovación de los procesos y está alineada con la estrategia organizacional?",
             "tema": "sst"
           },
           {
@@ -1322,7 +1322,7 @@
           },
           {
             "codigoPregunta": "dim5-preg2",
-            "requisito": "Entendiendo como compromiso la actitud a través de la cual los trabajadores sienten como propia su empresa. ¿Trabaja usted con alto grado de compromiso y con pasíón en esta empresa?",
+            "requisito": "Entendiendo como compromiso la actitud a través de la cual los trabajadores sienten como propia su empresa, ¿trabaja usted con alto grado de compromiso y con pasíón en esta empresa?",
             "tema": "compromiso"
           },
           {
