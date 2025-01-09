@@ -41,24 +41,26 @@ export const autoevaluaciones = functions.firestore
     const preguntas: EvaContenidoRT[] = snapshot.val();
 
     // Inicialiazar resultados
-    const ciclos: Record<string, { resultado: number; puntajeMaximo: number }> =
-      {
-        Planear: { resultado: 0, puntajeMaximo: 25 },
-        Hacer: { resultado: 0, puntajeMaximo: 60 },
-        Verificar: { resultado: 0, puntajeMaximo: 5 },
-        Actuar: { resultado: 0, puntajeMaximo: 10 },
-      };
+    const ciclos: Record<
+      string,
+      { resultado: number; puntajeMaximo: number; tipo: string }
+    > = {
+      Planear: { resultado: 0, puntajeMaximo: 25, tipo: 'ciclo' },
+      Hacer: { resultado: 0, puntajeMaximo: 60, tipo: 'ciclo' },
+      Verificar: { resultado: 0, puntajeMaximo: 5, tipo: 'ciclo' },
+      Actuar: { resultado: 0, puntajeMaximo: 10, tipo: 'ciclo' },
+    };
     const estandares: Record<
       string,
-      { resultado: number; puntajeMaximo: number }
+      { resultado: number; puntajeMaximo: number; tipo: string }
     > = {
-      recursos: { resultado: 0, puntajeMaximo: 10 },
-      integral: { resultado: 0, puntajeMaximo: 15 },
-      salud: { resultado: 0, puntajeMaximo: 20 },
-      perligros: { resultado: 0, puntajeMaximo: 30 },
-      amenazas: { resultado: 0, puntajeMaximo: 10 },
-      verificacion: { resultado: 0, puntajeMaximo: 5 },
-      mejoramiento: { resultado: 0, puntajeMaximo: 10 },
+      recursos: { resultado: 0, puntajeMaximo: 10, tipo: 'estandar' },
+      integral: { resultado: 0, puntajeMaximo: 15, tipo: 'estandar' },
+      salud: { resultado: 0, puntajeMaximo: 20, tipo: 'estandar' },
+      perligros: { resultado: 0, puntajeMaximo: 30, tipo: 'estandar' },
+      amenazas: { resultado: 0, puntajeMaximo: 10, tipo: 'estandar' },
+      verificacion: { resultado: 0, puntajeMaximo: 5, tipo: 'estandar' },
+      mejoramiento: { resultado: 0, puntajeMaximo: 10, tipo: 'estandar' },
     };
 
     // Procesar las respuestas del cuestionario
@@ -87,8 +89,8 @@ export const autoevaluaciones = functions.firestore
       annio: year,
       idEmpresa: empresaId,
       autoevaluacion: {
-        ciclo: ciclosCalculados,
-        estandar: estandaresCalculadors,
+        ...ciclosCalculados,
+        ...estandaresCalculadors,
       },
     };
 

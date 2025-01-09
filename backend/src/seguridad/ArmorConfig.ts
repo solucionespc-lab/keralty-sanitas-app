@@ -3,7 +3,7 @@ export const ArmorConfigurations = {
   maxDepth: { enabled: true, n: 4 },
   costLimit: {
     enabled: true,
-    maxCost: 100,
+    maxCost: 300,
     objectCost: 2,
     scalarCost: 1,
     depthCostFactor: 1.5,

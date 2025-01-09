@@ -8,8 +8,17 @@ const InformesAutoSchema = gql`
   }
 
   type AutoevaluacionInfoType {
-    ciclo: CicloType
-    estandar: EstandarType
+    Actuar: PuntajeType
+    Hacer: PuntajeType
+    Planear: PuntajeType
+    Verificar: PuntajeType
+    amenazas: PuntajeType
+    integral: PuntajeType
+    mejoramiento: PuntajeType
+    perligros: PuntajeType
+    recursos: PuntajeType
+    salud: PuntajeType
+    verificacion: PuntajeType
   }
 
   type CicloType {
@@ -32,6 +41,7 @@ const InformesAutoSchema = gql`
   type PuntajeType {
     puntajeMaximo: Float
     resultado: Float
+    tipo: String
   }
 
   type ExcelenciaInfoType {
