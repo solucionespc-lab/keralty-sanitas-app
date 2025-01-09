@@ -8,7 +8,6 @@ import {
 } from '@apollo/client';
 
 import offline from './Offline';
-import errorLink from './Errores';
 
 interface ServerProps {
   children: ReactElement | ReactElement[];
@@ -32,7 +31,7 @@ const Servidor = ({ children, token }: ServerProps) => {
   });
 
   const cliente = new ApolloClient({
-    link: from([link, authLink, errorLink]),
+    link: from([link, authLink]),
     cache: offline,
     connectToDevTools: import.meta.env.DEV,
     defaultOptions: {
