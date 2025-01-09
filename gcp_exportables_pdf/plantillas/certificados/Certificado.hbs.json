@@ -5,7 +5,7 @@
   "firmaUrl": "http://127.0.0.1:9199/v0/b/internal-bucket/o/Firma%20AEB.png?alt=media&token=abe510d4-26b4-4a2f-991b-e0446152a139",
   "nit": "900703147",
   "diaAfiliacion": 30,
-  "mesAfilicacion": 1,
+  "mesAfiliacion": "enero",
   "annioAfiliacion": 2024,
   "annioActual": 2024,
   "puntaje": 85.6,

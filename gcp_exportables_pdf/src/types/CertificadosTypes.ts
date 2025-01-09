@@ -19,6 +19,7 @@ export interface EmpresaType {
   tipoEmpresa: string;
   riesgo: string;
   tamano: string;
+  fechaAfiliacion: string;
 }
 
 export interface PreguntaEvaluacionType {
@@ -60,7 +61,7 @@ export interface PDFDataType {
   nombre: string;
   nit: string;
   diaAfiliacion: number;
-  mesAfilicacion: number;
+  mesAfiliacion: string;
   annioAfiliacion: number;
   annioActual: number;
   puntaje: number;

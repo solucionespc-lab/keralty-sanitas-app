@@ -23,7 +23,7 @@ export const actualizarUsuario: ResolverArgs<inputType, string> = async (
   const empresaRef = admin.firestore().collection(COL_EMPRESAS);
 
   try {
-    //Primero verificamos con el nit, si la empresa existe, sino devolvemos error
+    // Primero verificamos con el nit, si la empresa existe, sino devolvemos error
     const buscarEmpresa = await empresaRef
       .where('nit', '==', CuentaInput.nit)
       .where('activo', '==', true)

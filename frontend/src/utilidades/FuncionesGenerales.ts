@@ -62,8 +62,8 @@ export const getLocalDate: GetLocalDateFunc = (opciones) => {
     minute: '2-digit',
     second: '2-digit',
   };
-  const fechaLetra = new Date().toLocaleDateString('es-CO', options);
 
+  const fechaLetra = new Date().toLocaleDateString('es-CO', options);
   const fechaHora = fechaLetra.split(', ');
   const fecha = fechaHora[0].split('/').reverse().join('-');
   const hora = fechaHora[1];
@@ -85,6 +85,7 @@ export const getLocalDate: GetLocalDateFunc = (opciones) => {
     mesNumber: date.getMonth(),
   };
 };
+
 export const calcularEdad = (fecha: string, fechaEvento?: string): number => {
   if (!fecha) return 0;
 

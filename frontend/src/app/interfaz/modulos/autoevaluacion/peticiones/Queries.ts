@@ -10,9 +10,6 @@ export const GET_EVALUACIONES = gql`
       calificacion
       empresa {
         nombre
-        riesgo
-        tamano
-        tipoEmpresa
       }
     }
   }
@@ -47,7 +44,6 @@ export const GET_EMPRESA_AUTOEVALUACION = gql`
       tipoEmpresa
       riesgo
       tamano
-      activo
     }
   }
 `;

@@ -22,7 +22,7 @@ const Results = ({ data = [], searchWord, loading, callback }: ResultProps) => {
         <div key={index} className={styles.results_text_container}>
           <DocumentIcon />
           <p className={styles.results_text} key={index}>
-            {res.nombreContratista}
+            {res.nombre}
           </p>
           <h5
             className={styles.results_selection}

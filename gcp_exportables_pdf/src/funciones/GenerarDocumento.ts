@@ -23,6 +23,8 @@ export const generarDocumento = async (
   const bucket = getStorage().bucket();
   const url: string[] = [];
 
+  console.log(datosPDF);
+
   // Cargamos la plantilla HTML del Storage y la compilamos con Handlebars
   const html = await getTemplate(templateName);
   helpersFile(templateName);

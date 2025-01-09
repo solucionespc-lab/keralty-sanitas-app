@@ -3,7 +3,7 @@ import useAlgolia from 'hooks/Algolia';
 import { useDebounce } from '@uidotdev/usehooks';
 
 import Results from './Results';
-import { CloseModalIcon, EraserIcon } from './recursos/Iconografia';
+import { EraserIcon } from './recursos/Iconografia';
 
 import styles from './estilos/StylesSearch.module.css';
 
@@ -13,7 +13,6 @@ const SearchComponent = ({
   algoliaIndex,
   title,
   returnAlgoliaValue,
-  closeModal,
 }: SearchProps) => {
   const { loading, datos, consulta } = useAlgolia({
     indexName: algoliaIndex,
@@ -31,7 +30,6 @@ const SearchComponent = ({
     <main className={styles.search_container}>
       <div className={styles.header_container}>
         <h1 className={styles.search_title}>{title}</h1>
-        <CloseModalIcon onClick={closeModal} />
       </div>
       <section className={styles.search_input_container}>
         <input

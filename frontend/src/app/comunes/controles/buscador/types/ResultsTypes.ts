@@ -1,9 +1,7 @@
 export interface DataProps {
-  cedulaNit: string;
-  id: string;
-  nombreContratista: string;
+  nombre: string;
+  nit: string;
   objectID: string;
-  otroServicio: string;
 }
 
 export interface ResultProps {

@@ -9,6 +9,7 @@ export interface EmpresaType {
   tipoEmpresa: string;
   riesgo: string;
   tamano: string;
+  fechaAfiliacion: string;
 }
 
 export interface PreguntaEvaluacionType {
@@ -58,6 +59,11 @@ export interface EvaluacionParametro {
     annio: string;
     idEvaluacion: string;
   };
+}
+
+export interface PdfParametros {
+  idEvaluacion: string;
+  idEmpresa: string;
 }
 
 export type Query = { getEvaluaciones: EvaluacionesType[] };

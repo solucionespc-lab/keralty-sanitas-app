@@ -21,6 +21,8 @@ export const guardarFiltro = (
 
 export const enviarFiltros = () => {
   useFiltrosStore.setState((state) => ({
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     idEmpresa: state.idEmpresa,
     annio: state.annio,
   }));

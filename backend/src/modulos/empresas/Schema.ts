@@ -28,6 +28,7 @@ const EmpresaSchema = gql`
     riesgo: String
     tamano: TamanoEnum
     activo: Boolean
+    fechaAfiliacion: String
     responsables: [Responsables]
   }
 
@@ -46,6 +47,7 @@ const EmpresaSchema = gql`
     riesgo: String
     tamano: TamanoEnum
     activo: Boolean
+    fechaAfiliacion: String
     responsables: [ResponsablesInput]
   }
 
