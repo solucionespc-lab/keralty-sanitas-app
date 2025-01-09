@@ -1,10 +1,8 @@
-export enum PrincipalCases {
-  GENERAL = 'GENERAL',
-  CAMBIAR_ANNIO = 'CAMBIAR_ANNIO',
-}
-
 export interface IPrincipalState {
   year: number;
-  contratistaId: string;
-  ordenTrabajoId: string;
+}
+
+export interface EmpresaType {
+  nit: string;
+  nombreEmpresa: string;
 }

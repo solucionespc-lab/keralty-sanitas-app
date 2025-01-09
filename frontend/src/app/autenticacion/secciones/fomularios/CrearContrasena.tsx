@@ -24,7 +24,7 @@ const CrearContrasena = ({
       .then((result) => {
         updatePassword(result.user, password)
           .then(() => {
-            location.href = process.env?.VITE_APP_URL ?? '';
+            location.href = import.meta.env?.VITE_APP_URL ?? '';
           })
           .catch((error) => Toast(error.message, 'error'));
       })
