@@ -2,6 +2,7 @@ import {
   actualizarUsuario,
   exportarEmpresasDesdeExcel,
   guardarUsuario,
+  volcarEmpresasDesdeFirestoreAAlgolia,
 } from './resolvers/Mutations';
 import { traerUsuario, traerUsuarios } from './resolvers/Queries';
 
@@ -14,6 +15,7 @@ const BackOfficeResolver = {
     saveUsuario: guardarUsuario,
     updateUsuario: actualizarUsuario,
     volcarEmpresasDesdeExcel: exportarEmpresasDesdeExcel,
+    volcarEmpresasAAlgolia: volcarEmpresasDesdeFirestoreAAlgolia,
   },
 };
 
