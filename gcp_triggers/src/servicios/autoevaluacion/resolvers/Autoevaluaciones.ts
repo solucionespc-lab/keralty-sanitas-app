@@ -18,7 +18,6 @@ export const autoevaluaciones = functions.firestore
     const rtdb = admin.database();
 
     const empresaId = context.params.empresaId;
-    const evaluacionId = context.params.evaluacionId;
 
     const afterData = change.after.data();
 
@@ -86,18 +85,37 @@ export const autoevaluaciones = functions.firestore
     // Guardar los resultados a la subcoleccion
     const resultados = {
       annio: year,
+      idEmpresa: empresaId,
       autoevaluacion: {
         ciclo: ciclosCalculados,
         estandar: estandaresCalculadors,
       },
     };
 
-    await db
+    // Verificar si el documento ya existe en la subcolección col_resultados
+    const snapshotResultados = await db
       .collection(COL_EMPRESAS)
       .doc(empresaId)
       .collection(COL_RESULTADOS)
-      .doc(evaluacionId)
-      .set(resultados, { merge: true });
+      .where('annio', '==', year)
+      .where('idEmpresa', '==', empresaId)
+      .get();
+
+    if (snapshotResultados.empty) {
+      await db
+        .collection(COL_EMPRESAS)
+        .doc(empresaId)
+        .collection(COL_RESULTADOS)
+        .doc() // Generar un ID automático
+        .set(resultados);
+    } else {
+      await db
+        .collection(COL_EMPRESAS)
+        .doc(empresaId)
+        .collection(COL_RESULTADOS)
+        .doc(snapshotResultados.docs[0].id)
+        .set(resultados, { merge: true });
+    }
 
     functions.logger.log('Resultados calculados y guardados:');
   });

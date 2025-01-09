@@ -7,13 +7,51 @@ const InformesAutoSchema = gql`
     estandar: String
   }
 
+  type AutoevaluacionInfoType {
+    ciclo: CicloType
+    estandar: EstandarType
+  }
+
+  type CicloType {
+    Actuar: PuntajeType
+    Hacer: PuntajeType
+    Planear: PuntajeType
+    Verificar: PuntajeType
+  }
+
+  type EstandarType {
+    amenazas: PuntajeType
+    integral: PuntajeType
+    mejoramiento: PuntajeType
+    perligros: PuntajeType
+    recursos: PuntajeType
+    salud: PuntajeType
+    verificacion: PuntajeType
+  }
+
+  type PuntajeType {
+    puntajeMaximo: Float
+    resultado: Float
+  }
+
+  type ExcelenciaInfoType {
+    compromiso: ResultadoExcelenciaType
+    liderazgo: ResultadoExcelenciaType
+    objetivos: ResultadoExcelenciaType
+    proposito: ResultadoExcelenciaType
+    sst: ResultadoExcelenciaType
+  }
+
+  type ResultadoExcelenciaType {
+    resultadoEsperado: Float
+    resultadoObtenido: Float
+  }
+
   type InformeType {
-    amenazas: [ResultadoType]
-    salud: [ResultadoType]
-    peligros: [ResultadoType]
-    integral: [ResultadoType]
-    mejoramiento: [ResultadoType]
-    recursos: [ResultadoType]
+    annio: Int
+    idEmpresa: String
+    autoevaluacion: AutoevaluacionInfoType
+    excelencia: ExcelenciaInfoType
   }
 `;
 

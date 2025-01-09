@@ -89,6 +89,7 @@ export const traerInforme: ResolverArgs<InformesArgs, InformeType[]> = async (
     .collection('col_empresas')
     .doc(idEmpresa)
     .collection('col_resultados')
+    .where('annio', '==', annio)
     .withConverter(dbDataType<InformeType>());
 
   console.log(annio);
