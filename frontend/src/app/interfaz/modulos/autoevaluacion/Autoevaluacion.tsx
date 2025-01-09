@@ -1,6 +1,6 @@
 import { useUserStore } from 'store/PrincipalStore';
 import { toast } from 'sonner';
-import { useCallback, useState, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import usePermisos from 'hooks/Permisos';
 import Condicional from 'comunes/funcionales/Condicional';
 import { Button } from 'comunes/controles/Buttons';
@@ -17,7 +17,7 @@ import { validarDatosTabla } from './funciones/Funciones';
 import { GET_EVALUACIONES } from './peticiones/Queries';
 import styles from './estilos/EstGenAuditoria.module.css';
 
-import type { Query } from './types/AutoevaluacionTypes';
+import type { PdfParametros, Query } from './types/AutoevaluacionTypes';
 
 const Autoevaluacion = () => {
   const { usuario } = useUserStore();
@@ -51,28 +51,21 @@ const Autoevaluacion = () => {
     refetch();
   };
 
-  const generarDocumentos = useCallback(
-    (idEvaluacion: string, idEmpresa: string) => {
-      toast.promise(
-        correrMicroservicio<{ idEvaluacion: string; idEmpresa: string }>(
-          'generarPdf',
-          {
-            idEvaluacion,
-            idEmpresa,
-          }
-        ),
-        {
-          loading: 'Generando certificado',
-          success: (data) => {
-            setEstados({ ...estados, certificado: true, url: data });
-            return 'Certificado generado de clic en el botón - Descargar certificado';
-          },
-          error: (data) => data,
-        }
-      );
-    },
-    []
-  );
+  const generarDocumentos = (idEvaluacion: string, idEmpresa: string) =>
+    toast.promise(
+      correrMicroservicio<PdfParametros>('generarPdf', {
+        idEvaluacion,
+        idEmpresa,
+      }),
+      {
+        loading: 'Generando certificado',
+        success: (data) => {
+          setEstados({ ...estados, certificado: true, url: data });
+          return 'Certificado generado de clic en el botón - Descargar certificado';
+        },
+        error: (data) => data,
+      }
+    );
 
   return (
     <>
@@ -158,8 +151,9 @@ const Autoevaluacion = () => {
             tooltip: 'Generar certificado',
             icon: <PDFDescargaIcon />,
             id: 'id',
-            event: (e) =>
-              generarDocumentos(e?.data?.id ?? '', e.data?.idEmpresa ?? ''),
+            event: (e) => {
+              generarDocumentos(e?.data?.id ?? '', e.data?.idEmpresa ?? '');
+            },
           },
         ]}
         error={error}

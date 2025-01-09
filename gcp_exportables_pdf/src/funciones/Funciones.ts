@@ -45,12 +45,21 @@ export function estandarizarDatos(
   evaluacion: Partial<EvaluacionesType> | undefined,
   empresa: Partial<EmpresaType> | undefined
 ) {
+  const diaAfiliacion = new Date(
+    empresa?.fechaAfiliacion ?? '2022-01-01'
+  ).getDate();
+  const mesAfiliacion =
+    LST_MESES[new Date(empresa?.fechaAfiliacion ?? '2022-01-01').getMonth()];
+  const annioAfiliacion = new Date(
+    empresa?.fechaAfiliacion ?? '2022-01-01'
+  ).getFullYear();
+
   return {
     nombre: empresa?.nombre ?? 'Sin nombre',
     nit: empresa?.nit ?? 'Sin NIT',
-    diaAfiliacion: 30,
-    mesAfilicacion: 1,
-    annioAfiliacion: 2024,
+    diaAfiliacion,
+    mesAfiliacion,
+    annioAfiliacion,
     annioActual: new Date().getFullYear(),
     puntaje: evaluacion?.puntajeTotal ?? 0,
     calificacion: evaluacion?.calificacion ?? 'Sin calificación',
