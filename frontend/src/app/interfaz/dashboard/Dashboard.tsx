@@ -3,6 +3,7 @@ import { Toaster } from 'sonner';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Suspense } from 'react';
+import InformesExcelencia from 'modulos/informes_excelencia/InformesExcelencia';
 import Informes from 'modulos/informes/Informes';
 import ModuloHuerfano from 'comunes/funcionales/ModuloHuerfano';
 import ModalToast from 'comunes/funcionales/ModalToast';
@@ -30,6 +31,9 @@ const Dashboard = () => {
       <ContenedorApp>
         <Barrasuperior />
         <CrearEmpresa />
+        <ModalToast>
+          <Toaster theme='system' visibleToasts={5} />
+        </ModalToast>
       </ContenedorApp>
     );
   }
@@ -59,6 +63,14 @@ const Dashboard = () => {
               element={
                 <Suspense fallback={<div>Cargando informes</div>}>
                   <Informes />
+                </Suspense>
+              }
+            />
+            <Route
+              path='/informes-excelencia'
+              element={
+                <Suspense fallback={<div>Cargando informes</div>}>
+                  <InformesExcelencia />
                 </Suspense>
               }
             />
