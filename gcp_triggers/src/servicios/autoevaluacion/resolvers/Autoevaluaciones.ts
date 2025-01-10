@@ -18,7 +18,6 @@ export const autoevaluaciones = functions.firestore
     const rtdb = admin.database();
 
     const empresaId = context.params.empresaId;
-    const evaluacionId = context.params.evaluacionId;
 
     const afterData = change.after.data();
 
@@ -42,24 +41,26 @@ export const autoevaluaciones = functions.firestore
     const preguntas: EvaContenidoRT[] = snapshot.val();
 
     // Inicialiazar resultados
-    const ciclos: Record<string, { resultado: number; puntajeMaximo: number }> =
-      {
-        Planear: { resultado: 0, puntajeMaximo: 25 },
-        Hacer: { resultado: 0, puntajeMaximo: 60 },
-        Verificar: { resultado: 0, puntajeMaximo: 5 },
-        Actuar: { resultado: 0, puntajeMaximo: 10 },
-      };
+    const ciclos: Record<
+      string,
+      { resultado: number; puntajeMaximo: number; tipo: string }
+    > = {
+      Planear: { resultado: 0, puntajeMaximo: 25, tipo: 'ciclo' },
+      Hacer: { resultado: 0, puntajeMaximo: 60, tipo: 'ciclo' },
+      Verificar: { resultado: 0, puntajeMaximo: 5, tipo: 'ciclo' },
+      Actuar: { resultado: 0, puntajeMaximo: 10, tipo: 'ciclo' },
+    };
     const estandares: Record<
       string,
-      { resultado: number; puntajeMaximo: number }
+      { resultado: number; puntajeMaximo: number; tipo: string }
     > = {
-      recursos: { resultado: 0, puntajeMaximo: 10 },
-      integral: { resultado: 0, puntajeMaximo: 15 },
-      salud: { resultado: 0, puntajeMaximo: 20 },
-      perligros: { resultado: 0, puntajeMaximo: 30 },
-      amenazas: { resultado: 0, puntajeMaximo: 10 },
-      verificacion: { resultado: 0, puntajeMaximo: 5 },
-      mejoramiento: { resultado: 0, puntajeMaximo: 10 },
+      recursos: { resultado: 0, puntajeMaximo: 10, tipo: 'estandar' },
+      integral: { resultado: 0, puntajeMaximo: 15, tipo: 'estandar' },
+      salud: { resultado: 0, puntajeMaximo: 20, tipo: 'estandar' },
+      perligros: { resultado: 0, puntajeMaximo: 30, tipo: 'estandar' },
+      amenazas: { resultado: 0, puntajeMaximo: 10, tipo: 'estandar' },
+      verificacion: { resultado: 0, puntajeMaximo: 5, tipo: 'estandar' },
+      mejoramiento: { resultado: 0, puntajeMaximo: 10, tipo: 'estandar' },
     };
 
     // Procesar las respuestas del cuestionario
@@ -86,18 +87,37 @@ export const autoevaluaciones = functions.firestore
     // Guardar los resultados a la subcoleccion
     const resultados = {
       annio: year,
+      idEmpresa: empresaId,
       autoevaluacion: {
-        ciclo: ciclosCalculados,
-        estandar: estandaresCalculadors,
+        ...ciclosCalculados,
+        ...estandaresCalculadors,
       },
     };
 
-    await db
+    // Verificar si el documento ya existe en la subcolección col_resultados
+    const snapshotResultados = await db
       .collection(COL_EMPRESAS)
       .doc(empresaId)
       .collection(COL_RESULTADOS)
-      .doc(evaluacionId)
-      .set(resultados, { merge: true });
+      .where('annio', '==', year)
+      .where('idEmpresa', '==', empresaId)
+      .get();
+
+    if (snapshotResultados.empty) {
+      await db
+        .collection(COL_EMPRESAS)
+        .doc(empresaId)
+        .collection(COL_RESULTADOS)
+        .doc() // Generar un ID automático
+        .set(resultados);
+    } else {
+      await db
+        .collection(COL_EMPRESAS)
+        .doc(empresaId)
+        .collection(COL_RESULTADOS)
+        .doc(snapshotResultados.docs[0].id)
+        .set(resultados, { merge: true });
+    }
 
     functions.logger.log('Resultados calculados y guardados:');
   });

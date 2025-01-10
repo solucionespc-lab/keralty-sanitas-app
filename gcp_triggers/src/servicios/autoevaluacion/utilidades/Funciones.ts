@@ -46,3 +46,31 @@ export const calcularPonderacion = (
   );
   return valorPregunta ? valorPregunta.ponderacion : 0;
 };
+
+export const calcularPorcentaje = (
+  dimensiones: Record<string, { numerador: number; denominador: number }>
+) => {
+  const dimensionesCalculadas: Record<
+    string,
+    { resultadoObtenido: number; resultadoEsperado: number }
+  > = {
+    liderazgo: { resultadoObtenido: 0, resultadoEsperado: 100 },
+    proposito: { resultadoObtenido: 0, resultadoEsperado: 100 },
+    objetivos: { resultadoObtenido: 0, resultadoEsperado: 100 },
+    sst: { resultadoObtenido: 0, resultadoEsperado: 100 },
+    compromiso: { resultadoObtenido: 0, resultadoEsperado: 100 },
+  };
+  // Calcular el porcentaje y guardarlo en resultadoObtenido de cada dimension
+  for (const tema in dimensiones) {
+    // caso en que el denominador sea cero
+    if (dimensiones[tema].denominador === 0) {
+      dimensionesCalculadas[tema].resultadoObtenido = 0;
+    } else {
+      // calcular numerador con 2 decimas
+      dimensionesCalculadas[tema].resultadoObtenido = Number(
+        (dimensiones[tema].numerador / dimensiones[tema].denominador).toFixed(2)
+      );
+    }
+  }
+  return dimensionesCalculadas;
+};
