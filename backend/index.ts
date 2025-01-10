@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import * as functions from 'firebase-functions';
+import { https } from 'firebase-functions/v2';
 
 import { cuentaServicio } from './src/seguridad/Secrets';
 import { app, startServer } from './src/servidor/Servidor';
@@ -12,8 +12,8 @@ admin.initializeApp({
 startServer();
 
 const endpoint = {
-  api: functions.https.onRequest(app),
-  staging: functions.https.onRequest(app),
+  api: https.onRequest({ cors: '*' }, app),
+  staging: https.onRequest({ cors: '*' }, app),
 };
 
 export { endpoint };

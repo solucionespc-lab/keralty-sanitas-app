@@ -14,9 +14,6 @@ const FiltrosGenerales = () => {
       <SearchComponent
         algoliaIndex={INDICE_ALGOLIA}
         title='Buscar contratistas'
-        closeModal={() => {
-          console.log('cerrar');
-        }}
         returnAlgoliaValue={(data) => {
           setContratista(data.objectID);
           guardarFiltro('idEmpresa', data.objectID);

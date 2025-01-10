@@ -4,12 +4,9 @@ import { mountStoreDevtool } from 'simple-zustand-devtools';
 import type { DataSearchStore } from '../types/SearchTypes';
 
 const useDataSearchStore = create<DataSearchStore>((set) => ({
-  cedulaNit: '',
-  id: '',
-  nombreContratista: '',
+  nit: '',
+  nombre: '',
   objectID: '',
-  otroServicio: '',
-  servicio: '',
   setItem: (itemSelected) => set({ ...itemSelected }),
 }));
 

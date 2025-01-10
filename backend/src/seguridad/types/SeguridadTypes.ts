@@ -1,25 +1,3 @@
-const AppOptions = {
-  read: 'leer',
-  write: 'escribir',
-  aprove: 'aprobar',
-  import: 'importar',
-  export: 'exportar',
-  delete: 'borrar',
-  upload: 'cargarArchivos',
-  exportar: 'exportarTodo',
-  duplicar: 'duplicar',
-  masivas: 'masivas',
-  pendientes: 'pendientes',
-} as const;
-
-const CloudOptions = {
-  create: 'crearUsuarios',
-  calls: 'llamar',
-  tokens: 'crearTokens',
-  masivas: 'masivas',
-  configuracion: 'configuracion',
-} as const;
-
 type AttributesRole = {
   roles: string[];
   firmas: string[];
@@ -38,8 +16,8 @@ export interface IamType {
     [key: number]: string;
   };
   acciones: {
-    aplicacion: (typeof AppOptions)[keyof typeof AppOptions][];
-    infraestructura: (typeof CloudOptions)[keyof typeof CloudOptions][];
+    aplicacion: string[];
+    infraestructura: string[];
   };
 }
 

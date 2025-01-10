@@ -11,7 +11,6 @@ import { validarDatosTabla } from './utilidades/Funciones';
 import { FiltrosType, Query } from './types/ExcelenciaTypes';
 import { guardarDatosEmpresa } from './store/StoreExcelencia';
 import { useFiltrosStore } from './store/FiltrosStore';
-import FiltrosExcelencia from './secciones/filtros/FiltrosExcelencia';
 import CrearExcelencia from './secciones/CrearExcelencia';
 
 import { GET_EVALUACIONES_EXCELENCIA } from './peticiones/Queries';
@@ -122,12 +121,6 @@ const Autoevaluacion = () => {
       <Condicional condicion={estados.crear}>
         <CrearExcelencia
           cerrar={() => setEstados({ ...estados, crear: false })}
-        />
-      </Condicional>
-
-      <Condicional condicion={estados.filtrar}>
-        <FiltrosExcelencia
-          close={() => setEstados({ ...estados, filtrar: false })}
         />
       </Condicional>
     </>

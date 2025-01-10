@@ -58,7 +58,7 @@
     "modulos": [
       {
         "descripcion": "Descripción de las funcionalidades del módulo implementado",
-        "estaActivo": true,
+        "estaActivo": false,
         "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
         "llaveModulo": "empresas",
         "responsable": "",
@@ -68,7 +68,7 @@
       },
       {
         "descripcion": "Descripción de las funcionalidades del módulo implementado",
-        "estaActivo": true,
+        "estaActivo": false,
         "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
         "llaveModulo": "trabajadores",
         "responsable": "",
@@ -78,7 +78,7 @@
       },
       {
         "descripcion": "Descripción de las funcionalidades del módulo implementado",
-        "estaActivo": true,
+        "estaActivo": false,
         "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
         "llaveModulo": "biomecanico",
         "responsable": "",
@@ -108,7 +108,7 @@
       },
       {
         "descripcion": "Descripción de las funcionalidades del módulo implementado",
-        "estaActivo": true,
+        "estaActivo": false,
         "llaveModulo": "actas",
         "titulo": "Gestión de actas de reunión",
         "imagen": "http://127.0.0.1:9199/v0/b/pc-dev-db.appspot.com/o/fondo-tarjetas.svg?alt=media&token=6b90bb50-b2b3-494a-a7c4-78b26511c2ea",
@@ -122,13 +122,13 @@
         "llaveModulo": "empresas",
         "titulo": "Administración de empresas",
         "url": "/empresa",
-        "estaActivo": true
+        "estaActivo": false
       },
       {
         "llaveModulo": "trabajadores",
         "titulo": "Administrar trabajadores",
         "url": "/trabajadores",
-        "estaActivo": true
+        "estaActivo": false
       },
       {
         "llaveModulo": "biomecanico",
@@ -164,9 +164,9 @@
         "llaveModulo": "actas",
         "titulo": "Gestión de actas de reunión",
         "url": "/actas",
-        "estaActivo": true
+        "estaActivo": false
       }
     ],
-    "version": "1.3.0"
+    "version": "1.4.0"
   }
 }

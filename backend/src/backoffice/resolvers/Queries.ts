@@ -2,8 +2,8 @@ import * as admin from 'firebase-admin';
 import { UserRecord } from 'firebase-admin/auth';
 import { logger } from 'firebase-functions';
 
-import { USUARIOS } from '../constantes/ConstGenerales';
 import { ResolverArgs } from '../../backend-def';
+import { USUARIOS } from '../constantes/ConstGenerales';
 
 export const traerUsuarios = async () => {
   const db = admin.firestore();
