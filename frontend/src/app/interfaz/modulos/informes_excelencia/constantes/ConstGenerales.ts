@@ -1,11 +1,7 @@
 export const SECCIONES = [
   {
-    titulo: 'Informe autoevaluación',
-    id: 'informe',
-  },
-  {
-    titulo: 'Planes de acción - autoevaluación',
-    id: 'planes',
+    titulo: 'Informe de excelencia',
+    id: 'excelencia',
   },
 ];
 
@@ -131,7 +127,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [100, 100, 90, 96, 100, 95, 100],
+      data: [90, 85, 90, 80, 90, 90, 90],
     },
     {
       name: 'Moderablemente aceptable',

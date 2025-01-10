@@ -17,6 +17,6 @@ export const LOADING_STYLE = {
 
 export const DOWNLOAD_IMAGE_OPTIONS: IdowloadImage = {
   type: 'png',
-  pixelRatio: 2,
+  pixelRatio: 3,
   backgroundColor: '#fff',
 };

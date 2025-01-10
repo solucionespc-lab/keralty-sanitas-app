@@ -8,7 +8,7 @@ export interface ItemCuestionario {
     ciclo: string;
     estandar: string;
     item: string;
-    criterio: string;
+    criterios: string;
     modo: string;
     ponderacion: number;
     orden: number;
