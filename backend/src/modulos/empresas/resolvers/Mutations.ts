@@ -17,16 +17,27 @@ export const guardarEmpresa: ResolverArgs<EmpresaInput, string> = async (
     .withConverter(dbDataType<EmpresaType>());
 
   try {
-    if (empresa.id === '') {
-      const idCreado = empresaRef.doc();
-      await empresaRef.add({ ...empresa, id: idCreado });
-      return 'Se ha guardado el empresa con éxito';
+    // Verificar si ya existe una empresa con el mismo NIT
+    const empresaSnapshot = await empresaRef
+      .where('nit', '==', empresa.nit)
+      .get();
+
+    if (!empresaSnapshot.empty) {
+      return `Ya existe una empresa registrada con el NIT: ${empresa.nit}`;
     }
 
+    if (empresa.id === '') {
+      // Crear un nuevo ID único
+      const idCreado = empresaRef.doc();
+      await idCreado.set({ ...empresa, id: idCreado.id });
+      return 'Se ha guardado la empresa con éxito';
+    }
+
+    // Agregar empresa si ya tiene un ID
     await empresaRef.add(empresa);
-    return 'Se ha guardado el empresa con éxito';
+    return 'Se ha guardado la empresa con éxito';
   } catch (error) {
     logger.error(error);
-    return 'Ocurrio un error al momento de guardar la empresa';
+    return 'Ocurrió un error al momento de guardar la empresa';
   }
 };
