@@ -1,5 +1,4 @@
 import * as admin from 'firebase-admin';
-import { logger } from 'firebase-functions';
 
 import { ResolverArgs } from '../../../backend-def';
 import {
@@ -57,22 +56,26 @@ export const actualizarEvaluacion: ResolverArgs<
   EvaluacionDocArgs,
   string
 > = async (_, { evaluacion }) => {
+  const { id, planes, ...evaluacionRest } = evaluacion;
   const db = admin.firestore();
 
   const evaluacionRef = db
     .collection(REF_EMPRESAS)
     .doc(evaluacion.idEmpresa)
     .collection(REF_EVALUACIONES)
-    .doc(evaluacion.id)
+    .doc(id)
     .withConverter(dbDataType<EvaluacionesType>());
 
-  try {
-    await evaluacionRef.set(evaluacion, { merge: true });
+  const planesBatch = registrarPlanes(planes, evaluacionRest.idEmpresa);
 
-    // TODO Implementar la funcionalidad para guardar las evaluaciones de manera parcial incluido los planes de acción que hayan cambiado
-    return 'Se guardó correctamente la evaluación';
-  } catch (error) {
-    logger.error(error);
-    throw new Error('No se pudo consultar la evaluación solicitada');
-  }
+  const [error] = await resolvePromiseAndErrors(
+    Promise.all([
+      evaluacionRef.set(evaluacionRest, { merge: true }),
+      planesBatch.commit(),
+    ])
+  );
+
+  if (error) handleCustomError(error);
+
+  return 'Se guardó actualizó correctamente la evaluación';
 };

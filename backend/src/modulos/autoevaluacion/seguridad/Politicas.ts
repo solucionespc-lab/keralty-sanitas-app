@@ -10,4 +10,5 @@ export const evaluacionesQueryPolicy = {
 
 export const evaluacionesMutationPolicy = {
   saveEvaluacion: allow,
+  updateEvaluacion: allow,
 };

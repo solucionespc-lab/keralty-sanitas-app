@@ -1,35 +1,67 @@
 import { toast } from 'sonner';
-import { Suspense } from 'react';
+// import { useEffect } from 'react';
 import usePermisos from 'hooks/Permisos';
+import useListados from 'hooks/Listados';
 import Cargando from 'comunes/informativos/Cargando';
 import FormModal from 'comunes/funcionales/forms/Form';
 import { Button } from 'comunes/controles/Buttons';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
-import { prepararEvaluacion } from '../store/AutoevaluacionStore';
-import CuestionarioComp from './CuestionarioComp';
+import {
+  actualizarEvaluacion,
+  prepararEvaluacionEditar,
+} from '../store/AutoevaluacionStore';
+import CuestionarioCompEditar from './CuestionarioCompEditar';
 import ResultadoAuditorias from './componentes/ResAuditorias';
 
-import { SAVE_EVALUACION } from '../peticiones/Mutations';
+import { GET_EVALUACION } from '../peticiones/Queries';
+import { UPDATE_EVALUACION } from '../peticiones/Mutations';
 import styles from '../estilos/EstAutoevaluaciones.module.css';
 
+import type { QueryEditar } from '../types/AutoevaluacionTypes';
 import type { CrearFormProps } from '../types/AutoevaluacionForms';
 
-const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
+const EditarAutoevaluacion = ({
+  cerrar,
+  idEmpresa,
+  annioConsulta,
+  idEvaluacion,
+}: CrearFormProps) => {
   const { accesos } = usePermisos();
-  const [saveEvaluacion, { loading }] = useMutation(SAVE_EVALUACION);
+  const { listas } = useListados();
+  const { loading: loadingQuery } = useQuery<QueryEditar>(GET_EVALUACION, {
+    variables: {
+      filtros: {
+        annio: annioConsulta,
+        idEmpresa,
+        idEvaluacion,
+      },
+    },
+    onCompleted: (data) => {
+      actualizarEvaluacion(
+        listas?.evaluaciones[2].contenido,
+        data?.getEvaluacion
+      );
+    },
+    onError: () =>
+      toast.error('Ocurrio un error al consultar la autoevaluación'),
+  });
+
+  const [saveEvaluacion, { loading }] = useMutation(UPDATE_EVALUACION);
   const guardarEvaluacion = () => {
     saveEvaluacion({
-      variables: { evaluacion: prepararEvaluacion() },
+      variables: { evaluacion: prepararEvaluacionEditar() },
       onError: () =>
         toast.error('Ocurrio un error al guardar la autoevaluación'),
       onCompleted: () => {
         toast.info('Se registró con éxito la autoevaluación');
         cerrar();
       },
-      refetchQueries: ['GetEvaluaciones', 'GetEmpresa'],
+      refetchQueries: ['GetEvaluaciones'],
     });
   };
+
+  if (loadingQuery) return <Cargando mensaje='Consultando información' />;
 
   return (
     <FormModal
@@ -45,7 +77,7 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
         <Button
           key='button-1'
           icon='new'
-          name='Guardar'
+          name='Actualizar'
           sizeBtn='normal'
           type='submit'
           id='registrar'
@@ -60,12 +92,10 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
         <div className={styles.contenedor_volver}>
           <ResultadoAuditorias />
         </div>
-        <Suspense fallback={<Cargando mensaje='Cargando información' />}>
-          <CuestionarioComp />
-        </Suspense>
+        <CuestionarioCompEditar />
       </main>
     </FormModal>
   );
 };
 
-export default CrearAuditoria;
+export default EditarAutoevaluacion;

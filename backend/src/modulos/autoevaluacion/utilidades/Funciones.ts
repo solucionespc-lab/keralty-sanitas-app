@@ -6,9 +6,13 @@ import { REF_EMPRESAS, REF_PLANES } from '../constantes/ConstAuditorias';
 import type { PlanesEvaType } from '../types/PlanesEvaTypes';
 
 export const registrarPlanes = (planes: string[], idEmpresa: string) => {
-  const planesCompletos = planes.filter((plan) => plan !== '');
+  const planesCompletos = planes.filter((plan) => {
+    return plan !== '' && plan !== null && plan !== undefined;
+  });
   const cantLotes = Math.ceil(planes.length / 400);
   const batch = admin.firestore().batch();
+
+  console.log(planesCompletos);
 
   for (let i = 0; i < cantLotes; i++) {
     const inicio = i * 400;

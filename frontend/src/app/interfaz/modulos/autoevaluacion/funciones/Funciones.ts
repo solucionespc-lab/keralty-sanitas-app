@@ -75,7 +75,8 @@ export const validarDatosTabla = (datosQuery: EvaluacionesType[]) => {
     empresa: dato.empresa.nombre,
     puntaje: dato.puntajeTotal,
     calificacion: dato.calificacion,
-    fechaAfiliacion: dato.empresa.fechaAfiliacion,
+    annio: dato.annio,
+    estado: dato.estado,
   }));
 };
 

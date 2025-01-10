@@ -22,7 +22,21 @@ const EvaluacionesSchemaInputs = gql`
     cuestionario: [PreguntaEvaluacionInput]
     observaciones: String
     annio: Int
+    estado: String
     empresa: EmpresaInput
+    planes: [String]
+  }
+
+  input EvaluacionUpdateInput {
+    id: ID
+    idEmpresa: String
+    fechaCreacion: String
+    puntajeTotal: Float
+    calificacion: String
+    cuestionario: [PreguntaEvaluacionInput]
+    observaciones: String
+    annio: Int
+    estado: String
     planes: [String]
   }
 
