@@ -1,6 +1,5 @@
 import { useUserStore } from 'store/PrincipalStore';
 import { toast } from 'sonner';
-import { useCallback } from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from 'configuraciones/Firebase';
 import Condicional from 'comunes/funcionales/Condicional';
@@ -25,17 +24,13 @@ const CrearEmpresa = () => {
   const { usuario } = useUserStore();
   const datosEmpresa = useUsuarioEmpresaStore((state) => state);
 
-  const desconectarse = useCallback(() => {
-    signOut(auth);
-    // window.location.reload();
-  }, []);
-
   const [guadar, { loading }] = useMutation(ACTUALIZAR_EMPRESA, {
     onCompleted: ({ updateCuenta }) => {
       toast.info(updateCuenta);
-      desconectarse();
+      signOut(auth);
+      window.location.reload();
     },
-    onError: ({ message }) => toast.error(message),
+    onError: (error) => toast.error(error.message),
   });
 
   const guardarDatos = () => {

@@ -7,10 +7,9 @@ import { establecerAnnios } from '../utilidades/Funciones';
 import { guardarDatosBasicos, useExcelencia } from '../store/StoreExcelencia';
 
 import stCuestionario from '../estilos/EstCuestionario.module.css';
-import styles from '../estilos/EstAutoevaluaciones.module.css';
 
 const DatosBasicos = () => {
-  const { empresa, fechaCreacion, annio, evaluador, area } = useExcelencia(
+  const { fechaCreacion, annio, evaluador, area } = useExcelencia(
     useShallow(({ empresa, fechaCreacion, annio, evaluador, area }) => ({
       empresa,
       fechaCreacion,
@@ -22,19 +21,6 @@ const DatosBasicos = () => {
 
   return (
     <>
-      <section
-        className={styles.contenedor_flex}
-        style={{ justifyContent: 'space-evenly' }}
-      >
-        <div>
-          <h4>Nombre de la empresa</h4>
-          <p className={styles.info_nombres}>{empresa.nombre}</p>
-        </div>
-        <div>
-          <h4>Tipo de riesgo</h4>
-          <p>{`Riesgo ${empresa.riesgo}`}</p>
-        </div>
-      </section>
       <div className={stCuestionario.cuestionario_info_container}>
         <div style={{ display: 'flex', gap: '1em' }}>
           <Date

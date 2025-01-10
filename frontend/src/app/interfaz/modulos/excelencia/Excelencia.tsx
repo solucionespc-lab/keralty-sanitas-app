@@ -48,7 +48,7 @@ const Autoevaluacion = () => {
 
   useEffect(() => {
     guardarDatosEmpresa(
-      data.getExcelencia[0].empresa,
+      data.getExcelencia[0]?.empresa ?? [],
       usuario?.claims.idEmpresa ?? ''
     );
   }, []);

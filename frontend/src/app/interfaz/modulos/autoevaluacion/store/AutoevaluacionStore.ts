@@ -1,8 +1,8 @@
 import { devtools } from 'zustand/middleware';
 import { create } from 'zustand';
+import { nanoid } from 'nanoid';
 import { DEV_MODE } from 'configuraciones/VariablesEstaticasGlobales';
 
-import { EmpresaType } from '../types/AutoevaluacionTypes';
 import { determinarPlan, resultadoAuditoria } from '../funciones/Funciones';
 import {
   cuestionarioInicial,
@@ -10,6 +10,10 @@ import {
 } from '../constantes/ConstAutoevaluaciones';
 
 import type { ItemCuestionario } from 'hooks/types/HookTypes';
+import type {
+  EmpresaType,
+  EvaluacionesType,
+} from '../types/AutoevaluacionTypes';
 
 export const useAutoevaluacion = create(
   devtools(
@@ -72,18 +76,36 @@ export const guardarRespuesta = (
     };
   });
 
-  const estado = useCuestionario.getState();
+  // se actualizala vista del tablero
+  const preguntas = useCuestionario.getState();
 
-  const total = Object.values(estado.cuestionario).reduce((acum, pregunta) => {
-    if (pregunta.respuesta !== 'cumple') {
-      return acum + pregunta.ponderacion;
-    }
-    return acum;
-  }, 0);
+  const totalPreguntas = Object.values(preguntas.cuestionario).length;
+  const resultado = Object.values(preguntas.cuestionario).reduce(
+    (acum, pregunta) => {
+      if (pregunta.respuesta !== '') {
+        return acum + 1;
+      }
+      return acum;
+    },
+    0
+  );
+
+  const total = Object.values(preguntas.cuestionario).reduce(
+    (acum, pregunta) => {
+      if (pregunta.respuesta !== 'cumple') {
+        return acum + pregunta.ponderacion;
+      }
+      return acum;
+    },
+    0
+  );
+
+  console.log(resultado, totalPreguntas);
 
   useAutoevaluacion.setState({
     puntajeTotal: 100 - total,
     calificacion: resultadoAuditoria(100 - total),
+    estado: resultado === totalPreguntas ? 'completo' : 'parcial',
   });
 };
 
@@ -144,6 +166,94 @@ export const guardarCuestionario = (
 
 export function prepararEvaluacion() {
   const autoevaluacion = useAutoevaluacion.getState();
+  const { cuestionario } = useCuestionario.getState();
+  const planesAccion: string[] = [];
+
+  const cuestionarioFinal = Object.entries(cuestionario).map((pregunta) => {
+    const { respuesta, plan, soportes, observaciones } = pregunta[1];
+    planesAccion.push(plan);
+
+    return {
+      codigo: pregunta[0],
+      respuesta,
+      soportes,
+      observaciones,
+    };
+  });
+
+  return {
+    ...autoevaluacion,
+    planes: planesAccion,
+    cuestionario: cuestionarioFinal,
+  };
+}
+
+export function actualizarEvaluacion(
+  listas: ItemCuestionario['contenido'],
+  peticion: EvaluacionesType | undefined
+) {
+  const respuestas = Object.values(listas)
+    .map((preg) => {
+      const {
+        ciclo,
+        criterios,
+        estandar,
+        item,
+        modo,
+        orden,
+        planAccion,
+        ponderacion,
+      } = preg;
+      const idCicloMod = `${ciclo}_${orden}`;
+
+      const respuesta = peticion?.cuestionario?.find(
+        (resp) => resp.codigo === idCicloMod
+      );
+
+      return {
+        ...respuesta,
+        ciclo,
+        criterios,
+        estandar,
+        item,
+        modo,
+        orden,
+        planAccion,
+        ponderacion,
+      };
+    })
+    .filter((resp) => resp.codigo !== undefined);
+
+  const custionarioFinal = respuestas.reduce((acc, curr) => {
+    const codigo = curr?.codigo ?? nanoid(8);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    acc[codigo] = curr;
+    return acc;
+  }, {});
+
+  useCuestionario.setState({ cuestionario: custionarioFinal });
+
+  useAutoevaluacion.setState({
+    id: peticion?.id ?? '',
+    idEmpresa: peticion?.idEmpresa ?? '',
+    fechaCreacion: peticion?.fechaCreacion ?? '',
+    annio: peticion?.annio ?? 2024,
+    puntajeTotal: peticion?.puntajeTotal ?? 0,
+    calificacion: peticion?.calificacion ?? '',
+    estado: peticion?.estado ?? 'parcial',
+    empresa: {
+      nit: peticion?.empresa?.nit ?? '',
+      nombre: peticion?.empresa?.nombre ?? '',
+      riesgo: peticion?.empresa?.riesgo ?? '',
+      tamano: peticion?.empresa?.tamano ?? '',
+      tipoEmpresa: peticion?.empresa?.tipoEmpresa ?? 'empresa',
+    },
+  });
+}
+
+export function prepararEvaluacionEditar() {
+  const { empresa: _, ...autoevaluacion } = useAutoevaluacion.getState();
   const { cuestionario } = useCuestionario.getState();
   const planesAccion: string[] = [];
 

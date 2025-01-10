@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAutoevaluacion } from 'modulos/autoevaluacion/store/AutoevaluacionStore';
+import { EstadoIcon } from 'modulos/autoevaluacion/recursos/Iconografia';
 import {
   notasAuditoria,
   resultadoAuditoria,
@@ -8,17 +9,17 @@ import {
 import styles from '../../estilos/EstAutoevaluaciones.module.css';
 
 const ResultadoAuditorias = () => {
-  const [total, setTotal] = useState(0);
+  const [tablero, setTablero] = useState({ total: 0, estado: 'parcial' });
 
   useEffect(() => {
-    const unSubs = useAutoevaluacion.subscribe(({ puntajeTotal }) => {
-      setTotal(Number(puntajeTotal));
+    const unSubs = useAutoevaluacion.subscribe(({ puntajeTotal, estado }) => {
+      setTablero({ total: Number(puntajeTotal), estado });
     });
 
     return unSubs;
   }, []);
 
-  const interpretacion = resultadoAuditoria(total);
+  const interpretacion = resultadoAuditoria(tablero.total);
 
   return (
     <main>
@@ -31,9 +32,13 @@ const ResultadoAuditorias = () => {
           <span className={styles[interpretacion.toLocaleLowerCase()]}>
             {interpretacion === 'Critico' ? 'Crítico' : interpretacion}
           </span>
-          <span
-            className={`${styles.puntaje} ${styles.sin_calculo}`}
-          >{`${total === 100 ? 'Completo' : 'Incompleto'}`}</span>
+          <div
+            style={{ justifyContent: 'center', alignItems: 'center' }}
+            className={styles.contenedor_flex}
+          >
+            <EstadoIcon />
+            <p>{tablero.estado}</p>
+          </div>
         </div>
       </section>
 

@@ -5,3 +5,9 @@ export const SAVE_EVALUACION = gql`
     saveEvaluacion(evaluacion: $evaluacion)
   }
 `;
+
+export const UPDATE_EVALUACION = gql`
+  mutation UpdateEvaluacion($evaluacion: EvaluacionUpdateInput) {
+    updateEvaluacion(evaluacion: $evaluacion)
+  }
+`;

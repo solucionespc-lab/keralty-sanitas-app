@@ -43,6 +43,7 @@ export const datosBasicos = {
   annio: new Date().getFullYear(),
   puntajeTotal: 0,
   calificacion: '',
+  estado: 'parcial',
   empresa: {
     nit: '',
     nombre: '',

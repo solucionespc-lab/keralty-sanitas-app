@@ -1,0 +1,255 @@
+<html lang='es'>
+  <head>
+    <meta http-equiv='Content-Type' content="text/html charset='UTF-8'" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Acta de Reunión</title>
+    <style>
+      body { margin: 0 auto; font-family: 'Century Gothic', sans-serif; width:
+      100%; } section { display: flex; background-color: white; padding: 16px
+      24px; flex-direction: column; gap: 16px } .header { display: flex;
+      justify-content: space-between; align-items: center; } .header img {
+      max-width: 150px; } .header h3 { color: #1774d1; } table { width: 100%;
+      border-collapse: collapse; color: black; table-layout: fixed; } table th,
+      table td { border: 1px solid black; padding: 2px 3px; text-align: left; }
+      table th { background-color: #4bbdc5; color: white;} .sin-borde {border:
+      none; text-align: right;} .nota {font-size: 10px; margin-top: 0}
+      .text-area {height: 100px} .firma {height: 35px}
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class='header'>
+        <img
+          src='https://campusarlcolsanitas.unisanitas.edu.co/pluginfile.php/1/theme_adaptable/logo/1717512342/ARLCol.PNG'
+          alt='logo Colsanitas'
+        />
+        <h3>ACTA DE REUNIÓN</h3>
+      </div>
+
+      <table>
+        <tr>
+          <td class='sin-borde' colspan='13'><strong>SOLICITUD DE SERVICIO #</strong></td>
+          <td colspan='3'>8239</td></tr>
+        <tr>
+          <td colspan='3'><strong>Fecha</strong></td>
+          <td colspan='7'>19/11/2024</td>
+          <td colspan='3' style='text-align: right'><strong>PÓLIZA</strong></td>
+          <td colspan='3'>3</td>
+        </tr>
+        <tr>
+          <td colspan='3'><strong>Empresa</strong></td>
+          <td colspan='13'>Compañía de Medicina Prepagada Colsanitas</td>
+        </tr>
+        <tr>
+          <td colspan='3'><strong>NIT</strong></td>
+          <td colspan='7'>860078828</td>
+          <td colspan='3'><strong>CIUDAD</strong></td>
+          <td colspan='3'>Bogotá</td>
+        </tr>
+        <tr>
+          <td colspan='3'><strong>DIRECCIÓN</strong></td>
+          <td colspan='13'>CLL 100 11B - 67</td>
+        </tr>
+        <tr>
+          <td colspan='3'><strong>TELEFONO</strong></td>
+          <td colspan='3'></td>
+          <td colspan='4'><strong>CORREO ELECTRÓNICO</strong></td>
+          <td colspan='6'>mgonzalez@keralty.com</td>
+        </tr>
+        <tr>
+          <td colspan='3'><strong>HORA LLEGADA</strong></td>
+          <td colspan='3'>09:00</td>
+          <td colspan='4'><strong>HORA DE SALIDA</strong></td>
+          <td colspan='6'>10:00</td>
+        </tr>
+        <tr>
+          <td colspan='3'><strong>MODALIDAD</strong></td>
+          <td colspan='3' style='text-align: center'><strong
+            >PRESENCIAL</strong></td>
+          <td colspan='4'></td>
+          <td colspan='3' style='text-align: center'><strong
+            >VIRTUAL</strong></td>
+          <td colspan='3'>X</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th colspan='16'>ASISTENTES</th>
+        </tr>
+        <tr>
+          <td colspan='10' style='text-align: center'><strong
+            >NOMBRE</strong></td>
+          <td colspan='6' style='text-align: center'><strong>CARGO</strong></td>
+        </tr>
+        <tr>
+          <td colspan='10'>Margarita González Gil</td>
+          <td colspan='6'>Directora SST</td>
+        </tr>
+        <tr>
+          <td colspan='10'>Patricia Cornejo González</td>
+          <td colspan='6'>Asesora externa</td>
+        </tr>
+        <tr>
+          <td colspan='10'></td>
+          <td colspan='6'>.</td>
+        </tr>
+        <tr>
+          <td colspan='10'></td>
+          <td colspan='6'>.</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td colspan='10' style='text-align: center'><strong>ACTIVIDADES
+              REALIZADAS</strong></td>
+          <td colspan='3' style='text-align: center'><strong>HORAS / UNIDADES
+              PRESENCIAL</strong></td>
+          <td colspan='3' style='text-align: center'><strong>HORAS INFORME</strong></td>
+        </tr>
+        <tr>
+          <td colspan='10'>Asistencia técnica indicadores SG-SST...</td>
+          <td colspan='3'>1</td>
+          <td colspan='3'>23</td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'><strong>Total Horas/Unidades</strong></td>
+          <td colspan='6'><strong>24</strong></td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td colspan='10' style='text-align: center'><strong
+            >COMPROMISOS</strong></td>
+          <td colspan='3' style='text-align: center'><strong
+            >RESPONSABLES</strong></td>
+          <td colspan='3' style='text-align: center'><strong>FECHA</strong></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+        <tr>
+          <td colspan='10'>.</td>
+          <td colspan='3'></td>
+          <td colspan='3'></td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td colspan='10'><strong>REQUIRIÓ DESPLAZAMIENTO DE ACUERDO A
+              POLÍTICAS</strong><br />
+            <p class='nota'>(En caso afirmativo indique número de SDS asociable
+              al desplazamiento y describa recorridos y gastos generados)</p>
+          </td>
+          <td colspan='3'><strong>SI</strong></td>
+          <td colspan='3'><strong>NO</strong></td>
+        </tr>
+        <tr>
+          <td colspan='16' class='text-area'></td>
+        </tr>
+        <tr>
+          <th colspan='16' style='text-align: center'>EVALUACIÓN DE LA ACTIVIDAD</th>
+        </tr>
+        <tr>
+          <td style='text-align: center'>X</td>
+          <td colspan='9'>2. Cumplió totalmente las expectativas</td>
+          <td colspan='6' style='text-align: center'>Motivo del incumplimiento</td>
+        </tr>
+        <tr>
+          <td style='text-align: center'></td>
+          <td colspan='9'>1. Cumplió medianamente las expectativas</td>
+          <td colspan='6' style='text-align: center; border-bottom: none'></td>
+        </tr>
+        <tr>
+          <td style='text-align: center'></td>
+          <td colspan='9'>2. No cumplió las expectativas</td>
+          <td colspan='6' style='text-align: center; border-top: none'></td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th colspan='16' style='text-align: center'>RESPONSABLE DE LA EMPRESA</th>
+        </tr>
+        <tr>
+          <td colspan='7'><strong>Nombre</strong></td>
+          <td colspan='6'><strong>Cargo</strong></td>
+          <td colspan='3'><strong>Firma</strong></td>
+        </tr>
+        <tr class='firma'>
+          <td colspan='7'>Margarita González Gil</td>
+          <td colspan='6'>Directora SST</td>
+          <td colspan='3'></td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th colspan='16' style='text-align: center'>REPRESENTANTE DE
+            COLSANITAS ARL</th>
+        </tr>
+        <tr>
+          <td colspan='7'><strong>Nombre</strong></td>
+          <td colspan='6'><strong>Cargo</strong></td>
+          <td colspan='3'><strong>Firma</strong></td>
+        </tr>
+        <tr class='firma'>
+          <td colspan='7'>Patricia Cornejo González</td>
+          <td colspan='6'>Asesora externa</td>
+          <td colspan='3'></td>
+        </tr>
+      </table>
+
+    </section>
+  </body>
+</html>

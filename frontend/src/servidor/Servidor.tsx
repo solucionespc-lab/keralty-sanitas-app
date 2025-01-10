@@ -15,10 +15,6 @@ interface ServerProps {
 }
 
 const Servidor = ({ children, token }: ServerProps) => {
-  const link = new HttpLink({
-    uri: import.meta.env.VITE_URI,
-  });
-
   const authLink = new ApolloLink((operation, forward) => {
     operation.setContext({
       headers: {
@@ -30,8 +26,14 @@ const Servidor = ({ children, token }: ServerProps) => {
     return forward(operation);
   });
 
+  const httplink = new HttpLink({
+    uri: import.meta.env.VITE_URI,
+  });
+
+  const link = from([authLink, httplink]);
+
   const cliente = new ApolloClient({
-    link: from([link, authLink]),
+    link,
     cache: offline,
     connectToDevTools: import.meta.env.DEV,
     defaultOptions: {

@@ -155,6 +155,12 @@
         "estaActivo": true
       },
       {
+        "llaveModulo": "informesExcelencia",
+        "titulo": "Informes de resultados de la evaluación de Excelencia",
+        "url": "/informes-excelencia",
+        "estaActivo": true
+      },
+      {
         "llaveModulo": "actas",
         "titulo": "Gestión de actas de reunión",
         "url": "/actas",

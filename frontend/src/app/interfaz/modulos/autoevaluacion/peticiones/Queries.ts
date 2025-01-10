@@ -8,6 +8,8 @@ export const GET_EVALUACIONES = gql`
       fechaCreacion
       puntajeTotal
       calificacion
+      annio
+      estado
       empresa {
         nombre
       }
@@ -20,18 +22,26 @@ export const GET_EVALUACION = gql`
     getEvaluacion(filtros: $filtros) {
       id
       idEmpresa
-      fechaCreacion
+      estado
       puntajeTotal
+      fechaCreacion
       calificacion
+      empresa {
+        nit
+        nombre
+        tipoEmpresa
+        riesgo
+        tamano
+      }
       cuestionario {
         codigo
         respuesta
+        observaciones
         soportes {
           nombre
           url
         }
       }
-      annio
     }
   }
 `;

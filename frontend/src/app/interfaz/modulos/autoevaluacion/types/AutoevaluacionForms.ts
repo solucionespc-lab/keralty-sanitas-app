@@ -1,5 +1,8 @@
 export interface CrearFormProps {
   cerrar: () => void;
+  annioConsulta?: number;
+  idEmpresa?: string;
+  idEvaluacion?: string;
 }
 
 export interface EditarFormProps {

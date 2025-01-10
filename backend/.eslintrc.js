@@ -27,14 +27,6 @@ module.exports = {
     'require-jsdoc': 0,
     'import/no-unresolved': 0,
     'prefer-arrow-callback': 'error',
-    '@typescript-eslint/quotes': [
-      'error',
-      'single',
-      {
-        avoidEscape: true,
-        allowTemplateLiterals: true,
-      },
-    ],
     'import/extensions': [
       'error',
       { js: 'never', json: 'always', ts: 'never' },

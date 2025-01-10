@@ -33,12 +33,11 @@ export const actualizarUsuario: ResolverArgs<inputType, string> = async (
       logger.error(
         `La empresa con el nit ${CuentaInput.nit} no esta habilitada`
       );
-      throw new Error('La empresa no existe');
+      throw new Error('La empresa que desea actualizar no existe');
     }
 
     // Si la empresa existe, agregamos el usuario al array de responsables
     const idEmpresa = buscarEmpresa.docs[0].id;
-
     const responsablesArray = buscarEmpresa.docs[0].data().responsables;
 
     await empresaRef.doc(idEmpresa).update({
@@ -86,6 +85,6 @@ export const actualizarUsuario: ResolverArgs<inputType, string> = async (
     return 'Se actualizaron correctamente los datos de la empresa';
   } catch (error) {
     logger.error(error);
-    return 'Ocurrió un error y no se actualizó el usuario';
+    throw new Error('La empresa que desea actualizar no existe');
   }
 };

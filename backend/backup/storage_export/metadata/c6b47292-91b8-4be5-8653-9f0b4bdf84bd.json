@@ -1,0 +1,19 @@
+{
+  "name": "plantillas/CorreoBienvenida.hbs",
+  "bucket": "internal-bucket-keralty",
+  "metageneration": 1,
+  "generation": 1736434359562,
+  "contentType": "application/octet-stream",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "2d88ce88-ddda-4f71-8a2a-0f928fc39ccb"
+  ],
+  "etag": "PyFLlAmsanYZC1txE5M/DtOv6D8",
+  "customMetadata": {},
+  "timeCreated": "2025-01-09T14:52:39.563Z",
+  "updated": "2025-01-09T14:52:39.563Z",
+  "size": 3575,
+  "md5Hash": "wMrU8E9xcnDVGGSLRtWkuQ==",
+  "crc32c": "900300045"
+}

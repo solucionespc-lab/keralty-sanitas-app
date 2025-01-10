@@ -10,8 +10,13 @@ import { useSuspenseQuery } from '@apollo/client';
 
 import { useFiltrosStore } from './store/FiltrosAutoStore';
 import FiltrosAuditoria from './secciones/filtros/FiltrosAuditoria';
+import EditarAutoevaluacion from './secciones/EditarAutoevaluacion';
 import CrearAutoevaluacion from './secciones/CrearAutoevaluacion';
-import { DescargarIcon, PDFDescargaIcon } from './recursos/Iconografia';
+import {
+  DescargarIcon,
+  EditIconTable,
+  PDFDescargaIcon,
+} from './recursos/Iconografia';
 import { validarDatosTabla } from './funciones/Funciones';
 
 import { GET_EVALUACIONES } from './peticiones/Queries';
@@ -29,6 +34,11 @@ const Autoevaluacion = () => {
     certificado: false,
     url: '',
     filtrar: false,
+    editarProps: {
+      annioConsulta: new Date().getFullYear(),
+      idEmpresa: '',
+      idEvaluacion: '',
+    },
   });
   const [isPendind, startTransition] = useTransition();
 
@@ -143,15 +153,57 @@ const Autoevaluacion = () => {
               styleConfig: { textAlign: 'start', color: 'var(--gray-1)' },
               rowStyleConfig: { textAlign: 'start' },
             },
+            {
+              label: 'Vigencia',
+              key: 'annio',
+              visible: true,
+              styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
+              rowStyleConfig: { textAlign: 'center' },
+            },
+            {
+              label: 'Estado',
+              key: 'estado',
+              visible: true,
+              styleConfig: { textAlign: 'center', color: 'var(--gray-1)' },
+              rowStyleConfig: { textAlign: 'center' },
+            },
           ],
           filters: tituloFiltros,
         }}
         controls={[
           {
+            tooltip: 'Editar evaluación',
+            icon: <EditIconTable />,
+            id: 'id',
+            event: (e) => {
+              if (e.data?.estado === 'completo') {
+                toast.info(
+                  'Ya ha registrado completamente la autoevaluación, no puede modificarla'
+                );
+                return;
+              }
+              setEstados({
+                ...estados,
+                editar: true,
+                editarProps: {
+                  annioConsulta: new Date().getFullYear(),
+                  idEmpresa: e.data?.idEmpresa ?? '',
+                  idEvaluacion: e.data?.id ?? '',
+                },
+              });
+            },
+          },
+          {
             tooltip: 'Generar certificado',
             icon: <PDFDescargaIcon />,
             id: 'id',
             event: (e) => {
+              if (e.data?.estado !== 'completo') {
+                toast.info(
+                  'No puede generar el certificado hasta completar la autoevaluación'
+                );
+                return;
+              }
               generarDocumentos(e?.data?.id ?? '', e.data?.idEmpresa ?? '');
             },
           },
@@ -163,6 +215,15 @@ const Autoevaluacion = () => {
       <Condicional condicion={estados.crear}>
         <CrearAutoevaluacion
           cerrar={() => setEstados({ ...estados, crear: false })}
+        />
+      </Condicional>
+
+      <Condicional condicion={estados.editar}>
+        <EditarAutoevaluacion
+          cerrar={() => setEstados({ ...estados, editar: false })}
+          annioConsulta={estados.editarProps.annioConsulta}
+          idEmpresa={estados.editarProps.idEmpresa}
+          idEvaluacion={estados.editarProps.idEvaluacion}
         />
       </Condicional>
 

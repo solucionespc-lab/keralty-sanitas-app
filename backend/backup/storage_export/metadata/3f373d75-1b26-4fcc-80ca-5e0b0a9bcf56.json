@@ -1,0 +1,19 @@
+{
+  "name": "plantillas/Certificado.hbs",
+  "bucket": "internal-bucket-keralty",
+  "metageneration": 1,
+  "generation": 1736434348089,
+  "contentType": "application/octet-stream",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "7523f43c-2a18-43d0-b1e4-93c71db4a705"
+  ],
+  "etag": "+0emBCJgt1/dgxDYaYpWuK+6r9E",
+  "customMetadata": {},
+  "timeCreated": "2025-01-09T14:52:28.089Z",
+  "updated": "2025-01-09T14:52:28.089Z",
+  "size": 2281,
+  "md5Hash": "KXcSYfmoqkvFQEvt5LzjUw==",
+  "crc32c": "2779815141"
+}

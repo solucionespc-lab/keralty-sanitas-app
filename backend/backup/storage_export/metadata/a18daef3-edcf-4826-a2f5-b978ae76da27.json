@@ -1,0 +1,19 @@
+{
+  "name": "plantillas/Acta.hbs",
+  "bucket": "internal-bucket-keralty",
+  "metageneration": 1,
+  "generation": 1736434353939,
+  "contentType": "application/octet-stream",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "3edaf130-1478-474e-b4fd-c458fce1a513"
+  ],
+  "etag": "P5r8lyQbXhnoj5Ag5UyCXxlFm94",
+  "customMetadata": {},
+  "timeCreated": "2025-01-09T14:52:33.939Z",
+  "updated": "2025-01-09T14:52:33.939Z",
+  "size": 8788,
+  "md5Hash": "IiT1ziu7jHOENDh6U2Le7A==",
+  "crc32c": "3932485064"
+}

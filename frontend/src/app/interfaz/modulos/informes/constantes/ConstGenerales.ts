@@ -7,10 +7,6 @@ export const SECCIONES = [
     titulo: 'Planes de acción - autoevaluación',
     id: 'planes',
   },
-  {
-    titulo: 'Informe de excelencia',
-    id: 'excelencia',
-  },
 ];
 
 export const optionesTabla1 = {
@@ -135,7 +131,7 @@ export const opcionesGrafica2 = {
           return value;
         },
       },
-      data: [90, 85, 90, 80, 90, 90, 90],
+      data: [100, 100, 90, 96, 100, 95, 100],
     },
     {
       name: 'Moderablemente aceptable',
@@ -180,6 +176,10 @@ export const opcionesGraficaRadar = {
     {
       name: 'Resultado',
       type: 'radar',
+      label: {
+        show: true, // Mostrar etiquetas de datos
+        formatter: '{c}%', // Mostrar el valor
+      },
       data: [
         {
           value: [100, 100, 90, 100, 70],

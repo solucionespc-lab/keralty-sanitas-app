@@ -43,6 +43,8 @@ export interface EvaluacionesType {
   cuestionario: PreguntaEvaluacionType[];
   puntajeTotal: number;
   calificacion: string;
+  annio: number;
+  estado: string;
 }
 
 export interface EvaluacionDocArgs {
@@ -67,4 +69,5 @@ export interface PdfParametros {
 }
 
 export type Query = { getEvaluaciones: EvaluacionesType[] };
+export type QueryEditar = { getEvaluacion: EvaluacionesType };
 export type QueryEmpresa = { getEmpresa: EmpresaType };

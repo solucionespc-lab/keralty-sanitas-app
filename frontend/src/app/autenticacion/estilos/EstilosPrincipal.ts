@@ -8,7 +8,6 @@ export const ContenedorLogin = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: var(--surface-second);
 `;
 
 export const TarjetaLogin = styled.div`

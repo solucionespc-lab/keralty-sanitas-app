@@ -1,0 +1,6 @@
+.contenedor_informe {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  place-items: center;
+  gap: var(--gaps-3);
+}

@@ -10,6 +10,7 @@ const EvaluacionesSchema = gql`
     codigo: ID
     respuesta: String
     soportes: [SoportesType]
+    observaciones: String
   }
 
   type EvaluacionType {
@@ -20,7 +21,7 @@ const EvaluacionesSchema = gql`
     puntajeTotal: Float
     calificacion: String
     cuestionario: [PreguntaEvaluacionType]
-    observaciones: String
+    estado: String
     annio: Int
   }
 
@@ -32,7 +33,7 @@ const EvaluacionesSchema = gql`
 
   extend type Mutation {
     saveEvaluacion(evaluacion: EvaluacionInput): String
-    updateEvaluacion(evaluacion: EvaluacionInput): String
+    updateEvaluacion(evaluacion: EvaluacionUpdateInput): String
   }
 `;
 
