@@ -21,12 +21,12 @@ const CrearAuditoria = ({ cerrar }: CrearFormProps) => {
   const guardarEvaluacion = () => {
     saveEvaluacion({
       variables: { evaluacion: prepararEvaluacion() },
-      onError: () =>
-        toast.error('Ocurrio un error al guardar la autoevaluación'),
       onCompleted: () => {
         toast.info('Se registró con éxito la autoevaluación');
         cerrar();
       },
+      onError: () =>
+        toast.error('Ocurrio un error al guardar la autoevaluación'),
       refetchQueries: ['GetEvaluaciones', 'GetEmpresa'],
     });
   };

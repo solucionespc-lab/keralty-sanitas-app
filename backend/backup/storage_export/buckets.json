@@ -2,6 +2,9 @@
   "buckets": [
     {
       "id": "internal-bucket-keralty"
+    },
+    {
+      "id": "pc-dev-db.appspot.com"
     }
   ]
 }

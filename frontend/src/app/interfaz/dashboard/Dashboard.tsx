@@ -24,9 +24,9 @@ import type { configType } from './types/DashboardTypes';
 const Dashboard = () => {
   const { usuario } = useUserStore();
   const { data } = useSuspenseQuery<configType>(MODULOS_ACCESO);
-  const idEmpresa = usuario?.claims.idEmpresa ?? '';
+  const ids = usuario?.claims;
 
-  if (idEmpresa === '') {
+  if (ids?.idEmpresa === '' || ids?.idProveedor === '') {
     return (
       <ContenedorApp>
         <Barrasuperior />

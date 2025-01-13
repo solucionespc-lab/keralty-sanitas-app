@@ -5,7 +5,7 @@ import {
   handleCustomError,
   resolvePromiseAndErrors,
 } from '../../../utilidades/FuncionesGenerales';
-import { ACTAS_REF, EMPRESA_REF } from '../constantes/ConstGenerales';
+import { ACTAS_REF, REF_EMPRESAS } from '../constantes/ConstGenerales';
 
 import type { ActasArg } from '../types/ActasTypes';
 
@@ -16,7 +16,7 @@ export const guadarActas: ResolverArgs<ActasArg, string> = async (
   const { id, idEmpresa, ...actaRest } = ActasInput;
   const db = admin.firestore();
   const actasRef = db
-    .collection(EMPRESA_REF)
+    .collection(REF_EMPRESAS)
     .doc(idEmpresa)
     .collection(ACTAS_REF)
     .doc();
@@ -37,7 +37,7 @@ export const updateExcelencia: ResolverArgs<ActasArg, string> = async (
   const { id, idEmpresa, ...cuestionarioRest } = ActasInput;
   const db = admin.firestore();
   const excelenciaRef = db
-    .collection(EMPRESA_REF)
+    .collection(REF_EMPRESAS)
     .doc(idEmpresa)
     .collection(ACTAS_REF)
     .doc(id);

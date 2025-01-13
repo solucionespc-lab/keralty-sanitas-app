@@ -1,16 +1,25 @@
 import { useUserStore } from 'store/PrincipalStore';
 import { toast } from 'sonner';
+import { Fragment } from 'react/jsx-runtime';
 import Cargando from 'comunes/informativos/Cargando';
 import FormModal from 'comunes/funcionales/forms/Form';
-import TextArea from 'comunes/controles/TextArea';
-import Text from 'comunes/controles/Text';
+import Condicional from 'comunes/funcionales/Condicional';
+import { Titulo } from 'comunes/estilos/EstComunes';
 import Radio from 'comunes/controles/Radio';
-import Numeric from 'comunes/controles/Numeric';
-import Date from 'comunes/controles/Date';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { GET_ACTAS } from '../peticiones/Queries';
+import {
+  actualizarDatosActa,
+  guardarDatosActa,
+  useActasStore,
+} from '../store/ActasStore';
+import { CONVENCION_RESULTADOS } from '../constantes/ConstGenerales';
+import Textos from './componentes/Textos';
+import Observaciones from './componentes/Observaciones';
+import { extraerValorResultado } from '../utilidades/Funciones';
+
+import { GET_ACTA } from '../peticiones/Queries';
 import { GUARDAR_ACTA } from '../peticiones/Mutations';
 import styles from '../estilos/RevisarActas.module.css';
 
@@ -18,46 +27,49 @@ import type { CrearFormProps, QueryActa } from '../types/ActasTypes';
 
 const RevisarActa = ({ cerrar, idActa }: CrearFormProps) => {
   const { usuario } = useUserStore();
-  const [saveEvaluacion] = useMutation(GUARDAR_ACTA);
-  const { data, loading } = useQuery<QueryActa>(GET_ACTAS, {
+  const datos = useActasStore((state) => state);
+
+  const [updateActa] = useMutation(GUARDAR_ACTA);
+  const { loading } = useQuery<QueryActa>(GET_ACTA, {
     variables: {
       idEmpresa: usuario?.claims.idEmpresa ?? '',
       idActa,
     },
+    onCompleted: (data) => {
+      actualizarDatosActa(data?.getActa);
+    },
   });
 
-  const guardarEvaluacion = () => {
-    saveEvaluacion({
+  const actualizarActa = () => {
+    updateActa({
       variables: {},
       onError: () => toast.error('Ocurrio un error al guardar el diagnóstico'),
       onCompleted: () => {
         toast.info('Se registró con éxito el diagnóstico');
         cerrar();
       },
-      refetchQueries: ['GetExcelencia'],
+      refetchQueries: ['GetActas'],
     });
   };
 
   if (loading)
     return <Cargando mensaje='Consultando información de la empresa' />;
 
-  console.log(data?.getActa);
-
   return (
     <FormModal
-      tittle='Diligenciar acta de reunión'
+      tittle='Revisar acta de reunión'
       close={() => {
         cerrar();
       }}
       onSubmit={(e) => {
         e.preventDefault();
-        guardarEvaluacion();
+        actualizarActa();
       }}
       buttons={[
         <Button
           key='button-1'
           icon='new'
-          name='Guardar registro'
+          name='Aprobar acta'
           sizeBtn='normal'
           type='button'
           id='registrar'
@@ -66,137 +78,226 @@ const RevisarActa = ({ cerrar, idActa }: CrearFormProps) => {
           permiso='escribir'
           onClick={() => console.log('guardar')}
         />,
+        <Button
+          key='button-2'
+          icon='removeFilter'
+          name='Rechazar acta'
+          sizeBtn='normal'
+          type='button'
+          id='registrar'
+          typeBtn='pdf'
+          permisos={['escribir']}
+          permiso='escribir'
+          onClick={() => console.log('guardar')}
+        />,
       ]}
     >
       <main className={styles.contenedor_evaluaciones}>
-        <section className={styles.info_poliza}>
-          <Text label='Número de SDS' />
-          <Text label='Póliza' />
-          <Date label='Fecha de aprobación' />
-        </section>
+        <fieldset className={styles.fieldsets}>
+          <legend>Datos del cliente</legend>
+          <section className={styles.contendor_informacion}>
+            <div>
+              <h6>Número de SDS</h6>
+              <p>{datos.numeroSds}</p>
+            </div>
+
+            <div>
+              <h6>Póliza</h6>
+              <p>{datos.poliza}</p>
+            </div>
+
+            <div>
+              <h6>Fecha de aprobación</h6>
+              <p>{datos.fechaEjecucion}</p>
+            </div>
+          </section>
+        </fieldset>
 
         <fieldset className={styles.fieldsets}>
           <legend>Datos del proveedor</legend>
-          <Text label='NIT' />
-          <Text label='Nombre de la empresa' />
-          <Text label='Dirección' />
-          <Text label='Teléfono' />
-          <Text label='Correo electrónico' />
-          <Radio
-            label='Modalidad'
-            name='modalidad'
-            options={['Presencial', 'Virtual']}
-            onChange={undefined}
-          />
+          <section className={styles.contendor_informacion}>
+            <div>
+              <h6>NIT</h6>
+              <p>{datos.nit}</p>
+            </div>
+            <div>
+              <h6>Nombre de la empresa</h6>
+              <p>{datos.nombreEmpresa}</p>
+            </div>
+            <div>
+              <h6>Dirección</h6>
+              <p>{datos.direccion}</p>
+            </div>
+            <div>
+              <h6>Teléfono</h6>
+              <p>{datos.telefono}</p>
+            </div>
+            <div>
+              <h6>Correo electrónico</h6>
+              <p>{datos.correo}</p>
+            </div>
+            <div>
+              <h6>Modalidad</h6>
+              <p>{datos.modalidad}</p>
+            </div>
+          </section>
         </fieldset>
 
-        <details className={styles.seccion_agrupada}>
+        <details open className={styles.seccion_agrupada}>
           <summary>
-            <p>Asistentes</p>
-            <Button
-              name={'Agregar'}
-              type={'button'}
-              sizeBtn={'small'}
-              typeBtn={'pendings'}
-              icon={'add'}
-              permiso='registrar'
-              permisos={['registrar']}
-            />
+            <Titulo>Asistentes</Titulo>
           </summary>
-          <div>
-            <Text label='Nombre' />
-            <Text label='Cargo' />
-            <Text label='Teléfono' />
-          </div>
-          <div>
-            <Text label='Nombre' />
-            <Text label='Cargo' />
-            <Text label='Teléfono' />
-          </div>
+          {datos.asistentes.map((asistente) => (
+            <section
+              key={asistente.nombre}
+              className={styles.contendor_informacion}
+            >
+              <div style={{ padding: 'var(--gaps-2)' }}>
+                <h6>Nombre</h6>
+                <p>{asistente.nombre}</p>
+              </div>
+              <div style={{ padding: 'var(--gaps-2)' }}>
+                <h6>Cargo</h6>
+                <p>{asistente.cargo}</p>
+              </div>
+              <div style={{ padding: 'var(--gaps-2)' }}>
+                <h6>Teléfono</h6>
+                <p>{asistente.telefono}</p>
+              </div>
+            </section>
+          ))}
         </details>
 
-        <details className={styles.seccion_agrupada}>
+        <details open className={styles.seccion_agrupada}>
           <summary>
-            <p>Actividades</p>
-            <Button
-              name={'Agregar'}
-              type={'button'}
-              sizeBtn={'small'}
-              typeBtn={'pendings'}
-              icon={'add'}
-              permiso='registrar'
-              permisos={['registrar']}
-            />
+            <Titulo>Actividades</Titulo>
           </summary>
-          <div>
-            <Text label='Nombre de la actividad' />
-            <Numeric label='Horas/unidades' />
-            <Numeric label='Horas informe' />
-          </div>
+          {datos.actividades.map((actvidad) => (
+            <Fragment key={actvidad.nombre}>
+              <div style={{ padding: 'var(--gaps-2)' }}>
+                <h6>Nombre de la actividad</h6>
+                <p>{actvidad.nombre}</p>
+              </div>
+              <section
+                key={actvidad.nombre}
+                className={styles.contendor_informacion}
+              >
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Horas/unidades</h6>
+                  <p>{actvidad.horas}</p>
+                </div>
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Horas informe</h6>
+                  <p>{actvidad.horasInforme}</p>
+                </div>
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Horas totales</h6>
+                  <p>{actvidad.total}</p>
+                </div>
+              </section>
+            </Fragment>
+          ))}
         </details>
 
-        <details className={styles.seccion_agrupada}>
+        <details open className={styles.seccion_agrupada}>
           <summary>
-            <p>Compromisos</p>
-            <Button
-              name={'Agregar'}
-              type={'button'}
-              sizeBtn={'small'}
-              typeBtn={'pendings'}
-              icon={'add'}
-              permiso='registrar'
-              permisos={['registrar']}
-            />
+            <Titulo>Compromisos</Titulo>
           </summary>
-          <div>
-            <Text label='Descripción' />
-            <Text label='Responsable' />
-            <Date label='Fecha del compromiso' />
-          </div>
-          <div>
-            <Text label='Descripción' />
-            <Text label='Responsable' />
-            <Date label='Fecha del compromiso' />
-          </div>
+          {datos.compromisos.map((compromiso) => (
+            <Fragment key={compromiso.descripcion}>
+              <div style={{ padding: 'var(--gaps-2)' }}>
+                <h6>Descripción</h6>
+                <p>{compromiso.descripcion}</p>
+              </div>
+              <section
+                key={compromiso.descripcion}
+                className={styles.contendor_informacion}
+              >
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Responsable</h6>
+                  <p>{compromiso.responsable}</p>
+                </div>
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Fecha de compromiso</h6>
+                  <p>{compromiso.fecha}</p>
+                </div>
+              </section>
+            </Fragment>
+          ))}
         </details>
 
         <section>
-          <Radio
-            label='¿Requirió desplazamiento de acuerdo con políticas?'
-            name='desplazamiento'
-            options={['Si', 'No']}
-            onChange={undefined}
-          />
-          <TextArea label='En caso afirmativo, indique número de SDS asociada con el desplazamiento y describa recorridos y gastos generados' />
+          <div style={{ padding: 'var(--gaps-2)' }}>
+            <h6>¿Requirió desplazamiento de acuerdo con políticas?</h6>
+            <p>{datos.desplazamiento ? 'Si' : 'No'}</p>
+          </div>
+          <Condicional condicion={datos.desplazamiento}>
+            <div style={{ padding: 'var(--gaps-2)' }}>
+              <h6>
+                En caso afirmativo, indique número de SDS asociada con el
+                desplazamiento y describa recorridos y gastos generados
+              </h6>
+              <p>{datos.descDesplazamiento}</p>
+            </div>
+          </Condicional>
         </section>
+
+        <fieldset className={styles.fieldsets}>
+          <legend>Responsable del proveedor</legend>
+          <section
+            key={datos.responsableProveedor}
+            className={styles.contendor_informacion}
+          >
+            <div style={{ padding: 'var(--gaps-2)' }}>
+              <h6>Responsable</h6>
+              <p>{datos.responsableProveedor}</p>
+            </div>
+            <div style={{ padding: 'var(--gaps-2)' }}>
+              <h6>Cargo</h6>
+              <p>{datos.cargoProveedor}</p>
+            </div>
+            <div style={{ padding: 'var(--gaps-2)' }}>
+              <h6>Firma</h6>
+              <p>{datos.firmaProveedor}</p>
+            </div>
+          </section>
+        </fieldset>
 
         <fieldset className={styles.fieldsets}>
           <legend>Evaluación de la actividad</legend>
           <Radio
             label='Resultado de la evaluación'
             name='desplazamiento'
+            value={
+              CONVENCION_RESULTADOS[
+                datos.resultado as keyof typeof CONVENCION_RESULTADOS
+              ]
+            }
             options={[
               '2. Cumplió totalmente las expectativas',
               '1. Cumplió medianamente las expectativas',
               '0. No cumplió las expectativas',
             ]}
-            onChange={undefined}
+            onChange={(e) =>
+              guardarDatosActa(
+                'resultado',
+                extraerValorResultado(e.target.value)
+              )
+            }
           />
-          <TextArea label='Motivo del desplazamiento' />
+          <Condicional condicion={datos.resultado === 'no_cumple'}>
+            <Observaciones
+              label='Motivo del incumplimiento'
+              campo='motivoIncumplimiento'
+            />
+          </Condicional>
         </fieldset>
 
         <fieldset className={styles.fieldsets}>
           <legend>Responsable de la empresa</legend>
-          <Text label='Nombre' />
-          <Text label='Cargo' />
-          <Text label='Firma' />
-        </fieldset>
-
-        <fieldset className={styles.fieldsets}>
-          <legend>Responsable de la ARL</legend>
-          <Text label='Nombre' />
-          <Text label='Cargo' />
-          <Text label='Firma' />
+          <Textos label='Nombre' campo='responsableCliente' />
+          <Textos label='Cargo' campo='cargoCliente' />
+          <Textos label='Firma' campo='firmaCliente' />
         </fieldset>
       </main>
     </FormModal>

@@ -5,6 +5,7 @@ import { allow } from 'graphql-shield';
 export const actaQueryPolicy = {
   getActas: allow,
   getActa: allow,
+  getActasProveedor: allow,
 };
 
 export const actaMutationPolicy = {

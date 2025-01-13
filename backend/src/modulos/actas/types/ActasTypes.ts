@@ -1,3 +1,5 @@
+import { EmpresaType, ProveedorType } from './EmpresasType';
+
 interface AsistenteType {
   nombre: string;
   cargo: string;
@@ -20,18 +22,16 @@ interface CompromisosType {
 export interface ActasType {
   id: string;
   idEmpresa: string;
+  idProveedor: string;
   numeroSds: string;
   poliza: string;
   fechaEjecucion: string;
-  nombreEmpresa: string;
-  nit: string;
-  direccion: string;
-  telefono: string;
-  correo: string;
   modalidad: string;
-  asistentes: AsistenteType[];
+  actividadPpal: string;
+  cantidad: number;
   actividades: ActividadesType;
   compromisos: CompromisosType[];
+  asistentes: AsistenteType[];
   desplazamiento: boolean;
   descDesplazamiento: string;
   evaluacionActividad: string;
@@ -39,6 +39,9 @@ export interface ActasType {
   responsableArl: string;
   responsableEmpresa: string;
   estado: string;
+  resultado: string;
+  empresa: EmpresaType;
+  proveedor: ProveedorType;
 }
 
 export interface FiltrosType {
@@ -47,6 +50,17 @@ export interface FiltrosType {
     fechaInicio: string;
     fechaFin: string;
     annio: string;
+    estado: string;
+    idProveedor: string;
+  };
+}
+
+export interface FiltrosProveedorType {
+  idProveedor: string;
+  filtros: {
+    idEmpresa: string;
+    fechaInicio: string;
+    fechaFin: string;
     estado: string;
   };
 }

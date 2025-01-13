@@ -22,6 +22,7 @@ const EmpresaSchema = gql`
   }
 
   type EmpresaType {
+    id: ID
     nit: String
     nombre: String
     tipoEmpresa: TipoEmpresaEnum

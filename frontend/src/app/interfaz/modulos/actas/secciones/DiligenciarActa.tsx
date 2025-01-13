@@ -1,8 +1,6 @@
-import { useUserStore } from 'store/PrincipalStore';
 import { toast } from 'sonner';
 import Cargando from 'comunes/informativos/Cargando';
 import FormModal from 'comunes/funcionales/forms/Form';
-import { Titulo } from 'comunes/estilos/EstComunes';
 import TextArea from 'comunes/controles/TextArea';
 import Text from 'comunes/controles/Text';
 import Radio from 'comunes/controles/Radio';
@@ -11,38 +9,40 @@ import Date from 'comunes/controles/Date';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { GET_ACTAS } from '../peticiones/Queries';
+import { actualizarDatosActa } from '../store/ActasStore';
+
+import { GET_ACTA } from '../peticiones/Queries';
 import { GUARDAR_ACTA } from '../peticiones/Mutations';
 import styles from '../estilos/RevisarActas.module.css';
 
-import type { CrearFormProps, QueryActa } from '../types/ActasTypes';
+import type { FormProveedorProps, QueryActa } from '../types/ActasTypes';
 
-const DiligenciarActa = ({ cerrar, idActa }: CrearFormProps) => {
-  const { usuario } = useUserStore();
-  const [saveEvaluacion] = useMutation(GUARDAR_ACTA);
-  const { data, loading } = useQuery<QueryActa>(GET_ACTAS, {
+const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
+  const [updateActa] = useMutation(GUARDAR_ACTA);
+  const { loading } = useQuery<QueryActa>(GET_ACTA, {
     variables: {
-      idEmpresa: usuario?.claims.idEmpresa ?? '',
+      idEmpresa: idEmpresa ?? '',
       idActa,
+    },
+    onCompleted: (data) => {
+      actualizarDatosActa(data?.getActa);
     },
   });
 
-  const guardarEvaluacion = () => {
-    saveEvaluacion({
+  const actualizarActa = () => {
+    updateActa({
       variables: {},
-      onError: () => toast.error('Ocurrio un error al guardar el diagnóstico'),
       onCompleted: () => {
-        toast.info('Se registró con éxito el diagnóstico');
+        toast.info('Se registró con éxito el acta');
         cerrar();
       },
+      onError: () => toast.error('Ocurrio un error al actualizar el acta'),
       refetchQueries: ['GetExcelencia'],
     });
   };
 
   if (loading)
     return <Cargando mensaje='Consultando información de la empresa' />;
-
-  console.log(data?.getActa);
 
   return (
     <FormModal
@@ -52,13 +52,13 @@ const DiligenciarActa = ({ cerrar, idActa }: CrearFormProps) => {
       }}
       onSubmit={(e) => {
         e.preventDefault();
-        guardarEvaluacion();
+        actualizarActa();
       }}
       buttons={[
         <Button
           key='button-1'
           icon='new'
-          name='Aprobar acta'
+          name='Guardar registro'
           sizeBtn='normal'
           type='button'
           id='registrar'
@@ -67,36 +67,23 @@ const DiligenciarActa = ({ cerrar, idActa }: CrearFormProps) => {
           permiso='escribir'
           onClick={() => console.log('guardar')}
         />,
-        <Button
-          key='button-2'
-          icon='removeFilter'
-          name='Rechazar acta'
-          sizeBtn='normal'
-          type='button'
-          id='registrar'
-          typeBtn='pdf'
-          permisos={['escribir']}
-          permiso='escribir'
-          onClick={() => console.log('guardar')}
-        />,
       ]}
     >
       <main className={styles.contenedor_evaluaciones}>
         <section className={styles.info_poliza}>
-          <Text disabled label='Número de SDS' />
-          <Text disabled label='Póliza' />
-          <Date disabled label='Fecha de aprobación' />
+          <Text label='Número de SDS' />
+          <Text label='Póliza' />
+          <Date label='Fecha de aprobación' />
         </section>
 
         <fieldset className={styles.fieldsets}>
           <legend>Datos del proveedor</legend>
-          <Text disabled label='NIT' />
-          <Text disabled label='Nombre de la empresa' />
-          <Text disabled label='Dirección' />
-          <Text disabled label='Teléfono' />
-          <Text disabled label='Correo electrónico' />
+          <Text label='NIT' />
+          <Text label='Nombre de la empresa' />
+          <Text label='Dirección' />
+          <Text label='Teléfono' />
+          <Text label='Correo electrónico' />
           <Radio
-            disabled
             label='Modalidad'
             name='modalidad'
             options={['Presencial', 'Virtual']}
@@ -104,46 +91,73 @@ const DiligenciarActa = ({ cerrar, idActa }: CrearFormProps) => {
           />
         </fieldset>
 
-        <details open className={styles.seccion_agrupada}>
+        <details className={styles.seccion_agrupada}>
           <summary>
-            <Titulo>Asistentes</Titulo>
+            <p>Asistentes</p>
+            <Button
+              name={'Agregar'}
+              type={'button'}
+              sizeBtn={'small'}
+              typeBtn={'pendings'}
+              icon={'add'}
+              permiso='registrar'
+              permisos={['registrar']}
+            />
           </summary>
           <div>
-            <Text disabled label='Nombre' />
-            <Text disabled label='Cargo' />
-            <Text disabled label='Teléfono' />
+            <Text label='Nombre' />
+            <Text label='Cargo' />
+            <Text label='Teléfono' />
           </div>
           <div>
-            <Text disabled label='Nombre' />
-            <Text disabled label='Cargo' />
-            <Text disabled label='Teléfono' />
+            <Text label='Nombre' />
+            <Text label='Cargo' />
+            <Text label='Teléfono' />
           </div>
         </details>
 
-        <details open className={styles.seccion_agrupada}>
+        <details className={styles.seccion_agrupada}>
           <summary>
-            <Titulo>Actividades</Titulo>
+            <p>Actividades</p>
+            <Button
+              name={'Agregar'}
+              type={'button'}
+              sizeBtn={'small'}
+              typeBtn={'pendings'}
+              icon={'add'}
+              permiso='registrar'
+              permisos={['registrar']}
+            />
           </summary>
           <div>
-            <Text disabled label='Nombre de la actividad' />
-            <Numeric disabled label='Horas/unidades' />
-            <Numeric disabled label='Horas informe' />
+            <Text label='Nombre de la actividad' />
+            <Numeric label='Horas/unidades' />
+            <Numeric label='Horas informe' />
           </div>
         </details>
 
-        <details open className={styles.seccion_agrupada}>
+        <details className={styles.seccion_agrupada}>
           <summary>
-            <Titulo>Compromisos</Titulo>
+            <p>Compromisos</p>
+            <Button
+              name={'Agregar'}
+              type={'button'}
+              sizeBtn={'small'}
+              typeBtn={'pendings'}
+              icon={'add'}
+              permiso='registrar'
+              permisos={['registrar']}
+            />
           </summary>
           <div>
-            <Text disabled label='Descripción' />
-            <Text disabled label='Responsable' />
-            <Date disabled label='Fecha del compromiso' />
+            <Text label='Descripción' />
+            <Text label='Responsable' />
+            <Date label='Fecha del compromiso' />
           </div>
           <div>
-            <Text disabled label='Descripción' />
-            <Text disabled label='Responsable' />
-            <Date disabled label='Fecha del compromiso' />
+            <Text label='Descripción' />
+            <Text label='Responsable' />
+            <Date label='Fecha del compromiso' />
           </div>
         </details>
 
@@ -154,16 +168,12 @@ const DiligenciarActa = ({ cerrar, idActa }: CrearFormProps) => {
             options={['Si', 'No']}
             onChange={undefined}
           />
-          <TextArea
-            disabled
-            label='En caso afirmativo, indique número de SDS asociada con el desplazamiento y describa recorridos y gastos generados'
-          />
+          <TextArea label='En caso afirmativo, indique número de SDS asociada con el desplazamiento y describa recorridos y gastos generados' />
         </section>
 
         <fieldset className={styles.fieldsets}>
           <legend>Evaluación de la actividad</legend>
           <Radio
-            disabled
             label='Resultado de la evaluación'
             name='desplazamiento'
             options={[
@@ -173,14 +183,14 @@ const DiligenciarActa = ({ cerrar, idActa }: CrearFormProps) => {
             ]}
             onChange={undefined}
           />
-          <TextArea disabled label='Motivo del desplazamiento' />
+          <TextArea label='Motivo del desplazamiento' />
         </fieldset>
 
         <fieldset className={styles.fieldsets}>
           <legend>Responsable de la empresa</legend>
-          <Text disabled label='Nombre' />
-          <Text disabled label='Cargo' />
-          <Text disabled label='Firma' />
+          <Text label='Nombre' />
+          <Text label='Cargo' />
+          <Text label='Firma' />
         </fieldset>
 
         <fieldset className={styles.fieldsets}>

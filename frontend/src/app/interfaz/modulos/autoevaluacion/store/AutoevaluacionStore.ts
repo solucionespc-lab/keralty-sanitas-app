@@ -100,8 +100,6 @@ export const guardarRespuesta = (
     0
   );
 
-  console.log(resultado, totalPreguntas);
-
   useAutoevaluacion.setState({
     puntajeTotal: 100 - total,
     calificacion: resultadoAuditoria(100 - total),

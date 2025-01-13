@@ -8,7 +8,6 @@ const ActasSchema = gql`
   }
 
   type ActividadesType {
-    total: Int
     nombre: String
     horas: Int
     horasInforme: Int
@@ -20,28 +19,39 @@ const ActasSchema = gql`
     fecha: String
   }
 
+  type ProveedorType {
+    id: ID
+    nit: String
+    nombre: String
+  }
+
   type ActasType {
     id: ID
     idEmpresa: ID
+    idProveedor: ID
+    proveedor: ProveedorType
     numeroSds: String
     poliza: String
     fechaEjecucion: String
-    nombreEmpresa: String
-    nit: String
-    direccion: String
-    telefono: String
-    correo: String
     modalidad: String
-    asistentes: [AsistenteType]
+    actividadPpal: String
+    cantidad: Int
     actividades: [ActividadesType]
+    asistentes: [AsistenteType]
     compromisos: [CompromisosType]
     desplazamiento: Boolean
     descDesplazamiento: String
     evaluacionActividad: String
     motivoIncumplimiento: String
-    responsableArl: String
-    responsableEmpresa: String
+    responsableCliente: String
+    cargoCliente: String
+    firmaCliente: String
+    responsableProveedor: String
+    cargoProveedor: String
+    firmaProveedor: String
+    resultado: String
     estado: String
+    empresa: EmpresaType
   }
 
   input AsistenteInput {
@@ -51,7 +61,6 @@ const ActasSchema = gql`
   }
 
   input ActividadesInput {
-    total: Int
     nombre: String
     horas: Int
     horasInforme: Int
@@ -66,24 +75,27 @@ const ActasSchema = gql`
   input ActasInput {
     id: ID
     idEmpresa: ID
+    idProveedor: ID
     numeroSds: String
     poliza: String
     fechaEjecucion: String
-    nombreEmpresa: String
-    nit: String
-    direccion: String
-    telefono: String
-    correo: String
     modalidad: String
-    asistentes: [AsistenteInput]
+    actividadPpal: String
+    cantidad: Int
     actividades: [ActividadesInput]
     compromisos: [CompromisosInput]
+    asistentes: [AsistenteInput]
     desplazamiento: Boolean
     descDesplazamiento: String
     evaluacionActividad: String
     motivoIncumplimiento: String
-    responsableArl: String
-    responsableEmpresa: String
+    responsableCliente: String
+    cargoCliente: String
+    firmaCliente: String
+    responsableProveedor: String
+    cargoProveedor: String
+    firmaProveedor: String
+    resultado: String
     estado: String
   }
 
@@ -96,6 +108,7 @@ const ActasSchema = gql`
   extend type Query {
     getActas(idEmpresa: ID!, filtros: FiltrosActasInput): [ActasType]
     getActa(idEmpresa: ID!, idActa: ID!): ActasType
+    getActasProveedor(idProveedor: ID!, filtros: FiltrosActasInput): [ActasType]
   }
 
   extend type Mutation {

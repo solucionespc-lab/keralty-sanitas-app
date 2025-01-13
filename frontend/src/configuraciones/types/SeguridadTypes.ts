@@ -52,6 +52,7 @@ export type gruopAcc = keyof IamType['grupos'];
 
 export interface ClaimsType extends ParsedToken {
   idEmpresa: string;
+  idProveedor: string;
   grupo: gruopAcc;
   rol: string;
   organizacion: string;
