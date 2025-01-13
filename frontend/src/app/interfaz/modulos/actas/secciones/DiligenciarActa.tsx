@@ -1,15 +1,21 @@
 import { toast } from 'sonner';
+import { Fragment } from 'react/jsx-runtime';
 import Cargando from 'comunes/informativos/Cargando';
 import FormModal from 'comunes/funcionales/forms/Form';
+import Condicional from 'comunes/funcionales/Condicional';
 import TextArea from 'comunes/controles/TextArea';
 import Text from 'comunes/controles/Text';
 import Radio from 'comunes/controles/Radio';
-import Numeric from 'comunes/controles/Numeric';
 import Date from 'comunes/controles/Date';
 import { Button } from 'comunes/controles/Buttons';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { actualizarDatosActa } from '../store/ActasStore';
+import {
+  actualizarDatosActa,
+  guardarDatosActa,
+  useActasStore,
+} from '../store/ActasStore';
+import Textos from './componentes/Textos';
 
 import { GET_ACTA } from '../peticiones/Queries';
 import { GUARDAR_ACTA } from '../peticiones/Mutations';
@@ -18,6 +24,8 @@ import styles from '../estilos/RevisarActas.module.css';
 import type { FormProveedorProps, QueryActa } from '../types/ActasTypes';
 
 const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
+  const datos = useActasStore((state) => state);
+
   const [updateActa] = useMutation(GUARDAR_ACTA);
   const { loading } = useQuery<QueryActa>(GET_ACTA, {
     variables: {
@@ -71,23 +79,47 @@ const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
     >
       <main className={styles.contenedor_evaluaciones}>
         <section className={styles.info_poliza}>
-          <Text label='Número de SDS' />
-          <Text label='Póliza' />
-          <Date label='Fecha de aprobación' />
+          <Text
+            label='Número de SDS'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
+          <Text
+            label='Póliza'
+            onChange={(e) => guardarDatosActa('poliza', e.target.value)}
+          />
+          <Date
+            label='Fecha de aprobación'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
         </section>
 
         <fieldset className={styles.fieldsets}>
           <legend>Datos del proveedor</legend>
-          <Text label='NIT' />
-          <Text label='Nombre de la empresa' />
-          <Text label='Dirección' />
-          <Text label='Teléfono' />
-          <Text label='Correo electrónico' />
+          <Text
+            label='NIT'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
+          <Text
+            label='Nombre de la empresa'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
+          <Text
+            label='Dirección'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
+          <Text
+            label='Teléfono'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
+          <Text
+            label='Correo electrónico'
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+          />
           <Radio
             label='Modalidad'
             name='modalidad'
             options={['Presencial', 'Virtual']}
-            onChange={undefined}
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
           />
         </fieldset>
 
@@ -104,16 +136,25 @@ const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
               permisos={['registrar']}
             />
           </summary>
-          <div>
-            <Text label='Nombre' />
-            <Text label='Cargo' />
-            <Text label='Teléfono' />
-          </div>
-          <div>
-            <Text label='Nombre' />
-            <Text label='Cargo' />
-            <Text label='Teléfono' />
-          </div>
+          {datos.asistentes.map((asistente) => (
+            <Fragment key={asistente.nombre}>
+              <Textos
+                value={asistente.nombre}
+                label='Nombre'
+                campo='responsableProveedor'
+              />
+              <Textos
+                value={asistente.cargo}
+                label='Cargo'
+                campo='responsableProveedor'
+              />
+              <Textos
+                value={asistente.telefono}
+                label='Teléfono'
+                campo='responsableProveedor'
+              />
+            </Fragment>
+          ))}
         </details>
 
         <details className={styles.seccion_agrupada}>
@@ -129,11 +170,31 @@ const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
               permisos={['registrar']}
             />
           </summary>
-          <div>
-            <Text label='Nombre de la actividad' />
-            <Numeric label='Horas/unidades' />
-            <Numeric label='Horas informe' />
-          </div>
+          {datos.actividades.map((actvidad) => (
+            <Fragment key={actvidad.nombre}>
+              <div style={{ padding: 'var(--gaps-2)' }}>
+                <h6>Nombre de la actividad</h6>
+                <p>{actvidad.nombre}</p>
+              </div>
+              <section
+                key={actvidad.nombre}
+                className={styles.contendor_informacion}
+              >
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Horas/unidades</h6>
+                  <p>{actvidad.horas}</p>
+                </div>
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Horas informe</h6>
+                  <p>{actvidad.horasInforme}</p>
+                </div>
+                <div style={{ padding: 'var(--gaps-2)' }}>
+                  <h6>Horas totales</h6>
+                  <p>{actvidad.total}</p>
+                </div>
+              </section>
+            </Fragment>
+          ))}
         </details>
 
         <details className={styles.seccion_agrupada}>
@@ -149,16 +210,25 @@ const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
               permisos={['registrar']}
             />
           </summary>
-          <div>
-            <Text label='Descripción' />
-            <Text label='Responsable' />
-            <Date label='Fecha del compromiso' />
-          </div>
-          <div>
-            <Text label='Descripción' />
-            <Text label='Responsable' />
-            <Date label='Fecha del compromiso' />
-          </div>
+          {datos.compromisos.map((compromiso) => (
+            <Fragment key={compromiso.descripcion}>
+              <Textos
+                value={compromiso.responsable}
+                label='Responsable'
+                campo='responsableProveedor'
+              />
+              <Textos
+                value={compromiso.descripcion}
+                label='descripcion'
+                campo='responsableProveedor'
+              />
+              <Textos
+                value={compromiso.fecha}
+                label='fecha de compromiso'
+                campo='responsableProveedor'
+              />
+            </Fragment>
+          ))}
         </details>
 
         <section>
@@ -166,38 +236,21 @@ const DiligenciarActa = ({ cerrar, idActa, idEmpresa }: FormProveedorProps) => {
             label='¿Requirió desplazamiento de acuerdo con políticas?'
             name='desplazamiento'
             options={['Si', 'No']}
-            onChange={undefined}
+            onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
           />
-          <TextArea label='En caso afirmativo, indique número de SDS asociada con el desplazamiento y describa recorridos y gastos generados' />
+          <Condicional condicion={datos.desplazamiento}>
+            <TextArea
+              label='En caso afirmativo, indique número de SDS asociada con el desplazamiento y describa recorridos y gastos generados'
+              onChange={(e) => guardarDatosActa('numeroSds', e.target.value)}
+            />
+          </Condicional>
         </section>
 
         <fieldset className={styles.fieldsets}>
-          <legend>Evaluación de la actividad</legend>
-          <Radio
-            label='Resultado de la evaluación'
-            name='desplazamiento'
-            options={[
-              '2. Cumplió totalmente las expectativas',
-              '1. Cumplió medianamente las expectativas',
-              '0. No cumplió las expectativas',
-            ]}
-            onChange={undefined}
-          />
-          <TextArea label='Motivo del desplazamiento' />
-        </fieldset>
-
-        <fieldset className={styles.fieldsets}>
           <legend>Responsable de la empresa</legend>
-          <Text label='Nombre' />
-          <Text label='Cargo' />
-          <Text label='Firma' />
-        </fieldset>
-
-        <fieldset className={styles.fieldsets}>
-          <legend>Responsable de la ARL</legend>
-          <Text label='Nombre' />
-          <Text label='Cargo' />
-          <Text label='Firma' />
+          <Textos label='Nombre' campo='responsableProveedor' />
+          <Textos label='Cargo' campo='cargoProveedor' />
+          <Textos label='Firma' campo='firmaPrveedor' />
         </fieldset>
       </main>
     </FormModal>
